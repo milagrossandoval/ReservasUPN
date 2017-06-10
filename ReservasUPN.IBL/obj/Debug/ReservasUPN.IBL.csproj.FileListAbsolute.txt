@@ -1,0 +1,7 @@
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.IBL\bin\Debug\ReservasUPN.IBL.dll
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.IBL\bin\Debug\ReservasUPN.IBL.pdb
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.IBL\obj\Debug\ReservasUPN.IBL.dll
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.IBL\obj\Debug\ReservasUPN.IBL.pdb
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.IBL\obj\Debug\ReservasUPN.IBL.csprojResolveAssemblyReference.cache
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.IBL\bin\Debug\ReservasUPN.BE.dll
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.IBL\bin\Debug\ReservasUPN.BE.pdb

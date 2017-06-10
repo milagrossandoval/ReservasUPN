@@ -1,0 +1,13 @@
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.BL\bin\Debug\ReservasUPN.BL.dll
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.BL\bin\Debug\ReservasUPN.BL.pdb
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.BL\obj\Debug\ReservasUPN.BL.dll
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.BL\obj\Debug\ReservasUPN.BL.pdb
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.BL\obj\Debug\ReservasUPN.BL.csprojResolveAssemblyReference.cache
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.BL\bin\Debug\ReservasUPN.BE.dll
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.BL\bin\Debug\ReservasUPN.DAO.dll
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.BL\bin\Debug\ReservasUPN.IBL.dll
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.BL\bin\Debug\ReservasUPN.IDAO.dll
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.BL\bin\Debug\ReservasUPN.BE.pdb
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.BL\bin\Debug\ReservasUPN.DAO.pdb
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.BL\bin\Debug\ReservasUPN.IBL.pdb
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.BL\bin\Debug\ReservasUPN.IDAO.pdb

@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BD_RESERVASModelStoreContainer" CdmEntityContainer="BD_RESERVASEntities">
+    <EntitySetMapping Name="Recursos">
+      <EntityTypeMapping TypeName="BD_RESERVASModel.Recurso">
+        <MappingFragment StoreEntitySet="Recursos">
+          <ScalarProperty Name="idRecurso" ColumnName="idRecurso" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="idTipoRecurso" ColumnName="idTipoRecurso" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TiposRecursoes">
+      <EntityTypeMapping TypeName="BD_RESERVASModel.TiposRecurso">
+        <MappingFragment StoreEntitySet="TiposRecurso">
+          <ScalarProperty Name="idTipoRecurso" ColumnName="idTipoRecurso" />
+          <ScalarProperty Name="idSede" ColumnName="idSede" />
+          <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+          <ScalarProperty Name="idTipoHora" ColumnName="idTipoHora" />
+          <ScalarProperty Name="estado" ColumnName="estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

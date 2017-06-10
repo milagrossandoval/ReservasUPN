@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="BD_RESERVASModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="BD_RESERVASModelStoreContainer">
+          <EntitySet Name="Recursos" EntityType="BD_RESERVASModel.Store.Recursos" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="TiposRecurso" EntityType="BD_RESERVASModel.Store.TiposRecurso" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="Recursos">
+          <Key>
+            <PropertyRef Name="idRecurso" />
+          </Key>
+          <Property Name="idRecurso" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="idTipoRecurso" Type="int" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TiposRecurso">
+          <Key>
+            <PropertyRef Name="idTipoRecurso" />
+          </Key>
+          <Property Name="idTipoRecurso" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idSede" Type="int" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="idTipoHora" Type="int" Nullable="false" />
+          <Property Name="estado" Type="int" Nullable="false" />
+        </EntityType>
+        <Function Name="pa_GET_TIPO_RECURSOS" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="intSede" Type="int" Mode="In" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BD_RESERVASModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="BD_RESERVASEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Recursos" EntityType="BD_RESERVASModel.Recursos" />
+          <EntitySet Name="TiposRecurso" EntityType="BD_RESERVASModel.TiposRecurso" />
+          <FunctionImport Name="PA_GET_TIPO_RECURSOS" ReturnType="Collection(BD_RESERVASModel.PA_GET_TIPO_RECURSOS_Result)">
+            <Parameter Name="intSede" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <EntityType Name="Recursos">
+          <Key>
+            <PropertyRef Name="idRecurso" />
+          </Key>
+          <Property Name="idRecurso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="idTipoRecurso" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TiposRecurso">
+          <Key>
+            <PropertyRef Name="idTipoRecurso" />
+          </Key>
+          <Property Name="idTipoRecurso" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idSede" Type="Int32" Nullable="false" />
+          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="idTipoHora" Type="Int32" Nullable="false" />
+          <Property Name="estado" Type="Int32" Nullable="false" />
+        </EntityType>
+        <ComplexType Name="PA_GET_TIPO_RECURSOS_Result">
+          <Property Type="Int32" Name="idTipoRecurso" Nullable="false" />
+          <Property Type="Int32" Name="idSede" Nullable="false" />
+          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="idTipoHora" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BD_RESERVASModelStoreContainer" CdmEntityContainer="BD_RESERVASEntities1">
+          <EntitySetMapping Name="Recursos">
+            <EntityTypeMapping TypeName="BD_RESERVASModel.Recursos">
+              <MappingFragment StoreEntitySet="Recursos">
+                <ScalarProperty Name="idRecurso" ColumnName="idRecurso" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idTipoRecurso" ColumnName="idTipoRecurso" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TiposRecurso">
+            <EntityTypeMapping TypeName="BD_RESERVASModel.TiposRecurso">
+              <MappingFragment StoreEntitySet="TiposRecurso">
+                <ScalarProperty Name="idTipoRecurso" ColumnName="idTipoRecurso" />
+                <ScalarProperty Name="idSede" ColumnName="idSede" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idTipoHora" ColumnName="idTipoHora" />
+                <ScalarProperty Name="estado" ColumnName="estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PA_GET_TIPO_RECURSOS" FunctionName="BD_RESERVASModel.Store.pa_GET_TIPO_RECURSOS">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BD_RESERVASModel.PA_GET_TIPO_RECURSOS_Result">
+                <ScalarProperty Name="idTipoRecurso" ColumnName="idTipoRecurso" />
+                <ScalarProperty Name="idSede" ColumnName="idSede" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="idTipoHora" ColumnName="idTipoHora" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="BDRESERVAS">
+        <EntityTypeShape EntityType="BD_RESERVASModel.Recursos" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333331" IsExpanded="true" />
+        <EntityTypeShape EntityType="BD_RESERVASModel.TiposRecurso" Width="1.5" PointX="2.75" PointY="0.75" Height="1.9802864583333335" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>

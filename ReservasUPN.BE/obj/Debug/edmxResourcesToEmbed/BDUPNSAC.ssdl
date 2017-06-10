@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BD_UPNSACModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="BD_UPNSACModelStoreContainer">
+    <EntitySet Name="Alumno" EntityType="BD_UPNSACModel.Store.Alumno" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Carrera" EntityType="BD_UPNSACModel.Store.Carrera" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Sucursal" EntityType="BD_UPNSACModel.Store.Sucursal" store:Type="Tables" store:Schema="dbo" store:Name="Sucursal">
+      <DefiningQuery>SELECT 
+      [Sucursal].[Cod_Sucursal] AS [Cod_Sucursal], 
+      [Sucursal].[Nombre] AS [Nombre], 
+      [Sucursal].[Lugar] AS [Lugar], 
+      [Sucursal].[DescripcionCorta] AS [DescripcionCorta]
+      FROM [dbo].[Sucursal] AS [Sucursal]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TipoHora" EntityType="BD_UPNSACModel.Store.TipoHora" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Alumno">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="Nombre" Type="varchar" MaxLength="100" />
+    <Property Name="ApellidoPaterno" Type="varchar" MaxLength="100" />
+    <Property Name="ApellidoMaterno" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Carrera">
+    <Key>
+      <PropertyRef Name="CodCarrera" />
+    </Key>
+    <Property Name="CodCarrera" Type="int" Nullable="false" />
+    <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+    <Property Name="DescripcionCorta" Type="varchar" MaxLength="25" />
+    <Property Name="Cod_Sucursal" Type="int" />
+  </EntityType>
+  <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'BD_UPNSAC.dbo.Sucursal' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+  <EntityType Name="Sucursal">
+    <Key>
+      <PropertyRef Name="Cod_Sucursal" />
+    </Key>
+    <Property Name="Cod_Sucursal" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="varchar" MaxLength="50" />
+    <Property Name="Lugar" Type="varchar" MaxLength="30" />
+    <Property Name="DescripcionCorta" Type="varchar" MaxLength="25" />
+  </EntityType>
+  <EntityType Name="TipoHora">
+    <Key>
+      <PropertyRef Name="idTiposHora" />
+    </Key>
+    <Property Name="idTiposHora" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="50" />
+    <Property Name="estado" Type="int" Nullable="false" />
+  </EntityType>
+</Schema>

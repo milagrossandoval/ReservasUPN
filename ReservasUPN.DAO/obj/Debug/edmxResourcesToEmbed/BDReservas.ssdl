@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BD_RESERVASModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="BD_RESERVASModelStoreContainer">
+    <EntitySet Name="Recursos" EntityType="BD_RESERVASModel.Store.Recursos" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TiposRecurso" EntityType="BD_RESERVASModel.Store.TiposRecurso" store:Type="Tables" Schema="dbo" />
+  </EntityContainer>
+  <EntityType Name="Recursos">
+    <Key>
+      <PropertyRef Name="idRecurso" />
+    </Key>
+    <Property Name="idRecurso" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="codigo" Type="varchar" Nullable="false" MaxLength="10" />
+    <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="idTipoRecurso" Type="int" Nullable="false" />
+    <Property Name="estado" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TiposRecurso">
+    <Key>
+      <PropertyRef Name="idTipoRecurso" />
+    </Key>
+    <Property Name="idTipoRecurso" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="idSede" Type="int" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="100" />
+    <Property Name="idTipoHora" Type="int" Nullable="false" />
+    <Property Name="estado" Type="int" Nullable="false" />
+  </EntityType>
+</Schema>

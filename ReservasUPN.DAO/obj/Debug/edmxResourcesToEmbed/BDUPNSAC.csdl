@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BD_UPNSACModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="BD_UPNSACEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Alumnoes" EntityType="BD_UPNSACModel.Alumno" />
+    <EntitySet Name="Carreras" EntityType="BD_UPNSACModel.Carrera" />
+    <EntitySet Name="Sucursals" EntityType="BD_UPNSACModel.Sucursal" />
+    <EntitySet Name="TipoHoras" EntityType="BD_UPNSACModel.TipoHora" />
+  </EntityContainer>
+  <EntityType Name="Alumno">
+    <Key>
+      <PropertyRef Name="codigo" />
+    </Key>
+    <Property Name="codigo" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+    <Property Name="Nombre" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="ApellidoPaterno" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="ApellidoMaterno" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Carrera">
+    <Key>
+      <PropertyRef Name="CodCarrera" />
+    </Key>
+    <Property Name="CodCarrera" Type="Int32" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+    <Property Name="DescripcionCorta" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+    <Property Name="Cod_Sucursal" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Sucursal">
+    <Key>
+      <PropertyRef Name="Cod_Sucursal" />
+    </Key>
+    <Property Name="Cod_Sucursal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Lugar" Type="String" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="DescripcionCorta" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="TipoHora">
+    <Key>
+      <PropertyRef Name="idTiposHora" />
+    </Key>
+    <Property Name="idTiposHora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="estado" Type="Int32" Nullable="false" />
+  </EntityType>
+</Schema>

@@ -1,0 +1,5 @@
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.BE\bin\Debug\ReservasUPN.BE.dll
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.BE\bin\Debug\ReservasUPN.BE.pdb
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.BE\obj\Debug\ReservasUPN.BE.dll
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.BE\obj\Debug\ReservasUPN.BE.pdb
+c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.BE\bin\Debug\ReservasUPN.BE.dll.config
