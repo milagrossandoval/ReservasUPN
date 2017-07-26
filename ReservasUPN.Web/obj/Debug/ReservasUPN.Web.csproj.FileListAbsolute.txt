@@ -16,3 +16,19 @@ C:\Users\Dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.Web
 C:\Users\Dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.Web\obj\Debug\ReservasUPN.Web.dll
 C:\Users\Dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.Web\obj\Debug\ReservasUPN.Web.pdb
 C:\Users\Dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.Web\obj\Debug\ReservasUPN.Web.dll.licenses
+C:\ReservasUPN\ReservasUPN.Web\obj\Debug\ReservasUPN.Web.csprojResolveAssemblyReference.cache
+C:\ReservasUPN\ReservasUPN.Web\obj\Debug\ReservasUPN.Web.dll.licenses
+C:\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.Web.dll
+C:\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.Web.pdb
+C:\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.BE.dll
+C:\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.BL.dll
+C:\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.IBL.dll
+C:\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.IDAO.dll
+C:\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.DAO.dll
+C:\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.BE.pdb
+C:\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.BL.pdb
+C:\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.IBL.pdb
+C:\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.IDAO.pdb
+C:\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.DAO.pdb
+C:\ReservasUPN\ReservasUPN.Web\obj\Debug\ReservasUPN.Web.dll
+C:\ReservasUPN\ReservasUPN.Web\obj\Debug\ReservasUPN.Web.pdb

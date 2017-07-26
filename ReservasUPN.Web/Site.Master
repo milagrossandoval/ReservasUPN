@@ -1,10 +1,15 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ReservasUPN.Web.Site" %>
-
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs"  %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <link href="assets/fonts/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/metisMenu.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/sb-admin-2.css" rel="stylesheet" type="text/css"/>
+    <link href="assets/css/morris.css" rel="stylesheet" type="text/css"/>
+    <title>Sistema de Reservas de Recursos de la Universidad Privada del Norte</title>
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -12,10 +17,86 @@
     <form id="form1" runat="server">
     <div>
         <asp:ScriptManager ID="sm1" runat="server" />
+        <div id="wrapper">
+                <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header">
+ <%--                       <button type="button" class="navbartoggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>--%>
+                        <a class="navbar-brand" href="index.html">Reservas Online</a>
+                    </div>
+
+                   <ul class="nav navbar-top-links navbar-right">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-user">
+                                <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil </a></li>
+                                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configuración </a></li>
+                                <li class="divider"></li>
+                                <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión </a></li>
+                            </ul>
+                        </li>
+                   </ul>
+
+                   <!-- /.Menú --> 
+                    <div class="navbar-default sidebar" role="navigation">
+                        <div class="sidebar-nav navbar-collapse">
+                            <ul class="nav" id="side-menu">
+                                <li class="sidebar-search">
+                                    <div class="input-group custom-search-form">
+                                        <input type="text" class="form-control" placeholder="Search...">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button"><i class="fa fa-search"></i></button>
+                                        </span>
+                                    </div>
+                                    <!-- /input-group -->
+                                </li>
+                                <li><a href="#"><i class="fa fa-dashboard fa-fw"></i> Recursos <span class="fa arrow"></span></a>
+                                    <ul class="nav nav-second-level">
+                                        <li><a href="Recursos.aspx">Gestión Recursos</a></li>
+                                        <li><a href="UsoRecursos.aspx">Disponibilidad Recursos</a></li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-users fa-fw"></i> Usuarios <span class="fa arrow"></span></a>
+                                    <ul class="nav nav-second-level">
+                                        <li><a href="Usuarios.aspx">Gestión Usuarios</a></li>
+                                        <li><a href="Sanciones.aspx">Sanciones</a></li>
+                                    </ul>
+                                    <!-- /.nav-second-level -->
+                                </li>
+                                <li><a href="ConfigurarHorarios.aspx"><i class="fa fa-table fa-fw"></i> Horarios </a></li>                         
+                                <li>
+                                    <a href="#"><i class="fa fa-files-o fa-fw"></i> Reservas <span class="fa arrow"></span></a>
+                                    <ul class="nav nav-second-level">
+                                        <li><a href="ReservasMultiples.aspx">Reservas Múltiples</a></li>
+                                        <li><a href="MisReservas.aspx">Mis Reservas</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="Reportes.aspx"><i class="fa fa-edit fa-fw"></i>Reportes</a></li>   
+                            </ul>
+                        </div>
+                    </div>                    
+                  </nav>                        
+             </div>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
+             
         </asp:ContentPlaceHolder>
     </div>
     </form>
+
+    <!-- /.Jquery -->
+    <script src="assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="assets/js/metisMenu.min.js" type="text/javascript"></script>
+    <script src="assets/js/raphael.min.js" type="text/javascript"></script>
+    <script src="assets/js/morris.min.js" type="text/javascript"></script>
+    <script src="assets/js/morris-data.js" type="text/javascript"></script>
+    <script src="assets/js/sb-admin-2.js" type="text/javascript"></script>
 </body>
 </html>

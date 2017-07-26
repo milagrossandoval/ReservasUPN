@@ -1,10 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="ReservasUPN.Web.Default" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs"  %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-    
-    <telerik:radgrid id="rgDemo" runat="server" Culture="es-ES" 
+ 
+    <%--<telerik:radgrid id="rgDemo" runat="server" Culture="es-ES" 
         DataSourceID="ObjectDataSource1">
         <MasterTableView AutoGenerateColumns="False" DataSourceID="ObjectDataSource1">
             <Columns>
@@ -32,5 +32,5 @@
         <SelectParameters>
             <asp:Parameter DefaultValue="1" Name="sede" Type="Int32" />
         </SelectParameters>
-    </asp:ObjectDataSource>
+    </asp:ObjectDataSource>--%>
 </asp:Content>
