@@ -60,11 +60,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\Button.Button.css" />
+    <Content Include="assets\css\dataTables.bootstrap.css" />
+    <Content Include="assets\css\dataTables.responsive.css" />
     <Content Include="assets\css\metisMenu.min.css" />
     <Content Include="assets\css\morris.css" />
     <Content Include="assets\css\sb-admin-2.css" />
+    <Content Include="assets\css\styles.css" />
     <Content Include="assets\fonts\font-awesome.min.css" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\images\sort_asc.png" />
+    <Content Include="assets\images\sort_asc_disabled.png" />
+    <Content Include="assets\images\sort_both.png" />
+    <Content Include="assets\images\sort_desc.png" />
+    <Content Include="assets\images\sort_desc_disabled.png" />
     <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\dataTables.bootstrap.min.js" />
+    <Content Include="assets\js\dataTables.responsive.js" />
+    <Content Include="assets\js\jquery.dataTables.min.js" />
     <Content Include="assets\js\jquery.min.js" />
     <Content Include="assets\js\metisMenu.min.js" />
     <Content Include="assets\js\morris-data.js" />
@@ -187,6 +200,10 @@
   <ItemGroup>
     <None Include="assets\fonts\fontawesome-webfont.eot" />
     <None Include="assets\fonts\fontawesome-webfont.woff" />
+    <None Include="assets\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="assets\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="assets\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="assets\fonts\glyphicons-halflings-regular.woff2" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -196,7 +213,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>53046</DevelopmentServerPort>
+          <DevelopmentServerPort>54484</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

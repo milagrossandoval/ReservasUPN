@@ -6,6 +6,5 @@ c:\users\dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.BE\
 C:\ReservasUPN\ReservasUPN.BE\bin\Debug\ReservasUPN.BE.dll.config
 C:\ReservasUPN\ReservasUPN.BE\bin\Debug\ReservasUPN.BE.dll
 C:\ReservasUPN\ReservasUPN.BE\bin\Debug\ReservasUPN.BE.pdb
-C:\ReservasUPN\ReservasUPN.BE\obj\Debug\ReservasUPN.BE.csprojResolveAssemblyReference.cache
 C:\ReservasUPN\ReservasUPN.BE\obj\Debug\ReservasUPN.BE.dll
 C:\ReservasUPN\ReservasUPN.BE\obj\Debug\ReservasUPN.BE.pdb
