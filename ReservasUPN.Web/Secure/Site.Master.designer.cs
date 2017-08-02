@@ -9,7 +9,7 @@
 
 
 
-public partial class Site {
+public partial class  {
     
     /// <summary>
     /// head control.

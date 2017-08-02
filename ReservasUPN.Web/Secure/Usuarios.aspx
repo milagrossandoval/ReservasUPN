@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Secure/Site.Master" AutoEventWireup="true" CodeBehind="Usuarios.aspx.cs" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <style type="text/css">
@@ -16,13 +16,6 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                  <%--  <div class="panel-body">--%>
-                        <div class="demo-container size-thin">
-                            <%--<telerik:RadSearchBox RenderMode="Lightweight" ID="RadSearchBox1" runat="server"
-                                DataTextField="ProductName" DataValueField="ProductID" ClientDataSourceID="RadClientDataSource1"
-                                MaxResultCount="10" DropDownSettings-Height="200px" Width="300">
-                            </telerik:RadSearchBox>--%>
-                        </div>
                         <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BD_RESERVAS_QAConnectionString %>"
                             SelectCommand="SELECT [Cod_Usuario], [Nombre], [CodTipo_Usuario] FROM [Table_Usuario]">
                         </asp:SqlDataSource>
@@ -71,7 +64,6 @@
                             CssClass="RadButton">
                         </telerik:RadButton>
                     </center>
-                <%--</div>--%>
             </div>
         </div>
     </div>

@@ -9,5 +9,5 @@
 
 
 
-public partial class ConfigurarHorarios {
+public partial class  {
 }

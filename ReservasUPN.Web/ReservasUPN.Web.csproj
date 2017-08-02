@@ -61,8 +61,6 @@
   <ItemGroup>
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\Button.Button.css" />
-    <Content Include="assets\css\dataTables.bootstrap.css" />
-    <Content Include="assets\css\dataTables.responsive.css" />
     <Content Include="assets\css\metisMenu.min.css" />
     <Content Include="assets\css\morris.css" />
     <Content Include="assets\css\sb-admin-2.css" />
@@ -84,15 +82,15 @@
     <Content Include="assets\js\morris.min.js" />
     <Content Include="assets\js\raphael.min.js" />
     <Content Include="assets\js\sb-admin-2.js" />
-    <Content Include="ConfigurarHorarios.aspx" />
-    <Content Include="Default.aspx" />
-    <Content Include="MisReservas.aspx" />
-    <Content Include="Recursos.aspx" />
-    <Content Include="Reportes.aspx" />
-    <Content Include="ReservasMultiples.aspx" />
-    <Content Include="Sanciones.aspx" />
-    <Content Include="UsoRecursos.aspx" />
-    <Content Include="Usuarios.aspx" />
+    <Content Include="Secure\ConfigurarHorarios.aspx" />
+    <Content Include="Secure\Default.aspx" />
+    <Content Include="Secure\MisReservas.aspx" />
+    <Content Include="Secure\Recursos.aspx" />
+    <Content Include="Secure\Reportes.aspx" />
+    <Content Include="Secure\ReservasMultiples.aspx" />
+    <Content Include="Secure\Sanciones.aspx" />
+    <Content Include="Secure\UsoRecursos.aspx" />
+    <Content Include="Secure\Usuarios.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -102,75 +100,75 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConfigurarHorarios.aspx.cs">
+    <Compile Include="Secure\ConfigurarHorarios.aspx.cs">
       <DependentUpon>ConfigurarHorarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ConfigurarHorarios.aspx.designer.cs">
+    <Compile Include="Secure\ConfigurarHorarios.aspx.designer.cs">
       <DependentUpon>ConfigurarHorarios.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Default.aspx.cs">
+    <Compile Include="Secure\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Default.aspx.designer.cs">
+    <Compile Include="Secure\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MisReservas.aspx.cs">
+    <Compile Include="Secure\MisReservas.aspx.cs">
       <DependentUpon>MisReservas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MisReservas.aspx.designer.cs">
+    <Compile Include="Secure\MisReservas.aspx.designer.cs">
       <DependentUpon>MisReservas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Recursos.aspx.cs">
+    <Compile Include="Secure\Recursos.aspx.cs">
       <DependentUpon>Recursos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Recursos.aspx.designer.cs">
+    <Compile Include="Secure\Recursos.aspx.designer.cs">
       <DependentUpon>Recursos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reportes.aspx.cs">
+    <Compile Include="Secure\Reportes.aspx.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reportes.aspx.designer.cs">
+    <Compile Include="Secure\Reportes.aspx.designer.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ReservasMultiples.aspx.cs">
+    <Compile Include="Secure\ReservasMultiples.aspx.cs">
       <DependentUpon>ReservasMultiples.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="ReservasMultiples.aspx.designer.cs">
+    <Compile Include="Secure\ReservasMultiples.aspx.designer.cs">
       <DependentUpon>ReservasMultiples.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Sanciones.aspx.cs">
+    <Compile Include="Secure\Sanciones.aspx.cs">
       <DependentUpon>Sanciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Sanciones.aspx.designer.cs">
+    <Compile Include="Secure\Sanciones.aspx.designer.cs">
       <DependentUpon>Sanciones.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Site.Master.cs">
+    <Compile Include="Secure\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Site.Master.designer.cs">
+    <Compile Include="Secure\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
     </Compile>
-    <Compile Include="UsoRecursos.aspx.cs">
+    <Compile Include="Secure\UsoRecursos.aspx.cs">
       <DependentUpon>UsoRecursos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UsoRecursos.aspx.designer.cs">
+    <Compile Include="Secure\UsoRecursos.aspx.designer.cs">
       <DependentUpon>UsoRecursos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Usuarios.aspx.cs">
+    <Compile Include="Secure\Usuarios.aspx.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Usuarios.aspx.designer.cs">
+    <Compile Include="Secure\Usuarios.aspx.designer.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -189,14 +187,12 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Site.Master" />
+    <Content Include="Secure\Site.Master" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Secure\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="assets\fonts\fontawesome-webfont.eot" />
     <None Include="assets\fonts\fontawesome-webfont.woff" />
@@ -213,7 +209,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>54484</DevelopmentServerPort>
+          <DevelopmentServerPort>62379</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

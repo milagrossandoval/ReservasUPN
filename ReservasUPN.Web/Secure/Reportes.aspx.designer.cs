@@ -9,5 +9,5 @@
 
 
 
-public partial class ReservasMultiples {
+public partial class  {
 }

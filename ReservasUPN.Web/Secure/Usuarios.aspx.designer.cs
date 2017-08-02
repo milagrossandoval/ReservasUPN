@@ -9,7 +9,7 @@
 
 
 
-public partial class Usuarios {
+public partial class  {
     
     /// <summary>
     /// SqlDataSource1 control.
