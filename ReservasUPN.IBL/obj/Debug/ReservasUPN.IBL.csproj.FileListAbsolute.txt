@@ -12,3 +12,10 @@ C:\ReservasUPN\ReservasUPN.IBL\bin\Debug\ReservasUPN.BE.pdb
 C:\ReservasUPN\ReservasUPN.IBL\obj\Debug\ReservasUPN.IBL.csprojResolveAssemblyReference.cache
 C:\ReservasUPN\ReservasUPN.IBL\obj\Debug\ReservasUPN.IBL.dll
 C:\ReservasUPN\ReservasUPN.IBL\obj\Debug\ReservasUPN.IBL.pdb
+D:\ReservasUPN\ReservasUPN\ReservasUPN.IBL\bin\Debug\ReservasUPN.IBL.dll
+D:\ReservasUPN\ReservasUPN\ReservasUPN.IBL\bin\Debug\ReservasUPN.IBL.pdb
+D:\ReservasUPN\ReservasUPN\ReservasUPN.IBL\bin\Debug\ReservasUPN.BE.dll
+D:\ReservasUPN\ReservasUPN\ReservasUPN.IBL\bin\Debug\ReservasUPN.BE.pdb
+D:\ReservasUPN\ReservasUPN\ReservasUPN.IBL\obj\Debug\ReservasUPN.IBL.csprojResolveAssemblyReference.cache
+D:\ReservasUPN\ReservasUPN\ReservasUPN.IBL\obj\Debug\ReservasUPN.IBL.dll
+D:\ReservasUPN\ReservasUPN\ReservasUPN.IBL\obj\Debug\ReservasUPN.IBL.pdb

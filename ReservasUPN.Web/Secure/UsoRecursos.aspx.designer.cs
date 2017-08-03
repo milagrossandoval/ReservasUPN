@@ -9,7 +9,8 @@
 
 
 
-public partial class  {
+public partial class UsoRecursos
+{
     
     /// <summary>
     /// cboSucursal control.

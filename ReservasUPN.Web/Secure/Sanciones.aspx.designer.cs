@@ -9,7 +9,8 @@
 
 
 
-public partial class  {
+public partial class Sanciones
+{
     
     /// <summary>
     /// txtBuscar control.

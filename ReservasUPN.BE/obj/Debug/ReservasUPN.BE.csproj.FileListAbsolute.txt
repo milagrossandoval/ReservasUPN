@@ -9,3 +9,9 @@ C:\ReservasUPN\ReservasUPN.BE\bin\Debug\ReservasUPN.BE.pdb
 C:\ReservasUPN\ReservasUPN.BE\obj\Debug\ReservasUPN.BE.csprojResolveAssemblyReference.cache
 C:\ReservasUPN\ReservasUPN.BE\obj\Debug\ReservasUPN.BE.dll
 C:\ReservasUPN\ReservasUPN.BE\obj\Debug\ReservasUPN.BE.pdb
+D:\ReservasUPN\ReservasUPN\ReservasUPN.BE\bin\Debug\ReservasUPN.BE.dll.config
+D:\ReservasUPN\ReservasUPN\ReservasUPN.BE\bin\Debug\ReservasUPN.BE.dll
+D:\ReservasUPN\ReservasUPN\ReservasUPN.BE\bin\Debug\ReservasUPN.BE.pdb
+D:\ReservasUPN\ReservasUPN\ReservasUPN.BE\obj\Debug\ReservasUPN.BE.csprojResolveAssemblyReference.cache
+D:\ReservasUPN\ReservasUPN\ReservasUPN.BE\obj\Debug\ReservasUPN.BE.dll
+D:\ReservasUPN\ReservasUPN\ReservasUPN.BE\obj\Debug\ReservasUPN.BE.pdb

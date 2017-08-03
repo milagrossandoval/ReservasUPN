@@ -9,5 +9,5 @@
 
 
 
-public partial class  {
+public partial class Default{
 }

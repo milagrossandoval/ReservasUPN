@@ -9,5 +9,6 @@
 
 
 
-public partial class  {
+public partial class MisReservas
+{
 }

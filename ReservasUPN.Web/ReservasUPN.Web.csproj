@@ -82,6 +82,7 @@
     <Content Include="assets\js\morris.min.js" />
     <Content Include="assets\js\raphael.min.js" />
     <Content Include="assets\js\sb-admin-2.js" />
+    <Content Include="LogIn.aspx" />
     <Content Include="Secure\ConfigurarHorarios.aspx" />
     <Content Include="Secure\Default.aspx" />
     <Content Include="Secure\MisReservas.aspx" />
@@ -100,6 +101,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LogIn.aspx.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogIn.aspx.designer.cs">
+      <DependentUpon>LogIn.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Secure\ConfigurarHorarios.aspx.cs">
       <DependentUpon>ConfigurarHorarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

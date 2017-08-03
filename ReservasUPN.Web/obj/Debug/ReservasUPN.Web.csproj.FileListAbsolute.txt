@@ -18,3 +18,21 @@ C:\Users\Dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.Web
 C:\Users\Dikas\documents\visual studio 2010\Projects\ReservasUPN\ReservasUPN.Web\obj\Debug\ReservasUPN.Web.dll.licenses
 C:\ReservasUPN\ReservasUPN.Web\obj\Debug\ReservasUPN.Web.csprojResolveAssemblyReference.cache
 C:\ReservasUPN\ReservasUPN.Web\obj\Debug\ReservasUPN.Web.dll.licenses
+D:\ReservasUPN\ReservasUPN\ReservasUPN.Web\obj\Debug\ReservasUPN.Web.csprojResolveAssemblyReference.cache
+D:\ReservasUPN\ReservasUPN\ReservasUPN.Web\obj\Debug\ReservasUPN.Web.dll.licenses
+D:\ReservasUPN\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.Web.dll
+D:\ReservasUPN\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.Web.pdb
+D:\ReservasUPN\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.BE.dll
+D:\ReservasUPN\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.BL.dll
+D:\ReservasUPN\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.IBL.dll
+D:\ReservasUPN\ReservasUPN\ReservasUPN.Web\bin\Telerik.Web.Design.dll
+D:\ReservasUPN\ReservasUPN\ReservasUPN.Web\bin\Telerik.Web.UI.dll
+D:\ReservasUPN\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.IDAO.dll
+D:\ReservasUPN\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.DAO.dll
+D:\ReservasUPN\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.BE.pdb
+D:\ReservasUPN\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.BL.pdb
+D:\ReservasUPN\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.IBL.pdb
+D:\ReservasUPN\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.IDAO.pdb
+D:\ReservasUPN\ReservasUPN\ReservasUPN.Web\bin\ReservasUPN.DAO.pdb
+D:\ReservasUPN\ReservasUPN\ReservasUPN.Web\obj\Debug\ReservasUPN.Web.dll
+D:\ReservasUPN\ReservasUPN\ReservasUPN.Web\obj\Debug\ReservasUPN.Web.pdb
