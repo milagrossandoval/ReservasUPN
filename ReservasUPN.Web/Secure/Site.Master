@@ -18,8 +18,8 @@
 <body>
     <form id="form1" runat="server">
     <div>
-        <telerik:RadScriptManager runat="server" ID="RadScriptManager1" />
-        <telerik:RadSkinManager ID="RadSkinManager1" runat="server" ShowChooser="true" />
+        <telerik:RadScriptManager runat="server" ID="RadScriptManager1" /><%--
+        <telerik:RadSkinManager ID="RadSkinManager1" runat="server" ShowChooser="true" />--%>
 
         <%--<asp:ScriptManager ID="sm1" runat="server" />--%>
         <div id="wrapper">

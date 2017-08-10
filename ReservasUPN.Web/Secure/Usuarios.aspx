@@ -16,11 +16,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BD_RESERVAS_QAConnectionString %>"
-                            SelectCommand="SELECT [Cod_Usuario], [Nombre], [CodTipo_Usuario] FROM [Table_Usuario]">
-                        </asp:SqlDataSource>
                         <telerik:RadGrid RenderMode="Lightweight" ID="gridUsuarios" runat="server" AllowPaging="True"
-                            PageSize="5" Skin="Windows7" DataSourceID="SqlDataSource1" GridLines="None">
+                            PageSize="5" Skin="Windows7" GridLines="None">
                             <ClientSettings AllowKeyboardNavigation="true" EnablePostBackOnRowClick="true">
                                 <Selecting AllowRowSelect="true"></Selecting>
                             </ClientSettings>

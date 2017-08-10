@@ -43,33 +43,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BDRESERVAS.Designer.cs">
+    <Compile Include="Adapters\Usuario.cs" />
+    <Compile Include="Enumeraciones\TipoUsuario.cs" />
+    <Compile Include="Modelos\BDRESERVAS.Designer.cs">
       <DependentUpon>BDRESERVAS.edmx</DependentUpon>
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="BDUPNSAC.Designer.cs">
+    <Compile Include="Modelos\BDUPNSAC.Designer.cs">
       <DependentUpon>BDUPNSAC.edmx</DependentUpon>
-      <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
     </Compile>
-    <Compile Include="Class1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="BDRESERVAS.edmx">
+    <None Include="Modelos\App.Config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <EntityDeploy Include="Modelos\BDRESERVAS.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BDRESERVAS.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="BDUPNSAC.edmx">
+    <EntityDeploy Include="Modelos\BDUPNSAC.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BDUPNSAC.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.Config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

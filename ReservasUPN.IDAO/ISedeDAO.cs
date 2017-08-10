@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ReservasUPN.BE;
+using ReservasUPN.BE.Modelos;
 
 namespace ReservasUPN.IDAO
 {
-    public interface ITipoRecursoDAO
+    public interface ISedeDAO
     {
-        List<PA_GET_TIPO_RECURSOS_Result> listar(int sede);
+        Sede Buscar(string codigo);
     }
 }

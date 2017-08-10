@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using ReservasUPN.BE;
+using ReservasUPN.BE.Adapters;
 
 namespace ReservasUPN.IBL
 {
-    public interface ITipoRecursoBL
+    public interface IUsuarioBL
     {
-        List<PA_GET_TIPO_RECURSOS_Result> listar(int sede);
+        Usuario Buscar(string codigo);
     }
 }
