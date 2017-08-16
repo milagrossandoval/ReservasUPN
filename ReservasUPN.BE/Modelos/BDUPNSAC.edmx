@@ -6,15 +6,7 @@
     <edmx:StorageModels>
     <Schema Namespace="BD_UPNSACModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="BD_UPNSACModelStoreContainer">
-          <EntitySet Name="Alumno" EntityType="BD_UPNSACModel.Store.Alumno" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Carrera" EntityType="BD_UPNSACModel.Store.Carrera" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Clase" EntityType="BD_UPNSACModel.Store.Clase" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Docente" EntityType="BD_UPNSACModel.Store.Docente" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Matricula" EntityType="BD_UPNSACModel.Store.Matricula" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="MatriculaDetalle" EntityType="BD_UPNSACModel.Store.MatriculaDetalle" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Sede" EntityType="BD_UPNSACModel.Store.Sede" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Semestre" EntityType="BD_UPNSACModel.Store.Semestre" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="TipoHora" EntityType="BD_UPNSACModel.Store.TipoHora" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="AlumnosEgresados" EntityType="BD_UPNSACModel.Store.AlumnosEgresados" store:Type="Views" store:Schema="dbo" store:Name="AlumnosEgresados">
             <DefiningQuery>SELECT 
       [AlumnosEgresados].[codigo] AS [codigo], 
@@ -31,101 +23,7 @@
       [AlumnosRegulares].[sedeNombre] AS [sedeNombre]
       FROM [dbo].[AlumnosRegulares] AS [AlumnosRegulares]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK_Alumno_Carrera" Association="BD_UPNSACModel.Store.FK_Alumno_Carrera">
-            <End Role="Carrera" EntitySet="Carrera" />
-            <End Role="Alumno" EntitySet="Alumno" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Alumno_Semestre" Association="BD_UPNSACModel.Store.FK_Alumno_Semestre">
-            <End Role="Semestre" EntitySet="Semestre" />
-            <End Role="Alumno" EntitySet="Alumno" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Carrera_Sede" Association="BD_UPNSACModel.Store.FK_Carrera_Sede">
-            <End Role="Sede" EntitySet="Sede" />
-            <End Role="Carrera" EntitySet="Carrera" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Docente_Sede" Association="BD_UPNSACModel.Store.FK_Docente_Sede">
-            <End Role="Sede" EntitySet="Sede" />
-            <End Role="Docente" EntitySet="Docente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_matricula_Alumno" Association="BD_UPNSACModel.Store.FK_matricula_Alumno">
-            <End Role="Alumno" EntitySet="Alumno" />
-            <End Role="Matricula" EntitySet="Matricula" />
-          </AssociationSet>
-          <AssociationSet Name="FK_matricula_Semestre" Association="BD_UPNSACModel.Store.FK_matricula_Semestre">
-            <End Role="Semestre" EntitySet="Semestre" />
-            <End Role="Matricula" EntitySet="Matricula" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MatriculaDetalle_Clase" Association="BD_UPNSACModel.Store.FK_MatriculaDetalle_Clase">
-            <End Role="Clase" EntitySet="Clase" />
-            <End Role="MatriculaDetalle" EntitySet="MatriculaDetalle" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MatriculaDetalle_Matricula" Association="BD_UPNSACModel.Store.FK_MatriculaDetalle_Matricula">
-            <End Role="Matricula" EntitySet="Matricula" />
-            <End Role="MatriculaDetalle" EntitySet="MatriculaDetalle" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Semestre_Sede" Association="BD_UPNSACModel.Store.FK_Semestre_Sede">
-            <End Role="Sede" EntitySet="Sede" />
-            <End Role="Semestre" EntitySet="Semestre" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Alumno">
-          <Key>
-            <PropertyRef Name="codigo" />
-          </Key>
-          <Property Name="codigo" Type="varchar" Nullable="false" MaxLength="10" />
-          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="100" />
-          <Property Name="apellidoPaterno" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="apellidoMaterno" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="egresado" Type="int" />
-          <Property Name="carrera" Type="int" Nullable="false" />
-          <Property Name="estado" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Carrera">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="100" />
-          <Property Name="sede" Type="int" Nullable="false" />
-          <Property Name="estado" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Clase">
-          <Key>
-            <PropertyRef Name="codigo" />
-          </Key>
-          <Property Name="codigo" Type="varchar" Nullable="false" MaxLength="10" />
-          <Property Name="semestre" Type="int" Nullable="false" />
-          <Property Name="estado" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Docente">
-          <Key>
-            <PropertyRef Name="codigo" />
-          </Key>
-          <Property Name="codigo" Type="varchar" Nullable="false" MaxLength="10" />
-          <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="100" />
-          <Property Name="apellidoPaterno" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="apellidoMaterno" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="sede" Type="int" Nullable="false" />
-          <Property Name="estado" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Matricula">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="alumno" Type="varchar" Nullable="false" MaxLength="10" />
-          <Property Name="semestre" Type="int" Nullable="false" />
-          <Property Name="estado" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="MatriculaDetalle">
-          <Key>
-            <PropertyRef Name="idMatricula" />
-            <PropertyRef Name="clase" />
-          </Key>
-          <Property Name="idMatricula" Type="int" Nullable="false" />
-          <Property Name="clase" Type="varchar" Nullable="false" MaxLength="10" />
-          <Property Name="estado" Type="bit" Nullable="false" />
-        </EntityType>
         <EntityType Name="Sede">
           <Key>
             <PropertyRef Name="id" />
@@ -134,24 +32,6 @@
           <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="10" />
           <Property Name="descripcion" Type="varchar" MaxLength="100" />
           <Property Name="estado" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Semestre">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="sede" Type="int" Nullable="false" />
-          <Property Name="nombre" Type="char" Nullable="false" MaxLength="5" />
-          <Property Name="descripcion" Type="varchar" MaxLength="50" />
-          <Property Name="estado" Type="bit" Nullable="false" />
-        </EntityType>
-        <EntityType Name="TipoHora">
-          <Key>
-            <PropertyRef Name="idTiposHora" />
-          </Key>
-          <Property Name="idTiposHora" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="estado" Type="int" Nullable="false" />
         </EntityType>
         <!--Se encontraron errores durante la generación:
       advertencia 6002: La tabla o vista 'BD_UPNSAC.dbo.AlumnosEgresados' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
@@ -181,268 +61,21 @@
           <Property Name="sede" Type="int" Nullable="false" />
           <Property Name="sedeNombre" Type="varchar" MaxLength="100" />
         </EntityType>
-        <Association Name="FK_Alumno_Carrera">
-          <End Role="Carrera" Type="BD_UPNSACModel.Store.Carrera" Multiplicity="1" />
-          <End Role="Alumno" Type="BD_UPNSACModel.Store.Alumno" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Carrera">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Alumno">
-              <PropertyRef Name="carrera" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Alumno_Semestre">
-          <End Role="Semestre" Type="BD_UPNSACModel.Store.Semestre" Multiplicity="0..1" />
-          <End Role="Alumno" Type="BD_UPNSACModel.Store.Alumno" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Semestre">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Alumno">
-              <PropertyRef Name="egresado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Carrera_Sede">
-          <End Role="Sede" Type="BD_UPNSACModel.Store.Sede" Multiplicity="1" />
-          <End Role="Carrera" Type="BD_UPNSACModel.Store.Carrera" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sede">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Carrera">
-              <PropertyRef Name="sede" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Docente_Sede">
-          <End Role="Sede" Type="BD_UPNSACModel.Store.Sede" Multiplicity="1" />
-          <End Role="Docente" Type="BD_UPNSACModel.Store.Docente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sede">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Docente">
-              <PropertyRef Name="sede" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_matricula_Alumno">
-          <End Role="Alumno" Type="BD_UPNSACModel.Store.Alumno" Multiplicity="1" />
-          <End Role="Matricula" Type="BD_UPNSACModel.Store.Matricula" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Alumno">
-              <PropertyRef Name="codigo" />
-            </Principal>
-            <Dependent Role="Matricula">
-              <PropertyRef Name="alumno" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_matricula_Semestre">
-          <End Role="Semestre" Type="BD_UPNSACModel.Store.Semestre" Multiplicity="1" />
-          <End Role="Matricula" Type="BD_UPNSACModel.Store.Matricula" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Semestre">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Matricula">
-              <PropertyRef Name="semestre" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MatriculaDetalle_Clase">
-          <End Role="Clase" Type="BD_UPNSACModel.Store.Clase" Multiplicity="1" />
-          <End Role="MatriculaDetalle" Type="BD_UPNSACModel.Store.MatriculaDetalle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clase">
-              <PropertyRef Name="codigo" />
-            </Principal>
-            <Dependent Role="MatriculaDetalle">
-              <PropertyRef Name="clase" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MatriculaDetalle_Matricula">
-          <End Role="Matricula" Type="BD_UPNSACModel.Store.Matricula" Multiplicity="1" />
-          <End Role="MatriculaDetalle" Type="BD_UPNSACModel.Store.MatriculaDetalle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Matricula">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="MatriculaDetalle">
-              <PropertyRef Name="idMatricula" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Semestre_Sede">
-          <End Role="Sede" Type="BD_UPNSACModel.Store.Sede" Multiplicity="1" />
-          <End Role="Semestre" Type="BD_UPNSACModel.Store.Semestre" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sede">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Semestre">
-              <PropertyRef Name="sede" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Function Name="PA_SELECT_ALUMNOS_EGRESADOS_X_CODIGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="P_CODIGO" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="PA_SELECT_ALUMNOS_REGULARES_X_CODIGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="P_CODIGO" Type="varchar" Mode="In" />
-        </Function>
         <Function Name="PA_SELECT_DOCENTES_X_CODIGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="P_CODIGO" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="PA_SELECT_SEDE_X_NOMBRE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="P_NOMBRE" Type="varchar" Mode="In" />
         </Function>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BD_UPNSACModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="BD_UPNSACEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="TipoHoras" EntityType="BD_UPNSACModel.TipoHora" />
-          <EntitySet Name="Clase" EntityType="BD_UPNSACModel.Clase" />
-          <EntitySet Name="Docente" EntityType="BD_UPNSACModel.Docente" />
-          <EntitySet Name="Matricula" EntityType="BD_UPNSACModel.Matricula" />
-          <EntitySet Name="MatriculaDetalle" EntityType="BD_UPNSACModel.MatriculaDetalle" />
-          <EntitySet Name="Sede" EntityType="BD_UPNSACModel.Sede" />
-          <EntitySet Name="Semestre" EntityType="BD_UPNSACModel.Semestre" />
           <EntitySet Name="AlumnosEgresados" EntityType="BD_UPNSACModel.AlumnosEgresados" />
           <EntitySet Name="AlumnosRegulares" EntityType="BD_UPNSACModel.AlumnosRegulares" />
-          <AssociationSet Name="FK_MatriculaDetalle_Clase" Association="BD_UPNSACModel.FK_MatriculaDetalle_Clase">
-            <End Role="Clase" EntitySet="Clase" />
-            <End Role="MatriculaDetalle" EntitySet="MatriculaDetalle" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Docente_Sede" Association="BD_UPNSACModel.FK_Docente_Sede">
-            <End Role="Sede" EntitySet="Sede" />
-            <End Role="Docente" EntitySet="Docente" />
-          </AssociationSet>
-          <AssociationSet Name="FK_matricula_Semestre" Association="BD_UPNSACModel.FK_matricula_Semestre">
-            <End Role="Semestre" EntitySet="Semestre" />
-            <End Role="Matricula" EntitySet="Matricula" />
-          </AssociationSet>
-          <AssociationSet Name="FK_MatriculaDetalle_Matricula" Association="BD_UPNSACModel.FK_MatriculaDetalle_Matricula">
-            <End Role="Matricula" EntitySet="Matricula" />
-            <End Role="MatriculaDetalle" EntitySet="MatriculaDetalle" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Semestre_Sede" Association="BD_UPNSACModel.FK_Semestre_Sede">
-            <End Role="Sede" EntitySet="Sede" />
-            <End Role="Semestre" EntitySet="Semestre" />
-          </AssociationSet>
-          <EntitySet Name="Carrera" EntityType="BD_UPNSACModel.Carrera" />
-          <AssociationSet Name="FK_Carrera_Sede" Association="BD_UPNSACModel.FK_Carrera_Sede">
-            <End Role="Sede" EntitySet="Sede" />
-            <End Role="Carrera" EntitySet="Carrera" />
-          </AssociationSet>
-          <EntitySet Name="Alumno" EntityType="BD_UPNSACModel.Alumno" />
-          <AssociationSet Name="FK_Alumno_Carrera" Association="BD_UPNSACModel.FK_Alumno_Carrera">
-            <End Role="Carrera" EntitySet="Carrera" />
-            <End Role="Alumno" EntitySet="Alumno" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Alumno_Semestre" Association="BD_UPNSACModel.FK_Alumno_Semestre">
-            <End Role="Semestre" EntitySet="Semestre" />
-            <End Role="Alumno" EntitySet="Alumno" />
-          </AssociationSet>
-          <AssociationSet Name="FK_matricula_Alumno" Association="BD_UPNSACModel.FK_matricula_Alumno">
-            <End Role="Alumno" EntitySet="Alumno" />
-            <End Role="Matricula" EntitySet="Matricula" />
-          </AssociationSet>
-          <FunctionImport Name="PA_SELECT_ALUMNOS_REGULARES_X_CODIGO" ReturnType="Collection(BD_UPNSACModel.PA_SELECT_ALUMNOS_REGULARES_X_CODIGO_Result)">
-            <Parameter Name="P_CODIGO" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="PA_SELECT_ALUMNOS_EGRESADOS_X_CODIGO" ReturnType="Collection(BD_UPNSACModel.PA_SELECT_ALUMNOS_EGRESADOS_X_CODIGO_Result)">
-            <Parameter Name="P_CODIGO" Mode="In" Type="String" />
-          </FunctionImport>
           <FunctionImport Name="PA_SELECT_DOCENTES_X_CODIGO" ReturnType="Collection(BD_UPNSACModel.PA_SELECT_DOCENTES_X_CODIGO_Result)">
-            <Parameter Name="P_CODIGO" Mode="In" Type="String" />
+          <Parameter Name="P_CODIGO" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="PA_SELECT_SEDE_X_NOMBRE" EntitySet="Sede" ReturnType="Collection(BD_UPNSACModel.Sede)">
-            <Parameter Name="P_NOMBRE" Mode="In" Type="String" />
-          </FunctionImport>
+          <EntitySet Name="Sede" EntityType="BD_UPNSACModel.Sede" />
         </EntityContainer>
-        <EntityType Name="TipoHora">
-          <Key>
-            <PropertyRef Name="idTiposHora" />
-          </Key>
-          <Property Name="idTiposHora" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="descripcion" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
-          <Property Name="estado" Type="Int32" Nullable="false" />
-        </EntityType>
-        <EntityType Name="Clase">
-          <Key>
-            <PropertyRef Name="codigo" />
-          </Key>
-          <Property Type="String" Name="codigo" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="semestre" Nullable="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-          <NavigationProperty Name="MatriculaDetalle" Relationship="BD_UPNSACModel.FK_MatriculaDetalle_Clase" FromRole="Clase" ToRole="MatriculaDetalle" />
-        </EntityType>
-        <EntityType Name="Docente">
-          <Key>
-            <PropertyRef Name="codigo" />
-          </Key>
-          <Property Type="String" Name="codigo" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="apellidoPaterno" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="apellidoMaterno" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="sede" Nullable="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-          <NavigationProperty Name="Sede1" Relationship="BD_UPNSACModel.FK_Docente_Sede" FromRole="Docente" ToRole="Sede" />
-        </EntityType>
-        <EntityType Name="Matricula">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="alumno" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="semestre" Nullable="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-          <NavigationProperty Name="Semestre1" Relationship="BD_UPNSACModel.FK_matricula_Semestre" FromRole="Matricula" ToRole="Semestre" />
-          <NavigationProperty Name="MatriculaDetalle" Relationship="BD_UPNSACModel.FK_MatriculaDetalle_Matricula" FromRole="Matricula" ToRole="MatriculaDetalle" />
-          <NavigationProperty Name="Alumno1" Relationship="BD_UPNSACModel.FK_matricula_Alumno" FromRole="Matricula" ToRole="Alumno" />
-        </EntityType>
-        <EntityType Name="MatriculaDetalle">
-          <Key>
-            <PropertyRef Name="idMatricula" />
-            <PropertyRef Name="clase" />
-          </Key>
-          <Property Type="Int32" Name="idMatricula" Nullable="false" />
-          <Property Type="String" Name="clase" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-          <NavigationProperty Name="Clase1" Relationship="BD_UPNSACModel.FK_MatriculaDetalle_Clase" FromRole="MatriculaDetalle" ToRole="Clase" />
-          <NavigationProperty Name="Matricula" Relationship="BD_UPNSACModel.FK_MatriculaDetalle_Matricula" FromRole="MatriculaDetalle" ToRole="Matricula" />
-        </EntityType>
-        <EntityType Name="Sede">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="descripcion" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-          <NavigationProperty Name="Docente" Relationship="BD_UPNSACModel.FK_Docente_Sede" FromRole="Sede" ToRole="Docente" />
-          <NavigationProperty Name="Semestre" Relationship="BD_UPNSACModel.FK_Semestre_Sede" FromRole="Sede" ToRole="Semestre" />
-          <NavigationProperty Name="Carrera" Relationship="BD_UPNSACModel.FK_Carrera_Sede" FromRole="Sede" ToRole="Carrera" />
-        </EntityType>
-        <EntityType Name="Semestre">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="sede" Nullable="false" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="5" FixedLength="true" Unicode="false" />
-          <Property Type="String" Name="descripcion" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-          <NavigationProperty Name="Matricula" Relationship="BD_UPNSACModel.FK_matricula_Semestre" FromRole="Semestre" ToRole="Matricula" />
-          <NavigationProperty Name="Sede1" Relationship="BD_UPNSACModel.FK_Semestre_Sede" FromRole="Semestre" ToRole="Sede" />
-          <NavigationProperty Name="Alumno" Relationship="BD_UPNSACModel.FK_Alumno_Semestre" FromRole="Semestre" ToRole="Alumno" />
-        </EntityType>
         <EntityType Name="AlumnosEgresados">
           <Key>
             <PropertyRef Name="codigo" />
@@ -465,234 +98,27 @@
           <Property Type="Int32" Name="sede" Nullable="false" />
           <Property Type="String" Name="sedeNombre" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
-        <Association Name="FK_MatriculaDetalle_Clase">
-          <End Type="BD_UPNSACModel.Clase" Role="Clase" Multiplicity="1" />
-          <End Type="BD_UPNSACModel.MatriculaDetalle" Role="MatriculaDetalle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Clase">
-              <PropertyRef Name="codigo" />
-            </Principal>
-            <Dependent Role="MatriculaDetalle">
-              <PropertyRef Name="clase" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Docente_Sede">
-          <End Type="BD_UPNSACModel.Sede" Role="Sede" Multiplicity="1" />
-          <End Type="BD_UPNSACModel.Docente" Role="Docente" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sede">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Docente">
-              <PropertyRef Name="sede" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_matricula_Semestre">
-          <End Type="BD_UPNSACModel.Semestre" Role="Semestre" Multiplicity="1" />
-          <End Type="BD_UPNSACModel.Matricula" Role="Matricula" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Semestre">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Matricula">
-              <PropertyRef Name="semestre" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_MatriculaDetalle_Matricula">
-          <End Type="BD_UPNSACModel.Matricula" Role="Matricula" Multiplicity="1" />
-          <End Type="BD_UPNSACModel.MatriculaDetalle" Role="MatriculaDetalle" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Matricula">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="MatriculaDetalle">
-              <PropertyRef Name="idMatricula" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Semestre_Sede">
-          <End Type="BD_UPNSACModel.Sede" Role="Sede" Multiplicity="1" />
-          <End Type="BD_UPNSACModel.Semestre" Role="Semestre" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sede">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Semestre">
-              <PropertyRef Name="sede" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Carrera">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="sede" Nullable="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-          <NavigationProperty Name="Sede1" Relationship="BD_UPNSACModel.FK_Carrera_Sede" FromRole="Carrera" ToRole="Sede" />
-          <NavigationProperty Name="Alumno" Relationship="BD_UPNSACModel.FK_Alumno_Carrera" FromRole="Carrera" ToRole="Alumno" />
-        </EntityType>
-        <Association Name="FK_Carrera_Sede">
-          <End Type="BD_UPNSACModel.Sede" Role="Sede" Multiplicity="1" />
-          <End Type="BD_UPNSACModel.Carrera" Role="Carrera" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Sede">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Carrera">
-              <PropertyRef Name="sede" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="Alumno">
-          <Key>
-            <PropertyRef Name="codigo" />
-          </Key>
-          <Property Type="String" Name="codigo" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="apellidoPaterno" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="apellidoMaterno" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="egresado" />
-          <Property Type="Int32" Name="carrera" Nullable="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-          <NavigationProperty Name="Carrera1" Relationship="BD_UPNSACModel.FK_Alumno_Carrera" FromRole="Alumno" ToRole="Carrera" />
-          <NavigationProperty Name="Semestre" Relationship="BD_UPNSACModel.FK_Alumno_Semestre" FromRole="Alumno" ToRole="Semestre" />
-          <NavigationProperty Name="Matricula" Relationship="BD_UPNSACModel.FK_matricula_Alumno" FromRole="Alumno" ToRole="Matricula" />
-        </EntityType>
-        <Association Name="FK_Alumno_Carrera">
-          <End Type="BD_UPNSACModel.Carrera" Role="Carrera" Multiplicity="1" />
-          <End Type="BD_UPNSACModel.Alumno" Role="Alumno" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Carrera">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Alumno">
-              <PropertyRef Name="carrera" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Alumno_Semestre">
-          <End Type="BD_UPNSACModel.Semestre" Role="Semestre" Multiplicity="0..1" />
-          <End Type="BD_UPNSACModel.Alumno" Role="Alumno" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Semestre">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Alumno">
-              <PropertyRef Name="egresado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_matricula_Alumno">
-          <End Type="BD_UPNSACModel.Alumno" Role="Alumno" Multiplicity="1" />
-          <End Type="BD_UPNSACModel.Matricula" Role="Matricula" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Alumno">
-              <PropertyRef Name="codigo" />
-            </Principal>
-            <Dependent Role="Matricula">
-              <PropertyRef Name="alumno" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <ComplexType Name="PA_SELECT_ALUMNOS_REGULARES_X_CODIGO_Result">
-          <Property Type="String" Name="CODIGO" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="NOMBRECOMPLETO" Nullable="false" MaxLength="202" />
-          <Property Type="Int32" Name="SEDE" Nullable="false" />
-          <Property Type="String" Name="SEDENOMBRE" Nullable="true" MaxLength="100" />
-        </ComplexType>
-        <ComplexType Name="PA_SELECT_ALUMNOS_EGRESADOS_X_CODIGO_Result">
-          <Property Type="String" Name="CODIGO" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="NOMBRECOMPLETO" Nullable="false" MaxLength="202" />
-          <Property Type="Int32" Name="SEDE" Nullable="false" />
-          <Property Type="String" Name="SEDENOMBRE" Nullable="true" MaxLength="100" />
-        </ComplexType>
         <ComplexType Name="PA_SELECT_DOCENTES_X_CODIGO_Result">
           <Property Type="String" Name="Codigo" Nullable="false" MaxLength="10" />
           <Property Type="String" Name="NombreCompleto" Nullable="false" MaxLength="202" />
           <Property Type="Int32" Name="sede" Nullable="false" />
           <Property Type="String" Name="sedeNombre" Nullable="true" MaxLength="100" />
         </ComplexType>
+        <EntityType Name="Sede">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="descripcion" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BD_UPNSACModelStoreContainer" CdmEntityContainer="BD_UPNSACEntities">
-          <EntitySetMapping Name="TipoHoras">
-            <EntityTypeMapping TypeName="BD_UPNSACModel.TipoHora">
-              <MappingFragment StoreEntitySet="TipoHora">
-                <ScalarProperty Name="idTiposHora" ColumnName="idTiposHora" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="estado" ColumnName="estado" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Clase">
-            <EntityTypeMapping TypeName="BD_UPNSACModel.Clase">
-              <MappingFragment StoreEntitySet="Clase">
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="semestre" ColumnName="semestre" />
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Docente">
-            <EntityTypeMapping TypeName="BD_UPNSACModel.Docente">
-              <MappingFragment StoreEntitySet="Docente">
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="sede" ColumnName="sede" />
-                <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
-                <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Matricula">
-            <EntityTypeMapping TypeName="BD_UPNSACModel.Matricula">
-              <MappingFragment StoreEntitySet="Matricula">
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="semestre" ColumnName="semestre" />
-                <ScalarProperty Name="alumno" ColumnName="alumno" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="MatriculaDetalle">
-            <EntityTypeMapping TypeName="BD_UPNSACModel.MatriculaDetalle">
-              <MappingFragment StoreEntitySet="MatriculaDetalle">
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="clase" ColumnName="clase" />
-                <ScalarProperty Name="idMatricula" ColumnName="idMatricula" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Sede">
-            <EntityTypeMapping TypeName="BD_UPNSACModel.Sede">
-              <MappingFragment StoreEntitySet="Sede">
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Semestre">
-            <EntityTypeMapping TypeName="BD_UPNSACModel.Semestre">
-              <MappingFragment StoreEntitySet="Semestre">
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="sede" ColumnName="sede" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="AlumnosEgresados">
             <EntityTypeMapping TypeName="BD_UPNSACModel.AlumnosEgresados">
               <MappingFragment StoreEntitySet="AlumnosEgresados">
@@ -713,49 +139,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Carrera">
-            <EntityTypeMapping TypeName="BD_UPNSACModel.Carrera">
-              <MappingFragment StoreEntitySet="Carrera">
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="sede" ColumnName="sede" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Alumno">
-            <EntityTypeMapping TypeName="BD_UPNSACModel.Alumno">
-              <MappingFragment StoreEntitySet="Alumno">
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="carrera" ColumnName="carrera" />
-                <ScalarProperty Name="egresado" ColumnName="egresado" />
-                <ScalarProperty Name="apellidoMaterno" ColumnName="apellidoMaterno" />
-                <ScalarProperty Name="apellidoPaterno" ColumnName="apellidoPaterno" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="PA_SELECT_ALUMNOS_REGULARES_X_CODIGO" FunctionName="BD_UPNSACModel.Store.PA_SELECT_ALUMNOS_REGULARES_X_CODIGO">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BD_UPNSACModel.PA_SELECT_ALUMNOS_REGULARES_X_CODIGO_Result">
-                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
-                <ScalarProperty Name="NOMBRECOMPLETO" ColumnName="NOMBRECOMPLETO" />
-                <ScalarProperty Name="SEDE" ColumnName="SEDE" />
-                <ScalarProperty Name="SEDENOMBRE" ColumnName="SEDENOMBRE" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PA_SELECT_ALUMNOS_EGRESADOS_X_CODIGO" FunctionName="BD_UPNSACModel.Store.PA_SELECT_ALUMNOS_EGRESADOS_X_CODIGO">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="BD_UPNSACModel.PA_SELECT_ALUMNOS_EGRESADOS_X_CODIGO_Result">
-                <ScalarProperty Name="CODIGO" ColumnName="CODIGO" />
-                <ScalarProperty Name="NOMBRECOMPLETO" ColumnName="NOMBRECOMPLETO" />
-                <ScalarProperty Name="SEDE" ColumnName="SEDE" />
-                <ScalarProperty Name="SEDENOMBRE" ColumnName="SEDENOMBRE" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
           <FunctionImportMapping FunctionImportName="PA_SELECT_DOCENTES_X_CODIGO" FunctionName="BD_UPNSACModel.Store.PA_SELECT_DOCENTES_X_CODIGO">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BD_UPNSACModel.PA_SELECT_DOCENTES_X_CODIGO_Result">
@@ -766,7 +149,16 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="PA_SELECT_SEDE_X_NOMBRE" FunctionName="BD_UPNSACModel.Store.PA_SELECT_SEDE_X_NOMBRE" />
+          <EntitySetMapping Name="Sede">
+            <EntityTypeMapping TypeName="BD_UPNSACModel.Sede">
+              <MappingFragment StoreEntitySet="Sede">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -788,65 +180,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="BDUPNSAC">
-        <EntityTypeShape EntityType="BD_UPNSACModel.TipoHora" Width="1.5" PointX="5.75" PointY="6.625" Height="1.5956835937499996" IsExpanded="true" />
-        <EntityTypeShape EntityType="BD_UPNSACModel.Clase" Width="1.5" PointX="7.25" PointY="0.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="BD_UPNSACModel.Docente" Width="1.5" PointX="3.875" PointY="4.625" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="BD_UPNSACModel.Matricula" Width="1.5" PointX="7.25" PointY="3.5" Height="2.364889322916667" />
-        <EntityTypeShape EntityType="BD_UPNSACModel.MatriculaDetalle" Width="1.5" PointX="9.5" PointY="3.625" Height="1.9802864583333317" />
-        <EntityTypeShape EntityType="BD_UPNSACModel.Sede" Width="1.5" PointX="4.625" PointY="1.375" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="BD_UPNSACModel.Semestre" Width="1.5" PointX="1.625" PointY="4.875" Height="2.5571907552083353" />
-        <EntityTypeShape EntityType="BD_UPNSACModel.AlumnosEgresados" Width="1.5" PointX="7.625" PointY="6.625" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="BD_UPNSACModel.AlumnosRegulares" Width="1.5" PointX="9.625" PointY="6.625" Height="1.7879850260416674" />
-        <AssociationConnector Association="BD_UPNSACModel.FK_MatriculaDetalle_Clase" >
-          <ConnectorPoint PointX="8.75" PointY="1.6439925130208337" />
-          <ConnectorPoint PointX="10.25" PointY="1.6439925130208337" />
-          <ConnectorPoint PointX="10.25" PointY="3.625" />
-        </AssociationConnector>
-        <AssociationConnector Association="BD_UPNSACModel.FK_Docente_Sede" >
-          <ConnectorPoint PointX="5" PointY="3.739889322916667" />
-          <ConnectorPoint PointX="5" PointY="4.625" />
-        </AssociationConnector>
-        <AssociationConnector Association="BD_UPNSACModel.FK_matricula_Semestre" >
-          <ConnectorPoint PointX="2.17187375" PointY="4.875" />
-          <ConnectorPoint PointX="2.17187375" PointY="4.1824446614583337" />
-          <ConnectorPoint PointX="2.5963560416666662" PointY="4.1824446614583328" />
-          <ConnectorPoint PointX="2.7630227083333332" PointY="4.1824446614583337" />
-          <ConnectorPoint PointX="4.916666666666667" PointY="4.1824446614583328" />
-          <ConnectorPoint PointX="5.083333333333333" PointY="4.1824446614583337" />
-          <ConnectorPoint PointX="5.479166666666667" PointY="4.1824446614583328" />
-          <ConnectorPoint PointX="5.645833333333333" PointY="4.1824446614583337" />
-          <ConnectorPoint PointX="7.25" PointY="4.1824446614583337" />
-        </AssociationConnector>
-        <AssociationConnector Association="BD_UPNSACModel.FK_MatriculaDetalle_Matricula" >
-          <ConnectorPoint PointX="8.75" PointY="4.6151432291666659" />
-          <ConnectorPoint PointX="9.5" PointY="4.6151432291666659" />
-        </AssociationConnector>
-        <AssociationConnector Association="BD_UPNSACModel.FK_Semestre_Sede" >
-          <ConnectorPoint PointX="4.625" PointY="2.5574446614583337" />
-          <ConnectorPoint PointX="2.6796893749999997" PointY="2.5574446614583337" />
-          <ConnectorPoint PointX="2.6796893749999997" PointY="4.875" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="BD_UPNSACModel.Carrera" Width="1.5" PointX="6.875" PointY="9.5" Height="2.1725878906249996" />
-        <AssociationConnector Association="BD_UPNSACModel.FK_Carrera_Sede" >
-          <ConnectorPoint PointX="5.5625" PointY="3.739889322916667" />
-          <ConnectorPoint PointX="5.5625" PointY="10.5862939453125" />
-          <ConnectorPoint PointX="6.875" PointY="10.5862939453125" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="BD_UPNSACModel.Alumno" Width="1.5" PointX="9.125" PointY="9.75" Height="2.9417936197916674" />
-        <AssociationConnector Association="BD_UPNSACModel.FK_Alumno_Carrera" >
-          <ConnectorPoint PointX="8.375" PointY="10.7112939453125" />
-          <ConnectorPoint PointX="9.125" PointY="10.7112939453125" />
-        </AssociationConnector>
-        <AssociationConnector Association="BD_UPNSACModel.FK_Alumno_Semestre" >
-          <ConnectorPoint PointX="2.375" PointY="7.4321907552083326" />
-          <ConnectorPoint PointX="2.375" PointY="12.213440755208334" />
-          <ConnectorPoint PointX="9.125" PointY="12.213440755208334" />
-        </AssociationConnector>
-        <AssociationConnector Association="BD_UPNSACModel.FK_matricula_Alumno" >
-          <ConnectorPoint PointX="9.3125" PointY="9.75" />
-          <ConnectorPoint PointX="9.3125" PointY="5.766337890625" />
-          <ConnectorPoint PointX="8.75" PointY="5.766337890625" />
-        </AssociationConnector>
+        <EntityTypeShape EntityType="BD_UPNSACModel.AlumnosEgresados" Width="1.5" PointX="2.75" PointY="0.875" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="BD_UPNSACModel.AlumnosRegulares" Width="1.5" PointX="5" PointY="0.875" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="BD_UPNSACModel.Sede" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7879850260416657" />
       </Diagram>
     </Diagrams>
   </Designer>

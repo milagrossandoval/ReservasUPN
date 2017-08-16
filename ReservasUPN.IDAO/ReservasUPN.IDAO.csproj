@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ISedeDAO.cs" />
     <Compile Include="IUsuarioDAO.cs" />
+    <Compile Include="IUsuarioTipoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

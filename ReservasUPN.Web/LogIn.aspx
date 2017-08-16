@@ -9,7 +9,13 @@
 <body>
     <form id="form1" runat="server">
     <div>
-    
+        <asp:MultiView ID="MvLogin" runat="server" ActiveViewIndex=0 >
+            <asp:View ID="ViewLoad" runat="server">
+            </asp:View>
+            <asp:View ID="ViewError" runat="server">
+            <!-- Dar estilo para mostrar el error -->
+            </asp:View>
+        </asp:MultiView>
     </div>
     </form>
 </body>

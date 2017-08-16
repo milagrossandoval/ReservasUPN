@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using ReservasUPN.BE.Modelos;
 
-namespace ReservasUPN.IDAO
+namespace ReservasUPN.IBL
 {
-    public interface ISedeDAO
+    public interface ISedeBL
     {
-        Sede Buscar(string codigo);
         Sede Buscar(int id);
-        List<Sede> ListarxUsuario(string usuario);
+        Sede Buscar(string nombre);
+        List<Sede> ListarxUsuario(BE.Adapters.Usuario usuario);
     }
 }

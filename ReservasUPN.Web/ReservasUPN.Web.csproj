@@ -59,6 +59,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="404.htm" />
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\Button.Button.css" />
     <Content Include="assets\css\metisMenu.min.css" />
@@ -85,6 +86,7 @@
     <Content Include="LogIn.aspx" />
     <Content Include="Secure\ConfigurarHorarios.aspx" />
     <Content Include="Secure\Default.aspx" />
+    <Content Include="Secure\Error.aspx" />
     <Content Include="Secure\MisReservas.aspx" />
     <Content Include="Secure\Recursos.aspx" />
     <Content Include="Secure\Reportes.aspx" />
@@ -92,6 +94,7 @@
     <Content Include="Secure\Sanciones.aspx" />
     <Content Include="Secure\UsoRecursos.aspx" />
     <Content Include="Secure\Usuarios.aspx" />
+    <Content Include="Secure\UsuariosTipo.aspx" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -108,6 +111,7 @@
     <Compile Include="LogIn.aspx.designer.cs">
       <DependentUpon>LogIn.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Page.cs" />
     <Compile Include="Secure\ConfigurarHorarios.aspx.cs">
       <DependentUpon>ConfigurarHorarios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -121,6 +125,13 @@
     </Compile>
     <Compile Include="Secure\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secure\MisReservas.aspx.cs">
       <DependentUpon>MisReservas.aspx</DependentUpon>
@@ -178,6 +189,13 @@
     </Compile>
     <Compile Include="Secure\Usuarios.aspx.designer.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\UsuariosTipo.aspx.cs">
+      <DependentUpon>UsuariosTipo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\UsuariosTipo.aspx.designer.cs">
+      <DependentUpon>UsuariosTipo.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

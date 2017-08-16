@@ -7,45 +7,45 @@
 // </generado automáticamente>
 //------------------------------------------------------------------------------
 
-namespace ReservasUPN.Web {
+namespace ReservasUPN.Web.Secure {
     
     
-    public partial class LogIn {
+    public partial class UsuariosTipo {
         
         /// <summary>
-        /// Control form1.
+        /// Control RadAjaxLoadingPanel1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::Telerik.Web.UI.RadAjaxLoadingPanel RadAjaxLoadingPanel1;
         
         /// <summary>
-        /// Control MvLogin.
+        /// Control RgTipos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.MultiView MvLogin;
+        protected global::Telerik.Web.UI.RadGrid RgTipos;
         
         /// <summary>
-        /// Control ViewLoad.
+        /// Control ObjectDataSource1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View ViewLoad;
+        protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
         
         /// <summary>
-        /// Control ViewError.
+        /// Control RadAjaxManager1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.View ViewError;
+        protected global::Telerik.Web.UI.RadAjaxManager RadAjaxManager1;
     }
 }

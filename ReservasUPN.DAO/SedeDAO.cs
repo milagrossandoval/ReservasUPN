@@ -18,18 +18,48 @@ namespace ReservasUPN.DAO
         { get { return _instance; } }
         #endregion
 
-        public BE.Modelos.Sede Buscar(string nombre)
+        public Sede Buscar(string nombre)
         {
-            BE.Modelos.Sede rpta = null;
+            Sede rpta = null;
             using (BD_UPNSACEntities reposit = new BD_UPNSACEntities())
             {
-                List<BE.Modelos.Sede> resultado = reposit.PA_SELECT_SEDE_X_NOMBRE(nombre).ToList();
-                if (resultado.Count == 1)
+                var sedes = from s in reposit.Sede
+                            where s.nombre == nombre && s.estado == true
+                            select s;
+                if (sedes.Count() == 1)
                 {
-                    rpta = resultado.First();
+                    rpta = sedes.First();
                 }
             }
-            return rpta;  
+            return rpta;
         }
+
+
+        public Sede Buscar(int id)
+        {
+            Sede rpta = null;
+            using (BD_UPNSACEntities reposit = new BD_UPNSACEntities())
+            {
+                var sedes = from s in reposit.Sede
+                            where s.id == id && s.estado == true
+                           select s;
+                if (sedes.Count() == 1)
+                {
+                    rpta = sedes.First();
+                }
+            }
+            return rpta;
+        }
+
+        public List<Sede> ListarxUsuario(string usuario)
+        {
+            List<Sede> rpta = null;            
+            using (BD_ADMUSERSEntities reposit = new BD_ADMUSERSEntities()) {
+                rpta = (from x in reposit.PA_AU_CONSULTAR_SEDES_DISPONIBLES_X_USUARIO(usuario)
+                        select new Sede { id = x.n_sede_id, nombre = x.s_sed_codigo, descripcion = x.s_sed_nombre }).ToList();
+            }
+            return rpta;
+        }
+
     }
 }

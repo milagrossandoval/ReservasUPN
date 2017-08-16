@@ -13,11 +13,14 @@ namespace ReservasUPN.BE.Adapters
         public int IdTipoUsuario { get; set; }
         public UsuarioTipo TipoUsuario { get; set; }
         public int IdSede { get; set; }
-        public Sede Sede { get; set; }
+        public string NombreSede { get; set; }
+        //public Sede Sede { get; set; }
+        public List<Sede> LstSedes { get; set; }
 
-        public static string TIPO_ALUMNO = "Alumno";
-        public static string TIPO_EGRESADO = "Egresado";
-        public static string TIPO_DOCENTE = "Docente";
+        public static readonly string TIPO_ALUMNO = "Alumno";
+        public static readonly string TIPO_EGRESADO = "Egresado";
+        public static readonly string TIPO_DOCENTE = "Docente";
+        public static readonly int INIT_ID = 100;
 
     }
 }

@@ -8,9 +8,10 @@ namespace ReservasUPN.IDAO
 {
     public interface IUsuarioDAO
     {
-        PA_SELECT_ALUMNOS_REGULARES_X_CODIGO_Result BuscarAlumno(string codigo);
-        PA_SELECT_ALUMNOS_EGRESADOS_X_CODIGO_Result BuscarEgresado(string codigo);
-        PA_SELECT_DOCENTES_X_CODIGO_Result BuscarDocente(string codigo);
-        PA_SELECT_USUARIOS_X_CODIGO_Result BuscarUsuario(string codigo);
+        BE.Adapters.Usuario BuscarAlumno(string codigo);
+        BE.Adapters.Usuario BuscarEgresado(string codigo);
+        BE.Adapters.Usuario BuscarDocente(string codigo);
+        BE.Adapters.Usuario BuscarUsuario(string codigo);
+        BE.Modelos.Usuario Buscar(string codigo);
     }
 }

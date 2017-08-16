@@ -90,38 +90,6 @@ namespace ReservasUPN.BE.Modelos
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<Recurso> Recurso
-        {
-            get
-            {
-                if ((_Recurso == null))
-                {
-                    _Recurso = base.CreateObjectSet<Recurso>("Recurso");
-                }
-                return _Recurso;
-            }
-        }
-        private ObjectSet<Recurso> _Recurso;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        public ObjectSet<RecursoTipo> RecursoTipo
-        {
-            get
-            {
-                if ((_RecursoTipo == null))
-                {
-                    _RecursoTipo = base.CreateObjectSet<RecursoTipo>("RecursoTipo");
-                }
-                return _RecursoTipo;
-            }
-        }
-        private ObjectSet<RecursoTipo> _RecursoTipo;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         public ObjectSet<UsuarioTipo> UsuarioTipo
         {
             get
@@ -145,22 +113,6 @@ namespace ReservasUPN.BE.Modelos
         public void AddToUsuario(Usuario usuario)
         {
             base.AddObject("Usuario", usuario);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet Recurso. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToRecurso(Recurso recurso)
-        {
-            base.AddObject("Recurso", recurso);
-        }
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet RecursoTipo. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToRecursoTipo(RecursoTipo recursoTipo)
-        {
-            base.AddObject("RecursoTipo", recursoTipo);
         }
     
         /// <summary>
@@ -201,328 +153,6 @@ namespace ReservasUPN.BE.Modelos
     #endregion
 
     #region Entidades
-    
-    /// <summary>
-    /// No hay documentación de metadatos disponible.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="BD_RESERVASModel", Name="Recurso")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class Recurso : EntityObject
-    {
-        #region Método de generador
-    
-        /// <summary>
-        /// Crear un nuevo objeto Recurso.
-        /// </summary>
-        /// <param name="idRecurso">Valor inicial de la propiedad idRecurso.</param>
-        /// <param name="codigo">Valor inicial de la propiedad codigo.</param>
-        /// <param name="descripcion">Valor inicial de la propiedad descripcion.</param>
-        /// <param name="idTipoRecurso">Valor inicial de la propiedad idTipoRecurso.</param>
-        /// <param name="estado">Valor inicial de la propiedad estado.</param>
-        public static Recurso CreateRecurso(global::System.Int32 idRecurso, global::System.String codigo, global::System.String descripcion, global::System.Int32 idTipoRecurso, global::System.Int32 estado)
-        {
-            Recurso recurso = new Recurso();
-            recurso.idRecurso = idRecurso;
-            recurso.codigo = codigo;
-            recurso.descripcion = descripcion;
-            recurso.idTipoRecurso = idTipoRecurso;
-            recurso.estado = estado;
-            return recurso;
-        }
-
-        #endregion
-
-        #region Propiedades primitivas
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 idRecurso
-        {
-            get
-            {
-                return _idRecurso;
-            }
-            set
-            {
-                if (_idRecurso != value)
-                {
-                    OnidRecursoChanging(value);
-                    ReportPropertyChanging("idRecurso");
-                    _idRecurso = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("idRecurso");
-                    OnidRecursoChanged();
-                }
-            }
-        }
-        private global::System.Int32 _idRecurso;
-        partial void OnidRecursoChanging(global::System.Int32 value);
-        partial void OnidRecursoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String codigo
-        {
-            get
-            {
-                return _codigo;
-            }
-            set
-            {
-                OncodigoChanging(value);
-                ReportPropertyChanging("codigo");
-                _codigo = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("codigo");
-                OncodigoChanged();
-            }
-        }
-        private global::System.String _codigo;
-        partial void OncodigoChanging(global::System.String value);
-        partial void OncodigoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String descripcion
-        {
-            get
-            {
-                return _descripcion;
-            }
-            set
-            {
-                OndescripcionChanging(value);
-                ReportPropertyChanging("descripcion");
-                _descripcion = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("descripcion");
-                OndescripcionChanged();
-            }
-        }
-        private global::System.String _descripcion;
-        partial void OndescripcionChanging(global::System.String value);
-        partial void OndescripcionChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 idTipoRecurso
-        {
-            get
-            {
-                return _idTipoRecurso;
-            }
-            set
-            {
-                OnidTipoRecursoChanging(value);
-                ReportPropertyChanging("idTipoRecurso");
-                _idTipoRecurso = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("idTipoRecurso");
-                OnidTipoRecursoChanged();
-            }
-        }
-        private global::System.Int32 _idTipoRecurso;
-        partial void OnidTipoRecursoChanging(global::System.Int32 value);
-        partial void OnidTipoRecursoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 estado
-        {
-            get
-            {
-                return _estado;
-            }
-            set
-            {
-                OnestadoChanging(value);
-                ReportPropertyChanging("estado");
-                _estado = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("estado");
-                OnestadoChanged();
-            }
-        }
-        private global::System.Int32 _estado;
-        partial void OnestadoChanging(global::System.Int32 value);
-        partial void OnestadoChanged();
-
-        #endregion
-
-    
-    }
-    
-    /// <summary>
-    /// No hay documentación de metadatos disponible.
-    /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="BD_RESERVASModel", Name="RecursoTipo")]
-    [Serializable()]
-    [DataContractAttribute(IsReference=true)]
-    public partial class RecursoTipo : EntityObject
-    {
-        #region Método de generador
-    
-        /// <summary>
-        /// Crear un nuevo objeto RecursoTipo.
-        /// </summary>
-        /// <param name="idTipoRecurso">Valor inicial de la propiedad idTipoRecurso.</param>
-        /// <param name="idSede">Valor inicial de la propiedad idSede.</param>
-        /// <param name="descripcion">Valor inicial de la propiedad descripcion.</param>
-        /// <param name="idTipoHora">Valor inicial de la propiedad idTipoHora.</param>
-        /// <param name="estado">Valor inicial de la propiedad estado.</param>
-        public static RecursoTipo CreateRecursoTipo(global::System.Int32 idTipoRecurso, global::System.Int32 idSede, global::System.String descripcion, global::System.Int32 idTipoHora, global::System.Int32 estado)
-        {
-            RecursoTipo recursoTipo = new RecursoTipo();
-            recursoTipo.idTipoRecurso = idTipoRecurso;
-            recursoTipo.idSede = idSede;
-            recursoTipo.descripcion = descripcion;
-            recursoTipo.idTipoHora = idTipoHora;
-            recursoTipo.estado = estado;
-            return recursoTipo;
-        }
-
-        #endregion
-
-        #region Propiedades primitivas
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 idTipoRecurso
-        {
-            get
-            {
-                return _idTipoRecurso;
-            }
-            set
-            {
-                if (_idTipoRecurso != value)
-                {
-                    OnidTipoRecursoChanging(value);
-                    ReportPropertyChanging("idTipoRecurso");
-                    _idTipoRecurso = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("idTipoRecurso");
-                    OnidTipoRecursoChanged();
-                }
-            }
-        }
-        private global::System.Int32 _idTipoRecurso;
-        partial void OnidTipoRecursoChanging(global::System.Int32 value);
-        partial void OnidTipoRecursoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 idSede
-        {
-            get
-            {
-                return _idSede;
-            }
-            set
-            {
-                OnidSedeChanging(value);
-                ReportPropertyChanging("idSede");
-                _idSede = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("idSede");
-                OnidSedeChanged();
-            }
-        }
-        private global::System.Int32 _idSede;
-        partial void OnidSedeChanging(global::System.Int32 value);
-        partial void OnidSedeChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.String descripcion
-        {
-            get
-            {
-                return _descripcion;
-            }
-            set
-            {
-                OndescripcionChanging(value);
-                ReportPropertyChanging("descripcion");
-                _descripcion = StructuralObject.SetValidValue(value, false);
-                ReportPropertyChanged("descripcion");
-                OndescripcionChanged();
-            }
-        }
-        private global::System.String _descripcion;
-        partial void OndescripcionChanging(global::System.String value);
-        partial void OndescripcionChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 idTipoHora
-        {
-            get
-            {
-                return _idTipoHora;
-            }
-            set
-            {
-                OnidTipoHoraChanging(value);
-                ReportPropertyChanging("idTipoHora");
-                _idTipoHora = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("idTipoHora");
-                OnidTipoHoraChanged();
-            }
-        }
-        private global::System.Int32 _idTipoHora;
-        partial void OnidTipoHoraChanging(global::System.Int32 value);
-        partial void OnidTipoHoraChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
-        [DataMemberAttribute()]
-        public global::System.Int32 estado
-        {
-            get
-            {
-                return _estado;
-            }
-            set
-            {
-                OnestadoChanging(value);
-                ReportPropertyChanging("estado");
-                _estado = StructuralObject.SetValidValue(value);
-                ReportPropertyChanged("estado");
-                OnestadoChanged();
-            }
-        }
-        private global::System.Int32 _estado;
-        partial void OnestadoChanging(global::System.Int32 value);
-        partial void OnestadoChanged();
-
-        #endregion
-
-    
-    }
     
     /// <summary>
     /// No hay documentación de metadatos disponible.
@@ -901,13 +531,15 @@ namespace ReservasUPN.BE.Modelos
         /// <summary>
         /// Crear un nuevo objeto PA_SELECT_USUARIOS_X_CODIGO_Result.
         /// </summary>
+        /// <param name="id">Valor inicial de la propiedad id.</param>
         /// <param name="codigo">Valor inicial de la propiedad codigo.</param>
         /// <param name="estado">Valor inicial de la propiedad estado.</param>
         /// <param name="tipoUsuario">Valor inicial de la propiedad tipoUsuario.</param>
         /// <param name="nombreTipo">Valor inicial de la propiedad nombreTipo.</param>
-        public static PA_SELECT_USUARIOS_X_CODIGO_Result CreatePA_SELECT_USUARIOS_X_CODIGO_Result(global::System.String codigo, global::System.Boolean estado, global::System.Int32 tipoUsuario, global::System.String nombreTipo)
+        public static PA_SELECT_USUARIOS_X_CODIGO_Result CreatePA_SELECT_USUARIOS_X_CODIGO_Result(global::System.Int32 id, global::System.String codigo, global::System.Boolean estado, global::System.Int32 tipoUsuario, global::System.String nombreTipo)
         {
             PA_SELECT_USUARIOS_X_CODIGO_Result pA_SELECT_USUARIOS_X_CODIGO_Result = new PA_SELECT_USUARIOS_X_CODIGO_Result();
+            pA_SELECT_USUARIOS_X_CODIGO_Result.id = id;
             pA_SELECT_USUARIOS_X_CODIGO_Result.codigo = codigo;
             pA_SELECT_USUARIOS_X_CODIGO_Result.estado = estado;
             pA_SELECT_USUARIOS_X_CODIGO_Result.tipoUsuario = tipoUsuario;
@@ -918,6 +550,30 @@ namespace ReservasUPN.BE.Modelos
         #endregion
 
         #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                OnidChanging(value);
+                ReportPropertyChanging("id");
+                _id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("id");
+                OnidChanged();
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.

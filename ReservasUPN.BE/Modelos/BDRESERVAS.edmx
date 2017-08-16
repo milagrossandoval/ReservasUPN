@@ -6,8 +6,6 @@
     <edmx:StorageModels>
     <Schema Namespace="BD_RESERVASModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="BD_RESERVASModelStoreContainer">
-          <EntitySet Name="Recurso" EntityType="BD_RESERVASModel.Store.Recurso" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="RecursoTipo" EntityType="BD_RESERVASModel.Store.RecursoTipo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Usuario" EntityType="BD_RESERVASModel.Store.Usuario" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UsuarioTipo" EntityType="BD_RESERVASModel.Store.UsuarioTipo" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Usuario_TipoUsuario" Association="BD_RESERVASModel.Store.FK_Usuario_TipoUsuario">
@@ -15,26 +13,6 @@
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Recurso">
-          <Key>
-            <PropertyRef Name="idRecurso" />
-          </Key>
-          <Property Name="idRecurso" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="codigo" Type="varchar" Nullable="false" MaxLength="10" />
-          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="100" />
-          <Property Name="idTipoRecurso" Type="int" Nullable="false" />
-          <Property Name="estado" Type="int" Nullable="false" />
-        </EntityType>
-        <EntityType Name="RecursoTipo">
-          <Key>
-            <PropertyRef Name="idTipoRecurso" />
-          </Key>
-          <Property Name="idTipoRecurso" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="idSede" Type="int" Nullable="false" />
-          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="100" />
-          <Property Name="idTipoHora" Type="int" Nullable="false" />
-          <Property Name="estado" Type="int" Nullable="false" />
-        </EntityType>
         <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="id" />
@@ -73,17 +51,15 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BD_RESERVASModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="BD_RESERVASEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BD_RESERVASEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Usuario" EntityType="BD_RESERVASModel.Usuario" />
-          <EntitySet Name="Recurso" EntityType="BD_RESERVASModel.Recurso" />
-          <EntitySet Name="RecursoTipo" EntityType="BD_RESERVASModel.RecursoTipo" />
           <EntitySet Name="UsuarioTipo" EntityType="BD_RESERVASModel.UsuarioTipo" />
           <AssociationSet Name="FK_Usuario_TipoUsuario" Association="BD_RESERVASModel.FK_Usuario_TipoUsuario">
             <End Role="UsuarioTipo" EntitySet="UsuarioTipo" />
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
           <FunctionImport Name="PA_SELECT_USUARIOS_X_CODIGO" ReturnType="Collection(BD_RESERVASModel.PA_SELECT_USUARIOS_X_CODIGO_Result)">
-          <Parameter Name="P_CODIGO" Mode="In" Type="String" />
+            <Parameter Name="P_CODIGO" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="Usuario">
@@ -97,26 +73,6 @@
           <Property Type="String" Name="codigoSede" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="estado" Nullable="false" />
           <NavigationProperty Name="UsuarioTipo" Relationship="BD_RESERVASModel.FK_Usuario_TipoUsuario" FromRole="Usuario" ToRole="UsuarioTipo" />
-        </EntityType>
-        <EntityType Name="Recurso">
-          <Key>
-            <PropertyRef Name="idRecurso" />
-          </Key>
-          <Property Type="Int32" Name="idRecurso" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="codigo" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="idTipoRecurso" Nullable="false" />
-          <Property Type="Int32" Name="estado" Nullable="false" />
-        </EntityType>
-        <EntityType Name="RecursoTipo">
-          <Key>
-            <PropertyRef Name="idTipoRecurso" />
-          </Key>
-          <Property Type="Int32" Name="idTipoRecurso" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="idSede" Nullable="false" />
-          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="idTipoHora" Nullable="false" />
-          <Property Type="Int32" Name="estado" Nullable="false" />
         </EntityType>
         <EntityType Name="UsuarioTipo">
           <Key>
@@ -140,6 +96,7 @@
           </ReferentialConstraint>
         </Association>
         <ComplexType Name="PA_SELECT_USUARIOS_X_CODIGO_Result">
+          <Property Type="Int32" Name="id" Nullable="false" />
           <Property Type="String" Name="codigo" Nullable="false" MaxLength="10" />
           <Property Type="String" Name="nombreCompleto" Nullable="true" MaxLength="250" />
           <Property Type="String" Name="codigoSede" Nullable="true" MaxLength="10" />
@@ -152,7 +109,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BD_RESERVASModelStoreContainer" CdmEntityContainer="BD_RESERVASEntities1">
+        <EntityContainerMapping StorageEntityContainer="BD_RESERVASModelStoreContainer" CdmEntityContainer="BD_RESERVASEntities">
           <EntitySetMapping Name="Usuario">
             <EntityTypeMapping TypeName="BD_RESERVASModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
@@ -162,28 +119,6 @@
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
                 <ScalarProperty Name="tipoUsuario" ColumnName="tipoUsuario" />
                 <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Recurso">
-            <EntityTypeMapping TypeName="BD_RESERVASModel.Recurso">
-              <MappingFragment StoreEntitySet="Recurso">
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="idTipoRecurso" ColumnName="idTipoRecurso" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-                <ScalarProperty Name="idRecurso" ColumnName="idRecurso" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="RecursoTipo">
-            <EntityTypeMapping TypeName="BD_RESERVASModel.RecursoTipo">
-              <MappingFragment StoreEntitySet="RecursoTipo">
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="idTipoHora" ColumnName="idTipoHora" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="idSede" ColumnName="idSede" />
-                <ScalarProperty Name="idTipoRecurso" ColumnName="idTipoRecurso" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -199,6 +134,7 @@
           <FunctionImportMapping FunctionImportName="PA_SELECT_USUARIOS_X_CODIGO" FunctionName="BD_RESERVASModel.Store.PA_SELECT_USUARIOS_X_CODIGO">
             <ResultMapping>
               <ComplexTypeMapping TypeName="BD_RESERVASModel.PA_SELECT_USUARIOS_X_CODIGO_Result">
+                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
                 <ScalarProperty Name="nombreCompleto" ColumnName="nombreCompleto" />
                 <ScalarProperty Name="codigoSede" ColumnName="codigoSede" />
@@ -230,12 +166,10 @@
     <Diagrams>
       <Diagram Name="BDRESERVAS">
         <EntityTypeShape EntityType="BD_RESERVASModel.Usuario" Width="1.5" PointX="3" PointY="3" Height="2.1725878906249996" />
-        <EntityTypeShape EntityType="BD_RESERVASModel.Recurso" Width="1.5" PointX="0.75" PointY="0.75" Height="1.9802864583333317" />
-        <EntityTypeShape EntityType="BD_RESERVASModel.RecursoTipo" Width="1.5" PointX="2.75" PointY="0.75" Height="1.9802864583333388" />
-        <EntityTypeShape EntityType="BD_RESERVASModel.UsuarioTipo" Width="1.5" PointX="0.75" PointY="4.25" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="BD_RESERVASModel.UsuarioTipo" Width="1.5" PointX="0.625" PointY="3.625" Height="1.7879850260416674" />
         <AssociationConnector Association="BD_RESERVASModel.FK_Usuario_TipoUsuario" >
-          <ConnectorPoint PointX="2.25" PointY="4.8074446614583337" />
-          <ConnectorPoint PointX="3" PointY="4.8074446614583337" />
+          <ConnectorPoint PointX="2.125" PointY="4.5189925130208337" />
+          <ConnectorPoint PointX="3" PointY="4.5189925130208337" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

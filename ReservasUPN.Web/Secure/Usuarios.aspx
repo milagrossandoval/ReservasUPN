@@ -9,58 +9,52 @@
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">
-                    Usuarios</h3>
+                <h3 class="page-header">Usuarios</h3>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                        <telerik:RadGrid RenderMode="Lightweight" ID="gridUsuarios" runat="server" AllowPaging="True"
-                            PageSize="5" Skin="Windows7" GridLines="None">
-                            <ClientSettings AllowKeyboardNavigation="true" EnablePostBackOnRowClick="true">
-                                <Selecting AllowRowSelect="true"></Selecting>
-                            </ClientSettings>
-                            <MasterTableView Width="100%" AutoGenerateColumns="False" DataKeyNames="Cod_Usuario"
-                                DataSourceID="SqlDataSource1">
-                                <ItemTemplate>
-                                    Item 1
-                                </ItemTemplate>
-                                <CommandItemSettings ExportToPdfText="Export to Pdf"></CommandItemSettings>
-                                <RowIndicatorColumn FilterControlAltText="Filter RowIndicator column">
-                                </RowIndicatorColumn>
-                                <ExpandCollapseColumn FilterControlAltText="Filter ExpandColumn column">
-                                </ExpandCollapseColumn>
-                                <Columns>
-                                    <telerik:GridBoundColumn HeaderText="Cod_Usuario" Display="true" DataField="Cod_Usuario"
-                                        DataType="System.Int32" FilterControlAltText="Filter Cod_Usuario column" ReadOnly="True"
-                                        SortExpression="Cod_Usuario" UniqueName="Cod_Usuario">
-                                    </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn HeaderText="Nombre" Display="true" DataField="Nombre" FilterControlAltText="Filter Nombre column"
-                                        SortExpression="Nombre" UniqueName="Nombre">
-                                    </telerik:GridBoundColumn>
-                                    <telerik:GridBoundColumn HeaderText="CodTipo_Usuario" Display="true" DataField="CodTipo_Usuario"
-                                        DataType="System.Int32" FilterControlAltText="Filter CodTipo_Usuario column"
-                                        SortExpression="CodTipo_Usuario" UniqueName="CodTipo_Usuario">
-                                    </telerik:GridBoundColumn>
-                                </Columns>
-                                <EditFormSettings>
-                                    <EditColumn FilterControlAltText="Filter EditCommandColumn column">
-                                    </EditColumn>
-                                </EditFormSettings>
-                            </MasterTableView>
-                            <PagerStyle Mode="NextPrevAndNumeric"></PagerStyle>
-                            <FilterMenu EnableImageSprites="False">
-                            </FilterMenu>
-                            <HeaderContextMenu CssClass="GridContextMenu GridContextMenu_Default">
-                            </HeaderContextMenu>
-                        </telerik:RadGrid>
+                    <telerik:RadGrid RenderMode="Lightweight" ID="RgUsuarios" runat="server" AllowPaging="True"
+                        PageSize="10" Skin="Windows7" GridLines="None">
+                        <ClientSettings AllowKeyboardNavigation="true" EnablePostBackOnRowClick="true">
+                            <Selecting AllowRowSelect="true" />
+                        </ClientSettings>
+                        <MasterTableView Width="100%" AutoGenerateColumns="False" DataKeyNames="Codigo"
+                            DataSourceID="SqlDataSource1">
+                            <ItemTemplate>
+                                Item 1
+                            </ItemTemplate>
+                            <CommandItemSettings ExportToPdfText="Export to Pdf"></CommandItemSettings>
+                            <RowIndicatorColumn FilterControlAltText="Filter RowIndicator column">
+                            </RowIndicatorColumn>
+                            <ExpandCollapseColumn FilterControlAltText="Filter ExpandColumn column">
+                            </ExpandCollapseColumn>
+                            <Column>
+                                <telerik:GridBoundColumn HeaderText="Cod_Usuario" Display="true" DataField="Cod_Usuario"
+                                    DataType="System.Int32" FilterControlAltText="Filter Cod_Usuario column" ReadOnly="True"
+                                    SortExpression="Cod_Usuario" UniqueName="Cod_Usuario">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn HeaderText="Nombre" Display="true" DataField="Nombre" FilterControlAltText="Filter Nombre column"
+                                    SortExpression="Nombre" UniqueName="Nombre">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn HeaderText="CodTipo_Usuario" Display="true" DataField="CodTipo_Usuario"
+                                    DataType="System.Int32" FilterControlAltText="Filter CodTipo_Usuario column"
+                                    SortExpression="CodTipo_Usuario" UniqueName="CodTipo_Usuario">
+                                </telerik:GridBoundColumn>
+                            </Columns>
+                            <EditFormSettings>
+                                <EditColumn FilterControlAltText="Filter EditCommandColumn column">
+                                </EditColumn>
+                            </EditFormSettings>
+                        </MasterTableView>
+                        <PagerStyle Mode="NextPrevAndNumeric"></PagerStyle>
+                        <FilterMenu EnableImageSprites="False">
+                        </FilterMenu>
+                        <HeaderContextMenu CssClass="GridContextMenu GridContextMenu_Default">
+                        </HeaderContextMenu>
+                    </telerik:RadGrid>
                  </div>
-                    <center>
-                        <telerik:RadButton ID="btnSincronizar" runat="server" Text="SINCRONIZAR" EnableBrowserButtonStyle="true"
-                            CssClass="RadButton">
-                        </telerik:RadButton>
-                    </center>
             </div>
         </div>
     </div>
