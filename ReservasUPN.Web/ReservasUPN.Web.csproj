@@ -104,6 +104,10 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\PageAdapter.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="LogIn.aspx.cs">
       <DependentUpon>LogIn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

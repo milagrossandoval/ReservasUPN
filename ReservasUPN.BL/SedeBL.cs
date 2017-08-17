@@ -27,7 +27,7 @@ namespace ReservasUPN.BL
         public List<BE.Modelos.Sede> ListarxUsuario(Usuario usuario)
         {
             List<BE.Modelos.Sede> rpta;
-            if (usuario.IdTipoUsuario < BE.Adapters.Usuario.INIT_ID) //Para los alumnos, egresados, docentes
+            if (usuario.tipoUsuario < BE.Adapters.Usuario.INIT_ID) //Para los alumnos, egresados, docentes
             {
                 BE.Modelos.Sede sede = sedeDAO.Buscar(usuario.IdSede);
                 rpta = new List<BE.Modelos.Sede>();
@@ -35,7 +35,7 @@ namespace ReservasUPN.BL
             }
             else // Para los tipos de usuario del sistema
             {                
-                rpta = sedeDAO.ListarxUsuario(usuario.Codigo);
+                rpta = sedeDAO.ListarxUsuario(usuario.codigo);
             }
             return rpta;
         }

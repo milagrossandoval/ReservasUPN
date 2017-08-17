@@ -34,7 +34,6 @@ namespace ReservasUPN.DAO
             return rpta;
         }
 
-
         public Sede Buscar(int id)
         {
             Sede rpta = null;

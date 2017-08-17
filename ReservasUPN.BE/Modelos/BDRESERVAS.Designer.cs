@@ -74,22 +74,6 @@ namespace ReservasUPN.BE.Modelos
         /// <summary>
         /// No hay documentación de metadatos disponible.
         /// </summary>
-        public ObjectSet<Usuario> Usuario
-        {
-            get
-            {
-                if ((_Usuario == null))
-                {
-                    _Usuario = base.CreateObjectSet<Usuario>("Usuario");
-                }
-                return _Usuario;
-            }
-        }
-        private ObjectSet<Usuario> _Usuario;
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
         public ObjectSet<UsuarioTipo> UsuarioTipo
         {
             get
@@ -102,18 +86,26 @@ namespace ReservasUPN.BE.Modelos
             }
         }
         private ObjectSet<UsuarioTipo> _UsuarioTipo;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<Usuario> Usuario
+        {
+            get
+            {
+                if ((_Usuario == null))
+                {
+                    _Usuario = base.CreateObjectSet<Usuario>("Usuario");
+                }
+                return _Usuario;
+            }
+        }
+        private ObjectSet<Usuario> _Usuario;
 
         #endregion
 
         #region Métodos AddTo
-    
-        /// <summary>
-        /// Método desusado para agregar un nuevo objeto al EntitySet Usuario. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
-        /// </summary>
-        public void AddToUsuario(Usuario usuario)
-        {
-            base.AddObject("Usuario", usuario);
-        }
     
         /// <summary>
         /// Método desusado para agregar un nuevo objeto al EntitySet UsuarioTipo. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
@@ -121,6 +113,14 @@ namespace ReservasUPN.BE.Modelos
         public void AddToUsuarioTipo(UsuarioTipo usuarioTipo)
         {
             base.AddObject("UsuarioTipo", usuarioTipo);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet Usuario. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToUsuario(Usuario usuario)
+        {
+            base.AddObject("Usuario", usuario);
         }
 
         #endregion
@@ -259,54 +259,6 @@ namespace ReservasUPN.BE.Modelos
         private global::System.String _codigo;
         partial void OncodigoChanging(global::System.String value);
         partial void OncodigoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String nombreCompleto
-        {
-            get
-            {
-                return _nombreCompleto;
-            }
-            set
-            {
-                OnnombreCompletoChanging(value);
-                ReportPropertyChanging("nombreCompleto");
-                _nombreCompleto = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("nombreCompleto");
-                OnnombreCompletoChanged();
-            }
-        }
-        private global::System.String _nombreCompleto;
-        partial void OnnombreCompletoChanging(global::System.String value);
-        partial void OnnombreCompletoChanged();
-    
-        /// <summary>
-        /// No hay documentación de metadatos disponible.
-        /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
-        [DataMemberAttribute()]
-        public global::System.String codigoSede
-        {
-            get
-            {
-                return _codigoSede;
-            }
-            set
-            {
-                OncodigoSedeChanging(value);
-                ReportPropertyChanging("codigoSede");
-                _codigoSede = StructuralObject.SetValidValue(value, true);
-                ReportPropertyChanged("codigoSede");
-                OncodigoSedeChanged();
-            }
-        }
-        private global::System.String _codigoSede;
-        partial void OncodigoSedeChanging(global::System.String value);
-        partial void OncodigoSedeChanged();
     
         /// <summary>
         /// No hay documentación de metadatos disponible.

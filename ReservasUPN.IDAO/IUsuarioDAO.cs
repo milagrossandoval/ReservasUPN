@@ -13,5 +13,8 @@ namespace ReservasUPN.IDAO
         BE.Adapters.Usuario BuscarDocente(string codigo);
         BE.Adapters.Usuario BuscarUsuario(string codigo);
         BE.Modelos.Usuario Buscar(string codigo);
+        bool Grabar(BE.Modelos.Usuario obj);
+        bool Actualizar(BE.Modelos.Usuario obj);
+        List<BE.Adapters.Usuario> Listar(string codigoSede);
     }
 }

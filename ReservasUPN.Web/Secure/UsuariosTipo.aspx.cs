@@ -10,10 +10,11 @@ using System.Data;
 using ReservasUPN.BE.Modelos;
 using System.Collections;
 using ReservasUPN.BL;
+using ReservasUPN.Web.App_Code;
 
 namespace ReservasUPN.Web.Secure
 {
-    public partial class UsuariosTipo : BE.Adapters.Page
+    public partial class UsuariosTipo : PageAdapter
     {
 
         private UsuarioTipoBL usuariotipobl = new UsuarioTipoBL();

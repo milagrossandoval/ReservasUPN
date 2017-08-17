@@ -49,5 +49,21 @@ namespace ReservasUPN.BL
         {
             return usuarioDAO.Buscar(codigo);
         }
+
+
+        public bool Grabar(Usuario obj)
+        {
+            return usuarioDAO.Grabar(obj);
+        }
+
+        public bool Actualizar(Usuario obj)
+        {
+            return usuarioDAO.Actualizar(obj);
+        }
+
+        public List<BE.Adapters.Usuario> Listar(string codigoSede)
+        {
+            return usuarioDAO.Listar(codigoSede);
+        }
     }
 }

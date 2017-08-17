@@ -63,6 +63,38 @@ namespace ReservasUPN.BE.Modelos
     
         #endregion
     
+        #region Propiedades de ObjectSet
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<USUARIO> USUARIO
+        {
+            get
+            {
+                if ((_USUARIO == null))
+                {
+                    _USUARIO = base.CreateObjectSet<USUARIO>("USUARIO");
+                }
+                return _USUARIO;
+            }
+        }
+        private ObjectSet<USUARIO> _USUARIO;
+
+        #endregion
+
+        #region Métodos AddTo
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet USUARIO. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToUSUARIO(USUARIO uSUARIO)
+        {
+            base.AddObject("USUARIO", uSUARIO);
+        }
+
+        #endregion
+
         #region Importaciones de funciones
     
         /// <summary>
@@ -86,6 +118,139 @@ namespace ReservasUPN.BE.Modelos
 
         #endregion
 
+    }
+
+    #endregion
+
+    #region Entidades
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BD_ADMUSERSModel", Name="USUARIO")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class USUARIO : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto USUARIO.
+        /// </summary>
+        /// <param name="login">Valor inicial de la propiedad login.</param>
+        public static USUARIO CreateUSUARIO(global::System.String login)
+        {
+            USUARIO uSUARIO = new USUARIO();
+            uSUARIO.login = login;
+            return uSUARIO;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String login
+        {
+            get
+            {
+                return _login;
+            }
+            set
+            {
+                if (_login != value)
+                {
+                    OnloginChanging(value);
+                    ReportPropertyChanging("login");
+                    _login = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("login");
+                    OnloginChanged();
+                }
+            }
+        }
+        private global::System.String _login;
+        partial void OnloginChanging(global::System.String value);
+        partial void OnloginChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String username
+        {
+            get
+            {
+                return _username;
+            }
+            set
+            {
+                OnusernameChanging(value);
+                ReportPropertyChanging("username");
+                _username = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("username");
+                OnusernameChanged();
+            }
+        }
+        private global::System.String _username;
+        partial void OnusernameChanging(global::System.String value);
+        partial void OnusernameChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> activo
+        {
+            get
+            {
+                return _activo;
+            }
+            set
+            {
+                OnactivoChanging(value);
+                ReportPropertyChanging("activo");
+                _activo = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("activo");
+                OnactivoChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _activo;
+        partial void OnactivoChanging(Nullable<global::System.Boolean> value);
+        partial void OnactivoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String sedePredeterminada
+        {
+            get
+            {
+                return _sedePredeterminada;
+            }
+            set
+            {
+                OnsedePredeterminadaChanging(value);
+                ReportPropertyChanging("sedePredeterminada");
+                _sedePredeterminada = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("sedePredeterminada");
+                OnsedePredeterminadaChanged();
+            }
+        }
+        private global::System.String _sedePredeterminada;
+        partial void OnsedePredeterminadaChanging(global::System.String value);
+        partial void OnsedePredeterminadaChanged();
+
+        #endregion
+
+    
     }
 
     #endregion

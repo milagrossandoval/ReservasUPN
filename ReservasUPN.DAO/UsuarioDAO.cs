@@ -5,6 +5,7 @@ using System.Text;
 using ReservasUPN.IDAO;
 using ReservasUPN.BE.Modelos;
 using System.Data.Objects;
+using System.Collections;
 
 namespace ReservasUPN.DAO
 {
@@ -28,12 +29,12 @@ namespace ReservasUPN.DAO
                                                        where x.codigo == codigo
                                                        select new BE.Adapters.Usuario
                                                        {
-                                                           Codigo = x.codigo,
+                                                           codigo = x.codigo,
                                                            NombreCompleto = x.nombreCompleto,
                                                            IdSede = x.sede,
                                                            NombreSede = x.sedeNombre,
-                                                           IdTipoUsuario = idTipoUsuario,
-                                                           TipoUsuario = new UsuarioTipo { id = idTipoUsuario, nombre = BE.Adapters.Usuario.TIPO_ALUMNO }
+                                                           tipoUsuario = idTipoUsuario,
+                                                           Tipo = new UsuarioTipo { id = idTipoUsuario, nombre = BE.Adapters.Usuario.TIPO_ALUMNO }
                                                        }
                                                       ).ToList();
 
@@ -44,7 +45,6 @@ namespace ReservasUPN.DAO
             }
             return rpta;
         }
-
 
         public BE.Adapters.Usuario BuscarEgresado(string codigo)
         {
@@ -56,12 +56,12 @@ namespace ReservasUPN.DAO
                                                        where x.codigo == codigo
                                                        select new BE.Adapters.Usuario
                                                        {
-                                                           Codigo = x.codigo,
+                                                           codigo = x.codigo,
                                                            NombreCompleto = x.nombreCompleto,
                                                            IdSede = x.sede,
                                                            NombreSede = x.sedeNombre,
-                                                           IdTipoUsuario = idTipoUsuario,
-                                                           TipoUsuario = new UsuarioTipo { id = idTipoUsuario, nombre = BE.Adapters.Usuario.TIPO_EGRESADO }
+                                                           tipoUsuario = idTipoUsuario,
+                                                           Tipo = new UsuarioTipo { id = idTipoUsuario, nombre = BE.Adapters.Usuario.TIPO_EGRESADO }
                                                        }
                                                       ).ToList();
                 if (resultado.Count == 1)
@@ -69,7 +69,7 @@ namespace ReservasUPN.DAO
                     rpta = resultado.First();
                 }
             }
-            return rpta;    
+            return rpta;
         }
 
         public BE.Adapters.Usuario BuscarDocente(string codigo)
@@ -79,46 +79,77 @@ namespace ReservasUPN.DAO
             {
                 int idTipoUsuario = Convert.ToInt16(BE.Enumeraciones.TipoUsuario.DOCENTE);
                 List<BE.Adapters.Usuario> resultado = (from x in reposit.PA_SELECT_DOCENTES_X_CODIGO(codigo)
-                                                      select new BE.Adapters.Usuario{
-                                                          Codigo = x.Codigo,
-                                                          NombreCompleto = x.NombreCompleto,
-                                                          IdSede = x.sede,
-                                                          NombreSede = x.sedeNombre,
-                                                          IdTipoUsuario = idTipoUsuario,
-                                                          TipoUsuario = new UsuarioTipo { id = idTipoUsuario, nombre = BE.Adapters.Usuario.TIPO_DOCENTE }
-                                                      }).ToList();
+                                                       select new BE.Adapters.Usuario
+                                                       {
+                                                           codigo = x.Codigo,
+                                                           NombreCompleto = x.NombreCompleto,
+                                                           IdSede = x.sede,
+                                                           NombreSede = x.sedeNombre,
+                                                           tipoUsuario = idTipoUsuario,
+                                                           Tipo = new UsuarioTipo { id = idTipoUsuario, nombre = BE.Adapters.Usuario.TIPO_DOCENTE }
+                                                       }).ToList();
                 if (resultado.Count == 1)
                 {
                     rpta = resultado.First();
                 }
             }
-            return rpta;    
+            return rpta;
         }
 
         public BE.Adapters.Usuario BuscarUsuario(string codigo)
         {
             BE.Adapters.Usuario rpta = null;
-            using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
+            List<BE.Adapters.Usuario> resultado = new List<BE.Adapters.Usuario>();
+            
+            using (BD_RESERVASEntities reservas = new BD_RESERVASEntities())
             {
-                List<BE.Modelos.Usuario> usuarios = new List<Usuario>();
-                usuarios.Add(Buscar(codigo));
+                
+                resultado = (from usuario in reservas.Usuario
+                            join tipo in reservas.UsuarioTipo on usuario.tipoUsuario equals tipo.id
+                            where tipo.estado == true && usuario.codigo == codigo
+                            select new BE.Adapters.Usuario { 
+                                id = usuario.id,
+                                codigo = usuario.codigo,
+                                estado = usuario.estado,
+                                tipoUsuario = tipo.id,
+                                Tipo = tipo
+                            }).ToList();
+            }  
+            using (BD_ADMUSERSEntities intranet = new BD_ADMUSERSEntities())
+            {
 
-                List<BE.Adapters.Usuario> resultado = (from x in usuarios
-                                                         join y in reposit.UsuarioTipo on x.tipoUsuario equals y.id
-                                                         where y.estado == true
-                                                         select new BE.Adapters.Usuario {
-                                                             Codigo = x.codigo,
-                                                             NombreCompleto = x.nombreCompleto,
-                                                             IdTipoUsuario = x.tipoUsuario,
-                                                             TipoUsuario = new UsuarioTipo { id = x.tipoUsuario, nombre = y.nombre }
-                                                         }).ToList();
+                resultado = (from usuario in resultado
+                           join usuarioint in intranet.USUARIO on usuario.codigo equals usuarioint.login
+                            select new BE.Adapters.Usuario
+                            {
+                                id = usuario.id,
+                                codigo = usuario.codigo,
+                                estado = usuario.estado,
+                                tipoUsuario = usuario.tipoUsuario,
+                                Tipo = usuario.Tipo,
+                                NombreCompleto = usuarioint.username,
+                                NombreSede = usuarioint.sedePredeterminada
+                            }).ToList();
+            }       
+            using (BD_UPNSACEntities upnsac = new BD_UPNSACEntities())
+            {
+                resultado = (from usuario in resultado
+                           join sede in upnsac.Sede on usuario.NombreSede equals sede.nombre
+                           select new BE.Adapters.Usuario
+                           {
+                               id = usuario.id,
+                               codigo = usuario.codigo,
+                               estado = usuario.estado,
+                               tipoUsuario = usuario.tipoUsuario,
+                               Tipo = usuario.Tipo,
+                               NombreCompleto = usuario.NombreCompleto,
+                               NombreSede = sede.descripcion,
+                               IdSede = sede.id
+                           }).ToList();
 
                 if (resultado.Count == 1)
                 {
                     rpta = resultado.First();
-                    Sede sedeUsuario = SedeDAO.Instance.Buscar(usuarios.First().codigoSede);
-                    rpta.IdSede = sedeUsuario.id;
-                    rpta.NombreSede = sedeUsuario.nombre;
                 }
             }
             return rpta;
@@ -130,9 +161,10 @@ namespace ReservasUPN.DAO
             using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
             {
                 List<BE.Modelos.Usuario> resultado = (from x in reposit.Usuario
-                                                       where x.codigo == codigo && x.estado == true
-                                                       select x).ToList();
-                if (resultado.Count() == 1) {
+                                                      where x.codigo == codigo && x.estado == true
+                                                      select x).ToList();
+                if (resultado.Count() == 1)
+                {
                     rpta = resultado.First();
                 }
             }
@@ -140,5 +172,83 @@ namespace ReservasUPN.DAO
 
         }
 
+        public bool Grabar(BE.Modelos.Usuario obj)
+        {
+            using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
+            {
+                reposit.AddToUsuario(obj);
+                return reposit.SaveChanges() == 1;
+            }
+        }
+
+        public bool Actualizar(BE.Modelos.Usuario obj)
+        {
+            using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
+            {
+                var usuario = (from x in reposit.Usuario
+                               where x.id == obj.id
+                               select x).First();
+                usuario.tipoUsuario = obj.tipoUsuario;
+                usuario.estado = obj.estado;
+                return reposit.SaveChanges() == 1;
+            }
+        }
+
+        public List<BE.Adapters.Usuario> Listar(string codigoSede)
+        {
+            List<BE.Adapters.Usuario> rpta;
+
+            using (BD_RESERVASEntities reservas = new BD_RESERVASEntities())
+            {
+
+                rpta = (from usuario in reservas.Usuario
+                        join tipo in reservas.UsuarioTipo on usuario.tipoUsuario equals tipo.id
+                        where usuario.tipoUsuario != 100
+                        select new BE.Adapters.Usuario
+                        {
+                            id = usuario.id,
+                            codigo = usuario.codigo,
+                            estado = usuario.estado,
+                            tipoUsuario = tipo.id,
+                            Tipo = tipo
+                        }).ToList();
+            }
+            using (BD_ADMUSERSEntities intranet = new BD_ADMUSERSEntities())
+            {
+
+                rpta = (from usuario in rpta
+                        join usuarioint in intranet.USUARIO on usuario.codigo equals usuarioint.login
+                        where usuarioint.sedePredeterminada == codigoSede
+                             select new BE.Adapters.Usuario
+                             {
+                                 id = usuario.id,
+                                 codigo = usuario.codigo,
+                                 estado = usuario.estado,
+                                 tipoUsuario = usuario.tipoUsuario,
+                                 Tipo = usuario.Tipo,
+                                 NombreCompleto = usuarioint.username,
+                                 NombreSede = usuarioint.sedePredeterminada
+                             }).ToList();
+            }
+            using (BD_UPNSACEntities upnsac = new BD_UPNSACEntities())
+            {
+                rpta = (from usuario in rpta
+                             join sede in upnsac.Sede on usuario.NombreSede equals sede.nombre
+                             select new BE.Adapters.Usuario
+                             {
+                                 id = usuario.id,
+                                 codigo = usuario.codigo,
+                                 estado = usuario.estado,
+                                 tipoUsuario = usuario.tipoUsuario,
+                                 Tipo = usuario.Tipo,
+                                 NombreCompleto = usuario.NombreCompleto,
+                                 NombreSede = sede.descripcion,
+                                 IdSede = sede.id
+                             }).ToList();
+
+            }
+            return rpta;
+
+        }
     }
 }

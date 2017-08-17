@@ -3,17 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using ReservasUPN.BE.Modelos;
+using System.Data.Entity;
 
 namespace ReservasUPN.BE.Adapters
 {
-    public class Usuario
+    public class Usuario : BE.Modelos.Usuario
     {
-        public string Codigo { get; set; }
         public string NombreCompleto { get; set; }
-        public int IdTipoUsuario { get; set; }
-        public UsuarioTipo TipoUsuario { get; set; }
-        public int IdSede { get; set; }
+        public int IdSede { get; set; }        
         public string NombreSede { get; set; }
+        public UsuarioTipo Tipo { get; set; }
         //public Sede Sede { get; set; }
         public List<Sede> LstSedes { get; set; }
 

@@ -4,26 +4,46 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BD_ADMUSERSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="BD_ADMUSERSModelStoreContainer" />
+    <Schema Namespace="BD_ADMUSERSModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="BD_ADMUSERSModelStoreContainer">
+          <EntitySet Name="USUARIO" EntityType="BD_ADMUSERSModel.Store.USUARIO" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="login" />
+          </Key>
+          <Property Name="login" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="username" Type="varchar" MaxLength="100" />
+          <Property Name="activo" Type="bit" />
+          <Property Name="sedePredeterminada" Type="varchar" MaxLength="10" />
+        </EntityType>
         <Function Name="PA_AU_CONSULTAR_SEDES_DISPONIBLES_X_USUARIO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="s_usu_login" Type="varchar" Mode="In" />
         </Function>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BD_ADMUSERSModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="BD_ADMUSERSEntities" annotation:LazyLoadingEnabled="true" >
           <FunctionImport Name="PA_AU_CONSULTAR_SEDES_DISPONIBLES_X_USUARIO" ReturnType="Collection(BD_ADMUSERSModel.PA_AU_CONSULTAR_SEDES_DISPONIBLES_X_USUARIO_Result)">
-            <Parameter Name="s_usu_login" Mode="In" Type="String" />
+          <Parameter Name="s_usu_login" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="USUARIO" EntityType="BD_ADMUSERSModel.USUARIO" />
         </EntityContainer>
         <ComplexType Name="PA_AU_CONSULTAR_SEDES_DISPONIBLES_X_USUARIO_Result">
           <Property Type="Int32" Name="n_sede_id" Nullable="false" />
           <Property Type="String" Name="s_sed_codigo" Nullable="false" MaxLength="10" />
           <Property Type="String" Name="s_sed_nombre" Nullable="true" MaxLength="100" />
         </ComplexType>
+        <EntityType Name="USUARIO">
+          <Key>
+            <PropertyRef Name="login" />
+          </Key>
+          <Property Type="String" Name="login" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="username" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="activo" />
+          <Property Type="String" Name="sedePredeterminada" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -39,6 +59,16 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <EntitySetMapping Name="USUARIO">
+            <EntityTypeMapping TypeName="BD_ADMUSERSModel.USUARIO">
+              <MappingFragment StoreEntitySet="USUARIO">
+                <ScalarProperty Name="sedePredeterminada" ColumnName="sedePredeterminada" />
+                <ScalarProperty Name="activo" ColumnName="activo" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="login" ColumnName="login" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -59,7 +89,9 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="BDINTRANET" />
+      <Diagram Name="BDINTRANET" >
+        <EntityTypeShape EntityType="BD_ADMUSERSModel.USUARIO" Width="1.5" PointX="0.75" PointY="0.75" Height="1.787985026041667" />
+      </Diagram>
     </Diagrams>
   </Designer>
 </edmx:Edmx>
