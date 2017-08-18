@@ -37,5 +37,12 @@ namespace ReservasUPN.Web.App_Code
         {
             RadScriptManager.RegisterStartupScript(Page, Page.GetType(), "Alerta", "alert('" + mensaje + "')", true);
         }
+
+        public void notificaciom(string mensaje, int tipo)
+        {
+            RadScriptManager.RegisterStartupScript(Page, Page.GetType(), "Notificacion", "notificar('" + mensaje + "')", true);
+        }
+
+    
     }
 }
