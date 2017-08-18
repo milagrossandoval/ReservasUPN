@@ -22,8 +22,6 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server">
-                    </telerik:RadAjaxLoadingPanel>
                    <telerik:RadGrid ID="RgUsuarios" runat="server" DataSourceID="ObjectDataSource1" AllowFilteringByColumn="True"
                         AllowPaging="True" AllowSorting="True" GridLines="None" AutoGenerateColumns="False"
                         OnUpdateCommand="RgUsuarios_UpdateCommand"
@@ -36,7 +34,7 @@
                             <Scrolling AllowScroll="True" UseStaticHeaders="True" />
                         </ClientSettings>
                         <GroupingSettings CaseSensitive="false" />
-                        <MasterTableView DataSourceID="ObjectDataSource1" AutoGenerateColumns="False" CommandItemDisplay="Top" InsertItemPageIndexAction="ShowItemOnCurrentPage" DataKeyNames="id,codigo" >
+                        <MasterTableView DataSourceID="ObjectDataSource1" AutoGenerateColumns="False" CommandItemDisplay="Top" InsertItemPageIndexAction="ShowItemOnCurrentPage" DataKeyNames="id,codigo" OverrideDataSourceControlSorting ="true" >
                             <CommandItemSettings AddNewRecordText="Agregar" ShowRefreshButton="false" ShowExportToExcelButton="true" ExportToExcelText="Exportar a Excel" />
                              <Columns>
                                 <telerik:GridEditCommandColumn EditText="Editar" >
@@ -59,7 +57,7 @@
                                      <HeaderStyle Width="20%" />
                                  </telerik:GridBoundColumn>--%>
                                  <telerik:GridTemplateColumn HeaderText="Tipo" UniqueName="TipoUsuario" DataField="Tipo.nombre" 
-                                 SortExpression="UsuarioTipo.nombre"
+                                 SortExpression="Tipo.nombre"
                                  ShowFilterIcon="false" ShowSortIcon="true" CurrentFilterFunction="Contains" AutoPostBackOnFilter="true">
                                     <HeaderStyle Width="20%" />
                                     <ItemTemplate>
@@ -135,10 +133,10 @@
         TypeName="ReservasUPN.BL.UsuarioTipoBL">
     </asp:ObjectDataSource>
     
-    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" DefaultLoadingPanelID="RadAjaxLoadingPanel1" >
         <ClientEvents OnRequestStart="onRequestStart" />
         <AjaxSettings>
-            <telerik:AjaxSetting AjaxControlID="RgUsuarios">
+            <telerik:AjaxSetting AjaxControlID="RgUsuarios" >
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="RgUsuarios" LoadingPanelID="RadAjaxLoadingPanel1" />
                 </UpdatedControls>

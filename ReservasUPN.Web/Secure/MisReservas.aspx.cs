@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ReservasUPN.Web
+namespace ReservasUPN.Web.Secure
 {
     public partial class MisReservas : System.Web.UI.Page
     {

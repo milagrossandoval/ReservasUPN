@@ -59,7 +59,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="404.htm" />
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\Button.Button.css" />
     <Content Include="assets\css\metisMenu.min.css" />
@@ -76,6 +75,24 @@
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="assets\js\dataTables.bootstrap.min.js" />
     <Content Include="assets\js\dataTables.responsive.js" />
+    <Content Include="assets\js\jquery-ui\AUTHORS.txt" />
+    <Content Include="assets\js\jquery-ui\external\jquery\jquery.js" />
+    <Content Include="assets\js\jquery-ui\images\ui-icons_444444_256x240.png" />
+    <Content Include="assets\js\jquery-ui\images\ui-icons_555555_256x240.png" />
+    <Content Include="assets\js\jquery-ui\images\ui-icons_777620_256x240.png" />
+    <Content Include="assets\js\jquery-ui\images\ui-icons_777777_256x240.png" />
+    <Content Include="assets\js\jquery-ui\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="assets\js\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="assets\js\jquery-ui\index.html" />
+    <Content Include="assets\js\jquery-ui\jquery-ui.css" />
+    <Content Include="assets\js\jquery-ui\jquery-ui.js" />
+    <Content Include="assets\js\jquery-ui\jquery-ui.min.css" />
+    <Content Include="assets\js\jquery-ui\jquery-ui.min.js" />
+    <Content Include="assets\js\jquery-ui\jquery-ui.structure.css" />
+    <Content Include="assets\js\jquery-ui\jquery-ui.structure.min.css" />
+    <Content Include="assets\js\jquery-ui\jquery-ui.theme.css" />
+    <Content Include="assets\js\jquery-ui\jquery-ui.theme.min.css" />
+    <Content Include="assets\js\jquery-ui\LICENSE.txt" />
     <Content Include="assets\js\jquery.dataTables.min.js" />
     <Content Include="assets\js\jquery.min.js" />
     <Content Include="assets\js\metisMenu.min.js" />
@@ -86,11 +103,9 @@
     <Content Include="LogIn.aspx" />
     <Content Include="Secure\ConfigurarHorarios.aspx" />
     <Content Include="Secure\Default.aspx" />
-    <Content Include="Secure\Error.aspx" />
     <Content Include="Secure\MisReservas.aspx" />
     <Content Include="Secure\Recursos.aspx" />
-    <Content Include="Secure\Reportes.aspx" />
-    <Content Include="Secure\ReservasMultiples.aspx" />
+    <Content Include="Secure\RecursosTipo.aspx" />
     <Content Include="Secure\Sanciones.aspx" />
     <Content Include="Secure\UsoRecursos.aspx" />
     <Content Include="Secure\Usuarios.aspx" />
@@ -130,13 +145,6 @@
     <Compile Include="Secure\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Secure\Error.aspx.cs">
-      <DependentUpon>Error.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Secure\Error.aspx.designer.cs">
-      <DependentUpon>Error.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Secure\MisReservas.aspx.cs">
       <DependentUpon>MisReservas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -152,19 +160,12 @@
     <Compile Include="Secure\Recursos.aspx.designer.cs">
       <DependentUpon>Recursos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Secure\Reportes.aspx.cs">
-      <DependentUpon>Reportes.aspx</DependentUpon>
+    <Compile Include="Secure\RecursosTipo.aspx.cs">
+      <DependentUpon>RecursosTipo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Secure\Reportes.aspx.designer.cs">
-      <DependentUpon>Reportes.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Secure\ReservasMultiples.aspx.cs">
-      <DependentUpon>ReservasMultiples.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Secure\ReservasMultiples.aspx.designer.cs">
-      <DependentUpon>ReservasMultiples.aspx</DependentUpon>
+    <Compile Include="Secure\RecursosTipo.aspx.designer.cs">
+      <DependentUpon>RecursosTipo.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secure\Sanciones.aspx.cs">
       <DependentUpon>Sanciones.aspx</DependentUpon>
@@ -217,9 +218,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Secure\Site.Master" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <ItemGroup>
@@ -228,10 +226,13 @@
   <ItemGroup>
     <None Include="assets\fonts\fontawesome-webfont.eot" />
     <None Include="assets\fonts\fontawesome-webfont.woff" />
+    <None Include="assets\fonts\fontawesome-webfont.woff2" />
     <None Include="assets\fonts\glyphicons-halflings-regular.eot" />
     <None Include="assets\fonts\glyphicons-halflings-regular.ttf" />
     <None Include="assets\fonts\glyphicons-halflings-regular.woff" />
     <None Include="assets\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="assets\js\jquery-ui\package.json" />
+    <Content Include="Secure\Site.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

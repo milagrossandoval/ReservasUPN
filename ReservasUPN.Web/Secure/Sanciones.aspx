@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Secure/Site.Master" AutoEventWireup="true"
-    CodeBehind="Sanciones.aspx.cs" %>
+    CodeBehind="Sanciones.aspx.cs" Inherits="ReservasUPN.Web.Secure.Sanciones" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

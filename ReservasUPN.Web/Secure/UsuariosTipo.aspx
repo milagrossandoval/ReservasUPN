@@ -15,8 +15,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
-                    <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" runat="server">
-                    </telerik:RadAjaxLoadingPanel>
+                    
                     <telerik:RadGrid ID="RgTipos" runat="server" DataSourceID="ObjectDataSource1" AllowFilteringByColumn="True"
                         AllowPaging="True" AllowSorting="True" GridLines="None" PageSize="10" AutoGenerateColumns="false"
                         OnUpdateCommand="RgTipos_UpdateCommand"
@@ -29,7 +28,7 @@
                             <Scrolling AllowScroll="True" UseStaticHeaders="True" />
                         </ClientSettings>
                         <GroupingSettings CaseSensitive="false" />
-                        <MasterTableView DataSourceID="ObjectDataSource1" AutoGenerateColumns="False" CommandItemDisplay="Top" InsertItemPageIndexAction="ShowItemOnCurrentPage" DataKeyNames="id" >
+                        <MasterTableView DataSourceID="ObjectDataSource1" AutoGenerateColumns="False" CommandItemDisplay="Top" InsertItemPageIndexAction="ShowItemOnCurrentPage" DataKeyNames="id" OverrideDataSourceControlSorting ="true" >
                             <CommandItemSettings AddNewRecordText="Agregar" ShowRefreshButton="false" ShowExportToExcelButton="true" ExportToExcelText="Exportar a Excel" />
                              <Columns>
                                 <telerik:GridEditCommandColumn EditText="Editar" >
@@ -58,9 +57,6 @@
                                                 function CmbEstado_OnClientSelectedIndexChanged(sender, eventArgs) {
                                                     var valor = eventArgs._item.get_value();
                                                     var tableView = $find("<%# ((GridItem)Container).OwnerTableView.ClientID %>");
-                                                    console.log(valor);
-                                                    console.log(valor == "" ? "NoFilter" : "EqualTo");
-
                                                     switch (valor) {
                                                         case "":
                                                             tableView.filter("estado", "", "NoFilter");
@@ -97,7 +93,7 @@
     </div>
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="Listar"
         TypeName="ReservasUPN.BL.UsuarioTipoBL"></asp:ObjectDataSource>
-    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" DefaultLoadingPanelID="RadAjaxLoadingPanel1" >
         <ClientEvents OnRequestStart="onRequestStart" />
         <AjaxSettings>
             <telerik:AjaxSetting AjaxControlID="RgTipos">

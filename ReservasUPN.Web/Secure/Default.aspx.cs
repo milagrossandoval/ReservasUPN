@@ -6,7 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using ReservasUPN.BL;
 
-namespace ReservasUPN.Web
+namespace ReservasUPN.Web.Secure
 {
     public partial class Default : System.Web.UI.Page
     {

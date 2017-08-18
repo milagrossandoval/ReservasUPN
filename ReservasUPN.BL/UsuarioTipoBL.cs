@@ -16,7 +16,7 @@ namespace ReservasUPN.BL
         {
             return usuariotipodao.Listar();
         }
-
+        
         public bool Eliminar(int id)
         {
             return usuariotipodao.Eliminar(id);

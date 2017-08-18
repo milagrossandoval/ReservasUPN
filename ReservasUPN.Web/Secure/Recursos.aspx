@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Secure/Site.Master" AutoEventWireup="true"
-    CodeBehind="Recursos.aspx.cs" %>
+    CodeBehind="Recursos.aspx.cs" Inherits="ReservasUPN.Web.Secure.Recursos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

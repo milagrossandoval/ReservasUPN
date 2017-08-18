@@ -1,9 +1,9 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ReservasUPN.Web.Secure.Site" %>
 <%@ Register TagPrefix="telerik" Namespace="Telerik.Web.UI" Assembly="Telerik.Web.UI" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
+<head id="Head1" runat="server">
     <title>Sistema de Reservas de Recursos de la Universidad Privada del Norte</title>
     <link href="../assets/fonts/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="../assets/css/metisMenu.min.css" rel="stylesheet" type="text/css" />
@@ -11,14 +11,19 @@
     <link href="../assets/css/sb-admin-2.css" rel="stylesheet" type="text/css" />
     <link href="../assets/css/morris.css" rel="stylesheet" type="text/css" />
     <link href="../assets/css/Button.Button.css" rel="stylesheet" type="text/css" />
-
+    <link href="../assets/js/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css" />
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
-        <telerik:RadScriptManager runat="server" ID="RadScriptManager1" /><%--
+        <telerik:RadScriptManager runat="server" ID="RadScriptManager1" />
+        <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" Skin="Default" runat="server" Transparency="50" BackColor="White" BackgroundPosition="Center">
+            Cargando
+        </telerik:RadAjaxLoadingPanel>
+        
+        <%--
         <telerik:RadSkinManager ID="RadSkinManager1" runat="server" ShowChooser="true" />--%>
 
         <%--<asp:ScriptManager ID="sm1" runat="server" />--%>
@@ -89,11 +94,12 @@
     </form>
     <!-- /.Jquery -->
     <script src="../assets/js/jquery.min.js" type="text/javascript"></script>
+    <script src="../assets/js/raphael.min.js" type="text/javascript"></script>  
+    <%--<script src="../assets/js/morris-data.js" type="text/javascript"></script>  
+    <script src="../assets/js/morris.min.js" type="text/javascript"></script>  --%>
     <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="../assets/js/metisMenu.min.js" type="text/javascript"></script>
-    <script src="../assets/js/raphael.min.js" type="text/javascript"></script>
-    <script src="../assets/js/morris.min.js" type="text/javascript"></script>
-    <script src="../assets/js/morris-data.js" type="text/javascript"></script>
+    <script src="../assets/js/metisMenu.min.js" type="text/javascript"></script>     
     <script src="../assets/js/sb-admin-2.js" type="text/javascript"></script>
+    <script src="../assets/js/jquery-ui/jquery-ui.js" type="text/javascript"></script>
 </body>
 </html>
