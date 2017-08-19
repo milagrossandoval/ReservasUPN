@@ -22,11 +22,6 @@
         <telerik:RadAjaxLoadingPanel ID="RadAjaxLoadingPanel1" Skin="Default" runat="server" Transparency="50" BackColor="White" BackgroundPosition="Center">
             Cargando
         </telerik:RadAjaxLoadingPanel>
-        
-        <%--
-        <telerik:RadSkinManager ID="RadSkinManager1" runat="server" ShowChooser="true" />--%>
-
-        <%--<asp:ScriptManager ID="sm1" runat="server" />--%>
         <div id="wrapper">
             <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
                     <div class="navbar-header">
@@ -63,6 +58,7 @@
                                 <li><a href="#"><i class="fa fa-dashboard fa-fw"></i> Recursos <span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
                                         <li><a href="Recursos.aspx">Gestión Recursos</a></li>
+                                        <li><a href="RecursosTipo.aspx">Gestión Tipo Recursos</a></li>
                                         <li><a href="UsoRecursos.aspx">Disponibilidad Recursos</a></li>
                                     </ul>
                                 </li>
