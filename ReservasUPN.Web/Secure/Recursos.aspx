@@ -11,85 +11,142 @@
                     Recursos</h3>
             </div>
         </div>
-        <div class="row">            
-            <table width="100%">
-                        <tr>
-                            <td>
-                                Sucursal:
-                            </td>
-                            <td>
-                                <telerik:RadComboBox ID="cboSucursal" runat="server">
-                                </telerik:RadComboBox>
-                            </td>
-                            <td>
-                                Tipo de Recurso:
-                            </td>
-                            <td>
-                                <telerik:RadComboBox ID="cboTipoRecurso" runat="server">
-                                </telerik:RadComboBox>
-                            </td>
-                            <td>
-                                Descripción:
-                            </td>
-                            <td>
-                                <telerik:RadTextBox ID="txtDescripcion" runat="server">
-                                </telerik:RadTextBox>
-                            </td>
-                        </tr>
-                    </table>
-                    </br>
-                    </br>
-           <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:BD_RESERVAS_QAConnectionString
-        %>" SelectCommand="SELECT [Cod_Usuario], [Nombre], [CodTipo_Usuario] FROM [Table_Usuario]"></asp:SqlDataSource>
-                    <telerik:RadGrid RenderMode="Lightweight" ID="gridUsuarios" runat="server" AllowPaging="True"
-                        PageSize="5" Skin="Windows7" DataSourceID="SqlDataSource1" GridLines="None">
-                        <ClientSettings AllowKeyboardNavigation="true" EnablePostBackOnRowClick="true">
-                            <Selecting AllowRowSelect="true"></Selecting>
+        <div class="row">
+            <div class="col-lg-4">
+                <h5>
+                    Sede</h5>
+            </div>
+            <div class="col-lg-8">
+                <telerik:RadComboBox ID="CmbSedes" runat="server" AutoPostBack="true" DataTextField="descripcion"
+                    Width="400" DataValueField="id" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <telerik:RadGrid ID="RgRecursos" runat="server" DataSourceID="ObjectDataSource1"
+                        AllowFilteringByColumn="True" AllowPaging="True" AllowSorting="True" GridLines="None" 
+                        AutoGenerateColumns="False" oninsertcommand="RgRecursos_InsertCommand" 
+                        onitemcommand="RgRecursos_ItemCommand" 
+                        onupdatecommand="RgRecursos_UpdateCommand">
+                        <ExportSettings ExportOnlyData="true" FileName="Recursos" IgnorePaging="true" OpenInNewWindow="true">
+                        </ExportSettings>
+                        <ClientSettings>
+                            <Selecting AllowRowSelect="True" />
+                            <Scrolling AllowScroll="True" UseStaticHeaders="True" />
                         </ClientSettings>
-                        <MasterTableView Width="100%" AutoGenerateColumns="False" DataKeyNames="Cod_Usuario"
-                            DataSourceID="SqlDataSource1">
-                            <ItemTemplate>
-                                Item 1
-                            </ItemTemplate>
-                            <CommandItemSettings ExportToPdfText="Export
-        to Pdf"></CommandItemSettings>
-                            <RowIndicatorColumn FilterControlAltText="Filter
-        RowIndicator column">
-                            </RowIndicatorColumn>
-                            <ExpandCollapseColumn FilterControlAltText="Filter
-        ExpandColumn column">
-                            </ExpandCollapseColumn>
+                        <GroupingSettings CaseSensitive="false" />
+                        <MasterTableView DataSourceID="ObjectDataSource1" AutoGenerateColumns="False" CommandItemDisplay="Top"
+                            InsertItemPageIndexAction="ShowItemOnCurrentPage" DataKeyNames="id,codigo" OverrideDataSourceControlSorting="true">
+                            <CommandItemSettings AddNewRecordText="Agregar" ShowRefreshButton="false" ShowExportToExcelButton="true"
+                                ExportToExcelText="Exportar a Excel" />
                             <Columns>
-                                <telerik:GridBoundColumn HeaderText="Cod_Usuario" Display="true" DataField="Cod_Usuario"
-                                    DataType="System.Int32" FilterControlAltText="Filter Cod_Usuario column" ReadOnly="True"
-                                    SortExpression="Cod_Usuario" UniqueName="Cod_Usuario">
+                                <telerik:GridEditCommandColumn EditText="Editar">
+                                    <HeaderStyle Width="10%" />
+                                </telerik:GridEditCommandColumn>
+                                <telerik:GridBoundColumn DataField="codigo" ShowFilterIcon="false" ShowSortIcon="true"
+                                    CurrentFilterFunction="Contains" AutoPostBackOnFilter="true" HeaderText="Código"
+                                    SortExpression="codigo" UniqueName="codigo">
                                 </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn HeaderText="Nombre" Display="true" DataField="Nombre" FilterControlAltText="Filter Nombre column"
-                                    SortExpression="Nombre" UniqueName="Nombre">
+                                <telerik:GridBoundColumn DataField="descripcion" ShowFilterIcon="false" ShowSortIcon="true"
+                                    HeaderText="Descripción" SortExpression="descripcion" UniqueName="descripcion">
                                 </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn HeaderText="CodTipo_Usuario" Display="true" DataField="CodTipo_Usuario"
-                                    DataType="System.Int32" FilterControlAltText="Filter
-        CodTipo_Usuario column" SortExpression="CodTipo_Usuario" UniqueName="CodTipo_Usuario">
+                                <telerik:GridTemplateColumn DataField="Tipo.descripcion" HeaderText="Tipo"
+                                    ShowFilterIcon="false" ShowSortIcon="true" SortExpression="Tipo.descripcion" UniqueName="tipoRecurso"
+                                    CurrentFilterFunction="Contains" AutoPostBackOnFilter="true">
+                                    <ItemTemplate>
+                                        <%# Eval("Tipo.descripcion")%>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:HiddenField ID="HfTipo" runat="server" Value='<%# Eval("tipoRecurso") %>' />
+                                        <telerik:RadComboBox ID="CmbTipos" runat="server" DataSourceID="OdsTipo" DataValueField="id"
+                                            DataTextField="descripcion" OnDataBound="CmbTipos_OnDataBound" />
+                                    </EditItemTemplate>
+                                </telerik:GridTemplateColumn>
+                                <telerik:GridBoundColumn DataField="caracteristicas" HeaderText="Características"
+                                    ShowFilterIcon="false" ShowSortIcon="true" SortExpression="caracteristicas" UniqueName="caracteristicas">
                                 </telerik:GridBoundColumn>
+                                <telerik:GridCheckBoxColumn DataField="estado" DataType="System.Boolean" HeaderText="Estado"
+                                    SortExpression="estado" UniqueName="estado">
+                                    <HeaderStyle Width="20%" />
+                                    <FilterTemplate>
+                                        <telerik:RadComboBox ID="CmbEstado" runat="server" 
+                                        SelectedValue='<%# ((GridItem)Container).OwnerTableView.GetColumn("estado").CurrentFilterValue %>'
+                                            OnClientSelectedIndexChanged="CmbEstado_OnClientSelectedIndexChanged">
+                                            <Items>
+                                                <telerik:RadComboBoxItem Value="" Text="Todos" />
+                                                <telerik:RadComboBoxItem Value="true" Text="Activos" />
+                                                <telerik:RadComboBoxItem Value="false" Text="Inactivos" />
+                                            </Items>
+                                        </telerik:RadComboBox>
+                                        <telerik:RadScriptBlock ID="RadScriptBlock1" runat="server">
+                                            <script type="text/javascript">
+                                                function CmbEstado_OnClientSelectedIndexChanged(sender, eventArgs) {
+                                                    var valor = eventArgs._item.get_value();
+                                                    var tableView = $find("<%# ((GridItem)Container).OwnerTableView.ClientID %>");
+                                                    console.log(valor);
+                                                    console.log(valor == "" ? "NoFilter" : "EqualTo");
+                                                    switch (valor) {
+                                                        case "":
+                                                            tableView.filter("estado", "", "NoFilter");
+                                                            break;
+                                                        case "true":
+                                                            tableView.filter("estado", true, "EqualTo");
+                                                            break;
+                                                        case "false":
+                                                            tableView.filter("estado", false, "EqualTo");
+                                                            break;
+                                                    }
+                                                }
+                                            </script>
+                                        </telerik:RadScriptBlock>
+                                    </FilterTemplate>
+                                </telerik:GridCheckBoxColumn>
                             </Columns>
                             <EditFormSettings>
-                                <EditColumn FilterControlAltText="Filter
-        EditCommandColumn column">
-                                </EditColumn>
+                                <EditColumn UpdateText="Actualizar" CancelText="Cancelar" InsertText="Guardar" />
                             </EditFormSettings>
+                            <NoRecordsTemplate>
+                                No hay datos para mostrar
+                            </NoRecordsTemplate>
                         </MasterTableView>
-                        <PagerStyle Mode="NextPrevAndNumeric"></PagerStyle>
-                        <FilterMenu EnableImageSprites="False">
-                        </FilterMenu>
-                        <HeaderContextMenu CssClass="GridContextMenu GridContextMenu_Default">
-                        </HeaderContextMenu>
                     </telerik:RadGrid>
-                    </br>
-                    </br>
-                    <telerik:RadButton ID="btnNuevo" runat="server" Text="Sincronizar" Skin="Windows7"
-                        RenderMode="Lightweight">
-                    </telerik:RadButton>
-    
+                </div>
+            </div>
         </div>
     </div>
+    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="Listar"
+        TypeName="ReservasUPN.BL.RecursoBL">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="CmbSedes" Name="idSede" PropertyName="SelectedValue"
+                Type="Int32" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="OdsTipo" runat="server" SelectMethod="Listar" TypeName="ReservasUPN.BL.RecursoTipoBL">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="CmbSedes" Name="idSede" PropertyName="SelectedValue"
+                Type="Int32" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" DefaultLoadingPanelID="RadAjaxLoadingPanel1">
+        <ClientEvents OnRequestStart="onRequestStart" />
+        <AjaxSettings>
+            <telerik:AjaxSetting AjaxControlID="RgRecursos">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RgRecursos" LoadingPanelID="RadAjaxLoadingPanel1" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="CmbSedes">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RgRecursos" LoadingPanelID="RadAjaxLoadingPanel1" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+        </AjaxSettings>
+    </telerik:RadAjaxManager>
+    <script type="text/javascript" language="javascript">
+        function onRequestStart(sender, args) {
+            if (args.get_eventTarget().indexOf("ExportToExcelButton") >= 0)
+                args.set_enableAjax(false);
+        }
+    </script>
 </asp:Content>

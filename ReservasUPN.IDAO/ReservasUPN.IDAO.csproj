@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IHoraTipoDAO.cs" />
+    <Compile Include="IRecursoDAO.cs" />
     <Compile Include="IRecursoTipoDAO.cs" />
     <Compile Include="ISedeDAO.cs" />
     <Compile Include="IUsuarioDAO.cs" />

@@ -7,9 +7,14 @@
     <Schema Namespace="BD_RESERVASModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="BD_RESERVASModelStoreContainer">
           <EntitySet Name="HoraTipo" EntityType="BD_RESERVASModel.Store.HoraTipo" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Recurso" EntityType="BD_RESERVASModel.Store.Recurso" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RecursoTipo" EntityType="BD_RESERVASModel.Store.RecursoTipo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Usuario" EntityType="BD_RESERVASModel.Store.Usuario" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UsuarioTipo" EntityType="BD_RESERVASModel.Store.UsuarioTipo" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_Recurso_RecursoTipo" Association="BD_RESERVASModel.Store.FK_Recurso_RecursoTipo">
+            <End Role="RecursoTipo" EntitySet="RecursoTipo" />
+            <End Role="Recurso" EntitySet="Recurso" />
+          </AssociationSet>
           <AssociationSet Name="FK_RecursoTipo_HoraTipo" Association="BD_RESERVASModel.Store.FK_RecursoTipo_HoraTipo">
             <End Role="HoraTipo" EntitySet="HoraTipo" />
             <End Role="RecursoTipo" EntitySet="RecursoTipo" />
@@ -25,6 +30,17 @@
           </Key>
           <Property Name="id" Type="int" Nullable="false" />
           <Property Name="estado" Type="bit" />
+        </EntityType>
+        <EntityType Name="Recurso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="codigo" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="tipoRecurso" Type="int" Nullable="false" />
+          <Property Name="caracteristicas" Type="varchar" MaxLength="1000" />
+          <Property Name="estado" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="RecursoTipo">
           <Key>
@@ -53,6 +69,18 @@
           <Property Name="nombre" Type="varchar" Nullable="false" MaxLength="50" />
           <Property Name="estado" Type="bit" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Recurso_RecursoTipo">
+          <End Role="RecursoTipo" Type="BD_RESERVASModel.Store.RecursoTipo" Multiplicity="1" />
+          <End Role="Recurso" Type="BD_RESERVASModel.Store.Recurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecursoTipo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Recurso">
+              <PropertyRef Name="tipoRecurso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_RecursoTipo_HoraTipo">
           <End Role="HoraTipo" Type="BD_RESERVASModel.Store.HoraTipo" Multiplicity="1" />
           <End Role="RecursoTipo" Type="BD_RESERVASModel.Store.RecursoTipo" Multiplicity="*" />
@@ -96,6 +124,11 @@
           <AssociationSet Name="FK_RecursoTipo_HoraTipo" Association="BD_RESERVASModel.FK_RecursoTipo_HoraTipo">
             <End Role="HoraTipo" EntitySet="HoraTipo" />
             <End Role="RecursoTipo" EntitySet="RecursoTipo" />
+          </AssociationSet>
+          <EntitySet Name="Recurso" EntityType="BD_RESERVASModel.Recurso" />
+          <AssociationSet Name="FK_Recurso_RecursoTipo" Association="BD_RESERVASModel.FK_Recurso_RecursoTipo">
+            <End Role="RecursoTipo" EntitySet="RecursoTipo" />
+            <End Role="Recurso" EntitySet="Recurso" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="UsuarioTipo">
@@ -148,6 +181,7 @@
           <Property Type="Int32" Name="tipoHora" Nullable="false" />
           <Property Type="Boolean" Name="estado" Nullable="false" />
           <NavigationProperty Name="HoraTipo" Relationship="BD_RESERVASModel.FK_RecursoTipo_HoraTipo" FromRole="RecursoTipo" ToRole="HoraTipo" />
+          <NavigationProperty Name="Recurso" Relationship="BD_RESERVASModel.FK_Recurso_RecursoTipo" FromRole="RecursoTipo" ToRole="Recurso" />
         </EntityType>
         <EntityType Name="HoraTipo">
           <Key>
@@ -166,6 +200,30 @@
             </Principal>
             <Dependent Role="RecursoTipo">
               <PropertyRef Name="tipoHora" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Recurso">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="codigo" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="tipoRecurso" Nullable="false" />
+          <Property Type="String" Name="caracteristicas" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <NavigationProperty Name="RecursoTipo" Relationship="BD_RESERVASModel.FK_Recurso_RecursoTipo" FromRole="Recurso" ToRole="RecursoTipo" />
+        </EntityType>
+        <Association Name="FK_Recurso_RecursoTipo">
+          <End Type="BD_RESERVASModel.RecursoTipo" Role="RecursoTipo" Multiplicity="1" />
+          <End Type="BD_RESERVASModel.Recurso" Role="Recurso" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecursoTipo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Recurso">
+              <PropertyRef Name="tipoRecurso" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -213,6 +271,18 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Recurso">
+            <EntityTypeMapping TypeName="BD_RESERVASModel.Recurso">
+              <MappingFragment StoreEntitySet="Recurso">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="caracteristicas" ColumnName="caracteristicas" />
+                <ScalarProperty Name="tipoRecurso" ColumnName="tipoRecurso" />
+                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -245,6 +315,11 @@
         <AssociationConnector Association="BD_RESERVASModel.FK_RecursoTipo_HoraTipo" >
           <ConnectorPoint PointX="3.375" PointY="2.047841796875" />
           <ConnectorPoint PointX="2.25" PointY="2.047841796875" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="BD_RESERVASModel.Recurso" Width="1.5" PointX="5.5" PointY="2.75" Height="2.3648893229166665" />
+        <AssociationConnector Association="BD_RESERVASModel.FK_Recurso_RecursoTipo" >
+          <ConnectorPoint PointX="2.25" PointY="3.0115364583333331" />
+          <ConnectorPoint PointX="5.5" PointY="3.0115364583333331" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>
