@@ -11,13 +11,14 @@ using ReservasUPN.BE.Modelos;
 using System.Collections;
 using ReservasUPN.BL;
 using ReservasUPN.Web.App_Code;
+using ReservasUPN.IBL;
 
 namespace ReservasUPN.Web.Secure
 {
     public partial class UsuariosTipo : PageAdapter
     {
 
-        private UsuarioTipoBL usuariotipobl = new UsuarioTipoBL();
+        private IUsuarioTipoBL usuariotipobl = new UsuarioTipoBL();
         
         protected void Page_Load(object sender, EventArgs e)
         {

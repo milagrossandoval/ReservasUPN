@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="IHoraTipoBL.cs" />
     <Compile Include="IRecursoTipoBL.cs" />
+    <Compile Include="IRecursoTipoHoraBL.cs" />
     <Compile Include="ISedeBL.cs" />
     <Compile Include="IUsuarioBL.cs" />
     <Compile Include="IUsuarioTipoBL.cs" />

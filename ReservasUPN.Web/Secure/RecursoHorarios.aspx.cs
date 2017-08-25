@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace ReservasUPN.Web.Secure
 {
-    public partial class UsoRecursos : System.Web.UI.Page
+    public partial class RecursoHorarios : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

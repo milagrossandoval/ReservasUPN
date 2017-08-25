@@ -19,20 +19,20 @@ namespace ReservasUPN.Web
             //var usuario = "60454";
 
             UsuarioBL usuariobl = new UsuarioBL();
-            try
-            {
+            //try
+            //{
                 var rpta = usuariobl.Buscar(usuario);
                 Session["usuario"] = rpta;
                 //Redireccionar a la página 
                 Response.Redirect("Secure/Default.aspx");
                 //Response.Write(rpta.NombreCompleto + " - " + rpta.TipoUsuario.nombre + " - " + rpta.NombreSede);
-            }
-            catch (Exception ex)
-            {
-                //Mostrar el mensaje en una página de error
-                MvLogin.ActiveViewIndex = 1;
-                Response.Write(ex.Message);
-            }
+            //}
+            //catch (Exception ex)
+            //{
+            //    //Mostrar el mensaje en una página de error
+            //    MvLogin.ActiveViewIndex = 1;
+            //    Response.Write(ex.Message);
+            //}
             
             
         }

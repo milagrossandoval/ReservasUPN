@@ -8,12 +8,13 @@ using ReservasUPN.Web.App_Code;
 using ReservasUPN.BL;
 using Telerik.Web.UI;
 using System.Collections;
+using ReservasUPN.IBL;
 
 namespace ReservasUPN.Web.Secure
 {
     public partial class RecursosTipo : PageAdapter
     {
-        private RecursoTipoBL recursotipobl = new RecursoTipoBL();
+        private IRecursoTipoBL recursotipobl = new RecursoTipoBL();
 
         protected void Page_Load(object sender, EventArgs e)
         {

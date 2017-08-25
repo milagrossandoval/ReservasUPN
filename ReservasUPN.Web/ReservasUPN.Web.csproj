@@ -104,10 +104,11 @@
     <Content Include="Secure\ConfigurarHorarios.aspx" />
     <Content Include="Secure\Default.aspx" />
     <Content Include="Secure\MisReservas.aspx" />
+    <Content Include="Secure\RecursoHorarios.aspx" />
     <Content Include="Secure\Recursos.aspx" />
     <Content Include="Secure\RecursosTipo.aspx" />
+    <Content Include="Secure\RecursoTipoHora.aspx" />
     <Content Include="Secure\Sanciones.aspx" />
-    <Content Include="Secure\UsoRecursos.aspx" />
     <Content Include="Secure\Usuarios.aspx" />
     <Content Include="Secure\UsuariosTipo.aspx" />
     <Content Include="Web.config" />
@@ -153,6 +154,13 @@
       <DependentUpon>MisReservas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Secure\RecursoHorarios.aspx.cs">
+      <DependentUpon>RecursoHorarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\RecursoHorarios.aspx.designer.cs">
+      <DependentUpon>RecursoHorarios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Secure\Recursos.aspx.cs">
       <DependentUpon>Recursos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -167,6 +175,13 @@
     <Compile Include="Secure\RecursosTipo.aspx.designer.cs">
       <DependentUpon>RecursosTipo.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Secure\RecursoTipoHora.aspx.cs">
+      <DependentUpon>RecursoTipoHora.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\RecursoTipoHora.aspx.designer.cs">
+      <DependentUpon>RecursoTipoHora.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Secure\Sanciones.aspx.cs">
       <DependentUpon>Sanciones.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -180,13 +195,6 @@
     </Compile>
     <Compile Include="Secure\Site.Master.designer.cs">
       <DependentUpon>Site.Master</DependentUpon>
-    </Compile>
-    <Compile Include="Secure\UsoRecursos.aspx.cs">
-      <DependentUpon>UsoRecursos.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Secure\UsoRecursos.aspx.designer.cs">
-      <DependentUpon>UsoRecursos.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secure\Usuarios.aspx.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>

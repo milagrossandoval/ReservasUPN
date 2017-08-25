@@ -10,6 +10,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAO", "DAO", "{8D3D49C4-8B14-4B37-8991-04C1D148FA5F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Negocio", "Negocio", "{CA289A36-0CA3-4BBA-AA09-A65831C9E57C}"
+	ProjectSection(SolutionItems) = preProject
+		ReservasUPN.BL\UsuarioTipoBL.cs = ReservasUPN.BL\UsuarioTipoBL.cs
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReservasUPN.IBL", "ReservasUPN.IBL\ReservasUPN.IBL.csproj", "{9FB0599D-4BFB-4F6E-9C51-0A0AED85BA73}"
 EndProject
