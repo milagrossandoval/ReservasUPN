@@ -22,7 +22,6 @@
                         OnInsertCommand="RgTipos_InsertCommand" >
                         <ExportSettings ExportOnlyData="true" FileName="Tipos de Usuario" IgnorePaging="true" OpenInNewWindow="true"  >
                         </ExportSettings>
-                        <%--OnDeleteCommand="RgTipos_DeleteCommand"--%>
                         <ClientSettings>
                             <Selecting AllowRowSelect="True" />
                             <Scrolling AllowScroll="True" UseStaticHeaders="True" />

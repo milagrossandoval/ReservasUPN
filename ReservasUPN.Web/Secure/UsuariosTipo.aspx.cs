@@ -51,11 +51,6 @@ namespace ReservasUPN.Web.Secure
             usuariotipobl.Actualizar(obj);
         }
 
-        //protected void RgTipos_DeleteCommand(object source, GridCommandEventArgs e) {
-        //    var editableItem = ((GridDataItem)e.Item);
-        //    int a_id = (int)(editableItem.GetDataKeyValue("id"));
-        //    usuariotipobl.Eliminar(a_id);
-        //}
 
     }
 }

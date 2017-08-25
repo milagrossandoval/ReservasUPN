@@ -23,6 +23,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("BD_RESERVASModel", "FK_Recurso_RecursoTipo", "RecursoTipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ReservasUPN.BE.Modelos.RecursoTipo), "Recurso", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ReservasUPN.BE.Modelos.Recurso), true)]
 [assembly: EdmRelationshipAttribute("BD_RESERVASModel", "FK_RecursoTipoUsuarioTipo_RecursoTipo", "RecursoTipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ReservasUPN.BE.Modelos.RecursoTipo), "RecursoTipoHora", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ReservasUPN.BE.Modelos.RecursoTipoHora), true)]
 [assembly: EdmRelationshipAttribute("BD_RESERVASModel", "FK_RecursoTipo_HoraTipo", "HoraTipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ReservasUPN.BE.Modelos.HoraTipo), "RecursoTipo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ReservasUPN.BE.Modelos.RecursoTipo), true)]
+[assembly: EdmRelationshipAttribute("BD_RESERVASModel", "FK_Recurso_RecursoTipo", "RecursoTipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ReservasUPN.BE.Modelos.RecursoTipo), "Recurso", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ReservasUPN.BE.Modelos.Recurso), true)]
 
 #endregion
 
@@ -169,6 +170,22 @@ namespace ReservasUPN.BE.Modelos
             }
         }
         private ObjectSet<HoraTipo> _HoraTipo;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Recurso> Recurso
+        {
+            get
+            {
+                if ((_Recurso == null))
+                {
+                    _Recurso = base.CreateObjectSet<Recurso>("Recurso");
+                }
+                return _Recurso;
+            }
+        }
+        private ObjectSet<Recurso> _Recurso;
 
         #endregion
 
@@ -220,6 +237,14 @@ namespace ReservasUPN.BE.Modelos
         public void AddToHoraTipo(HoraTipo horaTipo)
         {
             base.AddObject("HoraTipo", horaTipo);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Recurso EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToRecurso(Recurso recurso)
+        {
+            base.AddObject("Recurso", recurso);
         }
 
         #endregion
@@ -590,6 +615,233 @@ namespace ReservasUPN.BE.Modelos
     /// <summary>
     /// No hay documentación de metadatos disponible.
     /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BD_RESERVASModel", Name="Recurso")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Recurso : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Recurso object.
+        /// </summary>
+        /// <param name="id">Initial value of the id property.</param>
+        /// <param name="codigo">Initial value of the codigo property.</param>
+        /// <param name="descripcion">Initial value of the descripcion property.</param>
+        /// <param name="tipoRecurso">Initial value of the tipoRecurso property.</param>
+        /// <param name="estado">Initial value of the estado property.</param>
+        public static Recurso CreateRecurso(global::System.Int32 id, global::System.String codigo, global::System.String descripcion, global::System.Int32 tipoRecurso, global::System.Boolean estado)
+        {
+            Recurso recurso = new Recurso();
+            recurso.id = id;
+            recurso.codigo = codigo;
+            recurso.descripcion = descripcion;
+            recurso.tipoRecurso = tipoRecurso;
+            recurso.estado = estado;
+            return recurso;
+        }
+
+        #endregion
+
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String codigo
+        {
+            get
+            {
+                return _codigo;
+            }
+            set
+            {
+                OncodigoChanging(value);
+                ReportPropertyChanging("codigo");
+                _codigo = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("codigo");
+                OncodigoChanged();
+            }
+        }
+        private global::System.String _codigo;
+        partial void OncodigoChanging(global::System.String value);
+        partial void OncodigoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String descripcion
+        {
+            get
+            {
+                return _descripcion;
+            }
+            set
+            {
+                OndescripcionChanging(value);
+                ReportPropertyChanging("descripcion");
+                _descripcion = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("descripcion");
+                OndescripcionChanged();
+            }
+        }
+        private global::System.String _descripcion;
+        partial void OndescripcionChanging(global::System.String value);
+        partial void OndescripcionChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 tipoRecurso
+        {
+            get
+            {
+                return _tipoRecurso;
+            }
+            set
+            {
+                OntipoRecursoChanging(value);
+                ReportPropertyChanging("tipoRecurso");
+                _tipoRecurso = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("tipoRecurso");
+                OntipoRecursoChanged();
+            }
+        }
+        private global::System.Int32 _tipoRecurso;
+        partial void OntipoRecursoChanging(global::System.Int32 value);
+        partial void OntipoRecursoChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String caracteristicas
+        {
+            get
+            {
+                return _caracteristicas;
+            }
+            set
+            {
+                OncaracteristicasChanging(value);
+                ReportPropertyChanging("caracteristicas");
+                _caracteristicas = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("caracteristicas");
+                OncaracteristicasChanged();
+            }
+        }
+        private global::System.String _caracteristicas;
+        partial void OncaracteristicasChanging(global::System.String value);
+        partial void OncaracteristicasChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean estado
+        {
+            get
+            {
+                return _estado;
+            }
+            set
+            {
+                OnestadoChanging(value);
+                ReportPropertyChanging("estado");
+                _estado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("estado");
+                OnestadoChanged();
+            }
+        }
+        private global::System.Boolean _estado;
+        partial void OnestadoChanging(global::System.Boolean value);
+        partial void OnestadoChanged();
+
+        #endregion
+
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BD_RESERVASModel", "FK_Recurso_RecursoTipo", "RecursoTipo")]
+        public RecursoTipo RecursoTipo
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RecursoTipo>("BD_RESERVASModel.FK_Recurso_RecursoTipo", "RecursoTipo").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RecursoTipo>("BD_RESERVASModel.FK_Recurso_RecursoTipo", "RecursoTipo").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<RecursoTipo> RecursoTipoReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<RecursoTipo>("BD_RESERVASModel.FK_Recurso_RecursoTipo", "RecursoTipo");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<RecursoTipo>("BD_RESERVASModel.FK_Recurso_RecursoTipo", "RecursoTipo", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
     [EdmEntityTypeAttribute(NamespaceName="BD_RESERVASModel", Name="RecursoTipo")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
@@ -826,6 +1078,28 @@ namespace ReservasUPN.BE.Modelos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<HoraTipo>("BD_RESERVASModel.FK_RecursoTipo_HoraTipo", "HoraTipo", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BD_RESERVASModel", "FK_Recurso_RecursoTipo", "Recurso")]
+        public EntityCollection<Recurso> Recurso
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Recurso>("BD_RESERVASModel.FK_Recurso_RecursoTipo", "Recurso");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Recurso>("BD_RESERVASModel.FK_Recurso_RecursoTipo", "Recurso", value);
                 }
             }
         }
