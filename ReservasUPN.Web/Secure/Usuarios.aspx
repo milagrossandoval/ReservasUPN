@@ -37,7 +37,7 @@
                         <MasterTableView DataSourceID="ObjectDataSource1" AutoGenerateColumns="False" CommandItemDisplay="Top" InsertItemPageIndexAction="ShowItemOnCurrentPage" DataKeyNames="id,codigo" OverrideDataSourceControlSorting ="true" >
                             <CommandItemSettings AddNewRecordText="Agregar" ShowRefreshButton="false" ShowExportToExcelButton="true" ExportToExcelText="Exportar a Excel" />
                              <Columns>
-                                <telerik:GridEditCommandColumn EditText="Editar" >
+                                <telerik:GridEditCommandColumn ButtonType="ImageButton" EditImageUrl="../assets/images/edit.png">
                                     <HeaderStyle Width="10%" />
                                 </telerik:GridEditCommandColumn>
                                 <telerik:GridBoundColumn DataField="codigo" HeaderText="Código"
@@ -111,7 +111,7 @@
                                 </telerik:GridCheckBoxColumn>
                             </Columns>
                             <EditFormSettings >
-                                <EditColumn  UpdateText="Actualizar" CancelText="Cancelar" InsertText="Guardar" />
+                                <EditColumn ButtonType="ImageButton" UpdateImageUrl="../assets/images/ok.png" UpdateText="Aceptar" CancelImageUrl="../assets/images/cancel.png" CancelText="Cancelar" InsertImageUrl="../assets/images/ok.png" InsertText="Aceptar" />
                             </EditFormSettings>
                             <NoRecordsTemplate>
                                 No hay datos para mostrar

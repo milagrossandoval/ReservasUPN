@@ -44,6 +44,7 @@
     <Compile Include="IRecursoDAO.cs" />
     <Compile Include="IRecursoTipoDAO.cs" />
     <Compile Include="IRecursoTipoHoraDAO.cs" />
+    <Compile Include="ISancionDAO.cs" />
     <Compile Include="ISedeDAO.cs" />
     <Compile Include="IUsuarioDAO.cs" />
     <Compile Include="IUsuarioTipoDAO.cs" />

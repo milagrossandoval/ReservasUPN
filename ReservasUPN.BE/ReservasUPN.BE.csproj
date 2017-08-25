@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\Recurso.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Adapters\RecursoTipoHora.cs" />
     <Compile Include="Adapters\Usuario.cs" />
     <Compile Include="Enumeraciones\TipoUsuario.cs" />
@@ -52,9 +55,9 @@
       <DependentUpon>BDINTRANET.edmx</DependentUpon>
     </Compile>
     <Compile Include="Modelos\BDRESERVAS.Designer.cs">
-      <DependentUpon>BDRESERVAS.edmx</DependentUpon>
-      <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BDRESERVAS.edmx</DependentUpon>
     </Compile>
     <Compile Include="Modelos\BDUPNSAC.Designer.cs">
       <DependentUpon>BDUPNSAC.edmx</DependentUpon>
@@ -69,13 +72,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BDINTRANET.Designer.cs</LastGenOutput>
     </EntityDeploy>
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
     <EntityDeploy Include="Modelos\BDRESERVAS.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BDRESERVAS.Designer.cs</LastGenOutput>
     </EntityDeploy>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
     <EntityDeploy Include="Modelos\BDUPNSAC.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>BDUPNSAC.Designer.cs</LastGenOutput>

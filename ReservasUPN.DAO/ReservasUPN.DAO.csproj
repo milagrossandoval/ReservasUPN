@@ -48,6 +48,7 @@
     <Compile Include="RecursoDAO.cs" />
     <Compile Include="RecursoTipoDAO.cs" />
     <Compile Include="RecursoTipoHoraDAO.cs" />
+    <Compile Include="SancionDAO.cs" />
     <Compile Include="SedeDAO.cs" />
     <Compile Include="UsuarioDAO.cs" />
     <Compile Include="UsuarioTipoDAO.cs" />

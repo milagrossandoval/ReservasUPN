@@ -36,9 +36,6 @@
                                 <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-user">
-                                <li><a href="#"><i class="fa fa-user fa-fw"></i> Perfil </a></li>
-                                <li><a href="#"><i class="fa fa-gear fa-fw"></i> Configuración </a></li>
-                                <li class="divider"></li>
                                 <li><a href="login.html"><i class="fa fa-sign-out fa-fw"></i> Cerrar Sesión </a></li>
                             </ul>
                         </li>
@@ -61,13 +58,13 @@
                                     <ul class="nav nav-second-level">
                                         <li><a href="Recursos.aspx">Gestión Recursos</a></li>
                                         <li><a href="RecursosTipo.aspx">Gestión Tipos de Recurso</a></li>
-                                        <li><a href="UsoRecursos.aspx">Disponibilidad Recursos</a></li>
+                                        <li><a href="RecursoTipoHora.aspx">Disponibilidad Recursos</a></li>
                                     </ul>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-users fa-fw"></i> Usuarios <span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
-                                        <li><a href="UsuariosTipo.aspx">Gestión Tipo de Usuarios</a></li>
+                                        <li><a href="UsuariosTipo.aspx">Gestión Tipos de Usuario</a></li>
                                         <li><a href="Usuarios.aspx">Gestión Usuarios</a></li>
                                         <li><a href="Sanciones.aspx">Sanciones</a></li>
                                     </ul>

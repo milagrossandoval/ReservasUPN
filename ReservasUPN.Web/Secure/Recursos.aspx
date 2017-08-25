@@ -37,11 +37,11 @@
                         </ClientSettings>
                         <GroupingSettings CaseSensitive="false" />
                         <MasterTableView DataSourceID="ObjectDataSource1" AutoGenerateColumns="False" CommandItemDisplay="Top"
-                            InsertItemPageIndexAction="ShowItemOnCurrentPage" DataKeyNames="id,codigo" OverrideDataSourceControlSorting="true">
+                            InsertItemPageIndexAction="ShowItemOnCurrentPage" DataKeyNames="id" OverrideDataSourceControlSorting="true">
                             <CommandItemSettings AddNewRecordText="Agregar" ShowRefreshButton="false" ShowExportToExcelButton="true"
                                 ExportToExcelText="Exportar a Excel" />
                             <Columns>
-                                <telerik:GridEditCommandColumn EditText="Editar">
+                                <telerik:GridEditCommandColumn ButtonType="ImageButton" EditImageUrl="../assets/images/edit.png">
                                     <HeaderStyle Width="10%" />
                                 </telerik:GridEditCommandColumn>
                                 <telerik:GridBoundColumn DataField="codigo" ShowFilterIcon="false" ShowSortIcon="true"
@@ -51,11 +51,11 @@
                                 <telerik:GridBoundColumn DataField="descripcion" ShowFilterIcon="false" ShowSortIcon="true"
                                     HeaderText="Descripción" SortExpression="descripcion" UniqueName="descripcion">
                                 </telerik:GridBoundColumn>
-                                <telerik:GridTemplateColumn DataField="Tipo.descripcion" HeaderText="Tipo"
-                                    ShowFilterIcon="false" ShowSortIcon="true" SortExpression="Tipo.descripcion" UniqueName="tipoRecurso"
+                                <telerik:GridTemplateColumn DataField="NombreTipoRecurso" HeaderText="Tipo"
+                                    ShowFilterIcon="false" ShowSortIcon="true" SortExpression="NombreTipoRecurso" UniqueName="NombreTipoRecurso"
                                     CurrentFilterFunction="Contains" AutoPostBackOnFilter="true">
                                     <ItemTemplate>
-                                        <%# Eval("Tipo.descripcion")%>
+                                        <%# Eval("NombreTipoRecurso")%>
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:HiddenField ID="HfTipo" runat="server" Value='<%# Eval("tipoRecurso") %>' />
@@ -104,7 +104,7 @@
                                 </telerik:GridCheckBoxColumn>
                             </Columns>
                             <EditFormSettings>
-                                <EditColumn UpdateText="Actualizar" CancelText="Cancelar" InsertText="Guardar" />
+                                <EditColumn ButtonType="ImageButton" UpdateImageUrl="../assets/images/ok.png" UpdateText="Aceptar" CancelImageUrl="../assets/images/cancel.png" CancelText="Cancelar" InsertImageUrl="../assets/images/ok.png" InsertText="Aceptar" />
                             </EditFormSettings>
                             <NoRecordsTemplate>
                                 No hay datos para mostrar

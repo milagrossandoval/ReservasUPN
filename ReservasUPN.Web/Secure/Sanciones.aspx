@@ -29,14 +29,6 @@
                             <telerik:RadDatePicker ID="txtRangoFecha" runat="server">
                             </telerik:RadDatePicker>
                         </td>
-                        <td>
-                            <telerik:RadButton ID="btnToggle" runat="server" ToggleType="CheckBox" ButtonType="LinkButton">
-                                <ToggleStates>
-                                    <telerik:RadButtonToggleState Text="Solo Activos" PrimaryIconCssClass="rbToggleCheckboxChecked" />
-                                    <telerik:RadButtonToggleState Text="UnChecked" PrimaryIconCssClass="rbToggleCheckbox" />
-                                </ToggleStates>
-                            </telerik:RadButton>
-                        </td>
                     </tr>
                 </table>
                 </br> </br>
@@ -44,5 +36,57 @@
                 </telerik:RadButton>
             </div>
         </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <telerik:RadGrid ID="RgSanciones" runat="server" DataSourceID="ObjectDataSource1"
+                        AllowFilteringByColumn="True" AllowPaging="True" AllowSorting="True" GridLines="None"
+                        AutoGenerateColumns="False">
+                        <ExportSettings ExportOnlyData="true" FileName="Sanciones" IgnorePaging="true" OpenInNewWindow="true">
+                        </ExportSettings>
+                        <ClientSettings>
+                            <Selecting AllowRowSelect="True" />
+                            <Scrolling AllowScroll="True" UseStaticHeaders="True" />
+                        </ClientSettings>
+                        <GroupingSettings CaseSensitive="false" />
+                        <MasterTableView DataSourceID="ObjectDataSource1" AutoGenerateColumns="False" CommandItemDisplay="Top"
+                            InsertItemPageIndexAction="ShowItemOnCurrentPage" DataKeyNames="id,codigo" OverrideDataSourceControlSorting="true">
+                            <CommandItemSettings AddNewRecordText="Agregar" ShowRefreshButton="false" ShowExportToExcelButton="true"
+                                ExportToExcelText="Exportar a Excel" />
+                            <Columns>
+                                <telerik:GridEditCommandColumn ButtonType="ImageButton" EditImageUrl="../assets/images/edit.png">
+                                    <HeaderStyle Width="10%" />
+                                </telerik:GridEditCommandColumn>
+                                <telerik:GridBoundColumn DataField="usuario" DataType="System.Int32" HeaderText="Usuario"
+                                    SortExpression="usuario" UniqueName="usuario">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn DataField="motivo" HeaderText="Motivo" SortExpression="motivo"
+                                    UniqueName="motivo">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn DataField="fechainicio" DataType="System.DateTime" HeaderText="fechainicio"
+                                    SortExpression="fechainicio" UniqueName="fechainicio">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridBoundColumn DataField="fechafin" DataType="System.DateTime" HeaderText="fechafin"
+                                    SortExpression="fechafin" UniqueName="fechafin">
+                                </telerik:GridBoundColumn>
+                                <telerik:GridCheckBoxColumn DataField="estado" DataType="System.Boolean" HeaderText="Estado"
+                                    SortExpression="estado" UniqueName="estado">
+                                </telerik:GridCheckBoxColumn>
+                            </Columns>
+                            <EditFormSettings>
+                                <EditColumn ButtonType="ImageButton" UpdateImageUrl="../assets/images/ok.png" UpdateText="Aceptar"
+                                    CancelImageUrl="../assets/images/cancel.png" CancelText="Cancelar" InsertImageUrl="../assets/images/ok.png"
+                                    InsertText="Aceptar" />
+                            </EditFormSettings>
+                            <NoRecordsTemplate>
+                                No hay datos para mostrar
+                            </NoRecordsTemplate>
+                        </MasterTableView>
+                    </telerik:RadGrid>
+                </div>
+            </div>
+        </div>
     </div>
+    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="Listar"
+        TypeName="ReservasUPN.BL.SancionBL"></asp:ObjectDataSource>
 </asp:Content>

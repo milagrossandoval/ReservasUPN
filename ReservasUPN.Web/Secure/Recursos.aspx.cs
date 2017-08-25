@@ -9,12 +9,13 @@ using ReservasUPN.BL;
 using Telerik.Web.UI;
 using System.Collections;
 using ReservasUPN.BE.Adapters;
+using ReservasUPN.IBL;
 
 namespace ReservasUPN.Web.Secure
 {
     public partial class Recursos : PageAdapter
     {
-        private RecursoBL recursobl = new RecursoBL();
+        private IRecursoBL recursobl = new RecursoBL();
 
         protected void Page_Load(object sender, EventArgs e)
         {

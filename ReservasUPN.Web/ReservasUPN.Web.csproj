@@ -50,8 +50,7 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="Telerik.Web.Design, Version=2017.1.118.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Telerik.Web.Design">
       <HintPath>..\Lib\Telerik.Web.Design.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Web.UI">
@@ -67,6 +66,9 @@
     <Content Include="assets\css\styles.css" />
     <Content Include="assets\fonts\font-awesome.min.css" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\images\cancel.png" />
+    <Content Include="assets\images\edit.png" />
+    <Content Include="assets\images\ok.png" />
     <Content Include="assets\images\sort_asc.png" />
     <Content Include="assets\images\sort_asc_disabled.png" />
     <Content Include="assets\images\sort_both.png" />
@@ -108,6 +110,8 @@
     <Content Include="Secure\Recursos.aspx" />
     <Content Include="Secure\RecursosTipo.aspx" />
     <Content Include="Secure\RecursoTipoHora.aspx" />
+    <Content Include="Secure\Reportes.aspx" />
+    <Content Include="Secure\ReservasMultiples.aspx" />
     <Content Include="Secure\Sanciones.aspx" />
     <Content Include="Secure\Usuarios.aspx" />
     <Content Include="Secure\UsuariosTipo.aspx" />
@@ -181,6 +185,20 @@
     </Compile>
     <Compile Include="Secure\RecursoTipoHora.aspx.designer.cs">
       <DependentUpon>RecursoTipoHora.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Reportes.aspx.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Reportes.aspx.designer.cs">
+      <DependentUpon>Reportes.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\ReservasMultiples.aspx.cs">
+      <DependentUpon>ReservasMultiples.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\ReservasMultiples.aspx.designer.cs">
+      <DependentUpon>ReservasMultiples.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secure\Sanciones.aspx.cs">
       <DependentUpon>Sanciones.aspx</DependentUpon>

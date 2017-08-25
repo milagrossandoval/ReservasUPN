@@ -10,6 +10,7 @@
           <EntitySet Name="Recurso" EntityType="BD_RESERVASModel.Store.Recurso" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RecursoTipo" EntityType="BD_RESERVASModel.Store.RecursoTipo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RecursoTipoHora" EntityType="BD_RESERVASModel.Store.RecursoTipoHora" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Sancion" EntityType="BD_RESERVASModel.Store.Sancion" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Usuario" EntityType="BD_RESERVASModel.Store.Usuario" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UsuarioTipo" EntityType="BD_RESERVASModel.Store.UsuarioTipo" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Recurso_RecursoTipo" Association="BD_RESERVASModel.Store.FK_Recurso_RecursoTipo">
@@ -65,6 +66,17 @@
           <Property Name="recursoTipo" Type="int" Nullable="false" />
           <Property Name="usuarioTipo" Type="int" Nullable="false" />
           <Property Name="nroHoras" Type="int" />
+        </EntityType>
+        <EntityType Name="Sancion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="usuario" Type="int" />
+          <Property Name="motivo" Type="varchar" MaxLength="1000" />
+          <Property Name="fechainicio" Type="date" Nullable="false" />
+          <Property Name="fechafin" Type="date" />
+          <Property Name="estado" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -136,77 +148,38 @@
     <edmx:ConceptualModels>
       <Schema Namespace="BD_RESERVASModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="BD_RESERVASEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="UsuarioTipo" EntityType="BD_RESERVASModel.UsuarioTipo" />
-          <FunctionImport Name="PA_SELECT_USUARIOS_X_CODIGO" ReturnType="Collection(BD_RESERVASModel.PA_SELECT_USUARIOS_X_CODIGO_Result)">
-            <Parameter Name="P_CODIGO" Mode="In" Type="String" />
-          </FunctionImport>
-          <EntitySet Name="Usuario" EntityType="BD_RESERVASModel.Usuario" />
-          <AssociationSet Name="FK_Usuario_TipoUsuario" Association="BD_RESERVASModel.FK_Usuario_TipoUsuario">
-            <End Role="UsuarioTipo" EntitySet="UsuarioTipo" />
-            <End Role="Usuario" EntitySet="Usuario" />
-          </AssociationSet>
-          <EntitySet Name="RecursoTipo" EntityType="BD_RESERVASModel.RecursoTipo" />
-          <EntitySet Name="Recurso" EntityType="BD_RESERVASModel.Recurso" />
-          <AssociationSet Name="FK_Recurso_RecursoTipo" Association="BD_RESERVASModel.FK_Recurso_RecursoTipo">
-            <End Role="RecursoTipo" EntitySet="RecursoTipo" />
-            <End Role="Recurso" EntitySet="Recurso" />
-          </AssociationSet>
-          <EntitySet Name="RecursoTipoHora" EntityType="BD_RESERVASModel.RecursoTipoHora" />
-          <AssociationSet Name="FK_RecursoTipoUsuarioTipo_RecursoTipo" Association="BD_RESERVASModel.FK_RecursoTipoUsuarioTipo_RecursoTipo">
-            <End Role="RecursoTipo" EntitySet="RecursoTipo" />
-            <End Role="RecursoTipoHora" EntitySet="RecursoTipoHora" />
-          </AssociationSet>
           <EntitySet Name="HoraTipo" EntityType="BD_RESERVASModel.HoraTipo" />
+          <EntitySet Name="RecursoTipo" EntityType="BD_RESERVASModel.RecursoTipo" />
+          <EntitySet Name="RecursoTipoHora" EntityType="BD_RESERVASModel.RecursoTipoHora" />
+          <EntitySet Name="Usuario" EntityType="BD_RESERVASModel.Usuario" />
+          <EntitySet Name="UsuarioTipo" EntityType="BD_RESERVASModel.UsuarioTipo" />
           <AssociationSet Name="FK_RecursoTipo_HoraTipo" Association="BD_RESERVASModel.FK_RecursoTipo_HoraTipo">
             <End Role="HoraTipo" EntitySet="HoraTipo" />
             <End Role="RecursoTipo" EntitySet="RecursoTipo" />
           </AssociationSet>
+          <AssociationSet Name="FK_RecursoTipoUsuarioTipo_RecursoTipo" Association="BD_RESERVASModel.FK_RecursoTipoUsuarioTipo_RecursoTipo">
+            <End Role="RecursoTipo" EntitySet="RecursoTipo" />
+            <End Role="RecursoTipoHora" EntitySet="RecursoTipoHora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Usuario_TipoUsuario" Association="BD_RESERVASModel.FK_Usuario_TipoUsuario">
+            <End Role="UsuarioTipo" EntitySet="UsuarioTipo" />
+            <End Role="Usuario" EntitySet="Usuario" />
+          </AssociationSet>
           <EntitySet Name="Recurso" EntityType="BD_RESERVASModel.Recurso" />
           <AssociationSet Name="FK_Recurso_RecursoTipo" Association="BD_RESERVASModel.FK_Recurso_RecursoTipo">
             <End Role="RecursoTipo" EntitySet="RecursoTipo" />
             <End Role="Recurso" EntitySet="Recurso" />
           </AssociationSet>
+          <EntitySet Name="Sancion" EntityType="BD_RESERVASModel.Sancion" />
         </EntityContainer>
-        <EntityType Name="UsuarioTipo">
+        <EntityType Name="HoraTipo">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-          <NavigationProperty Name="Usuario" Relationship="BD_RESERVASModel.FK_Usuario_TipoUsuario" FromRole="UsuarioTipo" ToRole="Usuario" />
-        </EntityType>
-        <ComplexType Name="PA_SELECT_USUARIOS_X_CODIGO_Result">
           <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="String" Name="codigo" Nullable="false" MaxLength="10" />
-          <Property Type="String" Name="nombreCompleto" Nullable="true" MaxLength="250" />
-          <Property Type="String" Name="codigoSede" Nullable="true" MaxLength="10" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-          <Property Type="Int32" Name="tipoUsuario" Nullable="false" />
-          <Property Type="String" Name="nombreTipo" Nullable="false" MaxLength="50" />
-        </ComplexType>
-        <EntityType Name="Usuario">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="tipoUsuario" Nullable="false" />
-          <Property Type="String" Name="codigo" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-          <NavigationProperty Name="UsuarioTipo" Relationship="BD_RESERVASModel.FK_Usuario_TipoUsuario" FromRole="Usuario" ToRole="UsuarioTipo" />
+          <Property Type="Boolean" Name="estado" />
+          <NavigationProperty Name="RecursoTipo" Relationship="BD_RESERVASModel.FK_RecursoTipo_HoraTipo" FromRole="HoraTipo" ToRole="RecursoTipo" />
         </EntityType>
-        <Association Name="FK_Usuario_TipoUsuario">
-          <End Type="BD_RESERVASModel.UsuarioTipo" Role="UsuarioTipo" Multiplicity="1" />
-          <End Type="BD_RESERVASModel.Usuario" Role="Usuario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="UsuarioTipo">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Usuario">
-              <PropertyRef Name="tipoUsuario" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="RecursoTipo">
           <Key>
             <PropertyRef Name="id" />
@@ -216,35 +189,10 @@
           <Property Type="String" Name="descripcion" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="tipoHora" Nullable="false" />
           <Property Type="Boolean" Name="estado" Nullable="false" />
-          <NavigationProperty Name="Recurso" Relationship="BD_RESERVASModel.FK_Recurso_RecursoTipo" FromRole="RecursoTipo" ToRole="Recurso" />
-          <NavigationProperty Name="RecursoTipoHora" Relationship="BD_RESERVASModel.FK_RecursoTipoUsuarioTipo_RecursoTipo" FromRole="RecursoTipo" ToRole="RecursoTipoHora" />
           <NavigationProperty Name="HoraTipo" Relationship="BD_RESERVASModel.FK_RecursoTipo_HoraTipo" FromRole="RecursoTipo" ToRole="HoraTipo" />
+          <NavigationProperty Name="RecursoTipoHora" Relationship="BD_RESERVASModel.FK_RecursoTipoUsuarioTipo_RecursoTipo" FromRole="RecursoTipo" ToRole="RecursoTipoHora" />
           <NavigationProperty Name="Recurso" Relationship="BD_RESERVASModel.FK_Recurso_RecursoTipo" FromRole="RecursoTipo" ToRole="Recurso" />
         </EntityType>
-        <EntityType Name="Recurso">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="String" Name="codigo" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="descripcion" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Type="Int32" Name="tipoRecurso" Nullable="false" />
-          <Property Type="String" Name="caracteristicas" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="estado" Nullable="false" />
-          <NavigationProperty Name="RecursoTipo" Relationship="BD_RESERVASModel.FK_Recurso_RecursoTipo" FromRole="Recurso" ToRole="RecursoTipo" />
-        </EntityType>
-        <Association Name="FK_Recurso_RecursoTipo">
-          <End Type="BD_RESERVASModel.RecursoTipo" Role="RecursoTipo" Multiplicity="1" />
-          <End Type="BD_RESERVASModel.Recurso" Role="Recurso" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RecursoTipo">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="Recurso">
-              <PropertyRef Name="tipoRecurso" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityType Name="RecursoTipoHora">
           <Key>
             <PropertyRef Name="recursoTipo" />
@@ -255,25 +203,24 @@
           <Property Type="Int32" Name="nroHoras" />
           <NavigationProperty Name="RecursoTipo1" Relationship="BD_RESERVASModel.FK_RecursoTipoUsuarioTipo_RecursoTipo" FromRole="RecursoTipoHora" ToRole="RecursoTipo" />
         </EntityType>
-        <Association Name="FK_RecursoTipoUsuarioTipo_RecursoTipo">
-          <End Type="BD_RESERVASModel.RecursoTipo" Role="RecursoTipo" Multiplicity="1" />
-          <End Type="BD_RESERVASModel.RecursoTipoHora" Role="RecursoTipoHora" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="RecursoTipo">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="RecursoTipoHora">
-              <PropertyRef Name="recursoTipo" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityType Name="HoraTipo">
+        <EntityType Name="Usuario">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Type="Int32" Name="id" Nullable="false" />
-          <Property Type="Boolean" Name="estado" />
-          <NavigationProperty Name="RecursoTipo" Relationship="BD_RESERVASModel.FK_RecursoTipo_HoraTipo" FromRole="HoraTipo" ToRole="RecursoTipo" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="tipoUsuario" Nullable="false" />
+          <Property Type="String" Name="codigo" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <NavigationProperty Name="UsuarioTipo" Relationship="BD_RESERVASModel.FK_Usuario_TipoUsuario" FromRole="Usuario" ToRole="UsuarioTipo" />
+        </EntityType>
+        <EntityType Name="UsuarioTipo">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <NavigationProperty Name="Usuario" Relationship="BD_RESERVASModel.FK_Usuario_TipoUsuario" FromRole="UsuarioTipo" ToRole="Usuario" />
         </EntityType>
         <Association Name="FK_RecursoTipo_HoraTipo">
           <End Type="BD_RESERVASModel.HoraTipo" Role="HoraTipo" Multiplicity="1" />
@@ -287,6 +234,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_RecursoTipoUsuarioTipo_RecursoTipo">
+          <End Type="BD_RESERVASModel.RecursoTipo" Role="RecursoTipo" Multiplicity="1" />
+          <End Type="BD_RESERVASModel.RecursoTipoHora" Role="RecursoTipoHora" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RecursoTipo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="RecursoTipoHora">
+              <PropertyRef Name="recursoTipo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Usuario_TipoUsuario">
+          <End Type="BD_RESERVASModel.UsuarioTipo" Role="UsuarioTipo" Multiplicity="1" />
+          <End Type="BD_RESERVASModel.Usuario" Role="Usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsuarioTipo">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Usuario">
+              <PropertyRef Name="tipoUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="Recurso">
           <Key>
             <PropertyRef Name="id" />
@@ -311,27 +282,27 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="Sancion">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="usuario" />
+          <Property Type="String" Name="motivo" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="fechainicio" Nullable="false" />
+          <Property Type="DateTime" Name="fechafin" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+        </EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="BD_RESERVASModelStoreContainer" CdmEntityContainer="BD_RESERVASEntities">
-          <EntitySetMapping Name="UsuarioTipo">
-            <EntityTypeMapping TypeName="BD_RESERVASModel.UsuarioTipo">
-              <MappingFragment StoreEntitySet="UsuarioTipo">
+          <EntitySetMapping Name="HoraTipo">
+            <EntityTypeMapping TypeName="BD_RESERVASModel.HoraTipo">
+              <MappingFragment StoreEntitySet="HoraTipo">
                 <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Usuario">
-            <EntityTypeMapping TypeName="BD_RESERVASModel.Usuario">
-              <MappingFragment StoreEntitySet="Usuario">
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-                <ScalarProperty Name="tipoUsuario" ColumnName="tipoUsuario" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -347,18 +318,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Recurso">
-            <EntityTypeMapping TypeName="BD_RESERVASModel.Recurso">
-              <MappingFragment StoreEntitySet="Recurso">
-                <ScalarProperty Name="estado" ColumnName="estado" />
-                <ScalarProperty Name="caracteristicas" ColumnName="caracteristicas" />
-                <ScalarProperty Name="tipoRecurso" ColumnName="tipoRecurso" />
-                <ScalarProperty Name="descripcion" ColumnName="descripcion" />
-                <ScalarProperty Name="codigo" ColumnName="codigo" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="RecursoTipoHora">
             <EntityTypeMapping TypeName="BD_RESERVASModel.RecursoTipoHora">
               <MappingFragment StoreEntitySet="RecursoTipoHora">
@@ -368,10 +327,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="HoraTipo">
-            <EntityTypeMapping TypeName="BD_RESERVASModel.HoraTipo">
-              <MappingFragment StoreEntitySet="HoraTipo">
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="BD_RESERVASModel.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
                 <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="tipoUsuario" ColumnName="tipoUsuario" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsuarioTipo">
+            <EntityTypeMapping TypeName="BD_RESERVASModel.UsuarioTipo">
+              <MappingFragment StoreEntitySet="UsuarioTipo">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -384,6 +354,18 @@
                 <ScalarProperty Name="tipoRecurso" ColumnName="tipoRecurso" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="codigo" ColumnName="codigo" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sancion">
+            <EntityTypeMapping TypeName="BD_RESERVASModel.Sancion">
+              <MappingFragment StoreEntitySet="Sancion">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="fechafin" ColumnName="fechafin" />
+                <ScalarProperty Name="fechainicio" ColumnName="fechainicio" />
+                <ScalarProperty Name="motivo" ColumnName="motivo" />
+                <ScalarProperty Name="usuario" ColumnName="usuario" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -408,34 +390,32 @@
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="BDRESERVAS">
-        <EntityTypeShape EntityType="BD_RESERVASModel.UsuarioTipo" Width="1.5" PointX="0.5" PointY="7" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="BD_RESERVASModel.Usuario" Width="1.5" PointX="2.75" PointY="7" Height="1.9802864583333335" />
-        <AssociationConnector Association="BD_RESERVASModel.FK_Usuario_TipoUsuario" >
-          <ConnectorPoint PointX="2" PointY="7.8939925130208337" />
-          <ConnectorPoint PointX="2.75" PointY="7.8939925130208337" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="BD_RESERVASModel.RecursoTipo" Width="1.5" PointX="3.25" PointY="1.5" Height="2.3648893229166661" />
-        <EntityTypeShape EntityType="BD_RESERVASModel.Recurso" Width="1.5" PointX="1" PointY="3.625" Height="2.3648893229166648" />
-        <AssociationConnector Association="BD_RESERVASModel.FK_Recurso_RecursoTipo" >
-          <ConnectorPoint PointX="3.25" PointY="3.8410953776041663" />
-          <ConnectorPoint PointX="2.5" PointY="3.8410953776041663" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="BD_RESERVASModel.RecursoTipoHora" Width="1.5" PointX="5.5" PointY="1.875" Height="1.7879850260416674" />
-        <AssociationConnector Association="BD_RESERVASModel.FK_RecursoTipoUsuarioTipo_RecursoTipo" >
-          <ConnectorPoint PointX="4.75" PointY="2.7689925130208337" />
-          <ConnectorPoint PointX="5.5" PointY="2.7689925130208337" />
-        </AssociationConnector>
-        <EntityTypeShape EntityType="BD_RESERVASModel.HoraTipo" Width="1.5" PointX="1" PointY="1" Height="1.5956835937499996" />
+      <Diagram Name="BDRESERVAS" ZoomLevel="71">
+        <EntityTypeShape EntityType="BD_RESERVASModel.HoraTipo" Width="1.5" PointX="0.75" PointY="1.375" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="BD_RESERVASModel.RecursoTipo" Width="1.5" PointX="3" PointY="1" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="BD_RESERVASModel.RecursoTipoHora" Width="1.5" PointX="5.25" PointY="1.25" Height="1.787985026041671" />
+        <EntityTypeShape EntityType="BD_RESERVASModel.Usuario" Width="1.5" PointX="3" PointY="4.875" Height="1.9802864583333317" />
+        <EntityTypeShape EntityType="BD_RESERVASModel.UsuarioTipo" Width="1.5" PointX="0.75" PointY="5" Height="1.7879850260416674" />
         <AssociationConnector Association="BD_RESERVASModel.FK_RecursoTipo_HoraTipo" >
-          <ConnectorPoint PointX="2.5" PointY="2.047841796875" />
-          <ConnectorPoint PointX="3.25" PointY="2.047841796875" />
+          <ConnectorPoint PointX="2.25" PointY="2.172841796875" />
+          <ConnectorPoint PointX="3" PointY="2.172841796875" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="BD_RESERVASModel.Recurso" Width="1.5" PointX="5.5" PointY="2.75" Height="2.3648893229166665" />
+        <AssociationConnector Association="BD_RESERVASModel.FK_RecursoTipoUsuarioTipo_RecursoTipo" >
+          <ConnectorPoint PointX="4.5" PointY="2.1439925130208355" />
+          <ConnectorPoint PointX="5.25" PointY="2.1439925130208355" />
+        </AssociationConnector>
+        <AssociationConnector Association="BD_RESERVASModel.FK_Usuario_TipoUsuario" >
+          <ConnectorPoint PointX="2.25" PointY="5.8939925130208337" />
+          <ConnectorPoint PointX="3" PointY="5.8939925130208337" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="BD_RESERVASModel.Recurso" Width="1.5" PointX="5.25" PointY="4.125" Height="2.3648893229166674" />
         <AssociationConnector Association="BD_RESERVASModel.FK_Recurso_RecursoTipo" >
-          <ConnectorPoint PointX="2.25" PointY="3.0115364583333331" />
-          <ConnectorPoint PointX="5.5" PointY="3.0115364583333331" />
+          <ConnectorPoint PointX="4.5" PointY="3.5571907552083331" />
+          <ConnectorPoint PointX="4.875" PointY="3.9321907552083335" />
+          <ConnectorPoint PointX="4.875" PointY="3.75" />
+          <ConnectorPoint PointX="5.25" PointY="4.125" />
         </AssociationConnector>
+        <EntityTypeShape EntityType="BD_RESERVASModel.Sancion" Width="1.5" PointX="7.375" PointY="0.75" Height="2.1725878906249996" />
       </Diagram>
     </Diagrams>
   </Designer>
