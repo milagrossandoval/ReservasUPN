@@ -69,7 +69,6 @@
                                         DataSourceID="OdsTipo" DataValueField="id" DataTextField="nombre" OnDataBound="CmbTipos_OnDataBound" />
                                     </EditItemTemplate>
                                  </telerik:GridTemplateColumn>
-
                                 <telerik:GridCheckBoxColumn DataField="estado" DataType="System.Boolean" HeaderText="Estado"
                                     SortExpression="estado" UniqueName="estado">
                                     <HeaderStyle Width="20%" />
