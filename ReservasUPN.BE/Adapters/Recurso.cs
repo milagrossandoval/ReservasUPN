@@ -10,5 +10,9 @@ namespace ReservasUPN.BE.Adapters
     public class Recurso : BE.Modelos.Recurso
     {
         public string NombreTipoRecurso { get; set; }
+
+        public static readonly string TIPO_AULA = "Aula";
+        public static readonly int TIPO_HORA_AULA = 50;
+
     }
 }

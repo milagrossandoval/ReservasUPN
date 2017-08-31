@@ -65,5 +65,17 @@ namespace ReservasUPN.DAO
             }
         }
 
+        public List<RecursoTipo> ListarActivos(int idSede)
+        {
+            List<RecursoTipo> rpta;
+            using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
+            {
+                rpta = (from x in reposit.RecursoTipo
+                        where x.sede == idSede && x.estado
+                        select x).ToList();
+            }
+            return rpta;
+        }
+        
     }
 }

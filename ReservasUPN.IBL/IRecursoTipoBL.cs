@@ -11,5 +11,8 @@ namespace ReservasUPN.IBL
         List<RecursoTipo> Listar(int idSede);
         bool Actualizar(RecursoTipo obj);
         bool Grabar(RecursoTipo obj);
+        List<BE.Modelos.RecursoTipo> ListarActivos(int idSede);
+        List<BE.Modelos.RecursoTipo> ListarTodos(string codSede);
+        List<BE.Modelos.RecursoTipo> ListarTodos(int idSede);
     }
 }

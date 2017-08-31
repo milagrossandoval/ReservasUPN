@@ -67,6 +67,7 @@
     <Content Include="assets\fonts\font-awesome.min.css" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\images\cancel.png" />
+    <Content Include="assets\images\delete.png" />
     <Content Include="assets\images\edit.png" />
     <Content Include="assets\images\ok.png" />
     <Content Include="assets\images\sort_asc.png" />

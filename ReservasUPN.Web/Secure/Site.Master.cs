@@ -15,9 +15,12 @@ namespace ReservasUPN.Web.Secure
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            usuario = (BE.Adapters.Usuario)Session["usuario"];
-            lblUsuario.Text = usuario.NombreCompleto;
-            lblTipo.Text = " - [" + usuario.Tipo.nombre + "]";
+            if (!Page.IsPostBack)
+            {
+                usuario = (BE.Adapters.Usuario)Session["usuario"];
+                lblUsuario.Text = usuario.NombreCompleto;
+                lblTipo.Text = " - [" + usuario.Tipo.nombre + "]";
+            }
         }
     }
 }

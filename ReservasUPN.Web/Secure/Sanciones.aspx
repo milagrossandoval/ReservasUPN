@@ -12,28 +12,18 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-12">
-                <table width="100%">
-                    <tr>
-                        <td>
-                            Buscar:
-                        </td>
-                        <td>
-                            <telerik:RadTextBox ID="txtBuscar" runat="server">
-                            </telerik:RadTextBox>
-                        </td>
-                        <td>
-                            Rango Fecha:
-                        </td>
-                        <td>
-                            <telerik:RadDatePicker ID="txtRangoFecha" runat="server">
-                            </telerik:RadDatePicker>
-                        </td>
-                    </tr>
-                </table>
-
-                <telerik:RadButton ID="btnNuevo" runat="server" Text="Guardar" RenderMode="Lightweight">
-                </telerik:RadButton>
+            <div class="col-lg-2">
+                <h5>Sede</h5>
+            </div>
+            <div class="col-lg-5">
+                <telerik:RadComboBox ID="CmbSedes" runat="server" AutoPostBack="true" DataTextField="descripcion"
+                    Width="300" DataValueField="nombre" />
+            </div>
+            <div class="col-lg-2">
+                <h5>Inactivos</h5>
+            </div>
+            <div class="col-lg-3">
+                <asp:CheckBox runat="server" AutoPostBack="true" ID="ChkInactivos" Text="Mostrar" />
             </div>
         </div>
         <div class="row">
@@ -41,12 +31,15 @@
                 <div class="panel panel-default">
                     <telerik:RadGrid ID="RgSanciones" runat="server" DataSourceID="ObjectDataSource1"
                         AllowFilteringByColumn="True" AllowPaging="True" AllowSorting="True" GridLines="None"
-                        AutoGenerateColumns="False" OnInsertCommand="RgSanciones_InsertCommand" 
-                        onupdatecommand="RgSanciones_UpdateCommand">
+                        AutoGenerateColumns="False" 
+                        OnInsertCommand="RgSanciones_InsertCommand" 
+                        onupdatecommand="RgSanciones_UpdateCommand"
+                        OnDeleteCommand="RgSanciones_DeleteCommand" 
+                        onitemcommand="RgSanciones_ItemCommand" 
+                        onitemdatabound="RgSanciones_ItemDataBound" >
                         <ExportSettings ExportOnlyData="true" FileName="Sanciones" IgnorePaging="true" OpenInNewWindow="true">
                         </ExportSettings>
                         <ClientSettings>
-                            <Selecting AllowRowSelect="True" />
                             <Scrolling AllowScroll="True" UseStaticHeaders="True" />
                         </ClientSettings>
                         <GroupingSettings CaseSensitive="false" />
@@ -56,80 +49,58 @@
                                 ExportToExcelText="Exportar a Excel" />
                             <Columns>
                                 <telerik:GridEditCommandColumn ButtonType="ImageButton" EditImageUrl="../assets/images/edit.png">
-                                    <HeaderStyle Width="10%" />
+                                    <HeaderStyle Width="4%" />
                                 </telerik:GridEditCommandColumn>
-                                <telerik:GridBoundColumn DataField="usuario" DataType="System.Int32" HeaderText="Usuario"
+                                <telerik:GridBoundColumn DataField="usuario" HeaderText="Usuario"
                                     ShowFilterIcon="false" ShowSortIcon="true" SortExpression="usuario" AutoPostBackOnFilter="true"
                                     UniqueName="usuario" CurrentFilterFunction="Contains">
+                                    <HeaderStyle Width="10%" />
                                 </telerik:GridBoundColumn>
-                                <telerik:GridBoundColumn DataField="motivo" HeaderText="Motivo" SortExpression="Motivo"
-                                    ShowFilterIcon="false" ShowSortIcon="true" UniqueName="motivo">
+                                <telerik:GridBoundColumn DataField="NombreUsuario" HeaderText="Nombre"
+                                    ShowFilterIcon="false" ShowSortIcon="true" SortExpression="NombreUsuario" AutoPostBackOnFilter="true"
+                                    UniqueName="NombreUsuario" CurrentFilterFunction="Contains" ReadOnly="true" >
+                                    <HeaderStyle Width="17%" />
                                 </telerik:GridBoundColumn>
-                                <telerik:GridTemplateColumn DataField="fechainicio" HeaderText="Fecha Inicio" UniqueName="fechainicio" 
-                                    SortExpression="fechaInicio" ShowFilterIcon="false" ShowSortIcon="true" AutoPostBackOnFilter="true">
-                                    <HeaderStyle Width="20%" />
-                                    <FilterTemplate>
-                                        <telerik:RadDatePicker ID="txtFechaInicio" runat="server">
-                                        </telerik:RadDatePicker>
-                                    </FilterTemplate>
+                                <telerik:GridBoundColumn DataField="motivo" HeaderText="Motivo" 
+                                    SortExpression="motivo" ShowFilterIcon="false" ShowSortIcon="true"  AutoPostBackOnFilter="true"
+                                    UniqueName="motivo" CurrentFilterFunction="Contains">
+                                    <HeaderStyle Width="17%" />
+                                </telerik:GridBoundColumn>
+
+                                <telerik:GridDateTimeColumn DataField="fechainicio" HeaderText="Fecha Inicio" DataFormatString="{0:dd/MM/yyyy}"
+	                                SortExpression="fechainicio" UniqueName="fechainicio" PickerType="DatePicker" 
+                                    ShowFilterIcon="false" ShowSortIcon="true" AutoPostBackOnFilter="true" >
+                                    <HeaderStyle Width="15%" />
+                                </telerik:GridDateTimeColumn>
+
+                                <telerik:GridDateTimeColumn DataField="fechafin" HeaderText="Fecha Inicio" DataFormatString="{0:dd/MM/yyyy}"
+	                                SortExpression="fechafin" UniqueName="fechafin" PickerType="DatePicker" 
+                                    ShowFilterIcon="false" ShowSortIcon="true" AutoPostBackOnFilter="true" >
+                                    <HeaderStyle Width="15%" />
+                                </telerik:GridDateTimeColumn>
+
+                                <telerik:GridTemplateColumn HeaderText="Tipos de Recurso" 
+                                ShowFilterIcon="false" ShowSortIcon="false" CurrentFilterFunction="NoFilter" Reorderable="false" >
+                                <HeaderStyle Width="18%" />
+                                <FilterTemplate></FilterTemplate>
                                     <ItemTemplate>
-                                        <%# Eval("fechainicio", "{0:dd/MM/yyyy}")%>
-                                    </ItemTemplate>
-                                    <EditItemTemplate>
-                                        <telerik:RadDatePicker ID="txtFechaInicio2" runat="server"  DbSelectedDate='<%# Eval("fechainicio") %>' DateInput-DateFormat="dd/MM/yyyy">
-                                        </telerik:RadDatePicker>
-                                    </EditItemTemplate>
-                                </telerik:GridTemplateColumn>
-                                <telerik:GridTemplateColumn DataField="fechafin" HeaderText="Fecha Fin" UniqueName="fechafin"
-                                    SortExpression="fechafin" ShowFilterIcon="false" ShowSortIcon="true" AutoPostBackOnFilter="true">
-                                    <HeaderStyle Width="20%" />
-                                    <FilterTemplate>
-                                        <telerik:RadDatePicker ID="txtFechaFin" runat="server">
-                                        </telerik:RadDatePicker>
-                                    </FilterTemplate>
-                                    <ItemTemplate>
-                                        <%# Eval("fechafin", "{0:dd/MM/yyyy}")%>
-                                    </ItemTemplate>
-                                    <EditItemTemplate>
-                                        <telerik:RadDatePicker ID="txtFechaFin2" runat="server" DbSelectedDate='<%# Eval("fechafin") %>' DateInput-DateFormat="dd/MM/yyyy">
-                                        </telerik:RadDatePicker>
-                                    </EditItemTemplate>
-                                </telerik:GridTemplateColumn>
-                                <telerik:GridCheckBoxColumn DataField="estado" DataType="System.Boolean" HeaderText="Estado"
-                                    SortExpression="estado" UniqueName="estado">
-                                    <HeaderStyle Width="20%" />
-                                    <FilterTemplate>
-                                        <telerik:RadComboBox ID="CmbEstado" runat="server" SelectedValue='<%# ((GridItem)Container).OwnerTableView.GetColumn("estado").CurrentFilterValue %>'
-                                            OnClientSelectedIndexChanged="CmbEstado_OnClientSelectedIndexChanged">
-                                            <Items>
-                                                <telerik:RadComboBoxItem Value="" Text="Todos" />
-                                                <telerik:RadComboBoxItem Value="true" Text="Activos" />
-                                                <telerik:RadComboBoxItem Value="false" Text="Inactivos" />
-                                            </Items>
+                                        <telerik:RadComboBox ID="CmbTipos" runat="server"  AccessibilityMode="false" Filter="None"
+                                        DataTextField="descripcion" DataValueField="id" MarkFirstMatch="true" >                                            
                                         </telerik:RadComboBox>
-                                        <telerik:RadScriptBlock ID="RadScriptBlock1" runat="server">
-                                            <script type="text/javascript">
-                                                function CmbEstado_OnClientSelectedIndexChanged(sender, eventArgs) {
-                                                    var valor = eventArgs._item.get_value();
-                                                    var tableView = $find("<%# ((GridItem)Container).OwnerTableView.ClientID %>");
-                                                    console.log(valor);
-                                                    console.log(valor == "" ? "NoFilter" : "EqualTo");
-                                                    switch (valor) {
-                                                        case "":
-                                                            tableView.filter("estado", "", "NoFilter");
-                                                            break;
-                                                        case "true":
-                                                            tableView.filter("estado", true, "EqualTo");
-                                                            break;
-                                                        case "false":
-                                                            tableView.filter("estado", false, "EqualTo");
-                                                            break;
-                                                    }
-                                                }
-                                            </script>
-                                        </telerik:RadScriptBlock>
-                                    </FilterTemplate>
-                                </telerik:GridCheckBoxColumn>
+                                    </ItemTemplate>
+                                    <EditItemTemplate>
+                                        <asp:HiddenField ID="HfIdSancion" runat="server" Value='<%# Eval("id") %>' />
+                                        <asp:CheckBoxList Width="100%" ID="ChblTiposRecurso" runat="server"
+                                        DataTextField="descripcion" DataValueField="id" OnDataBound="ChblTiposRecurso_DataBound"
+                                        RepeatDirection="Horizontal" RepeatColumns="4" DataSourceID="OdsTipos" >
+                                        </asp:CheckBoxList>
+                                    </EditItemTemplate>
+                                </telerik:GridTemplateColumn>
+
+                                 <telerik:GridButtonColumn ConfirmText="¿Seguro de Eliminar?" ConfirmDialogType="RadWindow"
+                                    ConfirmTitle="Eliminar" CommandName="Delete" ButtonType="ImageButton" ImageUrl="../assets/images/delete.png" >
+                                    <HeaderStyle Width="4%" />
+                                 </telerik:GridButtonColumn>
                             </Columns>
                             <EditFormSettings>
                                 <EditColumn ButtonType="ImageButton" UpdateImageUrl="../assets/images/ok.png" UpdateText="Aceptar"
@@ -146,7 +117,42 @@
         </div>
     </div>
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="Listar"
-        TypeName="ReservasUPN.BL.SancionBL"></asp:ObjectDataSource>
+        TypeName="ReservasUPN.BL.SancionBL">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="CmbSedes" Name="sede" 
+                PropertyName="SelectedValue" Type="String" />
+            <asp:ControlParameter ControlID="ChkInactivos" DefaultValue="false" 
+                Name="inactivos" PropertyName="Checked" Type="Boolean" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
+    <asp:ObjectDataSource ID="OdsTipos" runat="server" SelectMethod="ListarTodos"
+        TypeName="ReservasUPN.BL.RecursoTipoBL">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="CmbSedes" Name="codSede" 
+                PropertyName="SelectedValue" Type="String" />
+        </SelectParameters>
+    </asp:ObjectDataSource>
+
+    <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" DefaultLoadingPanelID="RadAjaxLoadingPanel1" >
+        <ClientEvents OnRequestStart="onRequestStart" />
+        <AjaxSettings>
+            <telerik:AjaxSetting AjaxControlID="RgSanciones" >
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RgSanciones" LoadingPanelID="RadAjaxLoadingPanel1" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="CmbSedes">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RgSanciones" LoadingPanelID="RadAjaxLoadingPanel1" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="ChkInactivos">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="RgSanciones" LoadingPanelID="RadAjaxLoadingPanel1" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+        </AjaxSettings>
+    </telerik:RadAjaxManager>
     <script type="text/javascript" language="javascript">
         function onRequestStart(sender, args) {
             if (args.get_eventTarget().indexOf("ExportToExcelButton") >= 0)

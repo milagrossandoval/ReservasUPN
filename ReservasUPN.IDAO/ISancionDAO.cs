@@ -7,8 +7,10 @@ namespace ReservasUPN.IDAO
 {
     public interface ISancionDAO
     {
-        bool Grabar(BE.Modelos.Sancion obj);
+        int Grabar(BE.Modelos.Sancion obj);
         bool Actualizar(BE.Modelos.Sancion obj);
-        List<BE.Modelos.Sancion> Listar();
+        List<BE.Adapters.Sancion> Listar(string sede);
+        List<BE.Adapters.Sancion> ListarActivos(string sede);
+        bool Eliminar(int id);        
     }
 }

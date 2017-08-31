@@ -7,8 +7,11 @@ namespace ReservasUPN.IBL
 {
     public interface ISancionBL
     {
-        bool Grabar(ReservasUPN.BE.Modelos.Sancion obj);
-        bool Actualizar(ReservasUPN.BE.Modelos.Sancion obj);
-        List<ReservasUPN.BE.Modelos.Sancion> Listar();        
+        bool Grabar(BE.Modelos.Sancion obj);
+        bool Actualizar(BE.Modelos.Sancion obj);
+        List<BE.Adapters.Sancion> Listar(string sede, bool inactivos);
+        bool Eliminar(int id);
+        List<BE.Modelos.SancionDetalle> ListarDetalle(int idsancion);
+        List<BE.Modelos.RecursoTipo> ListarDetalleRecursoTipo(int idsancion);
     }
 }

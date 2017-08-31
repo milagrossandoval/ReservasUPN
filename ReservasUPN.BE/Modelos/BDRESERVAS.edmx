@@ -11,6 +11,7 @@
           <EntitySet Name="RecursoTipo" EntityType="BD_RESERVASModel.Store.RecursoTipo" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="RecursoTipoHora" EntityType="BD_RESERVASModel.Store.RecursoTipoHora" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Sancion" EntityType="BD_RESERVASModel.Store.Sancion" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SancionDetalle" EntityType="BD_RESERVASModel.Store.SancionDetalle" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Usuario" EntityType="BD_RESERVASModel.Store.Usuario" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UsuarioTipo" EntityType="BD_RESERVASModel.Store.UsuarioTipo" store:Type="Tables" Schema="dbo" />
           <AssociationSet Name="FK_Recurso_RecursoTipo" Association="BD_RESERVASModel.Store.FK_Recurso_RecursoTipo">
@@ -24,6 +25,10 @@
           <AssociationSet Name="FK_RecursoTipoUsuarioTipo_RecursoTipo" Association="BD_RESERVASModel.Store.FK_RecursoTipoUsuarioTipo_RecursoTipo">
             <End Role="RecursoTipo" EntitySet="RecursoTipo" />
             <End Role="RecursoTipoHora" EntitySet="RecursoTipoHora" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SancionDetalle_Sancion" Association="BD_RESERVASModel.Store.FK_SancionDetalle_Sancion">
+            <End Role="Sancion" EntitySet="Sancion" />
+            <End Role="SancionDetalle" EntitySet="SancionDetalle" />
           </AssociationSet>
           <AssociationSet Name="FK_Usuario_TipoUsuario" Association="BD_RESERVASModel.Store.FK_Usuario_TipoUsuario">
             <End Role="UsuarioTipo" EntitySet="UsuarioTipo" />
@@ -72,11 +77,19 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="usuario" Type="int" />
-          <Property Name="motivo" Type="varchar" MaxLength="1000" />
+          <Property Name="usuario" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="motivo" Type="varchar" Nullable="false" MaxLength="1000" />
           <Property Name="fechainicio" Type="date" Nullable="false" />
-          <Property Name="fechafin" Type="date" />
+          <Property Name="fechafin" Type="date" Nullable="false" />
           <Property Name="estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SancionDetalle">
+          <Key>
+            <PropertyRef Name="sancion" />
+            <PropertyRef Name="tiporecurso" />
+          </Key>
+          <Property Name="sancion" Type="int" Nullable="false" />
+          <Property Name="tiporecurso" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Usuario">
           <Key>
@@ -131,6 +144,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_SancionDetalle_Sancion">
+          <End Role="Sancion" Type="BD_RESERVASModel.Store.Sancion" Multiplicity="1" />
+          <End Role="SancionDetalle" Type="BD_RESERVASModel.Store.SancionDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sancion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SancionDetalle">
+              <PropertyRef Name="sancion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Usuario_TipoUsuario">
           <End Role="UsuarioTipo" Type="BD_RESERVASModel.Store.UsuarioTipo" Multiplicity="1" />
           <End Role="Usuario" Type="BD_RESERVASModel.Store.Usuario" Multiplicity="*" />
@@ -171,6 +196,11 @@
             <End Role="Recurso" EntitySet="Recurso" />
           </AssociationSet>
           <EntitySet Name="Sancion" EntityType="BD_RESERVASModel.Sancion" />
+          <EntitySet Name="SancionDetalle" EntityType="BD_RESERVASModel.SancionDetalle" />
+          <AssociationSet Name="FK_SancionDetalle_Sancion" Association="BD_RESERVASModel.FK_SancionDetalle_Sancion">
+            <End Role="Sancion" EntitySet="Sancion" />
+            <End Role="SancionDetalle" EntitySet="SancionDetalle" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="HoraTipo">
           <Key>
@@ -287,12 +317,34 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Type="Int32" Name="usuario" />
-          <Property Type="String" Name="motivo" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="usuario" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="motivo" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="fechainicio" Nullable="false" />
-          <Property Type="DateTime" Name="fechafin" />
+          <Property Type="DateTime" Name="fechafin" Nullable="false" />
           <Property Type="Boolean" Name="estado" Nullable="false" />
+          <NavigationProperty Name="SancionDetalle" Relationship="BD_RESERVASModel.FK_SancionDetalle_Sancion" FromRole="Sancion" ToRole="SancionDetalle" />
         </EntityType>
+        <EntityType Name="SancionDetalle">
+          <Key>
+            <PropertyRef Name="sancion" />
+            <PropertyRef Name="tiporecurso" />
+          </Key>
+          <Property Type="Int32" Name="sancion" Nullable="false" />
+          <Property Type="Int32" Name="tiporecurso" Nullable="false" />
+          <NavigationProperty Name="Sancion1" Relationship="BD_RESERVASModel.FK_SancionDetalle_Sancion" FromRole="SancionDetalle" ToRole="Sancion" />
+        </EntityType>
+        <Association Name="FK_SancionDetalle_Sancion">
+          <End Type="BD_RESERVASModel.Sancion" Role="Sancion" Multiplicity="1" />
+          <End Type="BD_RESERVASModel.SancionDetalle" Role="SancionDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sancion">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="SancionDetalle">
+              <PropertyRef Name="sancion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -370,6 +422,14 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="SancionDetalle">
+            <EntityTypeMapping TypeName="BD_RESERVASModel.SancionDetalle">
+              <MappingFragment StoreEntitySet="SancionDetalle">
+                <ScalarProperty Name="tiporecurso" ColumnName="tiporecurso" />
+                <ScalarProperty Name="sancion" ColumnName="sancion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -393,7 +453,7 @@
       <Diagram Name="BDRESERVAS" ZoomLevel="71">
         <EntityTypeShape EntityType="BD_RESERVASModel.HoraTipo" Width="1.5" PointX="0.75" PointY="1.375" Height="1.5956835937499996" />
         <EntityTypeShape EntityType="BD_RESERVASModel.RecursoTipo" Width="1.5" PointX="3" PointY="1" Height="2.3648893229166674" />
-        <EntityTypeShape EntityType="BD_RESERVASModel.RecursoTipoHora" Width="1.5" PointX="5.25" PointY="1.25" Height="1.787985026041671" />
+        <EntityTypeShape EntityType="BD_RESERVASModel.RecursoTipoHora" Width="1.5" PointX="5.375" PointY="0.75" Height="1.787985026041671" />
         <EntityTypeShape EntityType="BD_RESERVASModel.Usuario" Width="1.5" PointX="3" PointY="4.875" Height="1.9802864583333317" />
         <EntityTypeShape EntityType="BD_RESERVASModel.UsuarioTipo" Width="1.5" PointX="0.75" PointY="5" Height="1.7879850260416674" />
         <AssociationConnector Association="BD_RESERVASModel.FK_RecursoTipo_HoraTipo" >
@@ -401,21 +461,24 @@
           <ConnectorPoint PointX="3" PointY="2.172841796875" />
         </AssociationConnector>
         <AssociationConnector Association="BD_RESERVASModel.FK_RecursoTipoUsuarioTipo_RecursoTipo" >
-          <ConnectorPoint PointX="4.5" PointY="2.1439925130208355" />
-          <ConnectorPoint PointX="5.25" PointY="2.1439925130208355" />
+          <ConnectorPoint PointX="4.5" PointY="1.7689925130208355" />
+          <ConnectorPoint PointX="5.375" PointY="1.7689925130208355" />
         </AssociationConnector>
         <AssociationConnector Association="BD_RESERVASModel.FK_Usuario_TipoUsuario" >
           <ConnectorPoint PointX="2.25" PointY="5.8939925130208337" />
           <ConnectorPoint PointX="3" PointY="5.8939925130208337" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="BD_RESERVASModel.Recurso" Width="1.5" PointX="5.25" PointY="4.125" Height="2.3648893229166674" />
+        <EntityTypeShape EntityType="BD_RESERVASModel.Recurso" Width="1.5" PointX="5.375" PointY="3" Height="2.3648893229166674" />
         <AssociationConnector Association="BD_RESERVASModel.FK_Recurso_RecursoTipo" >
-          <ConnectorPoint PointX="4.5" PointY="3.5571907552083331" />
-          <ConnectorPoint PointX="4.875" PointY="3.9321907552083335" />
-          <ConnectorPoint PointX="4.875" PointY="3.75" />
-          <ConnectorPoint PointX="5.25" PointY="4.125" />
+          <ConnectorPoint PointX="4.5" PointY="3.2785953776041667" />
+          <ConnectorPoint PointX="5.375" PointY="3.2785953776041667" />
         </AssociationConnector>
         <EntityTypeShape EntityType="BD_RESERVASModel.Sancion" Width="1.5" PointX="7.375" PointY="0.75" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="BD_RESERVASModel.SancionDetalle" Width="1.5" PointX="9.625" PointY="1.125" Height="1.5956835937499996" />
+        <AssociationConnector Association="BD_RESERVASModel.FK_SancionDetalle_Sancion" >
+          <ConnectorPoint PointX="8.875" PointY="1.9228417968749998" />
+          <ConnectorPoint PointX="9.625" PointY="1.9228417968749998" />
+        </AssociationConnector>
       </Diagram>
     </Diagrams>
   </Designer>

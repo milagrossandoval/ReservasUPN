@@ -26,5 +26,31 @@ namespace ReservasUPN.BL
         {
             return recursoTipoDAO.Listar(idSede);
         }
+        
+        public List<BE.Modelos.RecursoTipo> ListarActivos(int idSede)
+        {
+            return recursoTipoDAO.ListarActivos(idSede);
+        }
+
+        public List<BE.Modelos.RecursoTipo> ListarTodos(int idSede)
+        {
+            List<BE.Modelos.RecursoTipo> rpta = ListarActivos(idSede);
+            rpta.Add(new BE.Modelos.RecursoTipo
+            {
+                id = Convert.ToInt16(BE.Enumeraciones.TipoRecurso.AULA),
+                descripcion = BE.Adapters.Recurso.TIPO_AULA,
+                sede = idSede,
+                tipoHora = BE.Adapters.Recurso.TIPO_HORA_AULA,
+                estado = true
+            });
+            return rpta;
+        }
+
+        public List<BE.Modelos.RecursoTipo> ListarTodos(string codSede)
+        {
+            int idSede = new SedeBL().Buscar(codSede).id;
+            return ListarTodos(idSede);
+        }
+
     }
 }

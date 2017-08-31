@@ -15,13 +15,14 @@
             </div>
             <div class="col-lg-5">
                 <telerik:RadComboBox ID="CmbSedes" runat="server" AutoPostBack="true" DataTextField="descripcion"
-                    Width="300" DataValueField="id" />
+                    Width="300" DataValueField="id" EmptyMessage=" " HighlightTemplatedItems="true"
+                        EnableLoadOnDemand="true" />
             </div>
             <div class="col-lg-2">
                 <h5>Tipo de Recurso</h5>
             </div>
             <div class="col-lg-3">
-                <telerik:RadComboBox ID="CmbTiposRecurso" runat="server" AutoPostBack="True" DataTextField="descripcion"
+                <telerik:RadComboBox ID="CmbTiposRecurso" runat="server" AutoPostBack="True"
                     Width="200px" DataValueField="id" DataSourceID="OdsRecursoTipo" 
                     ondatabound="CmbTiposRecurso_DataBound" />
                 <asp:ObjectDataSource ID="OdsRecursoTipo" runat="server" SelectMethod="Listar" 
@@ -34,8 +35,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-2">
-                <telerik:RadButton ID="BtnGuardar" runat="server" Text="Guardar" onclick="BtnGuardar_Click" />
+            <div class="col-lg-12">
+                <telerik:RadButton ID="BtnGuardar" runat="server" Text="Guardar" 
+                    onclick="BtnGuardar_Click" />
             </div>
         </div>
         <div class="row">
