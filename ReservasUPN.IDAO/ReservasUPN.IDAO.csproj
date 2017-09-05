@@ -40,12 +40,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IHoraDAO.cs" />
     <Compile Include="IHoraTipoDAO.cs" />
     <Compile Include="IRecursoDAO.cs" />
+    <Compile Include="IRecursoHorarioDAO.cs" />
     <Compile Include="IRecursoTipoDAO.cs" />
     <Compile Include="IRecursoTipoHoraDAO.cs" />
+    <Compile Include="IRecursoTipoHorarioDAO.cs" />
     <Compile Include="ISancionDAO.cs" />
-    <Compile Include="ISancionDetalleDAO.cs" />
     <Compile Include="ISedeDAO.cs" />
     <Compile Include="IUsuarioDAO.cs" />
     <Compile Include="IUsuarioTipoDAO.cs" />

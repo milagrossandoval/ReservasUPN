@@ -11,23 +11,29 @@ namespace ReservasUPN.BL
     public class SancionBL : ISancionBL
     {
         private ISancionDAO sancionDAO = SancionDAO.Instance;
-        private ISancionDetalleDAO detalleDAO = SancionDetalleDAO.Instance;
+
+        private string ListToString(List<BE.Modelos.RecursoTipo> lista)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (BE.Modelos.RecursoTipo rt in lista)
+            {
+                if (sb.Length > 0)
+                {
+                    sb.Append(",");
+                }
+                sb.Append(rt.id);
+            }
+            return sb.ToString();
+        }
 
         public bool Grabar(BE.Modelos.Sancion obj)
         {
-            List<BE.Modelos.SancionDetalle> detalle = obj.SancionDetalle.ToList();
-            int lastid = sancionDAO.Grabar(obj);
-            detalle.ForEach(i => i.sancion = lastid);
-            return detalleDAO.Grabar(detalle);
+            return sancionDAO.Grabar(obj, ListToString(obj.RecursoTipo.ToList()));
         }
 
         public bool Actualizar(BE.Modelos.Sancion obj)
         {
-            List<BE.Modelos.SancionDetalle> detalle = obj.SancionDetalle.ToList();
-            int id = obj.id;
-            sancionDAO.Actualizar(obj);
-            detalleDAO.Eliminar(id);
-            return detalleDAO.Grabar(detalle);           
+            return sancionDAO.Actualizar(obj, ListToString(obj.RecursoTipo.ToList()));  
         }
 
         public List<BE.Adapters.Sancion> Listar(string sede, bool inactivos)
@@ -39,20 +45,12 @@ namespace ReservasUPN.BL
 
         public bool Eliminar(int id)
         {
-            detalleDAO.Eliminar(id);
             return sancionDAO.Eliminar(id);
         }
 
-        public List<BE.Modelos.SancionDetalle> ListarDetalle(int idsancion)
+        public List<BE.Modelos.RecursoTipo> BuscarDetalle(int id)
         {
-            return detalleDAO.Listar(idsancion);
+            return sancionDAO.BuscarDetalle(id);
         }
-
-        public List<BE.Modelos.RecursoTipo> ListarDetalleRecursoTipo(int idsancion)
-        {
-            return detalleDAO.ListarRecursoTipo(idsancion);
-        }
-
-        
     }
 }

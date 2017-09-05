@@ -26,6 +26,12 @@ namespace ReservasUPN.BL
         {
             return recursoTipoDAO.Listar(idSede);
         }
+
+        public List<BE.Modelos.RecursoTipo> Listar(string codSede)
+        {
+            int idSede = new SedeBL().Buscar(codSede).id;
+            return Listar(idSede);
+        }
         
         public List<BE.Modelos.RecursoTipo> ListarActivos(int idSede)
         {
@@ -50,6 +56,10 @@ namespace ReservasUPN.BL
         {
             int idSede = new SedeBL().Buscar(codSede).id;
             return ListarTodos(idSede);
+        }
+
+        public BE.Modelos.RecursoTipo Buscar(int id) {
+            return recursoTipoDAO.Buscar(id);
         }
 
     }

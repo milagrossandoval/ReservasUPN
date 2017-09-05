@@ -9,6 +9,8 @@ namespace ReservasUPN.IDAO
     {
         bool Grabar(BE.Modelos.Recurso obj);
         bool Actualizar(BE.Modelos.Recurso obj);
-        List<BE.Adapters.Recurso> Listar(int idSede);
+        List<BE.Adapters.Recurso> ListarxSede(int idSede);
+        List<BE.Adapters.Recurso> Listar(int idtiporecurso);
+        BE.Adapters.Recurso Buscar(int idrecurso);
     }
 }

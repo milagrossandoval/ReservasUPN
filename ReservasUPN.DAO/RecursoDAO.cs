@@ -42,7 +42,7 @@ namespace ReservasUPN.DAO
             }
         }
 
-        public List<BE.Adapters.Recurso> Listar(int idSede)
+        public List<BE.Adapters.Recurso> ListarxSede(int idSede)
         {
             List<BE.Adapters.Recurso> rpta;
             using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
@@ -61,6 +61,55 @@ namespace ReservasUPN.DAO
                                estado = recurso.estado
                            }).ToList();
 
+            }
+            return rpta;
+        }
+
+        public List<BE.Adapters.Recurso> Listar(int idtiporecurso)
+        {
+            List<BE.Adapters.Recurso> rpta;
+            using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
+            {
+                rpta = (from recurso in reposit.Recurso
+                        join tipo in reposit.RecursoTipo on recurso.tipoRecurso equals tipo.id
+                        where recurso.tipoRecurso == idtiporecurso
+                        select new BE.Adapters.Recurso
+                        {
+                            id = recurso.id,
+                            codigo = recurso.codigo,
+                            descripcion = recurso.descripcion,
+                            tipoRecurso = tipo.id,
+                            NombreTipoRecurso = tipo.descripcion,
+                            caracteristicas = recurso.caracteristicas,
+                            estado = recurso.estado
+                        }).ToList();
+
+            }
+            return rpta;
+        }
+
+
+        public BE.Adapters.Recurso Buscar(int idrecurso)
+        {
+            BE.Adapters.Recurso rpta = null;
+            using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
+            {
+                var res = (from recurso in reposit.Recurso
+                        join tipo in reposit.RecursoTipo on recurso.tipoRecurso equals tipo.id
+                        where recurso.id == idrecurso
+                        select new BE.Adapters.Recurso
+                        {
+                            id = recurso.id,
+                            codigo = recurso.codigo,
+                            descripcion = recurso.descripcion,
+                            tipoRecurso = tipo.id,
+                            NombreTipoRecurso = tipo.descripcion,
+                            caracteristicas = recurso.caracteristicas,
+                            estado = recurso.estado
+                        });
+                if (res.Count() == 1) {
+                    rpta = res.First();
+                }
             }
             return rpta;
         }

@@ -112,6 +112,22 @@ namespace ReservasUPN.BE.Modelos
             }
         }
         private ObjectSet<Sede> _Sede;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<Hora> Hora
+        {
+            get
+            {
+                if ((_Hora == null))
+                {
+                    _Hora = base.CreateObjectSet<Hora>("Hora");
+                }
+                return _Hora;
+            }
+        }
+        private ObjectSet<Hora> _Hora;
 
         #endregion
 
@@ -139,6 +155,14 @@ namespace ReservasUPN.BE.Modelos
         public void AddToSede(Sede sede)
         {
             base.AddObject("Sede", sede);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet Hora. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToHora(Hora hora)
+        {
+            base.AddObject("Hora", hora);
         }
 
         #endregion
@@ -444,6 +468,261 @@ namespace ReservasUPN.BE.Modelos
         private global::System.String _sedeNombre;
         partial void OnsedeNombreChanging(global::System.String value);
         partial void OnsedeNombreChanged();
+
+        #endregion
+
+    
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BD_UPNSACModel", Name="Hora")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Hora : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto Hora.
+        /// </summary>
+        /// <param name="n_hora_id">Valor inicial de la propiedad n_hora_id.</param>
+        /// <param name="n_hor_codigo">Valor inicial de la propiedad n_hor_codigo.</param>
+        /// <param name="s_hor_descripcion">Valor inicial de la propiedad s_hor_descripcion.</param>
+        /// <param name="d_hor_inicio">Valor inicial de la propiedad d_hor_inicio.</param>
+        /// <param name="d_hor_final">Valor inicial de la propiedad d_hor_final.</param>
+        /// <param name="n_hor_minutos">Valor inicial de la propiedad n_hor_minutos.</param>
+        /// <param name="b_hor_activo">Valor inicial de la propiedad b_hor_activo.</param>
+        public static Hora CreateHora(global::System.Int32 n_hora_id, global::System.Int32 n_hor_codigo, global::System.String s_hor_descripcion, global::System.TimeSpan d_hor_inicio, global::System.TimeSpan d_hor_final, global::System.Int32 n_hor_minutos, global::System.Boolean b_hor_activo)
+        {
+            Hora hora = new Hora();
+            hora.n_hora_id = n_hora_id;
+            hora.n_hor_codigo = n_hor_codigo;
+            hora.s_hor_descripcion = s_hor_descripcion;
+            hora.d_hor_inicio = d_hor_inicio;
+            hora.d_hor_final = d_hor_final;
+            hora.n_hor_minutos = n_hor_minutos;
+            hora.b_hor_activo = b_hor_activo;
+            return hora;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 n_hora_id
+        {
+            get
+            {
+                return _n_hora_id;
+            }
+            set
+            {
+                if (_n_hora_id != value)
+                {
+                    Onn_hora_idChanging(value);
+                    ReportPropertyChanging("n_hora_id");
+                    _n_hora_id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("n_hora_id");
+                    Onn_hora_idChanged();
+                }
+            }
+        }
+        private global::System.Int32 _n_hora_id;
+        partial void Onn_hora_idChanging(global::System.Int32 value);
+        partial void Onn_hora_idChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 n_hor_codigo
+        {
+            get
+            {
+                return _n_hor_codigo;
+            }
+            set
+            {
+                if (_n_hor_codigo != value)
+                {
+                    Onn_hor_codigoChanging(value);
+                    ReportPropertyChanging("n_hor_codigo");
+                    _n_hor_codigo = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("n_hor_codigo");
+                    Onn_hor_codigoChanged();
+                }
+            }
+        }
+        private global::System.Int32 _n_hor_codigo;
+        partial void Onn_hor_codigoChanging(global::System.Int32 value);
+        partial void Onn_hor_codigoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String s_hor_descripcion
+        {
+            get
+            {
+                return _s_hor_descripcion;
+            }
+            set
+            {
+                if (_s_hor_descripcion != value)
+                {
+                    Ons_hor_descripcionChanging(value);
+                    ReportPropertyChanging("s_hor_descripcion");
+                    _s_hor_descripcion = StructuralObject.SetValidValue(value, false);
+                    ReportPropertyChanged("s_hor_descripcion");
+                    Ons_hor_descripcionChanged();
+                }
+            }
+        }
+        private global::System.String _s_hor_descripcion;
+        partial void Ons_hor_descripcionChanging(global::System.String value);
+        partial void Ons_hor_descripcionChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.TimeSpan d_hor_inicio
+        {
+            get
+            {
+                return _d_hor_inicio;
+            }
+            set
+            {
+                if (_d_hor_inicio != value)
+                {
+                    Ond_hor_inicioChanging(value);
+                    ReportPropertyChanging("d_hor_inicio");
+                    _d_hor_inicio = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("d_hor_inicio");
+                    Ond_hor_inicioChanged();
+                }
+            }
+        }
+        private global::System.TimeSpan _d_hor_inicio;
+        partial void Ond_hor_inicioChanging(global::System.TimeSpan value);
+        partial void Ond_hor_inicioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.TimeSpan d_hor_final
+        {
+            get
+            {
+                return _d_hor_final;
+            }
+            set
+            {
+                if (_d_hor_final != value)
+                {
+                    Ond_hor_finalChanging(value);
+                    ReportPropertyChanging("d_hor_final");
+                    _d_hor_final = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("d_hor_final");
+                    Ond_hor_finalChanged();
+                }
+            }
+        }
+        private global::System.TimeSpan _d_hor_final;
+        partial void Ond_hor_finalChanging(global::System.TimeSpan value);
+        partial void Ond_hor_finalChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 n_hor_minutos
+        {
+            get
+            {
+                return _n_hor_minutos;
+            }
+            set
+            {
+                if (_n_hor_minutos != value)
+                {
+                    Onn_hor_minutosChanging(value);
+                    ReportPropertyChanging("n_hor_minutos");
+                    _n_hor_minutos = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("n_hor_minutos");
+                    Onn_hor_minutosChanged();
+                }
+            }
+        }
+        private global::System.Int32 _n_hor_minutos;
+        partial void Onn_hor_minutosChanging(global::System.Int32 value);
+        partial void Onn_hor_minutosChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean b_hor_activo
+        {
+            get
+            {
+                return _b_hor_activo;
+            }
+            set
+            {
+                if (_b_hor_activo != value)
+                {
+                    Onb_hor_activoChanging(value);
+                    ReportPropertyChanging("b_hor_activo");
+                    _b_hor_activo = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("b_hor_activo");
+                    Onb_hor_activoChanged();
+                }
+            }
+        }
+        private global::System.Boolean _b_hor_activo;
+        partial void Onb_hor_activoChanging(global::System.Boolean value);
+        partial void Onb_hor_activoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String s_hor_tipo
+        {
+            get
+            {
+                return _s_hor_tipo;
+            }
+            set
+            {
+                Ons_hor_tipoChanging(value);
+                ReportPropertyChanging("s_hor_tipo");
+                _s_hor_tipo = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("s_hor_tipo");
+                Ons_hor_tipoChanged();
+            }
+        }
+        private global::System.String _s_hor_tipo;
+        partial void Ons_hor_tipoChanging(global::System.String value);
+        partial void Ons_hor_tipoChanged();
 
         #endregion
 

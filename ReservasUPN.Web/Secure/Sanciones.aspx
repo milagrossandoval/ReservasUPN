@@ -125,7 +125,7 @@
                 Name="inactivos" PropertyName="Checked" Type="Boolean" />
         </SelectParameters>
     </asp:ObjectDataSource>
-    <asp:ObjectDataSource ID="OdsTipos" runat="server" SelectMethod="ListarTodos"
+    <asp:ObjectDataSource ID="OdsTipos" runat="server" SelectMethod="Listar"
         TypeName="ReservasUPN.BL.RecursoTipoBL">
         <SelectParameters>
             <asp:ControlParameter ControlID="CmbSedes" Name="codSede" 

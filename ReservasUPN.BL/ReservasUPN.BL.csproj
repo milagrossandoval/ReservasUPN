@@ -41,11 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HoraBL.cs" />
+    <Compile Include="HorarioBL.cs" />
     <Compile Include="HoraTipoBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecursoBL.cs" />
+    <Compile Include="RecursoHorarioBL.cs" />
     <Compile Include="RecursoTipoBL.cs" />
     <Compile Include="RecursoTipoHoraBL.cs" />
+    <Compile Include="RecursoTipoHorarioBL.cs" />
     <Compile Include="SancionBL.cs" />
     <Compile Include="SedeBL.cs" />
     <Compile Include="UsuarioBL.cs" />

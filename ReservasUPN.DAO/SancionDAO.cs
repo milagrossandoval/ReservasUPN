@@ -17,28 +17,47 @@ namespace ReservasUPN.DAO
         { get { return _instance; } }
         #endregion
 
-        public int Grabar(BE.Modelos.Sancion obj)
+        //public bool Grabar(BE.Modelos.Sancion obj)
+        //{
+        //    using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
+        //    {
+        //        reposit.AddToSancion(obj);
+        //        return reposit.SaveChanges()>0;
+        //    }
+        //}
+
+        public bool Grabar(BE.Modelos.Sancion obj, string detalle)
         {
             using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
             {
-                reposit.AddToSancion(obj);
-                reposit.SaveChanges();
+                reposit.PA_SANCION_INSERT(obj.usuario, obj.motivo, obj.fechainicio, obj.fechafin, detalle);
+                return true;
             }
-            return obj.id;
         }
 
-        public bool Actualizar(BE.Modelos.Sancion obj)
+        //public bool Actualizar(BE.Modelos.Sancion obj)
+        //{
+        //    using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
+        //    {
+        //        var sancion = (from x in reposit.Sancion
+        //                       where x.id == obj.id
+        //                       select x).First();
+        //        sancion.usuario = obj.usuario;
+        //        sancion.motivo = obj.motivo;
+        //        sancion.fechainicio = obj.fechainicio;
+        //        sancion.fechafin = obj.fechafin;
+        //        sancion.RecursoTipo = obj.RecursoTipo;
+                
+        //        return reposit.SaveChanges() == 1;
+        //    }
+        //}
+
+        public bool Actualizar(BE.Modelos.Sancion obj, string detalle)
         {
             using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
             {
-                var sancion = (from x in reposit.Sancion
-                               where x.id == obj.id
-                               select x).First();
-                sancion.usuario = obj.usuario;
-                sancion.motivo = obj.motivo;
-                sancion.fechainicio = obj.fechainicio;
-                sancion.fechafin = obj.fechafin;
-                return reposit.SaveChanges() == 1;
+                reposit.PA_SANCION_UPDATE(obj.id, obj.usuario, obj.motivo, obj.fechainicio, obj.fechafin, detalle);
+                return true;
             }
         }
 
@@ -93,7 +112,9 @@ namespace ReservasUPN.DAO
                             id = x.id,
                             motivo = x.motivo,
                             usuario = x.usuario
+                            //RecursoTipo = x.RecursoTipo
                         }).ToList();
+                
 
             }
             using (BD_ADMUSERSEntities reposit = new BD_ADMUSERSEntities())
@@ -110,6 +131,7 @@ namespace ReservasUPN.DAO
                             motivo = x.motivo,
                             usuario = x.usuario,
                             NombreUsuario = u.username
+                            //RecursoTipo = x.RecursoTipo
                         }).ToList();
             }
             return rpta;
@@ -123,9 +145,26 @@ namespace ReservasUPN.DAO
                                where x.id == id
                                select x).First();
                 sancion.estado = false;
-
+                sancion.RecursoTipo.Clear();
                 return reposit.SaveChanges() == 1;
             }
+        }
+
+        public List<BE.Modelos.RecursoTipo> BuscarDetalle(int id)
+        {
+            List<BE.Modelos.RecursoTipo> rpta = null;
+            using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
+            {
+                var sancion = (from x in reposit.Sancion
+                                where x.id == id
+                               select x);
+                if (sancion.Count() > 0) {
+                    rpta = new List<RecursoTipo>();
+                    sancion.First().RecursoTipo.ToList().ForEach(rt => rpta.Add(rt));
+                }
+                
+            }
+            return rpta;
         }
     }
 }

@@ -22,9 +22,21 @@ namespace ReservasUPN.BL
             return recursoDAO.Actualizar(obj);
         }
 
-        public List<BE.Adapters.Recurso> Listar(int idSede)
+        public List<BE.Adapters.Recurso> ListarxSede(int idSede)
         {
-            return recursoDAO.Listar(idSede);
+            return recursoDAO.ListarxSede(idSede);
+        }
+
+
+        public List<BE.Adapters.Recurso> Listar(int idtiporecurso)
+        {
+            return recursoDAO.Listar(idtiporecurso);
+        }
+
+
+        public BE.Adapters.Recurso Buscar(int idrecurso)
+        {
+            return recursoDAO.Buscar(idrecurso);
         }
     }
 }

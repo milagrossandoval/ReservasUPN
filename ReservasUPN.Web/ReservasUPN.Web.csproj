@@ -50,11 +50,12 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="Telerik.Web.Design">
-      <HintPath>..\Lib\Telerik.Web.Design.dll</HintPath>
+    <Reference Include="Telerik.Web.Design, Version=2017.1.118.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Lib\2010\Telerik.Web.Design.dll</HintPath>
     </Reference>
     <Reference Include="Telerik.Web.UI">
-      <HintPath>..\Lib\Telerik.Web.UI.dll</HintPath>
+      <HintPath>..\Lib\2010\Telerik.Web.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -104,10 +105,9 @@
     <Content Include="assets\js\raphael.min.js" />
     <Content Include="assets\js\sb-admin-2.js" />
     <Content Include="LogIn.aspx" />
-    <Content Include="Secure\ConfigurarHorarios.aspx" />
     <Content Include="Secure\Default.aspx" />
     <Content Include="Secure\MisReservas.aspx" />
-    <Content Include="Secure\RecursoHorarios.aspx" />
+    <Content Include="Secure\RecursosHorario.aspx" />
     <Content Include="Secure\Recursos.aspx" />
     <Content Include="Secure\RecursosTipo.aspx" />
     <Content Include="Secure\RecursoTipoHora.aspx" />
@@ -116,7 +116,9 @@
     <Content Include="Secure\Sanciones.aspx" />
     <Content Include="Secure\Usuarios.aspx" />
     <Content Include="Secure\UsuariosTipo.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -137,13 +139,6 @@
       <DependentUpon>LogIn.aspx</DependentUpon>
     </Compile>
     <Compile Include="Page.cs" />
-    <Compile Include="Secure\ConfigurarHorarios.aspx.cs">
-      <DependentUpon>ConfigurarHorarios.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Secure\ConfigurarHorarios.aspx.designer.cs">
-      <DependentUpon>ConfigurarHorarios.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Secure\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -159,12 +154,12 @@
       <DependentUpon>MisReservas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Secure\RecursoHorarios.aspx.cs">
-      <DependentUpon>RecursoHorarios.aspx</DependentUpon>
+    <Compile Include="Secure\RecursosHorario.aspx.cs">
+      <DependentUpon>RecursosHorario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Secure\RecursoHorarios.aspx.designer.cs">
-      <DependentUpon>RecursoHorarios.aspx</DependentUpon>
+    <Compile Include="Secure\RecursosHorario.aspx.designer.cs">
+      <DependentUpon>RecursosHorario.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secure\Recursos.aspx.cs">
       <DependentUpon>Recursos.aspx</DependentUpon>

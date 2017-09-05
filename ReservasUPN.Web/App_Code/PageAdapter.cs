@@ -33,17 +33,15 @@ namespace ReservasUPN.Web.App_Code
             }
         }
 
-        public void 
-            
-            alerta(string mensaje)
+        public void alerta(string mensaje)
         {
             RadScriptManager.RegisterStartupScript(Page, Page.GetType(), "Alerta", "alert('" + mensaje + "')", true);
         }
 
-        public void notificaciom(string mensaje, int tipo)
-        {
-            RadScriptManager.RegisterStartupScript(Page, Page.GetType(), "Notificacion", "notificar('" + mensaje + "')", true);
-        }
+        //public void confirmacion(string mensaje, string titulo, int ancho, int alto, string js) {
+        //    RadScriptManager.RegisterStartupScript(Page, Page.GetType(), "Confirmacion", "radconfirm('" + mensaje+ "', "+js+", "+ancho+", "+alto+", null, '"+ titulo +"', ''); return false;", true);
+            
+        //}
 
     
     }

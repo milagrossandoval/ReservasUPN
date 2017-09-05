@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Adapters\Horario.cs" />
     <Compile Include="Adapters\Recurso.cs">
       <SubType>Code</SubType>
     </Compile>

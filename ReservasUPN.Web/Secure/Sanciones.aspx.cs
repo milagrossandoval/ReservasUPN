@@ -15,7 +15,8 @@ namespace ReservasUPN.Web.Secure
     public partial class Sanciones : PageAdapter
     {
         private ISancionBL sancionbl = new SancionBL();
-        
+        private IRecursoTipoBL recursotipobl = new RecursoTipoBL();
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
@@ -37,13 +38,6 @@ namespace ReservasUPN.Web.Secure
             DateTime a_fechafin = Convert.ToDateTime(values["fechafin"]);
             CheckBoxList ChblTiposRecurso = (CheckBoxList)e.Item.FindControl("ChblTiposRecurso");
             
-            List<BE.Modelos.SancionDetalle> detalle = (from i in ChblTiposRecurso.Items.Cast<ListItem>()
-                                                       where i.Selected
-                                                       select new BE.Modelos.SancionDetalle
-                                                       {
-                                                           tiporecurso = int.Parse(i.Value)
-                                                       }).ToList();
-
             BE.Modelos.Sancion obj = new BE.Modelos.Sancion { 
                                                     usuario = a_usuario, 
                                                     motivo = a_motivo, 
@@ -51,10 +45,15 @@ namespace ReservasUPN.Web.Secure
                                                     fechafin = a_fechafin, 
                                                     estado = true
                                                     };
+
             
-            obj.SancionDetalle = new System.Data.Objects.DataClasses.EntityCollection<BE.Modelos.SancionDetalle>();
-            detalle.ForEach(d=> obj.SancionDetalle.Add(d));
-            
+            (from i in ChblTiposRecurso.Items.Cast<ListItem>()
+             where i.Selected
+             select 
+             new BE.Modelos.RecursoTipo
+             {
+                 id = int.Parse(i.Value)
+             }).ToList().ForEach(i => obj.RecursoTipo.Add(i));
             sancionbl.Grabar(obj);
         }
 
@@ -71,17 +70,12 @@ namespace ReservasUPN.Web.Secure
             DateTime a_fechafin = Convert.ToDateTime(values["fechafin"]);  //Convert.ToDateTime(((RadDatePicker)e.Item.FindControl("txtFechaFin")).DbSelectedDate);
             CheckBoxList ChblTiposRecurso = (CheckBoxList)e.Item.FindControl("ChblTiposRecurso");
 
-            List<BE.Modelos.SancionDetalle> detalle = (from i in ChblTiposRecurso.Items.Cast<ListItem>()
-                                                       where i.Selected
-                                                       select new BE.Modelos.SancionDetalle
-                                                       {
-                                                           sancion = a_id,
-                                                           tiporecurso = int.Parse(i.Value)
-                                                       }).ToList();
-
             BE.Modelos.Sancion obj = new BE.Modelos.Sancion { id = a_id, usuario = a_usuario, motivo = a_motivo, fechainicio = a_fechainicio, fechafin = a_fechafin };
-            obj.SancionDetalle = new System.Data.Objects.DataClasses.EntityCollection<BE.Modelos.SancionDetalle>();
-            detalle.ForEach(d => obj.SancionDetalle.Add(d));
+            
+            (from i in ChblTiposRecurso.Items.Cast<ListItem>()
+             where i.Selected
+             select int.Parse(i.Value)
+            ).ToList().ForEach(i => obj.RecursoTipo.Add(new BE.Modelos.RecursoTipo { id = i }));
 
             sancionbl.Actualizar(obj);
         }
@@ -112,11 +106,12 @@ namespace ReservasUPN.Web.Secure
             if (!string.IsNullOrEmpty(strSancion))
             {
                 int idsancion = int.Parse(strSancion);
-                List<BE.Modelos.SancionDetalle> detalle = sancionbl.ListarDetalle(idsancion);
-                List<int> detalle_ids = (from d in detalle select d.tiporecurso).ToList();
+
+                List<BE.Modelos.RecursoTipo> detalle = sancionbl.BuscarDetalle(idsancion);
+                //List<BE.Modelos.RecursoTipo> detalle = sancionbl.ListarDetalleRecursoTipo(idsancion);
                 
                 (from i in ChblTiposRecurso.Items.Cast<ListItem>()
-                where detalle_ids.Contains(Convert.ToInt32(i.Value))
+                 join x in detalle on Convert.ToInt32(i.Value) equals x.id
                 select i).ToList().ForEach(i => i.Selected = true);
             }
             
@@ -127,8 +122,9 @@ namespace ReservasUPN.Web.Secure
             if (e.Item is GridDataItem)
             {
                 RadComboBox CmbTipos = (RadComboBox)e.Item.FindControl("CmbTipos");
-                int idSancion = (int)(((GridDataItem)e.Item).GetDataKeyValue("id"));
-                CmbTipos.DataSource = sancionbl.ListarDetalleRecursoTipo(idSancion);
+                int idsancion = (int)(((GridDataItem)e.Item).GetDataKeyValue("id"));
+                //CmbTipos.DataSource = sancionbl.ListarDetalleRecursoTipo(idSancion);
+                CmbTipos.DataSource = sancionbl.BuscarDetalle(idsancion);
                 CmbTipos.DataBind();
             }
         }

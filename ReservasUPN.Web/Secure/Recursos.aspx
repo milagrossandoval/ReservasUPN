@@ -115,7 +115,7 @@
             </div>
         </div>
     </div>
-    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="Listar"
+    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="ListarxSede"
         TypeName="ReservasUPN.BL.RecursoBL">
         <SelectParameters>
             <asp:ControlParameter ControlID="CmbSedes" Name="idSede" PropertyName="SelectedValue"

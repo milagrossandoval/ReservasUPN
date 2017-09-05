@@ -6,6 +6,18 @@
     <edmx:StorageModels>
     <Schema Namespace="BD_UPNSACModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="BD_UPNSACModelStoreContainer">
+          <EntitySet Name="Hora" EntityType="BD_UPNSACModel.Store.Hora" store:Type="Tables" store:Schema="dbo" store:Name="Hora">
+            <DefiningQuery>SELECT 
+      [Hora].[n_hora_id] AS [n_hora_id], 
+      [Hora].[n_hor_codigo] AS [n_hor_codigo], 
+      [Hora].[s_hor_descripcion] AS [s_hor_descripcion], 
+      [Hora].[d_hor_inicio] AS [d_hor_inicio], 
+      [Hora].[d_hor_final] AS [d_hor_final], 
+      [Hora].[n_hor_minutos] AS [n_hor_minutos], 
+      [Hora].[b_hor_activo] AS [b_hor_activo], 
+      [Hora].[s_hor_tipo] AS [s_hor_tipo]
+      FROM [dbo].[Hora] AS [Hora]</DefiningQuery>
+          </EntitySet>
           <EntitySet Name="Sede" EntityType="BD_UPNSACModel.Store.Sede" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="AlumnosEgresados" EntityType="BD_UPNSACModel.Store.AlumnosEgresados" store:Type="Views" store:Schema="dbo" store:Name="AlumnosEgresados">
             <DefiningQuery>SELECT 
@@ -24,6 +36,28 @@
       FROM [dbo].[AlumnosRegulares] AS [AlumnosRegulares]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
+        <!--Se encontraron errores durante la generación:
+      advertencia 6002: La tabla o vista 'BD_UPNSAC.dbo.Hora' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
+      -->
+        <EntityType Name="Hora">
+          <Key>
+            <PropertyRef Name="n_hora_id" />
+            <PropertyRef Name="n_hor_codigo" />
+            <PropertyRef Name="s_hor_descripcion" />
+            <PropertyRef Name="d_hor_inicio" />
+            <PropertyRef Name="d_hor_final" />
+            <PropertyRef Name="n_hor_minutos" />
+            <PropertyRef Name="b_hor_activo" />
+          </Key>
+          <Property Name="n_hora_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="n_hor_codigo" Type="int" Nullable="false" />
+          <Property Name="s_hor_descripcion" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="d_hor_inicio" Type="time" Nullable="false" />
+          <Property Name="d_hor_final" Type="time" Nullable="false" />
+          <Property Name="n_hor_minutos" Type="int" Nullable="false" />
+          <Property Name="b_hor_activo" Type="bit" Nullable="false" />
+          <Property Name="s_hor_tipo" Type="varchar" MaxLength="10" />
+        </EntityType>
         <EntityType Name="Sede">
           <Key>
             <PropertyRef Name="id" />
@@ -75,6 +109,7 @@
           <Parameter Name="P_CODIGO" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="Sede" EntityType="BD_UPNSACModel.Sede" />
+          <EntitySet Name="Hora" EntityType="BD_UPNSACModel.Hora" />
         </EntityContainer>
         <EntityType Name="AlumnosEgresados">
           <Key>
@@ -112,6 +147,25 @@
           <Property Type="String" Name="nombre" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="descripcion" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="estado" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Hora">
+          <Key>
+            <PropertyRef Name="n_hora_id" />
+            <PropertyRef Name="n_hor_codigo" />
+            <PropertyRef Name="s_hor_descripcion" />
+            <PropertyRef Name="d_hor_inicio" />
+            <PropertyRef Name="d_hor_final" />
+            <PropertyRef Name="n_hor_minutos" />
+            <PropertyRef Name="b_hor_activo" />
+          </Key>
+          <Property Type="Int32" Name="n_hora_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="n_hor_codigo" Nullable="false" />
+          <Property Type="String" Name="s_hor_descripcion" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Type="Time" Name="d_hor_inicio" Nullable="false" />
+          <Property Type="Time" Name="d_hor_final" Nullable="false" />
+          <Property Type="Int32" Name="n_hor_minutos" Nullable="false" />
+          <Property Type="Boolean" Name="b_hor_activo" Nullable="false" />
+          <Property Type="String" Name="s_hor_tipo" MaxLength="10" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -159,6 +213,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Hora">
+            <EntityTypeMapping TypeName="BD_UPNSACModel.Hora">
+              <MappingFragment StoreEntitySet="Hora">
+                <ScalarProperty Name="s_hor_tipo" ColumnName="s_hor_tipo" />
+                <ScalarProperty Name="b_hor_activo" ColumnName="b_hor_activo" />
+                <ScalarProperty Name="n_hor_minutos" ColumnName="n_hor_minutos" />
+                <ScalarProperty Name="d_hor_final" ColumnName="d_hor_final" />
+                <ScalarProperty Name="d_hor_inicio" ColumnName="d_hor_inicio" />
+                <ScalarProperty Name="s_hor_descripcion" ColumnName="s_hor_descripcion" />
+                <ScalarProperty Name="n_hor_codigo" ColumnName="n_hor_codigo" />
+                <ScalarProperty Name="n_hora_id" ColumnName="n_hora_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -183,6 +251,7 @@
         <EntityTypeShape EntityType="BD_UPNSACModel.AlumnosEgresados" Width="1.5" PointX="2.75" PointY="0.875" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="BD_UPNSACModel.AlumnosRegulares" Width="1.5" PointX="5" PointY="0.875" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="BD_UPNSACModel.Sede" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7879850260416657" />
+        <EntityTypeShape EntityType="BD_UPNSACModel.Hora" Width="1.5" PointX="1" PointY="2.875" Height="2.5571907552083353" />
       </Diagram>
     </Diagrams>
   </Designer>

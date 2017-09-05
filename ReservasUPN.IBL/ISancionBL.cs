@@ -11,7 +11,9 @@ namespace ReservasUPN.IBL
         bool Actualizar(BE.Modelos.Sancion obj);
         List<BE.Adapters.Sancion> Listar(string sede, bool inactivos);
         bool Eliminar(int id);
-        List<BE.Modelos.SancionDetalle> ListarDetalle(int idsancion);
-        List<BE.Modelos.RecursoTipo> ListarDetalleRecursoTipo(int idsancion);
+        //List<BE.Modelos.SancionDetalle> ListarDetalle(int idsancion);
+        //List<BE.Modelos.RecursoTipo> ListarDetalleRecursoTipo(int idsancion);
+        //BE.Modelos.Sancion Buscar(int idsancion);
+        List<BE.Modelos.RecursoTipo> BuscarDetalle(int id);
     }
 }

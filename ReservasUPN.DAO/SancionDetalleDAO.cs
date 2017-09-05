@@ -52,17 +52,11 @@ namespace ReservasUPN.DAO
 
             using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
             {
-                int idAula = Convert.ToInt16(BE.Enumeraciones.TipoRecurso.AULA);
-                var res = (from x in reposit.SancionDetalle
-                        join y in reposit.RecursoTipo on x.tiporecurso equals y.id into ys
-                        from y in ys.DefaultIfEmpty()
-                        where x.sancion == idsancion && (y ==null ? true : y.estado)
-                        select new {x.tiporecurso, 
-                                    descripcion = (y == null ? BE.Adapters.Recurso.TIPO_AULA : y.descripcion)
-                                    }
+                rpta = (from x in reposit.SancionDetalle
+                        join y in reposit.RecursoTipo on x.tiporecurso equals y.id
+                        where x.sancion == idsancion && y.estado
+                        select y
                         ).ToList();
-                rpta = new List<RecursoTipo>();
-                res.ForEach(d => rpta.Add(new RecursoTipo{ id=d.tiporecurso, descripcion=d.descripcion }));
             }
 
             return rpta;
