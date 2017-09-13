@@ -12,6 +12,7 @@
     <link href="../assets/css/morris.css" rel="stylesheet" type="text/css" />
     <link href="../assets/css/Button.Button.css" rel="stylesheet" type="text/css" />
     <link href="../assets/js/jquery-ui/jquery-ui.css" rel="stylesheet" type="text/css" />
+    <script src="../assets/js/jquery.min.js" type="text/javascript"></script>
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -75,7 +76,7 @@
                                 <li>
                                     <a href="#"><i class="fa fa-files-o fa-fw"></i> Reservas <span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
-                                        <li><a href="ReservasMultiples.aspx">Reservas Múltiples</a></li>
+                                        <li><a href="Reservar.aspx">Reservas Múltiples</a></li>
                                         <li><a href="MisReservas.aspx">Mis Reservas</a></li>
                                     </ul>
                                 </li>
@@ -91,7 +92,7 @@
         
     </form>
     <!-- /.Jquery -->
-    <script src="../assets/js/jquery.min.js" type="text/javascript"></script>
+    
     <script src="../assets/js/raphael.min.js" type="text/javascript"></script>  
     <script src="../assets/js/bootstrap.min.js" type="text/javascript"></script>
     <script src="../assets/js/metisMenu.min.js" type="text/javascript"></script>     

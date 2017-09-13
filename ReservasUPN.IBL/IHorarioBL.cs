@@ -8,5 +8,6 @@ namespace ReservasUPN.IBL
     public interface IHorarioBL
     {
         List<BE.Adapters.Horario> Buscar(int idtiporecurso, int idrecurso, bool defecto);
+        List<BE.Adapters.Horario> Buscar(int idrecurso, string idtipohora);
     }
 }

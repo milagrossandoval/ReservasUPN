@@ -51,5 +51,21 @@ namespace ReservasUPN.DAO
             }
             return i==lista.Count;
         }
+
+
+        public RecursoTipoHora Buscar(int idrecursotipo, int idtipousuario)
+        {
+            BE.Modelos.RecursoTipoHora rpta = null;
+            using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
+            {
+                var res = (from x in reposit.RecursoTipoHora
+                           where x.recursoTipo == idrecursotipo && x.usuarioTipo == idtipousuario
+                           select x);
+                if (res.Count() == 1) {
+                    rpta = res.First(); 
+                }
+            }
+            return rpta;
+        }
     }
 }

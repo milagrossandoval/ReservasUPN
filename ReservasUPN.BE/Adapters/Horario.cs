@@ -9,5 +9,7 @@ namespace ReservasUPN.BE.Adapters
     {
         public int Id { get; set; }
         public string DesHora { get; set; }
+        public TimeSpan HoraInicio { get; set; }
+        public TimeSpan HoraFinal { get; set; }
     }
 }

@@ -10,5 +10,6 @@ namespace ReservasUPN.IBL
     {
         List<BE.Adapters.RecursoTipoHora> Listar(int idrecursotipo);
         bool Actualizar(List<RecursoTipoHora> lista);
+        BE.Modelos.RecursoTipoHora Buscar(int idrecursotipo, int idtipousuario);
     }
 }

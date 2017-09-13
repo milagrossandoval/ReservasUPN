@@ -26,6 +26,7 @@ using System.Xml.Serialization;
 [assembly: EdmRelationshipAttribute("BD_RESERVASModel", "SancionDetalle", "RecursoTipo", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ReservasUPN.BE.Modelos.RecursoTipo), "Sancion", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ReservasUPN.BE.Modelos.Sancion))]
 [assembly: EdmRelationshipAttribute("BD_RESERVASModel", "FK_RecursoHorario_Recurso", "Recurso", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ReservasUPN.BE.Modelos.Recurso), "RecursoHorario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ReservasUPN.BE.Modelos.RecursoHorario), true)]
 [assembly: EdmRelationshipAttribute("BD_RESERVASModel", "FK_RecursoTipoHorario_RecursoTipo", "RecursoTipo", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ReservasUPN.BE.Modelos.RecursoTipo), "RecursoTipoHorario", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ReservasUPN.BE.Modelos.RecursoTipoHorario), true)]
+[assembly: EdmRelationshipAttribute("BD_RESERVASModel", "FK_Reserva_Recurso", "Recurso", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(ReservasUPN.BE.Modelos.Recurso), "Reserva", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(ReservasUPN.BE.Modelos.Reserva), true)]
 
 #endregion
 
@@ -220,6 +221,22 @@ namespace ReservasUPN.BE.Modelos
             }
         }
         private ObjectSet<RecursoTipoHorario> _RecursoTipoHorario;
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        public ObjectSet<Reserva> Reserva
+        {
+            get
+            {
+                if ((_Reserva == null))
+                {
+                    _Reserva = base.CreateObjectSet<Reserva>("Reserva");
+                }
+                return _Reserva;
+            }
+        }
+        private ObjectSet<Reserva> _Reserva;
 
         #endregion
 
@@ -295,6 +312,14 @@ namespace ReservasUPN.BE.Modelos
         public void AddToRecursoTipoHorario(RecursoTipoHorario recursoTipoHorario)
         {
             base.AddObject("RecursoTipoHorario", recursoTipoHorario);
+        }
+    
+        /// <summary>
+        /// Método desusado para agregar un nuevo objeto al EntitySet Reserva. Considere la posibilidad de usar el método .Add de la propiedad ObjectSet&lt;T&gt; asociada.
+        /// </summary>
+        public void AddToReserva(Reserva reserva)
+        {
+            base.AddObject("Reserva", reserva);
         }
 
         #endregion
@@ -794,6 +819,28 @@ namespace ReservasUPN.BE.Modelos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<RecursoHorario>("BD_RESERVASModel.FK_RecursoHorario_Recurso", "RecursoHorario", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BD_RESERVASModel", "FK_Reserva_Recurso", "Reserva")]
+        public EntityCollection<Reserva> Reserva
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Reserva>("BD_RESERVASModel.FK_Reserva_Recurso", "Reserva");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Reserva>("BD_RESERVASModel.FK_Reserva_Recurso", "Reserva", value);
                 }
             }
         }
@@ -1829,6 +1876,331 @@ namespace ReservasUPN.BE.Modelos
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<RecursoTipo>("BD_RESERVASModel.FK_RecursoTipoHorario_RecursoTipo", "RecursoTipo", value);
+                }
+            }
+        }
+
+        #endregion
+
+    }
+    
+    /// <summary>
+    /// No hay documentación de metadatos disponible.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="BD_RESERVASModel", Name="Reserva")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Reserva : EntityObject
+    {
+        #region Método de generador
+    
+        /// <summary>
+        /// Crear un nuevo objeto Reserva.
+        /// </summary>
+        /// <param name="id">Valor inicial de la propiedad id.</param>
+        /// <param name="usuario">Valor inicial de la propiedad usuario.</param>
+        /// <param name="recurso">Valor inicial de la propiedad recurso.</param>
+        /// <param name="fecha">Valor inicial de la propiedad fecha.</param>
+        /// <param name="hora">Valor inicial de la propiedad hora.</param>
+        /// <param name="estado">Valor inicial de la propiedad estado.</param>
+        public static Reserva CreateReserva(global::System.Int32 id, global::System.String usuario, global::System.Int32 recurso, global::System.DateTime fecha, global::System.Int32 hora, global::System.Boolean estado)
+        {
+            Reserva reserva = new Reserva();
+            reserva.id = id;
+            reserva.usuario = usuario;
+            reserva.recurso = recurso;
+            reserva.fecha = fecha;
+            reserva.hora = hora;
+            reserva.estado = estado;
+            return reserva;
+        }
+
+        #endregion
+
+        #region Propiedades primitivas
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 id
+        {
+            get
+            {
+                return _id;
+            }
+            set
+            {
+                if (_id != value)
+                {
+                    OnidChanging(value);
+                    ReportPropertyChanging("id");
+                    _id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("id");
+                    OnidChanged();
+                }
+            }
+        }
+        private global::System.Int32 _id;
+        partial void OnidChanging(global::System.Int32 value);
+        partial void OnidChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String usuario
+        {
+            get
+            {
+                return _usuario;
+            }
+            set
+            {
+                OnusuarioChanging(value);
+                ReportPropertyChanging("usuario");
+                _usuario = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("usuario");
+                OnusuarioChanged();
+            }
+        }
+        private global::System.String _usuario;
+        partial void OnusuarioChanging(global::System.String value);
+        partial void OnusuarioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 recurso
+        {
+            get
+            {
+                return _recurso;
+            }
+            set
+            {
+                OnrecursoChanging(value);
+                ReportPropertyChanging("recurso");
+                _recurso = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("recurso");
+                OnrecursoChanged();
+            }
+        }
+        private global::System.Int32 _recurso;
+        partial void OnrecursoChanging(global::System.Int32 value);
+        partial void OnrecursoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.DateTime fecha
+        {
+            get
+            {
+                return _fecha;
+            }
+            set
+            {
+                OnfechaChanging(value);
+                ReportPropertyChanging("fecha");
+                _fecha = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("fecha");
+                OnfechaChanged();
+            }
+        }
+        private global::System.DateTime _fecha;
+        partial void OnfechaChanging(global::System.DateTime value);
+        partial void OnfechaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 hora
+        {
+            get
+            {
+                return _hora;
+            }
+            set
+            {
+                OnhoraChanging(value);
+                ReportPropertyChanging("hora");
+                _hora = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("hora");
+                OnhoraChanged();
+            }
+        }
+        private global::System.Int32 _hora;
+        partial void OnhoraChanging(global::System.Int32 value);
+        partial void OnhoraChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Boolean> asistencia
+        {
+            get
+            {
+                return _asistencia;
+            }
+            set
+            {
+                OnasistenciaChanging(value);
+                ReportPropertyChanging("asistencia");
+                _asistencia = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("asistencia");
+                OnasistenciaChanged();
+            }
+        }
+        private Nullable<global::System.Boolean> _asistencia;
+        partial void OnasistenciaChanging(Nullable<global::System.Boolean> value);
+        partial void OnasistenciaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean estado
+        {
+            get
+            {
+                return _estado;
+            }
+            set
+            {
+                OnestadoChanging(value);
+                ReportPropertyChanging("estado");
+                _estado = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("estado");
+                OnestadoChanged();
+            }
+        }
+        private global::System.Boolean _estado;
+        partial void OnestadoChanging(global::System.Boolean value);
+        partial void OnestadoChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nombreUsuario
+        {
+            get
+            {
+                return _nombreUsuario;
+            }
+            set
+            {
+                OnnombreUsuarioChanging(value);
+                ReportPropertyChanging("nombreUsuario");
+                _nombreUsuario = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nombreUsuario");
+                OnnombreUsuarioChanged();
+            }
+        }
+        private global::System.String _nombreUsuario;
+        partial void OnnombreUsuarioChanging(global::System.String value);
+        partial void OnnombreUsuarioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> diaSemana
+        {
+            get
+            {
+                return _diaSemana;
+            }
+            set
+            {
+                OndiaSemanaChanging(value);
+                ReportPropertyChanging("diaSemana");
+                _diaSemana = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("diaSemana");
+                OndiaSemanaChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _diaSemana;
+        partial void OndiaSemanaChanging(Nullable<global::System.Int32> value);
+        partial void OndiaSemanaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String descripcionHora
+        {
+            get
+            {
+                return _descripcionHora;
+            }
+            set
+            {
+                OndescripcionHoraChanging(value);
+                ReportPropertyChanging("descripcionHora");
+                _descripcionHora = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("descripcionHora");
+                OndescripcionHoraChanged();
+            }
+        }
+        private global::System.String _descripcionHora;
+        partial void OndescripcionHoraChanging(global::System.String value);
+        partial void OndescripcionHoraChanged();
+
+        #endregion
+
+    
+        #region Propiedades de navegación
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("BD_RESERVASModel", "FK_Reserva_Recurso", "Recurso")]
+        public Recurso Recurso1
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Recurso>("BD_RESERVASModel.FK_Reserva_Recurso", "Recurso").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Recurso>("BD_RESERVASModel.FK_Reserva_Recurso", "Recurso").Value = value;
+            }
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Recurso> Recurso1Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Recurso>("BD_RESERVASModel.FK_Reserva_Recurso", "Recurso");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Recurso>("BD_RESERVASModel.FK_Reserva_Recurso", "Recurso", value);
                 }
             }
         }

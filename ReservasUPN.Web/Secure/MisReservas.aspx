@@ -8,5 +8,7 @@
                     <h3 class="page-header">Mis Reservas</h3>
                 </div>
          </div>
+         <div class="row">
+         </div>
     </div> 
 </asp:Content>

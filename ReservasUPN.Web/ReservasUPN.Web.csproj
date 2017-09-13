@@ -112,7 +112,7 @@
     <Content Include="Secure\RecursosTipo.aspx" />
     <Content Include="Secure\RecursoTipoHora.aspx" />
     <Content Include="Secure\Reportes.aspx" />
-    <Content Include="Secure\ReservasMultiples.aspx" />
+    <Content Include="Secure\Reservar.aspx" />
     <Content Include="Secure\Sanciones.aspx" />
     <Content Include="Secure\Usuarios.aspx" />
     <Content Include="Secure\UsuariosTipo.aspx" />
@@ -189,12 +189,12 @@
     <Compile Include="Secure\Reportes.aspx.designer.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Secure\ReservasMultiples.aspx.cs">
-      <DependentUpon>ReservasMultiples.aspx</DependentUpon>
+    <Compile Include="Secure\Reservar.aspx.cs">
+      <DependentUpon>Reservar.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Secure\ReservasMultiples.aspx.designer.cs">
-      <DependentUpon>ReservasMultiples.aspx</DependentUpon>
+    <Compile Include="Secure\Reservar.aspx.designer.cs">
+      <DependentUpon>Reservar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secure\Sanciones.aspx.cs">
       <DependentUpon>Sanciones.aspx</DependentUpon>

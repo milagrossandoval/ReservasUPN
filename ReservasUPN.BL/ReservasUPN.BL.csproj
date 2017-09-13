@@ -50,6 +50,7 @@
     <Compile Include="RecursoTipoBL.cs" />
     <Compile Include="RecursoTipoHoraBL.cs" />
     <Compile Include="RecursoTipoHorarioBL.cs" />
+    <Compile Include="ReservaBL.cs" />
     <Compile Include="SancionBL.cs" />
     <Compile Include="SedeBL.cs" />
     <Compile Include="UsuarioBL.cs" />

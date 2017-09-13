@@ -123,5 +123,29 @@ namespace ReservasUPN.BL
             return rpta;
         }
 
+        public List<BE.Adapters.Horario> Buscar(int idrecurso, string idtipohora) {
+            List<BE.Adapters.Horario> rpta;
+            List<BE.Modelos.RecursoHorario> horario = new RecursoHorarioBL().Buscar(idrecurso);
+            List<BE.Modelos.Hora> horas = horabl.Listar(idtipohora);
+            rpta = (from x in horario
+                    join y in horas on x.hora equals y.n_hor_codigo
+                    select new BE.Adapters.Horario { 
+                        Id = x.recurso,
+                        recurso = x.recurso,
+                        hora = x.hora,
+                        DesHora = y.s_hor_descripcion,
+                        lunes = x.lunes,
+                        martes = x.martes,
+                        miercoles = x.martes,
+                        jueves = x.jueves,
+                        viernes = x.viernes,
+                        sabado = x.sabado,
+                        domingo = x.domingo,
+                        HoraInicio = y.d_hor_inicio,
+                        HoraFinal = y.d_hor_final
+                    }).ToList();
+            return rpta;
+        }
+
     }
 }

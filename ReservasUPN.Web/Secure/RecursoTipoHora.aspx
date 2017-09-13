@@ -23,7 +23,7 @@
             </div>
             <div class="col-lg-3">
                 <telerik:RadComboBox ID="CmbTiposRecurso" runat="server" AutoPostBack="True"
-                    Width="200px" DataValueField="id" DataSourceID="OdsRecursoTipo" 
+                    Width="200px" DataValueField="id" DataTextField="descripcion"  DataSourceID="OdsRecursoTipo" 
                     ondatabound="CmbTiposRecurso_DataBound" />
                 <asp:ObjectDataSource ID="OdsRecursoTipo" runat="server" SelectMethod="Listar" 
                     TypeName="ReservasUPN.BL.RecursoTipoBL">

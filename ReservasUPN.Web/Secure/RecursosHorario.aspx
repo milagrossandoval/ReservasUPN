@@ -11,21 +11,12 @@
          <div class="row">
             <div class="col-lg-4">
                 <h5>Sede</h5>
-            </div>
-            <div class="col-lg-4">
-                <h5>Tipo de Recurso</h5>
-            </div>
-            <div class="col-lg-4">
-                <h5>Recurso</h5>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-4">
                 <telerik:RadComboBox ID="CmbSedes" runat="server" AutoPostBack="true" DataTextField="descripcion"
                     Width="300" DataValueField="id" 
                     onselectedindexchanged="CmbSedes_SelectedIndexChanged" />
             </div>
             <div class="col-lg-4">
+                <h5>Tipo de Recurso</h5>
                 <telerik:RadComboBox ID="CmbTiposRecurso" runat="server" AutoPostBack="True"
                     Width="200px" DataValueField="id" DataTextField="descripcion" DataSourceID="OdsRecursoTipo" 
                     ondatabound="CmbTiposRecurso_DataBound" 
@@ -42,6 +33,7 @@
                 </asp:ObjectDataSource>
             </div>
             <div class="col-lg-4">
+                <h5>Recurso</h5>
                 <telerik:RadComboBox ID="CmbRecursos" runat="server" AutoPostBack="True"
                     Width="200px" DataValueField="id" DataTextField="descripcion" DataSourceID="OdsRecurso" 
                     ondatabound="CmbRecursos_DataBound" 
@@ -55,7 +47,7 @@
                 </asp:ObjectDataSource>
             </div>
         </div>
-    
+        
     <div class="row">
         <div class="col-lg-12">
            <div class="panel panel-default">
@@ -178,8 +170,8 @@
         </Windows>
     </telerik:RadWindowManager>--%>
 
-    <telerik:RadWindow ID="WinConfirmacion" runat="server" Title="Correcto"  Skin="Windows7"
-            VisibleOnPageLoad="false" Modal="true" Width="350" Height="200" >
+    <telerik:RadWindow ID="WinConfirmacion" runat="server" Title="Correcto" EnableTheming="false"  Skin="Windows7"
+            VisibleOnPageLoad="false" Modal="true" Width="350" Height="200" BorderStyle="None" Behaviors="None"  >
         <ContentTemplate>
             <center>
                 <b>Se registró correctamente el horario para el tipo de recurso: <%= CmbTiposRecurso.Text %>. </b><br />
@@ -187,7 +179,7 @@
                 <telerik:RadTabStrip ID="TabConfirmacion" runat="server" Orientation="HorizontalBottom" 
                     AutoPostBack="true" OnTabClick="TabConfirmacion_OnTabClick"  > 
                     <Tabs> 
-                        <telerik:RadTab Text="Si" PostBack="true" /> 
+                        <telerik:RadTab Text="Si" /> 
                         <telerik:RadTab Text="No" />
                     </Tabs> 
                 </telerik:RadTabStrip> 

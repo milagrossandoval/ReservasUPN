@@ -36,5 +36,11 @@ namespace ReservasUPN.BL
         {
             return recursotipohoradao.Actualizar(lista);
         }
+
+
+        public RecursoTipoHora Buscar(int idrecursotipo, int idtipousuario)
+        {
+            return recursotipohoradao.Buscar(idrecursotipo, idtipousuario);
+        }
     }
 }

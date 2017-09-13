@@ -9,5 +9,6 @@ namespace ReservasUPN.IDAO
     {
         List<BE.Modelos.RecursoTipoHora> Listar(int idrecursotipo);
         bool Actualizar(List<BE.Modelos.RecursoTipoHora> lista);
+        BE.Modelos.RecursoTipoHora Buscar(int idrecursotipo, int idtipousuario);
     }
 }

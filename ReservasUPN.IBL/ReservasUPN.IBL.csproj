@@ -47,6 +47,7 @@
     <Compile Include="IRecursoBL.cs" />
     <Compile Include="IRecursoTipoBL.cs" />
     <Compile Include="IRecursoTipoHoraBL.cs" />
+    <Compile Include="IReservaBL.cs" />
     <Compile Include="ISancionBL.cs" />
     <Compile Include="ISedeBL.cs" />
     <Compile Include="IUsuarioBL.cs" />
