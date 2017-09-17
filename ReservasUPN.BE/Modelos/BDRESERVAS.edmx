@@ -135,6 +135,8 @@
           <Property Name="nombreUsuario" Type="varchar" MaxLength="100" />
           <Property Name="diaSemana" Type="int" />
           <Property Name="descripcionHora" Type="varchar" MaxLength="50" />
+          <Property Name="inicio" Type="datetime" />
+          <Property Name="final" Type="datetime" />
         </EntityType>
         <EntityType Name="Sancion">
           <Key>
@@ -558,6 +560,8 @@
           <Property Type="String" Name="nombreUsuario" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="diaSemana" />
           <Property Type="String" Name="descripcionHora" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="inicio" />
+          <Property Type="DateTime" Name="final" />
           <NavigationProperty Name="Recurso1" Relationship="BD_RESERVASModel.FK_Reserva_Recurso" FromRole="Reserva" ToRole="Recurso" />
         </EntityType>
         <Association Name="FK_Reserva_Recurso">
@@ -692,6 +696,8 @@
           <EntitySetMapping Name="Reserva">
             <EntityTypeMapping TypeName="BD_RESERVASModel.Reserva">
               <MappingFragment StoreEntitySet="Reserva">
+                <ScalarProperty Name="final" ColumnName="final" />
+                <ScalarProperty Name="inicio" ColumnName="inicio" />
                 <ScalarProperty Name="descripcionHora" ColumnName="descripcionHora" />
                 <ScalarProperty Name="diaSemana" ColumnName="diaSemana" />
                 <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />
@@ -763,11 +769,11 @@
           <ConnectorPoint PointX="3.8125" PointY="3.9417936197916661" />
           <ConnectorPoint PointX="3.8125" PointY="6.125" />
         </AssociationConnector>
-        <EntityTypeShape EntityType="BD_RESERVASModel.Reserva" Width="1.5" PointX="7.5" PointY="10.25" Height="3.1340950520833317" />
+        <EntityTypeShape EntityType="BD_RESERVASModel.Reserva" Width="1.5" PointX="7.5" PointY="10.125" Height="3.5186979166666745" />
         <AssociationConnector Association="BD_RESERVASModel.FK_Reserva_Recurso" >
           <ConnectorPoint PointX="6" PointY="6.2494921875" />
-          <ConnectorPoint PointX="6" PointY="11.817047526041666" />
-          <ConnectorPoint PointX="7.5" PointY="11.817047526041666" />
+          <ConnectorPoint PointX="6" PointY="11.884348958333337" />
+          <ConnectorPoint PointX="7.5" PointY="11.884348958333337" />
         </AssociationConnector>
       </Diagram>
     </Diagrams>

@@ -48,6 +48,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Adapters\RecursoTipoHora.cs" />
+    <Compile Include="Adapters\Reserva.cs" />
     <Compile Include="Adapters\Sancion.cs" />
     <Compile Include="Adapters\Usuario.cs" />
     <Compile Include="Enumeraciones\TipoRecurso.cs" />

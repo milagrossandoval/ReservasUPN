@@ -72,12 +72,12 @@
                                     </ul>
                                     <!-- /.nav-second-level -->
                                 </li>
-                                <li><a href="ConfigurarHorarios.aspx"><i class="fa fa-table fa-fw"></i> Horarios </a></li>                         
                                 <li>
                                     <a href="#"><i class="fa fa-files-o fa-fw"></i> Reservas <span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
                                         <li><a href="Reservar.aspx">Reservas Múltiples</a></li>
                                         <li><a href="MisReservas.aspx">Mis Reservas</a></li>
+                                        <li><a href="Historial.aspx">Historial</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="Reportes.aspx"><i class="fa fa-edit fa-fw"></i>Reportes</a></li>   

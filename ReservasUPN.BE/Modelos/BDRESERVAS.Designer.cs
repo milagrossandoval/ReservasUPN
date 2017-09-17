@@ -2161,6 +2161,54 @@ namespace ReservasUPN.BE.Modelos
         private global::System.String _descripcionHora;
         partial void OndescripcionHoraChanging(global::System.String value);
         partial void OndescripcionHoraChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> inicio
+        {
+            get
+            {
+                return _inicio;
+            }
+            set
+            {
+                OninicioChanging(value);
+                ReportPropertyChanging("inicio");
+                _inicio = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("inicio");
+                OninicioChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _inicio;
+        partial void OninicioChanging(Nullable<global::System.DateTime> value);
+        partial void OninicioChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> final
+        {
+            get
+            {
+                return _final;
+            }
+            set
+            {
+                OnfinalChanging(value);
+                ReportPropertyChanging("final");
+                _final = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("final");
+                OnfinalChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _final;
+        partial void OnfinalChanging(Nullable<global::System.DateTime> value);
+        partial void OnfinalChanged();
 
         #endregion
 

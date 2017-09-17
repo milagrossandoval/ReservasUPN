@@ -9,6 +9,7 @@ using ReservasUPN.BL;
 using Telerik.Web.UI;
 using ReservasUPN.BE.Modelos;
 using ReservasUPN.IBL;
+using ReservasUPN.Util;
 
 namespace ReservasUPN.Web.Secure
 {
@@ -99,28 +100,6 @@ namespace ReservasUPN.Web.Secure
             RgHorario.Rebind();
         }
 
-        private String Columna(int i)
-        {
-            switch (i)
-            {
-                case 1:
-                    return "Lunes";
-                case 2:
-                    return "Martes";
-                case 3:
-                    return "Miercoles";
-                case 4:
-                    return "Jueves";
-                case 5:
-                    return "Viernes";
-                case 6:
-                    return "Sabado";
-                case 7:
-                    return "Domingo";
-            }
-            return "";
-        }
-
         protected void CmbTiposRecurso_DataBound(object sender, EventArgs e)
         {
             CmbTiposRecurso.Items.Insert(0, new Telerik.Web.UI.RadComboBoxItem("-- Seleccione ---", "0"));
@@ -162,7 +141,7 @@ namespace ReservasUPN.Web.Secure
                     for (int i = 1; i <= 7; i++)
                     {
                         fechaDia = fechasSemana[i - 1];
-                        chk = (CheckBox)item.FindControl("Chk" + Columna(i));
+                        chk = (CheckBox)item.FindControl("Chk" + Fecha.DiaSemana(i));
 
                         if (fechaDia.Month != fechaSeleccionada.Month) { chk.Visible = false; }
                         else if (fechaDia < DateTime.Today) { chk.Visible = false; }
@@ -174,7 +153,7 @@ namespace ReservasUPN.Web.Secure
 
                         if (res.Count() == 1)
                         {
-                            lbl = (Label)item.FindControl("Lbl" + Columna(i));
+                            lbl = (Label)item.FindControl("Lbl" + Fecha.DiaSemana(i));
                             lbl.Text = res.First().nombreUsuario;
                             lbl.Visible = true;
                             chk.Visible = false;
@@ -197,7 +176,9 @@ namespace ReservasUPN.Web.Secure
 
         private Reserva VerificarReserva(GridDataItem item, int hora, string deshora, int diaSemana, DateTime fecha)
         {
-            CheckBox Chk = (CheckBox)item.FindControl("Chk" + Columna(diaSemana));
+            CheckBox Chk = (CheckBox)item.FindControl("Chk" + Fecha.DiaSemana(diaSemana));
+            TimeSpan horainicial = (TimeSpan)item.GetDataKeyValue("HoraInicio");
+            TimeSpan horafinal = (TimeSpan)item.GetDataKeyValue("HoraFinal");
             Reserva reserva = null;
             if (Chk.Checked && Chk.Visible)
             {
@@ -211,7 +192,9 @@ namespace ReservasUPN.Web.Secure
                     estado = true,
                     nombreUsuario = Usuario.NombreCompleto,
                     diaSemana = (int)fecha.DayOfWeek,
-                    descripcionHora = deshora
+                    descripcionHora = deshora,
+                    inicio = fecha.Add(horainicial),
+                    final = fecha.Add(horafinal)
                 };
             }
             return reserva;

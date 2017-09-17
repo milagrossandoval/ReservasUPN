@@ -80,7 +80,7 @@
                         <ClientSettings>
                             <Scrolling AllowScroll="True" UseStaticHeaders="True" />
                         </ClientSettings>
-                        <MasterTableView DataSourceID="ObjectDataSource1" AutoGenerateColumns="False" DataKeyNames="hora,HoraFinal,DesHora">
+                        <MasterTableView DataSourceID="ObjectDataSource1" AutoGenerateColumns="False" DataKeyNames="hora,HoraInicio,HoraFinal,DesHora">
                             <Columns>
                                 <telerik:GridBoundColumn DataField="DesHora" HeaderText="Hora" UniqueName="Hora">
                                     <HeaderStyle Width="12.5%" />

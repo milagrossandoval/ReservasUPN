@@ -18,18 +18,15 @@ namespace ReservasUPN.BL
             return reservadao.HorasUtilizadas(usuario, idtiporecurso, fecha);
         }
 
-
-        public List<BE.Modelos.Reserva> Listar(string usuario, bool mostrarPasadas)
+        public List<BE.Adapters.Reserva> ListarActivas(string usuario, int tiporecurso, DateTime fechaInicio, DateTime fechaFin)
         {
-            return reservadao.Listar(usuario, mostrarPasadas);
+            return reservadao.ListarActivas(usuario, tiporecurso, fechaInicio, fechaFin);
         }
-
 
         public List<BE.Modelos.Reserva> Listar(int recurso, DateTime inicio, DateTime fin)
         {
             return reservadao.Listar(recurso, inicio, fin);
         }
-
 
         public bool Grabar(List<BE.Modelos.Reserva> reservas)
         {
@@ -45,6 +42,12 @@ namespace ReservasUPN.BL
         public bool Cancelar(int id)
         {
             return reservadao.Cancelar(id);
+        }
+
+
+        public List<BE.Adapters.Reserva> Listar(string usuario, int sede)
+        {
+            return reservadao.Listar(usuario, sede);
         }
     }
 }

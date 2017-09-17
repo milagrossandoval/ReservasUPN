@@ -66,6 +66,10 @@
       <Project>{7A2DD5FE-E97E-45FA-81EC-CE807E7D552C}</Project>
       <Name>ReservasUPN.IDAO</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ReservasUPN.Util\ReservasUPN.Util.csproj">
+      <Project>{3AC7F75B-2A5C-4D64-B029-6F465CB5E07D}</Project>
+      <Name>ReservasUPN.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,6 +5,7 @@ using System.Text;
 using ReservasUPN.IBL;
 using ReservasUPN.IDAO;
 using ReservasUPN.DAO;
+using ReservasUPN.Util;
 
 namespace ReservasUPN.BL
 {
@@ -12,28 +13,14 @@ namespace ReservasUPN.BL
     {
         private ISancionDAO sancionDAO = SancionDAO.Instance;
 
-        private string ListToString(List<BE.Modelos.RecursoTipo> lista)
-        {
-            StringBuilder sb = new StringBuilder();
-            foreach (BE.Modelos.RecursoTipo rt in lista)
-            {
-                if (sb.Length > 0)
-                {
-                    sb.Append(",");
-                }
-                sb.Append(rt.id);
-            }
-            return sb.ToString();
-        }
-
         public bool Grabar(BE.Modelos.Sancion obj)
         {
-            return sancionDAO.Grabar(obj, ListToString(obj.RecursoTipo.ToList()));
+            return sancionDAO.Grabar(obj, Cadena.ListRecursoTipoToString(obj.RecursoTipo.ToList()));
         }
 
         public bool Actualizar(BE.Modelos.Sancion obj)
         {
-            return sancionDAO.Actualizar(obj, ListToString(obj.RecursoTipo.ToList()));  
+            return sancionDAO.Actualizar(obj, Cadena.ListRecursoTipoToString(obj.RecursoTipo.ToList()));  
         }
 
         public List<BE.Adapters.Sancion> Listar(string sede, bool inactivos)

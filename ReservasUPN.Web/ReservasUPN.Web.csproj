@@ -106,6 +106,7 @@
     <Content Include="assets\js\sb-admin-2.js" />
     <Content Include="LogIn.aspx" />
     <Content Include="Secure\Default.aspx" />
+    <Content Include="Secure\Historial.aspx" />
     <Content Include="Secure\MisReservas.aspx" />
     <Content Include="Secure\RecursosHorario.aspx" />
     <Content Include="Secure\Recursos.aspx" />
@@ -145,6 +146,13 @@
     </Compile>
     <Compile Include="Secure\Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Historial.aspx.cs">
+      <DependentUpon>Historial.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Historial.aspx.designer.cs">
+      <DependentUpon>Historial.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secure\MisReservas.aspx.cs">
       <DependentUpon>MisReservas.aspx</DependentUpon>
@@ -237,6 +245,10 @@
     <ProjectReference Include="..\ReservasUPN.IBL\ReservasUPN.IBL.csproj">
       <Project>{9FB0599D-4BFB-4F6E-9C51-0A0AED85BA73}</Project>
       <Name>ReservasUPN.IBL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ReservasUPN.Util\ReservasUPN.Util.csproj">
+      <Project>{3AC7F75B-2A5C-4D64-B029-6F465CB5E07D}</Project>
+      <Name>ReservasUPN.Util</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

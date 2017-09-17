@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using ReservasUPN.IDAO;
 using ReservasUPN.BE.Modelos;
+using ReservasUPN.Util;
 
 namespace ReservasUPN.DAO
 {
@@ -59,15 +60,31 @@ namespace ReservasUPN.DAO
             return rpta;
         }
 
-        public List<Reserva> Listar(string usuario, bool mostrarPasadas)
+        public List<BE.Adapters.Reserva> Listar(string usuario, int sede)
         {
-            List<Reserva> rpta;
+            List<BE.Adapters.Reserva> rpta;
             using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
             {
-                rpta = (from x in reposit.Reserva
-                        where x.usuario == usuario && 
-                        (mostrarPasadas ? x.fecha<DateTime.Today : true)
-                        select x).ToList();
+                rpta = (from r in reposit.Reserva
+                        join c in reposit.Recurso on r.recurso equals c.id
+                        join t in reposit.RecursoTipo on c.tipoRecurso equals t.id
+                        where r.usuario == usuario && t.sede == sede
+                        select new BE.Adapters.Reserva
+                        {
+                            id = r.id,
+                            asistencia = r.asistencia.HasValue? r.asistencia: false,
+                            descripcionHora = r.descripcionHora,
+                            diaSemana = r.diaSemana,
+                            estado = r.estado,
+                            fecha = r.fecha,
+                            inicio = r.inicio,
+                            final = r.final,
+                            hora = r.hora,
+                            NombreRecurso = c.descripcion,
+                            nombreUsuario = r.nombreUsuario,
+                            recurso = r.recurso,
+                            usuario = r.usuario
+                        }).ToList();
 
             }
             return rpta;
@@ -105,6 +122,37 @@ namespace ReservasUPN.DAO
                     rpta = res.First();
                 }
             }
+            return rpta;
+        }
+
+        public List<BE.Adapters.Reserva> ListarActivas(string usuario, int tiporecurso, DateTime fechaInicio, DateTime fechaFin)
+        {
+            List<BE.Adapters.Reserva> rpta;
+            using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
+            {
+                rpta = (from r in reposit.Reserva
+                        join t in reposit.Recurso on r.recurso equals t.id
+                        where r.usuario == usuario && t.tipoRecurso == tiporecurso
+                        && r.inicio >= DateTime.Now
+                        && r.fecha >= fechaInicio && r.fecha <= fechaFin
+                        && r.estado
+                        select new BE.Adapters.Reserva { 
+                            id = r.id,
+                            asistencia = r.asistencia,
+                            descripcionHora = r.descripcionHora,
+                            diaSemana = r.diaSemana,
+                            estado = r.estado,
+                            fecha = r.fecha,
+                            inicio = r.inicio,
+                            final = r.final,
+                            hora = r.hora,
+                            NombreRecurso = t.descripcion,
+                            nombreUsuario = r.nombreUsuario,
+                            recurso = r.recurso,
+                            usuario = r.usuario
+                        }).ToList();
+            }
+
             return rpta;
         }
     }
