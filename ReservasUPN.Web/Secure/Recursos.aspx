@@ -29,6 +29,7 @@
                         AutoGenerateColumns="False" oninsertcommand="RgRecursos_InsertCommand" 
                         onitemcommand="RgRecursos_ItemCommand" 
                         onupdatecommand="RgRecursos_UpdateCommand" 
+                        onexcelexportcellformatting="RgRecursos_ExcelExportCellFormatting" 
                         onitemdatabound="RgRecursos_ItemDataBound">
                         <ExportSettings ExportOnlyData="true" FileName="Recursos" IgnorePaging="true" OpenInNewWindow="true">
                         </ExportSettings>
@@ -38,11 +39,11 @@
                         </ClientSettings>
                         <GroupingSettings CaseSensitive="false" />
                         <MasterTableView DataSourceID="ObjectDataSource1" AutoGenerateColumns="False" CommandItemDisplay="Top"
-                            InsertItemPageIndexAction="ShowItemOnCurrentPage" DataKeyNames="id,codigo" OverrideDataSourceControlSorting="true">
+                            InsertItemPageIndexAction="ShowItemOnCurrentPage" DataKeyNames="id,codigo,estado" OverrideDataSourceControlSorting="true">
                             <CommandItemSettings AddNewRecordText="Agregar" ShowRefreshButton="false" ShowExportToExcelButton="true"
                                 ExportToExcelText="Exportar a Excel" />
                             <Columns>
-                                <telerik:GridEditCommandColumn ButtonType="ImageButton" EditImageUrl="../assets/images/edit.png">
+                                <telerik:GridEditCommandColumn ButtonType="ImageButton" UniqueName="Editar" EditImageUrl="../assets/images/edit.png">
                                     <HeaderStyle Width="10%" />
                                 </telerik:GridEditCommandColumn>
                                 <telerik:GridBoundColumn DataField="codigo" ShowFilterIcon="false" ShowSortIcon="true"

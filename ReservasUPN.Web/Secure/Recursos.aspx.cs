@@ -135,5 +135,20 @@ namespace ReservasUPN.Web.Secure
                 txtbx.TextMode = TextBoxMode.MultiLine;
             }
         }
+
+        protected void RgRecursos_ExcelExportCellFormatting(object sender, ExcelExportCellFormattingEventArgs e)
+        {
+            if (e.FormattedColumn.UniqueName == "Editar")
+            {
+                //CheckBox chk = (CheckBox)e.Cell.Controls[0];
+                e.Cell.Text = "";
+            }
+            else if (e.FormattedColumn.UniqueName == "estado")
+            {
+                GridDataItem item = ((GridDataItem)(e.Cell.Controls[0].NamingContainer));
+                bool estado = (bool) item.GetDataKeyValue("estado");
+                e.Cell.Text = estado ? "Activo" : "Inactivo";
+            }
+        }
     }
 }
