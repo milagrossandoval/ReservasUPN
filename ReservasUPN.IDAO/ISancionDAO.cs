@@ -14,7 +14,8 @@ namespace ReservasUPN.IDAO
         List<BE.Adapters.Sancion> Listar(string sede);
         List<BE.Adapters.Sancion> ListarActivos(string sede);
         bool Eliminar(int id);
-        //BE.Modelos.Sancion Buscar(int id);
+        BE.Modelos.Sancion Buscar(string usuario, DateTime fecha, int idtiporecurso);
         List<BE.Modelos.RecursoTipo> BuscarDetalle(int id);
+
     }
 }

@@ -28,7 +28,8 @@
                         AllowFilteringByColumn="True" AllowPaging="True" AllowSorting="True" GridLines="None" 
                         AutoGenerateColumns="False" oninsertcommand="RgRecursos_InsertCommand" 
                         onitemcommand="RgRecursos_ItemCommand" 
-                        onupdatecommand="RgRecursos_UpdateCommand">
+                        onupdatecommand="RgRecursos_UpdateCommand" 
+                        onitemdatabound="RgRecursos_ItemDataBound">
                         <ExportSettings ExportOnlyData="true" FileName="Recursos" IgnorePaging="true" OpenInNewWindow="true">
                         </ExportSettings>
                         <ClientSettings>
@@ -115,6 +116,27 @@
             </div>
         </div>
     </div>
+
+    <asp:HiddenField ID="HfNuevoRecurso" runat="server" />
+    <asp:HiddenField ID="HfNuevoRecursoTipo" runat="server" />
+            
+
+    <telerik:RadWindow ID="WinConfirmacion" runat="server" Title="Correcto" EnableTheming="false"  Skin="Windows7"
+            VisibleOnPageLoad="false" Modal="true" Width="350" Height="200" BorderStyle="None" Behaviors="None"  >
+        <ContentTemplate>
+            <center>
+                ¿Desea aplicar el horario por defecto al nuevo recurso?<br />
+                <telerik:RadTabStrip ID="TabConfirmacion" runat="server" Orientation="HorizontalBottom" 
+                    AutoPostBack="true" OnTabClick="TabConfirmacion_OnTabClick"  > 
+                    <Tabs> 
+                        <telerik:RadTab Text="Si" /> 
+                        <telerik:RadTab Text="No" />
+                    </Tabs> 
+                </telerik:RadTabStrip> 
+            </center>    
+        </ContentTemplate>
+    </telerik:RadWindow>
+
     <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="ListarxSede"
         TypeName="ReservasUPN.BL.RecursoBL">
         <SelectParameters>
@@ -131,14 +153,22 @@
     <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server" DefaultLoadingPanelID="RadAjaxLoadingPanel1">
         <ClientEvents OnRequestStart="onRequestStart" />
         <AjaxSettings>
-            <telerik:AjaxSetting AjaxControlID="RgRecursos">
+            <telerik:AjaxSetting AjaxControlID="CmbSedes">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="RgRecursos" LoadingPanelID="RadAjaxLoadingPanel1" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
-            <telerik:AjaxSetting AjaxControlID="CmbSedes">
+            <telerik:AjaxSetting AjaxControlID="RgRecursos">
                 <UpdatedControls>
                     <telerik:AjaxUpdatedControl ControlID="RgRecursos" LoadingPanelID="RadAjaxLoadingPanel1" />
+                    <telerik:AjaxUpdatedControl ControlID="HfNuevoRecurso" />
+                    <telerik:AjaxUpdatedControl ControlID="HfNuevoRecursoTipo" />
+                    <telerik:AjaxUpdatedControl ControlID="WinConfirmacion" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="WinConfirmacion">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="WinConfirmacion" LoadingPanelID="RadAjaxLoadingPanel1" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
         </AjaxSettings>

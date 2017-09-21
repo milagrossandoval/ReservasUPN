@@ -78,6 +78,7 @@
                                         <li><a href="Reservar.aspx">Reservas Múltiples</a></li>
                                         <li><a href="MisReservas.aspx">Mis Reservas</a></li>
                                         <li><a href="Historial.aspx">Historial</a></li>
+                                        <li><a href="Seguimiento.aspx">Seguimiento</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="Reportes.aspx"><i class="fa fa-edit fa-fw"></i>Reportes</a></li>   

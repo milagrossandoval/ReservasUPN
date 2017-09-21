@@ -8,5 +8,6 @@ namespace ReservasUPN.IDAO
     public interface IHoraDAO
     {
         List<BE.Modelos.Hora> Listar(string tipohora);
+        BE.Modelos.Hora Buscar(TimeSpan hora, string tipohora);
     }
 }

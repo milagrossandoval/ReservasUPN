@@ -15,5 +15,8 @@ namespace ReservasUPN.IDAO
         List<BE.Modelos.Reserva> Listar(int recurso, DateTime inicio, DateTime fin);
         BE.Modelos.Reserva Buscar(int recurso, DateTime fecha, int hora);
         List<BE.Adapters.Reserva> ListarActivas(string usuario, int tiporecurso, DateTime fechaInicio, DateTime fechaFin);
+        List<BE.Adapters.Reserva> Listar(DateTime fecha, int hora, int idtiporecurso);
+        BE.Adapters.Reserva Buscar(string usuario, DateTime fecha, int hora, int idrecurso);
+        bool CambiarAsistencia(int id);
     }
 }

@@ -166,5 +166,19 @@ namespace ReservasUPN.DAO
             }
             return rpta;
         }
+
+
+        public Sancion Buscar(string usuario, DateTime fecha, int idtiporecurso)
+        {
+            BE.Modelos.Sancion rpta = null;
+            using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
+            {
+                var res = reposit.PA_SANCION_BUSCAR(usuario,fecha,idtiporecurso).ToList();
+                if (res.Count == 1) {
+                    rpta = res.First();
+                }
+            }
+            return rpta;
+        }
     }
 }

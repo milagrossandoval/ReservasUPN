@@ -17,12 +17,13 @@ namespace ReservasUPN.DAO
         { get { return _instance; } }
         #endregion
 
-        public bool Grabar(BE.Modelos.Recurso obj)
+        public int Grabar(BE.Modelos.Recurso obj)
         {
             using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
             {
                 reposit.AddToRecurso(obj);
-                return reposit.SaveChanges() == 1;
+                reposit.SaveChanges();
+                return obj.id;
             }
         }
 

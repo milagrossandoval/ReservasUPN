@@ -12,7 +12,7 @@ namespace ReservasUPN.BL
     {
         private IRecursoDAO recursoDAO = RecursoDAO.Instance;
 
-        public bool Grabar(BE.Modelos.Recurso obj)
+        public int Grabar(BE.Modelos.Recurso obj)
         {
             return recursoDAO.Grabar(obj);
         }

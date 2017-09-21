@@ -39,5 +39,11 @@ namespace ReservasUPN.BL
         {
             return sancionDAO.BuscarDetalle(id);
         }
+
+
+        public BE.Modelos.Sancion Buscar(string usuario, DateTime fecha, int idtiporecurso)
+        {
+            return sancionDAO.Buscar(usuario, fecha, idtiporecurso);
+        }
     }
 }

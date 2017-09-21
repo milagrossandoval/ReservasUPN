@@ -40,65 +40,65 @@
                 Fecha
             </div>
             <div class="col-lg-3">
-                <telerik:RadDatePicker ID="DpFecha" runat="server" 
-                    onselecteddatechanged="DpFecha_SelectedDateChanged" />
+                <telerik:RadDatePicker ID="DpFecha" runat="server" OnSelectedDateChanged="DpFecha_SelectedDateChanged" />
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <telerik:RadGrid ID="RgHorario" runat="server" GridLines="None" AutoGenerateColumns="False"
-                    DataSourceID="ObjectDataSource1" OnDataBound="RgHorario_DataBound" 
-                    onitemcommand="RgHorario_ItemCommand" 
-                    onitemcreated="RgHorario_ItemCreated" >
-                    <ClientSettings>
-                        <Scrolling AllowScroll="True" UseStaticHeaders="True" />
-                    </ClientSettings>
-                    <MasterTableView DataSourceID="ObjectDataSource1" AutoGenerateColumns="False" DataKeyNames="n_hor_codigo">
-                        <Columns>
-                            <telerik:GridBoundColumn DataField="s_hor_descripcion" HeaderText="Hora" UniqueName="Hora">
-                                <HeaderStyle Width="12.5%" />
-                            </telerik:GridBoundColumn>
-                            <telerik:GridTemplateColumn HeaderText="Lunes" UniqueName="Lunes">
-                                <HeaderStyle Width="12.5%" />
-                                <ItemTemplate/>
-                            </telerik:GridTemplateColumn>
-                            <telerik:GridTemplateColumn HeaderText="Martes" UniqueName="Martes">
-                                <HeaderStyle Width="12.5%" />
-                                <ItemTemplate/>
-                            </telerik:GridTemplateColumn>
-                            <telerik:GridTemplateColumn HeaderText="Miércoles" UniqueName="Miercoles">
-                                <HeaderStyle Width="12.5%" />
-                                <ItemTemplate/>
-                            </telerik:GridTemplateColumn>
-                            <telerik:GridTemplateColumn HeaderText="Jueves" UniqueName="Jueves">
-                                <HeaderStyle Width="12.5%" />
-                                <ItemTemplate/>
-                            </telerik:GridTemplateColumn>
-                            <telerik:GridTemplateColumn HeaderText="Viernes" UniqueName="Viernes">
-                                <HeaderStyle Width="12.5%" />
-                                <ItemTemplate />
-                            </telerik:GridTemplateColumn>
-                            <telerik:GridTemplateColumn HeaderText="Sábado" UniqueName="Sabado">
-                                <HeaderStyle Width="12.5%" />
-                                <ItemTemplate/>
-                            </telerik:GridTemplateColumn>
-                            <telerik:GridTemplateColumn HeaderText="Domingo" UniqueName="Domingo">
-                                <HeaderStyle Width="12.5%" />
-                                <ItemTemplate/>
-                            </telerik:GridTemplateColumn>
-                        </Columns>
-                        <NoRecordsTemplate>
-                            No se encontraron datos.
-                        </NoRecordsTemplate>
-                    </MasterTableView>
-                </telerik:RadGrid>
-                <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="Listar"
-                    TypeName="ReservasUPN.BL.HoraBL">
-                    <SelectParameters>
-                        <asp:ControlParameter ControlID="HfTipoHora" Name="tipohora" PropertyName="Value"
-                            Type="String" />
-                    </SelectParameters>
-                </asp:ObjectDataSource>
+                <div class="panel panel-default">
+                    <telerik:RadGrid ID="RgHorario" runat="server" GridLines="None" AutoGenerateColumns="False"
+                        DataSourceID="ObjectDataSource1" OnDataBound="RgHorario_DataBound" OnItemCommand="RgHorario_ItemCommand"
+                        OnItemCreated="RgHorario_ItemCreated">
+                        <ClientSettings>
+                            <Scrolling AllowScroll="True" UseStaticHeaders="True" />
+                        </ClientSettings>
+                        <MasterTableView DataSourceID="ObjectDataSource1" AutoGenerateColumns="False" DataKeyNames="n_hor_codigo">
+                            <Columns>
+                                <telerik:GridBoundColumn DataField="s_hor_descripcion" HeaderText="Hora" UniqueName="Hora">
+                                    <HeaderStyle Width="12.5%" />
+                                </telerik:GridBoundColumn>
+                                <telerik:GridTemplateColumn HeaderText="Lunes" UniqueName="Lunes">
+                                    <HeaderStyle Width="12.5%" />
+                                    <ItemTemplate />
+                                </telerik:GridTemplateColumn>
+                                <telerik:GridTemplateColumn HeaderText="Martes" UniqueName="Martes">
+                                    <HeaderStyle Width="12.5%" />
+                                    <ItemTemplate />
+                                </telerik:GridTemplateColumn>
+                                <telerik:GridTemplateColumn HeaderText="Miércoles" UniqueName="Miercoles">
+                                    <HeaderStyle Width="12.5%" />
+                                    <ItemTemplate />
+                                </telerik:GridTemplateColumn>
+                                <telerik:GridTemplateColumn HeaderText="Jueves" UniqueName="Jueves">
+                                    <HeaderStyle Width="12.5%" />
+                                    <ItemTemplate />
+                                </telerik:GridTemplateColumn>
+                                <telerik:GridTemplateColumn HeaderText="Viernes" UniqueName="Viernes">
+                                    <HeaderStyle Width="12.5%" />
+                                    <ItemTemplate />
+                                </telerik:GridTemplateColumn>
+                                <telerik:GridTemplateColumn HeaderText="Sábado" UniqueName="Sabado">
+                                    <HeaderStyle Width="12.5%" />
+                                    <ItemTemplate />
+                                </telerik:GridTemplateColumn>
+                                <telerik:GridTemplateColumn HeaderText="Domingo" UniqueName="Domingo">
+                                    <HeaderStyle Width="12.5%" />
+                                    <ItemTemplate />
+                                </telerik:GridTemplateColumn>
+                            </Columns>
+                            <NoRecordsTemplate>
+                                No se encontraron datos.
+                            </NoRecordsTemplate>
+                        </MasterTableView>
+                    </telerik:RadGrid>
+                    <asp:ObjectDataSource ID="ObjectDataSource1" runat="server" SelectMethod="Listar"
+                        TypeName="ReservasUPN.BL.HoraBL">
+                        <SelectParameters>
+                            <asp:ControlParameter ControlID="HfTipoHora" Name="tipohora" PropertyName="Value"
+                                Type="String" />
+                        </SelectParameters>
+                    </asp:ObjectDataSource>
+                </div>
             </div>
         </div>
     </div>

@@ -13,7 +13,7 @@ namespace ReservasUPN.IBL
         bool Eliminar(int id);
         //List<BE.Modelos.SancionDetalle> ListarDetalle(int idsancion);
         //List<BE.Modelos.RecursoTipo> ListarDetalleRecursoTipo(int idsancion);
-        //BE.Modelos.Sancion Buscar(int idsancion);
+        BE.Modelos.Sancion Buscar(string usuario, DateTime fecha, int idtiporecurso);
         List<BE.Modelos.RecursoTipo> BuscarDetalle(int id);
     }
 }

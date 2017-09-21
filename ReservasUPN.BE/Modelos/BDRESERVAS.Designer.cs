@@ -462,6 +462,88 @@ namespace ReservasUPN.BE.Modelos
     
             return base.ExecuteFunction("PA_SANCION_UPDATE", p_IDParameter, p_USUARIOParameter, p_MOTIVOParameter, p_FECHAINICIOParameter, p_FECHAFINParameter, p_IDSTIPORECURSOParameter);
         }
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="p_USUARIO">No hay documentación de metadatos disponible.</param>
+        /// <param name="p_FECHA">No hay documentación de metadatos disponible.</param>
+        /// <param name="p_TIPORECURSO">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<Sancion> PA_SANCION_BUSCAR(global::System.String p_USUARIO, Nullable<global::System.DateTime> p_FECHA, Nullable<global::System.Int32> p_TIPORECURSO)
+        {
+            ObjectParameter p_USUARIOParameter;
+            if (p_USUARIO != null)
+            {
+                p_USUARIOParameter = new ObjectParameter("P_USUARIO", p_USUARIO);
+            }
+            else
+            {
+                p_USUARIOParameter = new ObjectParameter("P_USUARIO", typeof(global::System.String));
+            }
+    
+            ObjectParameter p_FECHAParameter;
+            if (p_FECHA.HasValue)
+            {
+                p_FECHAParameter = new ObjectParameter("P_FECHA", p_FECHA);
+            }
+            else
+            {
+                p_FECHAParameter = new ObjectParameter("P_FECHA", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter p_TIPORECURSOParameter;
+            if (p_TIPORECURSO.HasValue)
+            {
+                p_TIPORECURSOParameter = new ObjectParameter("P_TIPORECURSO", p_TIPORECURSO);
+            }
+            else
+            {
+                p_TIPORECURSOParameter = new ObjectParameter("P_TIPORECURSO", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<Sancion>("PA_SANCION_BUSCAR", p_USUARIOParameter, p_FECHAParameter, p_TIPORECURSOParameter);
+        }
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        /// <param name="mergeOption"></param>
+        /// <param name="p_USUARIO">No hay documentación de metadatos disponible.</param>
+        /// <param name="p_FECHA">No hay documentación de metadatos disponible.</param>
+        /// <param name="p_TIPORECURSO">No hay documentación de metadatos disponible.</param>
+        public ObjectResult<Sancion> PA_SANCION_BUSCAR(global::System.String p_USUARIO, Nullable<global::System.DateTime> p_FECHA, Nullable<global::System.Int32> p_TIPORECURSO, MergeOption mergeOption)
+        {
+            ObjectParameter p_USUARIOParameter;
+            if (p_USUARIO != null)
+            {
+                p_USUARIOParameter = new ObjectParameter("P_USUARIO", p_USUARIO);
+            }
+            else
+            {
+                p_USUARIOParameter = new ObjectParameter("P_USUARIO", typeof(global::System.String));
+            }
+    
+            ObjectParameter p_FECHAParameter;
+            if (p_FECHA.HasValue)
+            {
+                p_FECHAParameter = new ObjectParameter("P_FECHA", p_FECHA);
+            }
+            else
+            {
+                p_FECHAParameter = new ObjectParameter("P_FECHA", typeof(global::System.DateTime));
+            }
+    
+            ObjectParameter p_TIPORECURSOParameter;
+            if (p_TIPORECURSO.HasValue)
+            {
+                p_TIPORECURSOParameter = new ObjectParameter("P_TIPORECURSO", p_TIPORECURSO);
+            }
+            else
+            {
+                p_TIPORECURSOParameter = new ObjectParameter("P_TIPORECURSO", typeof(global::System.Int32));
+            }
+    
+            return base.ExecuteFunction<Sancion>("PA_SANCION_BUSCAR", mergeOption, p_USUARIOParameter, p_FECHAParameter, p_TIPORECURSOParameter);
+        }
 
         #endregion
 

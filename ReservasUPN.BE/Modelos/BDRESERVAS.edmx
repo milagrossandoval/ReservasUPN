@@ -92,9 +92,9 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="sede" Type="int" Nullable="false" />
           <Property Name="descripcion" Type="varchar" Nullable="false" MaxLength="100" />
           <Property Name="tipoHora" Type="int" Nullable="false" />
+          <Property Name="sede" Type="int" />
           <Property Name="estado" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="RecursoTipoHora">
@@ -282,6 +282,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="PA_SANCION_BUSCAR" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="P_USUARIO" Type="varchar" Mode="In" />
+          <Parameter Name="P_FECHA" Type="date" Mode="In" />
+          <Parameter Name="P_TIPORECURSO" Type="int" Mode="In" />
+        </Function>
         <Function Name="PA_SANCION_INSERT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="P_USUARIO" Type="varchar" Mode="In" />
           <Parameter Name="P_MOTIVO" Type="varchar" Mode="In" />
@@ -359,6 +364,11 @@
             <End Role="Recurso" EntitySet="Recurso" />
             <End Role="Reserva" EntitySet="Reserva" />
           </AssociationSet>
+          <FunctionImport Name="PA_SANCION_BUSCAR" EntitySet="Sancion" ReturnType="Collection(BD_RESERVASModel.Sancion)">
+            <Parameter Name="P_USUARIO" Mode="In" Type="String" />
+            <Parameter Name="P_FECHA" Mode="In" Type="DateTime" />
+            <Parameter Name="P_TIPORECURSO" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="HoraTipo">
           <Key>
@@ -711,6 +721,7 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PA_SANCION_BUSCAR" FunctionName="BD_RESERVASModel.Store.PA_SANCION_BUSCAR" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

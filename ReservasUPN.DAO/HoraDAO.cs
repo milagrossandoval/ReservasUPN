@@ -29,5 +29,24 @@ namespace ReservasUPN.DAO
             }
             return rpta;
         }
+
+        public Hora Buscar(TimeSpan hora, string tipohora)
+        {
+            BE.Modelos.Hora rpta = null;
+            using (BD_UPNSACEntities reposit = new BD_UPNSACEntities())
+            {
+                var h = (from x in reposit.Hora
+                         where x.s_hor_tipo == tipohora
+                         && x.d_hor_inicio <= hora && hora <= x.d_hor_final
+                         && x.b_hor_activo == true
+                         select x);
+                if (h.Count() == 1)
+                {
+                    rpta = h.First();
+                }
+            }
+            return rpta;
+        }
+
     }
 }

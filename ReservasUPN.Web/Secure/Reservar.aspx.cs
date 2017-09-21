@@ -10,6 +10,7 @@ using Telerik.Web.UI;
 using ReservasUPN.BE.Modelos;
 using ReservasUPN.IBL;
 using ReservasUPN.Util;
+using System.Text;
 
 namespace ReservasUPN.Web.Secure
 {
@@ -114,7 +115,20 @@ namespace ReservasUPN.Web.Secure
         {
             if (RgHorario.MasterTableView.Items.Count > 0)
             {
+                
                 DateTime fechaSeleccionada = DpFecha.SelectedDate.Value;
+                int tiporecursoid = Convert.ToInt32(CmbTiposRecurso.SelectedValue);
+
+                Sancion sancion = new SancionBL().Buscar(Usuario.codigo, fechaSeleccionada, tiporecursoid);
+                RgHorario.Enabled = (sancion == null);
+                if (sancion != null) { 
+                    string mensaje = "No puede reservar este tipo de recurso " + CmbTiposRecurso.Text + 
+                        " hasta el " + sancion.fechafin.ToString("dd/MM/yyyy") + ". "
+                        + "Motivo: " + sancion.motivo + ".";
+                    alerta(mensaje);
+                    return;
+                }
+
                 int diaSemana = (int)fechaSeleccionada.DayOfWeek;
                 int hora;
                 CheckBox chk;
@@ -171,6 +185,11 @@ namespace ReservasUPN.Web.Secure
 
         protected void DpFecha_SelectedDateChanged(object sender, Telerik.Web.UI.Calendar.SelectedDateChangedEventArgs e)
         {
+            if (e.NewDate < DateTime.Today) {
+                alerta("No se puede registrar una fecha anterior a la fecha actual");
+                DpFecha.SelectedDate = e.OldDate;
+                return;
+            }
             RgHorario.Rebind();
         }
 

@@ -124,14 +124,15 @@ namespace ReservasUPN.Web.Secure
             if (ChkDefault.Checked)
             {
                 rpta = recursotipohorarioBL.Grabar(horarioRecursoTipo);
+                WinConfirmacion.VisibleOnPageLoad = true;
             }
             else {
                 rpta = recursohorarioBL.Grabar(horarioRecurso);
             }
 
-            if (rpta) {
-                WinConfirmacion.VisibleOnPageLoad = true;
-            }
+            //if (rpta) {
+            //    WinConfirmacion.VisibleOnPageLoad = true;
+            //}
 
         }
 

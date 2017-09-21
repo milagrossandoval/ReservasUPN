@@ -7,7 +7,7 @@ namespace ReservasUPN.IDAO
 {
     public interface IRecursoDAO
     {
-        bool Grabar(BE.Modelos.Recurso obj);
+        int Grabar(BE.Modelos.Recurso obj);
         bool Actualizar(BE.Modelos.Recurso obj);
         List<BE.Adapters.Recurso> ListarxSede(int idSede);
         List<BE.Adapters.Recurso> Listar(int idtiporecurso);

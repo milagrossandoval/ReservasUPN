@@ -31,6 +31,42 @@ namespace ReservasUPN.Web.Secure {
         protected global::Telerik.Web.UI.RadGrid RgRecursos;
         
         /// <summary>
+        /// Control HfNuevoRecurso.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HfNuevoRecurso;
+        
+        /// <summary>
+        /// Control HfNuevoRecursoTipo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HfNuevoRecursoTipo;
+        
+        /// <summary>
+        /// Control WinConfirmacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadWindow WinConfirmacion;
+        
+        /// <summary>
+        /// Control TabConfirmacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTabStrip TabConfirmacion;
+        
+        /// <summary>
         /// Control ObjectDataSource1.
         /// </summary>
         /// <remarks>

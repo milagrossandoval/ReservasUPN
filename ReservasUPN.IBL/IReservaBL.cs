@@ -14,5 +14,9 @@ namespace ReservasUPN.IBL
         bool Cancelar(int id);
         List<BE.Adapters.Reserva> ListarActivas(string usuario, int tiporecurso, DateTime fechaInicio, DateTime fechaFin);
         List<BE.Adapters.Reserva> Listar(string usuario, int sede);
+        List<BE.Adapters.Reserva> Listar(DateTime fecha, int hora, int idtiporecurso);
+        List<BE.Adapters.Reserva> ListarHoy(int hora, int idtiporecurso);
+        BE.Adapters.Reserva Buscar(string usuario, DateTime fecha, int hora, int idrecurso);
+        bool CambiarAsistencia(int id);
     }
 }

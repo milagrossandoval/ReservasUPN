@@ -71,6 +71,7 @@
     <Content Include="assets\images\delete.png" />
     <Content Include="assets\images\edit.png" />
     <Content Include="assets\images\ok.png" />
+    <Content Include="assets\images\sinfoto.jpg" />
     <Content Include="assets\images\sort_asc.png" />
     <Content Include="assets\images\sort_asc_disabled.png" />
     <Content Include="assets\images\sort_both.png" />
@@ -115,6 +116,7 @@
     <Content Include="Secure\Reportes.aspx" />
     <Content Include="Secure\Reservar.aspx" />
     <Content Include="Secure\Sanciones.aspx" />
+    <Content Include="Secure\Seguimiento.aspx" />
     <Content Include="Secure\Usuarios.aspx" />
     <Content Include="Secure\UsuariosTipo.aspx" />
     <Content Include="Web.config">
@@ -210,6 +212,13 @@
     </Compile>
     <Compile Include="Secure\Sanciones.aspx.designer.cs">
       <DependentUpon>Sanciones.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\Seguimiento.aspx.cs">
+      <DependentUpon>Seguimiento.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\Seguimiento.aspx.designer.cs">
+      <DependentUpon>Seguimiento.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secure\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>

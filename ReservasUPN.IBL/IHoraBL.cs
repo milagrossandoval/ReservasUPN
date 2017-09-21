@@ -8,5 +8,7 @@ namespace ReservasUPN.IBL
     public interface IHoraBL
     {
         List<BE.Modelos.Hora> Listar(string tipohora);
+        BE.Modelos.Hora HoraActual(string tipohora);
+        BE.Modelos.Hora HoraSiguiente(string tipohora);
     }
 }

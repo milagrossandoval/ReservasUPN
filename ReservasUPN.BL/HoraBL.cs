@@ -17,5 +17,16 @@ namespace ReservasUPN.BL
         {
             return horaDAO.Listar(tipohora);
         }
+
+        public BE.Modelos.Hora HoraActual(string tipohora)
+        {
+            return horaDAO.Buscar(DateTime.Now.TimeOfDay, tipohora);
+        }
+
+        public BE.Modelos.Hora HoraSiguiente(string tipohora)
+        {
+            return horaDAO.Buscar(DateTime.Now.AddMinutes(int.Parse(tipohora)).TimeOfDay, tipohora);
+        }
+
     }
 }

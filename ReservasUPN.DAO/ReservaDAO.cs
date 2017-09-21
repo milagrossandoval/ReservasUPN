@@ -34,7 +34,7 @@ namespace ReservasUPN.DAO
             return horas;
         }
     
-        public bool  Grabar(List<Reserva> reservas)
+        public bool Grabar(List<Reserva> reservas)
         {
             bool rpta;
             using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
@@ -90,7 +90,6 @@ namespace ReservasUPN.DAO
             return rpta;
         }
 
-
         public List<Reserva> Listar(int recurso, DateTime inicio, DateTime fin)
         {
             List<Reserva> rpta;
@@ -105,7 +104,6 @@ namespace ReservasUPN.DAO
             }
             return rpta;
         }
-
 
         public Reserva Buscar(int recurso, DateTime fecha, int hora)
         {
@@ -155,5 +153,84 @@ namespace ReservasUPN.DAO
 
             return rpta;
         }
+
+        public List<BE.Adapters.Reserva> Listar(DateTime fecha, int hora, int idtiporecurso)
+        {
+            List<BE.Adapters.Reserva> rpta;
+            using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
+            {
+                rpta = (from r in reposit.Reserva
+                        join t in reposit.Recurso on r.recurso equals t.id
+                        where t.tipoRecurso == idtiporecurso
+                        && r.fecha == fecha && r.hora == hora
+                        && r.estado
+                        select new BE.Adapters.Reserva
+                        {
+                            id = r.id,
+                            asistencia = r.asistencia,
+                            descripcionHora = r.descripcionHora,
+                            diaSemana = r.diaSemana,
+                            estado = r.estado,
+                            fecha = r.fecha,
+                            inicio = r.inicio,
+                            final = r.final,
+                            hora = r.hora,
+                            NombreRecurso = t.descripcion,
+                            nombreUsuario = r.nombreUsuario,
+                            recurso = r.recurso,
+                            usuario = r.usuario
+                        }).ToList();
+            }
+
+            return rpta;
+        }
+
+        public BE.Adapters.Reserva Buscar(string usuario, DateTime fecha, int hora, int idrecurso)
+        {
+            BE.Adapters.Reserva rpta = null;
+            using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
+            {
+                var res = (from r in reposit.Reserva
+                            join t in reposit.Recurso on r.recurso equals t.id
+                            where r.recurso == idrecurso
+                            && r.fecha == fecha && r.hora == hora
+                            && r.estado && r.usuario == usuario
+                            select new BE.Adapters.Reserva
+                            {
+                                id = r.id,
+                                asistencia = r.asistencia,
+                                descripcionHora = r.descripcionHora,
+                                diaSemana = r.diaSemana,
+                                estado = r.estado,
+                                fecha = r.fecha,
+                                inicio = r.inicio,
+                                final = r.final,
+                                hora = r.hora,
+                                NombreRecurso = t.descripcion,
+                                nombreUsuario = r.nombreUsuario,
+                                recurso = r.recurso,
+                                usuario = r.usuario
+                            });
+                if (res.Count() == 1) {
+                    rpta = res.First();
+                }
+            }
+
+            return rpta;
+        }
+
+        public bool CambiarAsistencia(int id)
+        {
+            bool rpta;
+            using (BD_RESERVASEntities reposit = new BD_RESERVASEntities())
+            {
+                var res = (from x in reposit.Reserva where x.id == id select x);
+                Reserva r = res.First();
+                r.asistencia = (r.asistencia.HasValue?!r.asistencia:true);
+                rpta = reposit.SaveChanges() == 1;
+            }
+            return rpta;
+        }
+
     }
 }
