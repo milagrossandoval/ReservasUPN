@@ -5,3 +5,10 @@ D:\ReservasUPN\ReservasUPN\ReservasUPN.Util\bin\Debug\ReservasUPN.BE.pdb
 D:\ReservasUPN\ReservasUPN\ReservasUPN.Util\obj\Debug\ReservasUPN.Util.csprojResolveAssemblyReference.cache
 D:\ReservasUPN\ReservasUPN\ReservasUPN.Util\obj\Debug\ReservasUPN.Util.dll
 D:\ReservasUPN\ReservasUPN\ReservasUPN.Util\obj\Debug\ReservasUPN.Util.pdb
+C:\ReservasUPN\ReservasUPN.Util\bin\Debug\ReservasUPN.Util.dll
+C:\ReservasUPN\ReservasUPN.Util\bin\Debug\ReservasUPN.Util.pdb
+C:\ReservasUPN\ReservasUPN.Util\bin\Debug\ReservasUPN.BE.dll
+C:\ReservasUPN\ReservasUPN.Util\bin\Debug\ReservasUPN.BE.pdb
+C:\ReservasUPN\ReservasUPN.Util\obj\Debug\ReservasUPN.Util.csprojResolveAssemblyReference.cache
+C:\ReservasUPN\ReservasUPN.Util\obj\Debug\ReservasUPN.Util.dll
+C:\ReservasUPN\ReservasUPN.Util\obj\Debug\ReservasUPN.Util.pdb
