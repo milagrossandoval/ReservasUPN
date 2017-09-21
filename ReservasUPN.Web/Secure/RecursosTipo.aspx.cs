@@ -43,7 +43,7 @@ namespace ReservasUPN.Web.Secure
             }
             catch (Exception ex)
             {
-                if (ex.InnerException.Message.Equals("Cannot insert duplicate key row in object 'dbo.RecursoTipo' with unique index 'IX_RecursoTipo'. The duplicate key value is (PC Internet, 1).\r\nThe statement has been terminated."))
+                if (ex.InnerException.Message.Contains("unique index 'IX_RecursoTipo'"))
                 {
                     alerta("La descripción ingresada ya existe.");
                     return;
