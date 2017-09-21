@@ -37,7 +37,18 @@ namespace ReservasUPN.Web.Secure
             int a_sede = int.Parse(CmbSedes.SelectedValue);
 
             BE.Modelos.RecursoTipo obj = new BE.Modelos.RecursoTipo { descripcion = a_descripcion , tipoHora = a_tipo, sede = a_sede, estado = a_estado };
-            recursotipobl.Grabar(obj);
+            try
+            {
+                recursotipobl.Grabar(obj);
+            }
+            catch (Exception ex)
+            {
+                if (ex.InnerException.Message.Equals("Cannot insert duplicate key row in object 'dbo.RecursoTipo' with unique index 'IX_RecursoTipo'. The duplicate key value is (PC Internet, 1).\r\nThe statement has been terminated."))
+                {
+                    alerta("La descripción ingresada ya existe.");
+                    return;
+                }
+            }
 
         }
 

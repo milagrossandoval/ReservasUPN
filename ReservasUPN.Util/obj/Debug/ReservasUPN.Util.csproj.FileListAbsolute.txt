@@ -1,7 +1,0 @@
-D:\ReservasUPN\ReservasUPN\ReservasUPN.Util\bin\Debug\ReservasUPN.Util.dll
-D:\ReservasUPN\ReservasUPN\ReservasUPN.Util\bin\Debug\ReservasUPN.Util.pdb
-D:\ReservasUPN\ReservasUPN\ReservasUPN.Util\bin\Debug\ReservasUPN.BE.dll
-D:\ReservasUPN\ReservasUPN\ReservasUPN.Util\bin\Debug\ReservasUPN.BE.pdb
-D:\ReservasUPN\ReservasUPN\ReservasUPN.Util\obj\Debug\ReservasUPN.Util.csprojResolveAssemblyReference.cache
-D:\ReservasUPN\ReservasUPN\ReservasUPN.Util\obj\Debug\ReservasUPN.Util.dll
-D:\ReservasUPN\ReservasUPN\ReservasUPN.Util\obj\Debug\ReservasUPN.Util.pdb
