@@ -46,7 +46,7 @@
                     <div class="navbar-default sidebar" role="navigation">
                         <div class="sidebar-nav navbar-collapse">
                             <ul class="nav" id="side-menu">
-                                <li class="sidebar-search">
+                                <%--<li class="sidebar-search">
                                     <div class="input-group custom-search-form">
                                         <input type="text" class="form-control" placeholder="Search...">
                                         <span class="input-group-btn">
@@ -54,8 +54,25 @@
                                         </span>
                                     </div>
                                     <!-- /input-group -->
-                                </li>
-                                <li><a href="#"><i class="fa fa-dashboard fa-fw"></i> Recursos <span class="fa arrow"></span></a>
+                                </li>--%>
+                                
+                                <asp:Repeater ID="RepeaterMenu" runat="server" 
+                                    onitemdatabound="RepeaterMenu_ItemDataBound">
+                                    <ItemTemplate>
+                                        <asp:HiddenField ID="HfNombre" runat="server" Value='<%# Eval("Nombre") %>' />
+                                        <li><a href="#"><i class='<%# Eval("Class") %>'></i> <%# Eval("Nombre") %> <span class="fa arrow"></span></a>
+                                        <ul class="nav nav-second-level">
+                                            <asp:Repeater ID="RepeaterPage" runat="server">
+                                                <ItemTemplate>
+                                                    <li><a href='<%# Eval("URL") %>'><%# Eval("Nombre") %></a></li>
+                                                </ItemTemplate>
+                                            </asp:Repeater>
+                                        </ul>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+
+
+                                <%--<li><a href="#"><i class="fa fa-dashboard fa-fw"></i> Recursos <span class="fa arrow"></span></a>
                                     <ul class="nav nav-second-level">
                                         <li><a href="Recursos.aspx">Gestión Recursos</a></li>
                                         <li><a href="RecursosTipo.aspx">Gestión Tipos de Recurso</a></li>
@@ -81,7 +98,7 @@
                                         <li><a href="Seguimiento.aspx">Seguimiento</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="Reportes.aspx"><i class="fa fa-edit fa-fw"></i>Reportes</a></li>   
+                                <li><a href="Reportes.aspx"><i class="fa fa-edit fa-fw"></i>Reportes</a></li>--%>   
                             </ul>
                         </div>
                     </div>                    

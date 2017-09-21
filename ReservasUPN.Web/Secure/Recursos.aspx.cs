@@ -140,7 +140,6 @@ namespace ReservasUPN.Web.Secure
         {
             if (e.FormattedColumn.UniqueName == "Editar")
             {
-                //CheckBox chk = (CheckBox)e.Cell.Controls[0];
                 e.Cell.Text = "";
             }
             else if (e.FormattedColumn.UniqueName == "estado")
