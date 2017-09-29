@@ -10,7 +10,7 @@
 namespace ReservasUPN.Web.Secure {
     
     
-    public partial class Reservar {
+    public partial class ReservarAulasUsuario {
         
         /// <summary>
         /// Control CmbSedes.
@@ -31,13 +31,13 @@ namespace ReservasUPN.Web.Secure {
         protected global::Telerik.Web.UI.RadTextBox TxtUsuario;
         
         /// <summary>
-        /// Control RequiredFieldValidator1.
+        /// Control RfvUsuario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RequiredFieldValidator1;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvUsuario;
         
         /// <summary>
         /// Control BtnBuscar.
@@ -46,7 +46,7 @@ namespace ReservasUPN.Web.Secure {
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton BtnBuscar;
+        protected global::System.Web.UI.WebControls.ImageButton BtnBuscar;
         
         /// <summary>
         /// Control HfUsuario.
@@ -56,6 +56,15 @@ namespace ReservasUPN.Web.Secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField HfUsuario;
+        
+        /// <summary>
+        /// Control HfTipoUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField HfTipoUsuario;
         
         /// <summary>
         /// Control LblUsuario.
@@ -76,22 +85,22 @@ namespace ReservasUPN.Web.Secure {
         protected global::System.Web.UI.WebControls.Panel PnlReserva;
         
         /// <summary>
-        /// Control CmbTiposRecurso.
+        /// Control CmbAulas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox CmbTiposRecurso;
+        protected global::Telerik.Web.UI.RadComboBox CmbAulas;
         
         /// <summary>
-        /// Control OdsRecursoTipo.
+        /// Control OdsAulas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource OdsRecursoTipo;
+        protected global::System.Web.UI.WebControls.ObjectDataSource OdsAulas;
         
         /// <summary>
         /// Control CmbRecursos.
@@ -227,14 +236,5 @@ namespace ReservasUPN.Web.Secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::Telerik.Web.UI.RadAjaxManager RadAjaxManager1;
-        
-        /// <summary>
-        /// Control RadCodeBlock1.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadCodeBlock RadCodeBlock1;
     }
 }

@@ -137,6 +137,8 @@
           <Property Name="descripcionHora" Type="varchar" MaxLength="50" />
           <Property Name="inicio" Type="datetime" />
           <Property Name="final" Type="datetime" />
+          <Property Name="usuarioReserva" Type="varchar" MaxLength="10" />
+          <Property Name="nombreUsuarioReserva" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Sancion">
           <Key>
@@ -573,6 +575,8 @@
           <Property Type="DateTime" Name="inicio" />
           <Property Type="DateTime" Name="final" />
           <NavigationProperty Name="Recurso1" Relationship="BD_RESERVASModel.FK_Reserva_Recurso" FromRole="Reserva" ToRole="Recurso" />
+          <Property Type="String" Name="usuarioReserva" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="nombreUsuarioReserva" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <Association Name="FK_Reserva_Recurso">
           <End Type="BD_RESERVASModel.Recurso" Role="Recurso" Multiplicity="1" />
@@ -706,6 +710,8 @@
           <EntitySetMapping Name="Reserva">
             <EntityTypeMapping TypeName="BD_RESERVASModel.Reserva">
               <MappingFragment StoreEntitySet="Reserva">
+                <ScalarProperty Name="nombreUsuarioReserva" ColumnName="nombreUsuarioReserva" />
+                <ScalarProperty Name="usuarioReserva" ColumnName="usuarioReserva" />
                 <ScalarProperty Name="final" ColumnName="final" />
                 <ScalarProperty Name="inicio" ColumnName="inicio" />
                 <ScalarProperty Name="descripcionHora" ColumnName="descripcionHora" />

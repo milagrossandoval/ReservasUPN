@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAulaDAO.cs" />
     <Compile Include="IHoraDAO.cs" />
     <Compile Include="IHoraTipoDAO.cs" />
     <Compile Include="IRecursoDAO.cs" />

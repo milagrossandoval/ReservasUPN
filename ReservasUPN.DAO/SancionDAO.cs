@@ -76,7 +76,7 @@ namespace ReservasUPN.DAO
                             motivo = x.motivo,
                             usuario = x.usuario
                         }).ToList();
-                
+
             }
             using (BD_ADMUSERSEntities reposit = new BD_ADMUSERSEntities())
             {
@@ -90,7 +90,8 @@ namespace ReservasUPN.DAO
                             id = x.id,
                             motivo = x.motivo,
                             usuario = x.usuario,
-                            NombreUsuario = u.username
+                            NombreUsuario = u.username,
+                            Activo = (x.fechafin > DateTime.Today)
                         }).ToList();                
             }
                                    
@@ -130,7 +131,8 @@ namespace ReservasUPN.DAO
                             id = x.id,
                             motivo = x.motivo,
                             usuario = x.usuario,
-                            NombreUsuario = u.username
+                            NombreUsuario = u.username,
+                            Activo = true
                             //RecursoTipo = x.RecursoTipo
                         }).ToList();
             }

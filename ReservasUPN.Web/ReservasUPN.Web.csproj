@@ -71,6 +71,7 @@
     <Content Include="assets\images\delete.png" />
     <Content Include="assets\images\edit.png" />
     <Content Include="assets\images\ok.png" />
+    <Content Include="assets\images\search.png" />
     <Content Include="assets\images\sinfoto.jpg" />
     <Content Include="assets\images\sort_asc.png" />
     <Content Include="assets\images\sort_asc_disabled.png" />
@@ -106,19 +107,22 @@
     <Content Include="assets\js\raphael.min.js" />
     <Content Include="assets\js\sb-admin-2.js" />
     <Content Include="LogIn.aspx" />
+    <Content Include="LogOut.aspx" />
+    <Content Include="Secure\ReservarUsuario.aspx" />
     <Content Include="Secure\Default.aspx" />
     <Content Include="Secure\Historial.aspx" />
     <Content Include="Secure\MisReservas.aspx" />
     <Content Include="Secure\RecursosHorario.aspx" />
     <Content Include="Secure\Recursos.aspx" />
-    <Content Include="Secure\RecursosTipo.aspx" />
-    <Content Include="Secure\RecursoTipoHora.aspx" />
+    <Content Include="Secure\RecursoTipos.aspx" />
+    <Content Include="Secure\HorasDisponibles.aspx" />
     <Content Include="Secure\Reportes.aspx" />
     <Content Include="Secure\Reservar.aspx" />
     <Content Include="Secure\Sanciones.aspx" />
     <Content Include="Secure\Seguimiento.aspx" />
     <Content Include="Secure\Usuarios.aspx" />
-    <Content Include="Secure\UsuariosTipo.aspx" />
+    <Content Include="Secure\UsuarioTipos.aspx" />
+    <Content Include="Secure\HistorialUsuario.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -141,7 +145,21 @@
     <Compile Include="LogIn.aspx.designer.cs">
       <DependentUpon>LogIn.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LogOut.aspx.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LogOut.aspx.designer.cs">
+      <DependentUpon>LogOut.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Page.cs" />
+    <Compile Include="Secure\ReservarUsuario.aspx.cs">
+      <DependentUpon>ReservarUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\ReservarUsuario.aspx.designer.cs">
+      <DependentUpon>ReservarUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Secure\Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -178,19 +196,19 @@
     <Compile Include="Secure\Recursos.aspx.designer.cs">
       <DependentUpon>Recursos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Secure\RecursosTipo.aspx.cs">
-      <DependentUpon>RecursosTipo.aspx</DependentUpon>
+    <Compile Include="Secure\RecursoTipos.aspx.cs">
+      <DependentUpon>RecursoTipos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Secure\RecursosTipo.aspx.designer.cs">
-      <DependentUpon>RecursosTipo.aspx</DependentUpon>
+    <Compile Include="Secure\RecursoTipos.aspx.designer.cs">
+      <DependentUpon>RecursoTipos.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Secure\RecursoTipoHora.aspx.cs">
-      <DependentUpon>RecursoTipoHora.aspx</DependentUpon>
+    <Compile Include="Secure\HorasDisponibles.aspx.cs">
+      <DependentUpon>HorasDisponibles.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Secure\RecursoTipoHora.aspx.designer.cs">
-      <DependentUpon>RecursoTipoHora.aspx</DependentUpon>
+    <Compile Include="Secure\HorasDisponibles.aspx.designer.cs">
+      <DependentUpon>HorasDisponibles.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secure\Reportes.aspx.cs">
       <DependentUpon>Reportes.aspx</DependentUpon>
@@ -234,12 +252,19 @@
     <Compile Include="Secure\Usuarios.aspx.designer.cs">
       <DependentUpon>Usuarios.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Secure\UsuariosTipo.aspx.cs">
-      <DependentUpon>UsuariosTipo.aspx</DependentUpon>
+    <Compile Include="Secure\UsuarioTipos.aspx.cs">
+      <DependentUpon>UsuarioTipos.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Secure\UsuariosTipo.aspx.designer.cs">
-      <DependentUpon>UsuariosTipo.aspx</DependentUpon>
+    <Compile Include="Secure\UsuarioTipos.aspx.designer.cs">
+      <DependentUpon>UsuarioTipos.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Secure\HistorialUsuario.aspx.cs">
+      <DependentUpon>HistorialUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Secure\HistorialUsuario.aspx.designer.cs">
+      <DependentUpon>HistorialUsuario.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

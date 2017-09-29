@@ -10,7 +10,7 @@
 namespace ReservasUPN.Web.Secure {
     
     
-    public partial class RecursoTipoHora {
+    public partial class ReservarAulas {
         
         /// <summary>
         /// Control CmbSedes.
@@ -22,40 +22,40 @@ namespace ReservasUPN.Web.Secure {
         protected global::Telerik.Web.UI.RadComboBox CmbSedes;
         
         /// <summary>
-        /// Control CmbTiposRecurso.
+        /// Control CmbAulas.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox CmbTiposRecurso;
+        protected global::Telerik.Web.UI.RadComboBox CmbAulas;
         
         /// <summary>
-        /// Control OdsRecursoTipo.
+        /// Control OdsAula.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ObjectDataSource OdsRecursoTipo;
+        protected global::System.Web.UI.WebControls.ObjectDataSource OdsAula;
         
         /// <summary>
-        /// Control BtnGuardar.
+        /// Control DpFecha.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton BtnGuardar;
+        protected global::Telerik.Web.UI.RadDatePicker DpFecha;
         
         /// <summary>
-        /// Control RgHoras.
+        /// Control RgHorario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid RgHoras;
+        protected global::Telerik.Web.UI.RadGrid RgHorario;
         
         /// <summary>
         /// Control ObjectDataSource1.
@@ -65,6 +65,15 @@ namespace ReservasUPN.Web.Secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
+        
+        /// <summary>
+        /// Control BtnGuardar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton BtnGuardar;
         
         /// <summary>
         /// Control RadAjaxManager1.

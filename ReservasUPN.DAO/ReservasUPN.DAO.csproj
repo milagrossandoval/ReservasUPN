@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AulaDAO.cs" />
     <Compile Include="HoraDAO.cs" />
     <Compile Include="HoraTipoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

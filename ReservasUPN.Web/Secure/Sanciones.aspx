@@ -35,8 +35,8 @@
                         OnInsertCommand="RgSanciones_InsertCommand" 
                         onupdatecommand="RgSanciones_UpdateCommand"
                         OnDeleteCommand="RgSanciones_DeleteCommand" 
-                        onitemcommand="RgSanciones_ItemCommand" 
-                        onitemdatabound="RgSanciones_ItemDataBound" >
+                        onitemcommand="RgSanciones_ItemCommand"  >
+                        <%--onitemdatabound="RgSanciones_ItemDataBound"--%>
                         <ExportSettings ExportOnlyData="true" FileName="Sanciones" IgnorePaging="true" OpenInNewWindow="true">
                         </ExportSettings>
                         <ClientSettings>
@@ -44,7 +44,7 @@
                         </ClientSettings>
                         <GroupingSettings CaseSensitive="false" />
                         <MasterTableView DataSourceID="ObjectDataSource1" AutoGenerateColumns="False" CommandItemDisplay="Top"
-                            InsertItemPageIndexAction="ShowItemOnCurrentPage" DataKeyNames="id,usuario" OverrideDataSourceControlSorting="true">
+                            InsertItemPageIndexAction="ShowItemOnCurrentPage" DataKeyNames="id,usuario,Activo" OverrideDataSourceControlSorting="true">
                             <CommandItemSettings AddNewRecordText="Agregar" ShowRefreshButton="false" ShowExportToExcelButton="true"
                                 ExportToExcelText="Exportar a Excel" />
                             <Columns>
@@ -73,20 +73,21 @@
                                     <HeaderStyle Width="15%" />
                                 </telerik:GridDateTimeColumn>
 
-                                <telerik:GridDateTimeColumn DataField="fechafin" HeaderText="Fecha Inicio" DataFormatString="{0:dd/MM/yyyy}"
+                                <telerik:GridDateTimeColumn DataField="fechafin" HeaderText="Fecha Fin" DataFormatString="{0:dd/MM/yyyy}"
 	                                SortExpression="fechafin" UniqueName="fechafin" PickerType="DatePicker" 
                                     ShowFilterIcon="false" ShowSortIcon="true" AutoPostBackOnFilter="true" >
                                     <HeaderStyle Width="15%" />
                                 </telerik:GridDateTimeColumn>
 
                                 <telerik:GridTemplateColumn HeaderText="Tipos de Recurso" 
-                                ShowFilterIcon="false" ShowSortIcon="false" CurrentFilterFunction="NoFilter" Reorderable="false" >
+                                    ShowFilterIcon="false" ShowSortIcon="true" SortExpression="Detalle" AutoPostBackOnFilter="true"
+                                    UniqueName="Detalle" CurrentFilterFunction="Contains">
                                 <HeaderStyle Width="18%" />
-                                <FilterTemplate></FilterTemplate>
                                     <ItemTemplate>
-                                        <telerik:RadComboBox ID="CmbTipos" runat="server"  AccessibilityMode="false" Filter="None"
+                                        <%# Eval("Detalle") %>
+                                        <%--<telerik:RadComboBox ID="CmbTipos" runat="server"  AccessibilityMode="false" Filter="None"
                                         DataTextField="descripcion" DataValueField="id" MarkFirstMatch="true" >                                            
-                                        </telerik:RadComboBox>
+                                        </telerik:RadComboBox>--%>
                                     </ItemTemplate>
                                     <EditItemTemplate>
                                         <asp:HiddenField ID="HfIdSancion" runat="server" Value='<%# Eval("id") %>' />

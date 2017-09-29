@@ -7,7 +7,21 @@ namespace ReservasUPN.Util
 {
     public class Cadena
     {
-        public static string ListRecursoTipoToString(List<BE.Modelos.RecursoTipo> lista)
+        public static string ListRecursoTipoToStringDes(List<BE.Modelos.RecursoTipo> lista)
+        {
+            StringBuilder sb = new StringBuilder();
+            foreach (BE.Modelos.RecursoTipo rt in lista)
+            {
+                if (sb.Length > 0)
+                {
+                    sb.Append(", ");
+                }
+                sb.Append(rt.descripcion);
+            }
+            return sb.ToString();
+        }
+
+        public static string ListRecursoTipoToStringId(List<BE.Modelos.RecursoTipo> lista)
         {
             StringBuilder sb = new StringBuilder();
             foreach (BE.Modelos.RecursoTipo rt in lista)
@@ -20,5 +34,6 @@ namespace ReservasUPN.Util
             }
             return sb.ToString();
         }
+
     }
 }

@@ -94,6 +94,14 @@ namespace ReservasUPN.Web.Secure
                     ((GridBoundColumn)RgSanciones.MasterTableView.GetColumnSafe("usuario")).ReadOnly = false;
                     break;
                 case "Edit":
+                    GridDataItem item = (GridDataItem)e.Item;
+                    bool activo = Convert.ToBoolean(item.GetDataKeyValue("Activo"));
+                    if (!activo) {
+                        e.Canceled = true;
+                        alerta("No se puede editar sanciones inactivas.");
+                        return;
+                    }
+
                     ((GridBoundColumn)RgSanciones.MasterTableView.GetColumnSafe("usuario")).ReadOnly = true;
                     break;
             }
@@ -117,17 +125,17 @@ namespace ReservasUPN.Web.Secure
             
         }
 
-        protected void RgSanciones_ItemDataBound(object sender, GridItemEventArgs e)
-        {
-            if (e.Item is GridDataItem)
-            {
-                RadComboBox CmbTipos = (RadComboBox)e.Item.FindControl("CmbTipos");
-                int idsancion = (int)(((GridDataItem)e.Item).GetDataKeyValue("id"));
-                //CmbTipos.DataSource = sancionbl.ListarDetalleRecursoTipo(idSancion);
-                CmbTipos.DataSource = sancionbl.BuscarDetalle(idsancion);
-                CmbTipos.DataBind();
-            }
-        }
+        //protected void RgSanciones_ItemDataBound(object sender, GridItemEventArgs e)
+        //{
+        //    if (e.Item is GridDataItem)
+        //    {
+        //        RadComboBox CmbTipos = (RadComboBox)e.Item.FindControl("CmbTipos");
+        //        int idsancion = (int)(((GridDataItem)e.Item).GetDataKeyValue("id"));
+        //        //CmbTipos.DataSource = sancionbl.ListarDetalleRecursoTipo(idSancion);
+        //        CmbTipos.DataSource = sancionbl.BuscarDetalle(idsancion);
+        //        CmbTipos.DataBind();
+        //    }
+        //}
 
     }
 }

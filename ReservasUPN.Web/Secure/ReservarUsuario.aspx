@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Secure/Site.Master" AutoEventWireup="true"
-    CodeBehind="Reservar.aspx.cs" Inherits="ReservasUPN.Web.Secure.Reservar" %>
+    CodeBehind="ReservarUsuario.aspx.cs" Inherits="ReservasUPN.Web.Secure.ReservarUsuario" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -12,14 +12,40 @@
             </div>
         </div>
         <div class="row" id="rowSede">
-            <div class="col-lg-2">
-                Sede
-            </div>
-            <div class="col-lg-10">
+            <div class="col-lg-4">
+                Sede<br />
                 <telerik:RadComboBox ID="CmbSedes" runat="server" AutoPostBack="true" DataTextField="descripcion"
-                    Width="300" DataValueField="id" CausesValidation="false" />
+                    Width="200" DataValueField="id" CausesValidation="false" />
+            </div>
+            <div class="col-lg-4">
+                Usuario
+                <table border="0" cellpadding="5" >
+                    <tr>
+                        <td style="width:80%">
+                            <telerik:RadTextBox ID="TxtUsuario" runat="server" Width="180" />
+                            <asp:RequiredFieldValidator ID="RfvUsuario" runat="server" 
+                                ErrorMessage="*" ControlToValidate="TxtUsuario" ForeColor="Red" Display="Dynamic" />
+                        </td>
+                        <td style="width:20%">
+                            <asp:ImageButton ID="BtnBuscar" runat="server" 
+                                ImageUrl="~/assets/images/search.png" Width="23" Height="23" 
+                                onclick="BtnBuscar_Click" />
+                        </td>
+                    </tr>
+                </table>               
+                
+            </div>
+            <div class="col-lg-4">
+                <asp:HiddenField ID="HfUsuario" runat="server" />
+                <asp:HiddenField ID="HfTipoUsuario" runat="server" />
+                <center>
+                <asp:Image id="ImgFoto" runat="server" Visible="false" Width="60" Height="80" /><br />
+                <asp:Label ID="LblUsuario" runat="server" />
+                </center>
             </div>
         </div>
+        <br />
+        <asp:Panel ID="PnlReserva" runat="server" Visible="false" BorderColor="Gray" BorderWidth="1"  >
         <div class="row">
             <div class="col-lg-4">
                 <h5>
@@ -154,7 +180,7 @@
                 </div>
             </div>
         </div>
-
+        </asp:Panel>
     </div>
     <telerik:RadAjaxManager ID="RadAjaxManager1" runat="server">
         <ClientEvents />
@@ -173,6 +199,15 @@
                     <telerik:AjaxUpdatedControl ControlID="HfUsadas" />
                     <telerik:AjaxUpdatedControl ControlID="RgHorario" />
                     <telerik:AjaxUpdatedControl ControlID="BtnGuardar" />
+                </UpdatedControls>
+            </telerik:AjaxSetting>
+            <telerik:AjaxSetting AjaxControlID="BtnBuscar">
+                <UpdatedControls>
+                    <telerik:AjaxUpdatedControl ControlID="LblUsuario" />
+                    <telerik:AjaxUpdatedControl ControlID="ImgFoto" />
+                    <telerik:AjaxUpdatedControl ControlID="HfUsuario" />
+                    <telerik:AjaxUpdatedControl ControlID="HfTipoUsuario" />
+                    <telerik:AjaxUpdatedControl ControlID="PnlReserva" />
                 </UpdatedControls>
             </telerik:AjaxSetting>
             <telerik:AjaxSetting AjaxControlID="CmbTiposRecurso">
@@ -216,15 +251,4 @@
             </telerik:AjaxSetting>
         </AjaxSettings>
     </telerik:RadAjaxManager>
-    <telerik:RadCodeBlock ID="RadCodeBlock1" runat="server">
-        <script type="text/javascript" language="javascript">
-        $(document).ready(function () {
-            if (<%= (Usuario.tipoUsuario == 1 ||
-                   Usuario.tipoUsuario == 2)?1:0 %> == 1 )
-            {
-                $("#rowSede").hide();
-            }
-        });
-        </script>
-    </telerik:RadCodeBlock>
 </asp:Content>

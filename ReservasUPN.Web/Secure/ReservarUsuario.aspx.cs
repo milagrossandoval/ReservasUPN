@@ -14,7 +14,7 @@ using System.Text;
 
 namespace ReservasUPN.Web.Secure
 {
-    public partial class Reservar : PageAdapter
+    public partial class ReservarUsuario : PageAdapter
     {
 
         IReservaBL reservabl = new ReservaBL();
@@ -45,13 +45,15 @@ namespace ReservasUPN.Web.Secure
         }
 
         private void CalcularHorasDisponibles() {
-            int horasUtilizadas = reservabl.HorasUtilizadas(Usuario.codigo, Convert.ToInt32(CmbTiposRecurso.SelectedValue), DpFecha.SelectedDate.Value);
+            
+            int horasUtilizadas = reservabl.HorasUtilizadas(HfUsuario.Value, Convert.ToInt32(CmbTiposRecurso.SelectedValue), DpFecha.SelectedDate.Value);
             LblUsadas.Text = "Horas Usadas: " + horasUtilizadas.ToString();
             HfUsadas.Value = horasUtilizadas.ToString();
             int horasMes = int.Parse(HfMesActual.Value);
             int horasDisponibles = horasMes - horasUtilizadas;
             LblDisponibles.Text = "Horas Disponibles: " + horasDisponibles.ToString();
             HfDisponibles.Value = horasDisponibles.ToString();
+            
         }
 
 
@@ -62,7 +64,7 @@ namespace ReservasUPN.Web.Secure
                 int idtiporecurso = Convert.ToInt32(e.Value);
                 RecursoTipo recursotipo = new RecursoTipoBL().Buscar(idtiporecurso);
                 HfTipoHora.Value = recursotipo.tipoHora.ToString();
-                BE.Modelos.RecursoTipoHora recursotipohora = new RecursoTipoHoraBL().Buscar(idtiporecurso, Usuario.tipoUsuario);
+                BE.Modelos.RecursoTipoHora recursotipohora = new RecursoTipoHoraBL().Buscar(idtiporecurso, int.Parse(HfTipoUsuario.Value));
                 int horasMes = recursotipohora == null ? 0 : recursotipohora.nroHoras.Value;
                 LblMesActual.Text = "Horas del Mes Actual: " + horasMes.ToString();
                 HfMesActual.Value = horasMes.ToString();
@@ -119,7 +121,7 @@ namespace ReservasUPN.Web.Secure
                 DateTime fechaSeleccionada = DpFecha.SelectedDate.Value;
                 int tiporecursoid = Convert.ToInt32(CmbTiposRecurso.SelectedValue);
 
-                Sancion sancion = new SancionBL().Buscar(Usuario.codigo, fechaSeleccionada, tiporecursoid);
+                Sancion sancion = new SancionBL().Buscar(HfUsuario.Value, fechaSeleccionada, tiporecursoid);
                 RgHorario.Enabled = (sancion == null);
                 if (sancion != null) { 
                     string mensaje = "No puede reservar este tipo de recurso " + CmbTiposRecurso.Text + 
@@ -203,13 +205,13 @@ namespace ReservasUPN.Web.Secure
             {
                 reserva = new Reserva
                 {
-                    usuario = Usuario.codigo,
+                    usuario = HfUsuario.Value,
                     recurso = int.Parse(CmbRecursos.SelectedValue),
                     fecha = fecha,
                     hora = hora,
                     asistencia = null,
                     estado = true,
-                    nombreUsuario = Usuario.NombreCompleto,
+                    nombreUsuario = LblUsuario.Text,
                     diaSemana = (int)fecha.DayOfWeek,
                     descripcionHora = deshora,
                     inicio = fecha.Add(horainicial),
@@ -267,7 +269,7 @@ namespace ReservasUPN.Web.Secure
                 alerta("No tiene horas disponibles suficientes para realizar esa reserva.");
                 return;
             }
-
+            
             try
             {
                 bool rpta = reservabl.Grabar(reservas);
@@ -285,5 +287,31 @@ namespace ReservasUPN.Web.Secure
 
         }
 
+        protected void BtnBuscar_Click(object sender, ImageClickEventArgs e)
+        {
+            var rpta = new UsuarioBL().Buscar(TxtUsuario.Text);
+            if (rpta != null)
+            {
+                if (rpta.IdSede == int.Parse(CmbSedes.SelectedValue))
+                {
+                    HfUsuario.Value = rpta.codigo;
+                    HfTipoUsuario.Value = rpta.tipoUsuario.ToString();
+                    LblUsuario.Text = rpta.NombreCompleto;
+                    PnlReserva.Visible = true;
+                    ImgFoto.Visible = true;
+                    BE.Modelos.Sede sede = new SedeBL().Buscar(int.Parse(CmbSedes.SelectedValue));
+                    ImgFoto.ImageUrl = Util.Imagen.RutaFoto(sede.nombre, rpta.codigo);
+                }
+            }
+            else
+            {
+                HfUsuario.Value = string.Empty;
+                LblUsuario.Text = string.Empty;
+                PnlReserva.Visible = false;
+                ImgFoto.Visible = false;
+                alerta("No se encontró el usuario");
+                
+            }
+        }
     }
 }

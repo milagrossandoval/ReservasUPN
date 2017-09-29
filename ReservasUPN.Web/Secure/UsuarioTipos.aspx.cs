@@ -15,7 +15,7 @@ using ReservasUPN.IBL;
 
 namespace ReservasUPN.Web.Secure
 {
-    public partial class UsuariosTipo : PageAdapter
+    public partial class UsuarioTipos : PageAdapter
     {
 
         private IUsuarioTipoBL usuariotipobl = new UsuarioTipoBL();

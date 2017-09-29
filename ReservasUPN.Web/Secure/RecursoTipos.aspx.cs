@@ -12,7 +12,7 @@ using ReservasUPN.IBL;
 
 namespace ReservasUPN.Web.Secure
 {
-    public partial class RecursosTipo : PageAdapter
+    public partial class RecursoTipos : PageAdapter
     {
         private IRecursoTipoBL recursotipobl = new RecursoTipoBL();
 

@@ -2291,6 +2291,54 @@ namespace ReservasUPN.BE.Modelos
         private Nullable<global::System.DateTime> _final;
         partial void OnfinalChanging(Nullable<global::System.DateTime> value);
         partial void OnfinalChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String usuarioReserva
+        {
+            get
+            {
+                return _usuarioReserva;
+            }
+            set
+            {
+                OnusuarioReservaChanging(value);
+                ReportPropertyChanging("usuarioReserva");
+                _usuarioReserva = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("usuarioReserva");
+                OnusuarioReservaChanged();
+            }
+        }
+        private global::System.String _usuarioReserva;
+        partial void OnusuarioReservaChanging(global::System.String value);
+        partial void OnusuarioReservaChanged();
+    
+        /// <summary>
+        /// No hay documentación de metadatos disponible.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String nombreUsuarioReserva
+        {
+            get
+            {
+                return _nombreUsuarioReserva;
+            }
+            set
+            {
+                OnnombreUsuarioReservaChanging(value);
+                ReportPropertyChanging("nombreUsuarioReserva");
+                _nombreUsuarioReserva = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("nombreUsuarioReserva");
+                OnnombreUsuarioReservaChanged();
+            }
+        }
+        private global::System.String _nombreUsuarioReserva;
+        partial void OnnombreUsuarioReservaChanging(global::System.String value);
+        partial void OnnombreUsuarioReservaChanged();
 
         #endregion
 

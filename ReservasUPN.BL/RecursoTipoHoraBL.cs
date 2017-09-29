@@ -20,14 +20,25 @@ namespace ReservasUPN.BL
             if (idrecursotipo == 0)
                 return new List<BE.Adapters.RecursoTipoHora>();
 
-            rpta = (from x in new UsuarioTipoBL().ListarPropios()
+            //rpta = (from x in new UsuarioTipoBL().ListarPropios()
+            //        join y in recursotipohoradao.Listar(idrecursotipo) on x.id equals y.usuarioTipo into ys
+            //        from y in ys.DefaultIfEmpty()
+            //        select new BE.Adapters.RecursoTipoHora {
+            //            usuarioTipo = x.id, 
+            //            NombreTipoUsuario = x.nombre, 
+            //            nroHoras = (y == null ? 0 : y.nroHoras.Value), 
+            //            recursoTipo = idrecursotipo }).ToList();
+
+            rpta = (from x in new UsuarioTipoBL().ListarTodos()
                     join y in recursotipohoradao.Listar(idrecursotipo) on x.id equals y.usuarioTipo into ys
                     from y in ys.DefaultIfEmpty()
-                    select new BE.Adapters.RecursoTipoHora { 
-                        usuarioTipo = x.id, 
-                        NombreTipoUsuario = x.nombre, 
-                        nroHoras = (y == null ? 0 : y.nroHoras.Value), 
-                        recursoTipo = idrecursotipo }).ToList();
+                    select new BE.Adapters.RecursoTipoHora
+                    {
+                        usuarioTipo = x.id,
+                        NombreTipoUsuario = x.nombre,
+                        nroHoras = (y == null ? 0 : y.nroHoras.Value),
+                        recursoTipo = idrecursotipo
+                    }).ToList();
 
             return rpta;
         }

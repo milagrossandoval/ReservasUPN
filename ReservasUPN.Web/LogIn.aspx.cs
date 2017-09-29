@@ -14,8 +14,9 @@ namespace ReservasUPN.Web
         protected void Page_Load(object sender, EventArgs e)
         {
             //Leer de la cookie de la intranet
+            var usuario = "jcv";
             //var usuario = "das";
-            var usuario = "47915";
+            //var usuario = "47915";
             //var usuario = "60454";
 
             UsuarioBL usuariobl = new UsuarioBL();

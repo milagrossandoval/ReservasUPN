@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IAulaBL.cs" />
     <Compile Include="IHoraBL.cs" />
     <Compile Include="IHorarioBL.cs" />
     <Compile Include="IHoraTipoBL.cs" />

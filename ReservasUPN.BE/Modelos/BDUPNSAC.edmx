@@ -6,18 +6,8 @@
     <edmx:StorageModels>
     <Schema Namespace="BD_UPNSACModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="BD_UPNSACModelStoreContainer">
-          <EntitySet Name="Hora" EntityType="BD_UPNSACModel.Store.Hora" store:Type="Tables" store:Schema="dbo" store:Name="Hora">
-            <DefiningQuery>SELECT 
-      [Hora].[n_hora_id] AS [n_hora_id], 
-      [Hora].[n_hor_codigo] AS [n_hor_codigo], 
-      [Hora].[s_hor_descripcion] AS [s_hor_descripcion], 
-      [Hora].[d_hor_inicio] AS [d_hor_inicio], 
-      [Hora].[d_hor_final] AS [d_hor_final], 
-      [Hora].[n_hor_minutos] AS [n_hor_minutos], 
-      [Hora].[b_hor_activo] AS [b_hor_activo], 
-      [Hora].[s_hor_tipo] AS [s_hor_tipo]
-      FROM [dbo].[Hora] AS [Hora]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="Aula" EntityType="BD_UPNSACModel.Store.Aula" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Hora" EntityType="BD_UPNSACModel.Store.Hora" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Sede" EntityType="BD_UPNSACModel.Store.Sede" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="AlumnosEgresados" EntityType="BD_UPNSACModel.Store.AlumnosEgresados" store:Type="Views" store:Schema="dbo" store:Name="AlumnosEgresados">
             <DefiningQuery>SELECT 
@@ -35,19 +25,23 @@
       [AlumnosRegulares].[sedeNombre] AS [sedeNombre]
       FROM [dbo].[AlumnosRegulares] AS [AlumnosRegulares]</DefiningQuery>
           </EntitySet>
+          <AssociationSet Name="FK_Aula_Sede" Association="BD_UPNSACModel.Store.FK_Aula_Sede">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="Aula" EntitySet="Aula" />
+          </AssociationSet>
         </EntityContainer>
-        <!--Se encontraron errores durante la generación:
-      advertencia 6002: La tabla o vista 'BD_UPNSAC.dbo.Hora' no tiene ninguna clave principal definida. Se ha inferido la clave y la definición se creó como vista o tabla de solo lectura.
-      -->
+        <EntityType Name="Aula">
+          <Key>
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="sede" />
+          </Key>
+          <Property Name="codigo" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="sede" Type="int" Nullable="false" />
+          <Property Name="estado" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="Hora">
           <Key>
             <PropertyRef Name="n_hora_id" />
-            <PropertyRef Name="n_hor_codigo" />
-            <PropertyRef Name="s_hor_descripcion" />
-            <PropertyRef Name="d_hor_inicio" />
-            <PropertyRef Name="d_hor_final" />
-            <PropertyRef Name="n_hor_minutos" />
-            <PropertyRef Name="b_hor_activo" />
           </Key>
           <Property Name="n_hora_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="n_hor_codigo" Type="int" Nullable="false" />
@@ -95,8 +89,23 @@
           <Property Name="sede" Type="int" Nullable="false" />
           <Property Name="sedeNombre" Type="varchar" MaxLength="100" />
         </EntityType>
+        <Association Name="FK_Aula_Sede">
+          <End Role="Sede" Type="BD_UPNSACModel.Store.Sede" Multiplicity="1" />
+          <End Role="Aula" Type="BD_UPNSACModel.Store.Aula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Aula">
+              <PropertyRef Name="sede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Function Name="PA_SELECT_DOCENTES_X_CODIGO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="P_CODIGO" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="PA_SELECT_HORARIO_X_AULA" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="P_AULA" Type="varchar" Mode="In" />
         </Function>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -109,6 +118,14 @@
           <Parameter Name="P_CODIGO" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="Sede" EntityType="BD_UPNSACModel.Sede" />
+          <EntitySet Name="Aula" EntityType="BD_UPNSACModel.Aula" />
+          <AssociationSet Name="FK_Aula_Sede" Association="BD_UPNSACModel.FK_Aula_Sede">
+            <End Role="Sede" EntitySet="Sede" />
+            <End Role="Aula" EntitySet="Aula" />
+          </AssociationSet>
+          <FunctionImport Name="PA_SELECT_HORARIO_X_AULA" ReturnType="Collection(BD_UPNSACModel.PA_SELECT_HORARIO_X_AULA_Result)">
+          <Parameter Name="P_AULA" Mode="In" Type="String" />
+          </FunctionImport>
           <EntitySet Name="Hora" EntityType="BD_UPNSACModel.Hora" />
         </EntityContainer>
         <EntityType Name="AlumnosEgresados">
@@ -147,16 +164,40 @@
           <Property Type="String" Name="nombre" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="descripcion" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Type="Boolean" Name="estado" Nullable="false" />
+          <NavigationProperty Name="Aula" Relationship="BD_UPNSACModel.FK_Aula_Sede" FromRole="Sede" ToRole="Aula" />
         </EntityType>
+        <EntityType Name="Aula">
+          <Key>
+            <PropertyRef Name="codigo" />
+            <PropertyRef Name="sede" />
+          </Key>
+          <Property Type="String" Name="codigo" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="sede" Nullable="false" />
+          <Property Type="Boolean" Name="estado" Nullable="false" />
+          <NavigationProperty Name="Sede1" Relationship="BD_UPNSACModel.FK_Aula_Sede" FromRole="Aula" ToRole="Sede" />
+        </EntityType>
+        <Association Name="FK_Aula_Sede">
+          <End Type="BD_UPNSACModel.Sede" Role="Sede" Multiplicity="1" />
+          <End Type="BD_UPNSACModel.Aula" Role="Aula" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sede">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Aula">
+              <PropertyRef Name="sede" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <ComplexType Name="PA_SELECT_HORARIO_X_AULA_Result">
+          <Property Type="Byte" Name="DIA" Nullable="false" />
+          <Property Type="Int32" Name="N_HOR_CODIGO" Nullable="false" />
+          <Property Type="String" Name="s_hor_descripcion" Nullable="false" MaxLength="30" />
+          <Property Type="Time" Name="d_hor_inicio" Nullable="false" />
+          <Property Type="Time" Name="d_hor_final" Nullable="false" />
+        </ComplexType>
         <EntityType Name="Hora">
           <Key>
             <PropertyRef Name="n_hora_id" />
-            <PropertyRef Name="n_hor_codigo" />
-            <PropertyRef Name="s_hor_descripcion" />
-            <PropertyRef Name="d_hor_inicio" />
-            <PropertyRef Name="d_hor_final" />
-            <PropertyRef Name="n_hor_minutos" />
-            <PropertyRef Name="b_hor_activo" />
           </Key>
           <Property Type="Int32" Name="n_hora_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="n_hor_codigo" Nullable="false" />
@@ -213,6 +254,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Aula">
+            <EntityTypeMapping TypeName="BD_UPNSACModel.Aula">
+              <MappingFragment StoreEntitySet="Aula">
+                <ScalarProperty Name="estado" ColumnName="estado" />
+                <ScalarProperty Name="sede" ColumnName="sede" />
+                <ScalarProperty Name="codigo" ColumnName="codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="PA_SELECT_HORARIO_X_AULA" FunctionName="BD_UPNSACModel.Store.PA_SELECT_HORARIO_X_AULA">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="BD_UPNSACModel.PA_SELECT_HORARIO_X_AULA_Result">
+                <ScalarProperty Name="DIA" ColumnName="DIA" />
+                <ScalarProperty Name="N_HOR_CODIGO" ColumnName="N_HOR_CODIGO" />
+                <ScalarProperty Name="s_hor_descripcion" ColumnName="s_hor_descripcion" />
+                <ScalarProperty Name="d_hor_inicio" ColumnName="d_hor_inicio" />
+                <ScalarProperty Name="d_hor_final" ColumnName="d_hor_final" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <EntitySetMapping Name="Hora">
             <EntityTypeMapping TypeName="BD_UPNSACModel.Hora">
               <MappingFragment StoreEntitySet="Hora">
@@ -248,10 +309,16 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="BDUPNSAC">
-        <EntityTypeShape EntityType="BD_UPNSACModel.AlumnosEgresados" Width="1.5" PointX="2.75" PointY="0.875" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="BD_UPNSACModel.AlumnosEgresados" Width="1.5" PointX="6.875" PointY="1.125" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="BD_UPNSACModel.AlumnosRegulares" Width="1.5" PointX="5" PointY="0.875" Height="1.7879850260416674" />
         <EntityTypeShape EntityType="BD_UPNSACModel.Sede" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7879850260416657" />
-        <EntityTypeShape EntityType="BD_UPNSACModel.Hora" Width="1.5" PointX="1" PointY="2.875" Height="2.5571907552083353" />
+        <EntityTypeShape EntityType="BD_UPNSACModel.Aula" Width="1.5" PointX="3.25" PointY="3.25" Height="1.7879850260416665" />
+        <AssociationConnector Association="BD_UPNSACModel.FK_Aula_Sede" >
+          <ConnectorPoint PointX="2.25" PointY="1.7401432291666672" />
+          <ConnectorPoint PointX="4" PointY="1.7401432291666672" />
+          <ConnectorPoint PointX="4" PointY="3.25" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="BD_UPNSACModel.Hora" Width="1.5" PointX="1.125" PointY="3.875" Height="2.5571907552083322" />
       </Diagram>
     </Diagrams>
   </Designer>
