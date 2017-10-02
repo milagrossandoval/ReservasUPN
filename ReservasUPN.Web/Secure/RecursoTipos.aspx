@@ -2,6 +2,7 @@
     CodeBehind="RecursoTipos.aspx.cs" Inherits="ReservasUPN.Web.Secure.RecursoTipos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>Tipos de Recurso</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="page-wrapper">

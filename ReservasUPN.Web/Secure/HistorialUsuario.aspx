@@ -1,5 +1,8 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Secure/Site.Master" AutoEventWireup="true" CodeBehind="HistorialUsuario.aspx.cs" Inherits="ReservasUPN.Web.Secure.HistorialUsuario" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Secure/Site.Master" AutoEventWireup="true"
+    CodeBehind="HistorialUsuario.aspx.cs" Inherits="ReservasUPN.Web.Secure.HistorialUsuario" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<title>Ver Reservas</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="page-wrapper">
@@ -9,46 +12,59 @@
                     Ver Reservas</h3>
             </div>
         </div>
-        <div class="row" id="rowSede">
-            <div class="col-lg-4">
-                Sede<br />
-                <telerik:RadComboBox ID="CmbSedes" runat="server" AutoPostBack="true" DataTextField="descripcion"
-                    Width="200" DataValueField="id" CausesValidation="false" />
-            </div>
-            <div class="col-lg-4">
-                Usuario
-                <table border="0" cellpadding="5" >
-                    <tr>
-                        <td style="width:80%">
-                            <telerik:RadTextBox ID="TxtUsuario" runat="server" Width="180" />
-                            <asp:RequiredFieldValidator ID="RfvUsuario" runat="server" 
-                                ErrorMessage="*" ControlToValidate="TxtUsuario" ForeColor="Red" Display="Dynamic" />
-                        </td>
-                        <td style="width:20%">
-                            <asp:ImageButton ID="BtnBuscar" runat="server" 
-                                ImageUrl="~/assets/images/search.png" Width="23" Height="23" 
-                                onclick="BtnBuscar_Click" />
-                        </td>
-                    </tr>
-                </table>               
-                
-            </div>
-            <div class="col-lg-4">
-                <asp:HiddenField ID="HfUsuario" runat="server" />
-                <asp:HiddenField ID="HfTipoUsuario" runat="server" />
-                <center>
-                <asp:Image id="ImgFoto" runat="server" Visible="false" Width="60" Height="80" /><br />
-                <asp:Label ID="LblUsuario" runat="server" />
-                </center>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Buscar Usuario
+                    </div>
+                    <div class="panel-body">
+                        <div class="row" id="rowSede">
+                            <div class="col-lg-4">
+                                Sede<br />
+                                <telerik:RadComboBox ID="CmbSedes" runat="server" AutoPostBack="true" DataTextField="descripcion"
+                                    Width="200" DataValueField="id" CausesValidation="false" />
+                            </div>
+                            <div class="col-lg-4">
+                                Usuario
+                                <table border="0" cellpadding="5">
+                                    <tr>
+                                        <td style="width: 80%">
+                                            <telerik:RadTextBox ID="TxtUsuario" runat="server" Width="180" />
+                                            <%--<asp:RequiredFieldValidator ID="RfvUsuario" runat="server" ErrorMessage="*" ControlToValidate="TxtUsuario"
+                                                ForeColor="Red" Display="Dynamic" />--%>
+                                        </td>
+                                        <td style="width: 20%">
+                                            <telerik:RadButton ID="BtnBuscar" runat="server" OnClick="BtnBuscar_Click">
+                                                <Icon PrimaryIconCssClass="fa fa-search" />
+                                            </telerik:RadButton>
+                                            <asp:RequiredFieldValidator ID="RfvUsuario" runat="server" ErrorMessage="*" ControlToValidate="TxtUsuario"
+                                                ForeColor="Red" Display="Dynamic" />
+                                            <%--<asp:ImageButton ID="BtnBuscar" runat="server" ImageUrl="~/assets/images/search.png"
+                                                Width="23" Height="23" OnClick="BtnBuscar_Click" />--%>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                            <div class="col-lg-4">
+                                <asp:HiddenField ID="HfUsuario" runat="server" />
+                                <asp:HiddenField ID="HfTipoUsuario" runat="server" />
+                                <center>
+                                    <asp:Image ID="ImgFoto" runat="server" Visible="false" Width="60" Height="80" />
+                                    <asp:Label ID="LblUsuario" runat="server" />
+                                </center>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <br />
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <telerik:RadGrid ID="RgReservas" runat="server" AllowFilteringByColumn="True" AllowPaging="True"
-                        AllowSorting="True" GridLines="None" AutoGenerateColumns="False" 
-                        Visible="false" onneeddatasource="RgReservas_NeedDataSource"  >
+                        AllowSorting="True" GridLines="None" AutoGenerateColumns="False" Visible="false"
+                        OnNeedDataSource="RgReservas_NeedDataSource">
                         <ExportSettings ExportOnlyData="true" FileName="Reservas" IgnorePaging="true" OpenInNewWindow="true" />
                         <ClientSettings>
                             <Scrolling AllowScroll="True" UseStaticHeaders="True" />

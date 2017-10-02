@@ -2,6 +2,7 @@
     CodeBehind="Sanciones.aspx.cs" Inherits="ReservasUPN.Web.Secure.Sanciones" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>Sanciones</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="page-wrapper">
@@ -19,11 +20,8 @@
                 <telerik:RadComboBox ID="CmbSedes" runat="server" AutoPostBack="true" DataTextField="descripcion"
                     Width="300" DataValueField="nombre" />
             </div>
-            <div class="col-lg-2">
-                <h5>Inactivos</h5>
-            </div>
-            <div class="col-lg-3">
-                <asp:CheckBox runat="server" AutoPostBack="true" ID="ChkInactivos" Text="Mostrar" />
+            <div class="col-lg-5">
+                <asp:CheckBox runat="server" AutoPostBack="true" ID="ChkInactivos" Text="Mostrar Inactivas" />
             </div>
         </div>
         <div class="row">

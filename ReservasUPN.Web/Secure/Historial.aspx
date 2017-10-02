@@ -2,6 +2,7 @@
     CodeBehind="Historial.aspx.cs" Inherits="ReservasUPN.Web.Secure.Historial" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<title>Ver Reservas</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="page-wrapper">
@@ -12,16 +13,14 @@
             </div>
         </div>
         <div class="row" id="rowSede">
-            <div class="col-lg-3">
-                Sede
+            <div class="col-lg-2">
+                <h5>Sede</h5>
             </div>
-            <div class="col-lg-9">
+            <div class="col-lg-10">
                 <telerik:RadComboBox ID="CmbSedes" runat="server" AutoPostBack="true" DataTextField="descripcion"
-                    Width="300" DataValueField="id" OnSelectedIndexChanged="CmbSedes_SelectedIndexChanged" />
+                    Width="300" DataValueField="id"  />
             </div>
         </div>
-
-
 
         <div class="row">
             <div class="col-lg-12">
@@ -39,29 +38,34 @@
                             <CommandItemSettings ShowAddNewRecordButton="false" ShowRefreshButton="false" ShowExportToExcelButton="true"
                                 ExportToExcelText="Exportar a Excel" />
                             <Columns>
+                                <telerik:GridBoundColumn DataField="NombreTipoRecurso" ShowFilterIcon="false" ShowSortIcon="true"
+                                    HeaderText="Tipo Recurso" SortExpression="NombreTipoRecurso" UniqueName="NombreTipoRecurso"
+                                    AutoPostBackOnFilter="true">
+                                    <HeaderStyle Width="20%" />
+                                </telerik:GridBoundColumn>
                                 <telerik:GridBoundColumn DataField="NombreRecurso" ShowFilterIcon="false" ShowSortIcon="true"
                                     HeaderText="Recurso" SortExpression="NombreRecurso" UniqueName="NombreRecurso"
                                     AutoPostBackOnFilter="true">
-                                    <HeaderStyle Width="25%" />
+                                    <HeaderStyle Width="20%" />
                                 </telerik:GridBoundColumn>
                                 <telerik:GridDateTimeColumn DataField="fecha" ShowSortIcon="true" FilterListOptions="VaryByDataType"
                                     HeaderText="Fecha" SortExpression="fecha" UniqueName="fecha" PickerType="DatePicker"
                                     DataFormatString="{0:dd/MM/yyyy}" AutoPostBackOnFilter="true" DataType="System.DateTime">
-                                    <HeaderStyle Width="15%" />
+                                    <HeaderStyle Width="12%" />
                                 </telerik:GridDateTimeColumn>
                                 <telerik:GridDateTimeColumn DataField="inicio" ShowSortIcon="true" HeaderText="Inicio"
                                     SortExpression="inicio" UniqueName="inicio" PickerType="TimePicker" DataFormatString="{0:hh:mm}"
                                     AutoPostBackOnFilter="true" DataType="System.DateTime">
-                                    <HeaderStyle Width="15%" />
+                                    <HeaderStyle Width="12%" />
                                 </telerik:GridDateTimeColumn>
                                 <telerik:GridDateTimeColumn DataField="final" ShowSortIcon="true" HeaderText="Final"
                                     SortExpression="final" UniqueName="final" PickerType="TimePicker" DataFormatString="{0:hh:mm}"
                                     AutoPostBackOnFilter="true" DataType="System.DateTime">
-                                    <HeaderStyle Width="15%" />
+                                    <HeaderStyle Width="12%" />
                                 </telerik:GridDateTimeColumn>
                                 <telerik:GridCheckBoxColumn DataField="asistencia" DataType="System.Boolean" HeaderText="Asistencia"
                                     SortExpression="asistencia" UniqueName="asistencia">
-                                    <HeaderStyle Width="15%" />
+                                    <HeaderStyle Width="12%" />
                                     <FilterTemplate>
                                         <telerik:RadComboBox ID="CmbAsistencia" runat="server" Width="100" SelectedValue='<%# ((GridItem)Container).OwnerTableView.GetColumn("asistencia").CurrentFilterValue %>'
                                             OnClientSelectedIndexChanged="CmbAsistencia_OnClientSelectedIndexChanged">
@@ -94,9 +98,9 @@
                                         </telerik:RadScriptBlock>
                                     </FilterTemplate>
                                 </telerik:GridCheckBoxColumn>
-                                <telerik:GridTemplateColumn DataField="estado" HeaderText="estado" SortExpression="estado"
+                                <telerik:GridTemplateColumn DataField="estado" HeaderText="Estado" SortExpression="estado"
                                     UniqueName="estado">
-                                    <HeaderStyle Width="15%" />
+                                    <HeaderStyle Width="12%" />
                                     <ItemTemplate>
                                         <%# Convert.ToBoolean(Eval("estado"))?"Activa":"Cancelada" %>
                                     </ItemTemplate>
@@ -114,7 +118,7 @@
                                                 function CmbEstado_OnClientSelectedIndexChanged(sender, eventArgs) {
                                                     var valor = eventArgs._item.get_value();
                                                     var tableView = $find("<%# ((GridItem)Container).OwnerTableView.ClientID %>");
-                                                    console.log(valor == "" ? "NoFilter" : "EqualTo");
+                                                    //console.log(valor == "" ? "NoFilter" : "EqualTo");
                                                     switch (valor) {
                                                         case "":
                                                             tableView.filter("estado", "", "NoFilter");

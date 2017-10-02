@@ -25,6 +25,7 @@ namespace ReservasUPN.Web.Secure
                 CmbSedes.DataSource = new SedeBL().ListarxUsuario(Usuario);
                 CmbSedes.DataBind();
             }
+            EstiloSubmit(BtnGuardar.ClientID);
         }
 
         protected void ChkDefault_CheckedChanged(object sender, EventArgs e)

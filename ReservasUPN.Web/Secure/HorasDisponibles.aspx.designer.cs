@@ -22,15 +22,6 @@ namespace ReservasUPN.Web.Secure {
         protected global::Telerik.Web.UI.RadComboBox CmbSedes;
         
         /// <summary>
-        /// Control BtnGuardar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton BtnGuardar;
-        
-        /// <summary>
         /// Control RgHoras.
         /// </summary>
         /// <remarks>
@@ -47,6 +38,15 @@ namespace ReservasUPN.Web.Secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ObjectDataSource ObjectDataSource1;
+        
+        /// <summary>
+        /// Control BtnGuardar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton BtnGuardar;
         
         /// <summary>
         /// Control RadAjaxManager1.

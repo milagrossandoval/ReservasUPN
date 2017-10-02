@@ -24,6 +24,7 @@ namespace ReservasUPN.Web.Secure
                 CmbSedes.DataBind();
                 CmbSedes.SelectedIndex = 0;
             }
+            EstiloSubmit(BtnGuardar.ClientID);
         }
 
         //protected void CmbTiposRecurso_DataBound(object sender, EventArgs e)
@@ -57,11 +58,11 @@ namespace ReservasUPN.Web.Secure
             bool rpta = recursotipohorabl.Actualizar(listaupd);
             if (rpta)
             {
-                alerta("Se registró con éxito");
+                Alerta("Se registró con éxito");
             }
             else
             {
-                alerta("Error al registrar");
+                Alerta("Error al registrar");
             }
         }
 

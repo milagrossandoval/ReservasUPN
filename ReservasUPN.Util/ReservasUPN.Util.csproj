@@ -42,10 +42,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Fecha.cs" />
-    <Compile Include="Imagen.cs" />
+    <Compile Include="FechaUtil.cs" />
+    <Compile Include="ImagenUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Cadena.cs" />
+    <Compile Include="RecursoTipoUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\ReservasUPN.BE\ReservasUPN.BE.csproj">

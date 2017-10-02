@@ -137,7 +137,6 @@ namespace ReservasUPN.Web.Secure
                         paginas.Add(new Pagina { Nombre = "Reservar a otro", URL = Pagina.URL_RESERVAROTRO });
                         paginas.Add(new Pagina { Nombre = "Ver reservas de otro", URL = Pagina.URL_VERRESERVASOTRO });
                         paginas.Add(new Pagina { Nombre = Pagina.PAG_SEGUIMIENTO, URL = Pagina.URL_SEGUIMIENTO });
-                        
                         break;
                     case 101: //Supervisor
                         paginas.Add(new Pagina { Nombre = Pagina.PAG_RESERVAR, URL = Pagina.URL_RESERVAROTRO });
@@ -157,7 +156,11 @@ namespace ReservasUPN.Web.Secure
             {
                 switch (perfil)
                 {
-                    default:
+                    case 100: //Administrador
+                        paginas.Add(new Pagina { Nombre = Pagina.PAG_RPTRESERVAS, URL = Pagina.URL_RPTRESERVAS });
+                        break;
+                    case 101: //Supervisor
+                        paginas.Add(new Pagina { Nombre = Pagina.PAG_RPTRESERVAS, URL = Pagina.URL_RPTRESERVAS });
                         break;
                 }
             }
@@ -182,7 +185,7 @@ namespace ReservasUPN.Web.Secure
             public static readonly string PAG_MISRESERVAS = "Mis Reservas";
             public static readonly string PAG_SEGUIMIENTO = "Seguimiento";
 
-            public static readonly string PAG_RPTRESERVAS = "Reportede Reservas";
+            public static readonly string PAG_RPTRESERVAS = "Reservas";
 
 
             public static readonly string URL_RECURSOS = "Recursos.aspx";

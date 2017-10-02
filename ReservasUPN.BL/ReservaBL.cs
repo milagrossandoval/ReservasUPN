@@ -82,7 +82,7 @@ namespace ReservasUPN.BL
                 else
                     rpta[i].Continuar = Buscar(rpta[i].usuario, rpta[i].fecha, horaSgt.n_hor_codigo, rpta[i].recurso) != null;
 
-                rpta[i].Foto = Util.Imagen.RutaFoto(sede.nombre, rpta[i].usuario);
+                rpta[i].Foto = Util.ImagenUtil.RutaFoto(sede.nombre, rpta[i].usuario);
             }
 
             return rpta;

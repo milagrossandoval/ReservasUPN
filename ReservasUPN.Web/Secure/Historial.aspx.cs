@@ -27,10 +27,6 @@ namespace ReservasUPN.Web.Secure
             
         }
 
-        protected void CmbSedes_SelectedIndexChanged(object sender, Telerik.Web.UI.RadComboBoxSelectedIndexChangedEventArgs e)
-        {
-        }
-
 
     }
 }

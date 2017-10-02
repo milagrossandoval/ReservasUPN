@@ -82,6 +82,7 @@ namespace ReservasUPN.DAO
                             hora = r.hora,
                             NombreRecurso = c.descripcion,
                             nombreUsuario = r.nombreUsuario,
+                            NombreTipoRecurso = t.descripcion,
                             recurso = r.recurso,
                             usuario = r.usuario
                         }).ToList();

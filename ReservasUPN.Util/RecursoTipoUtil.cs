@@ -5,9 +5,9 @@ using System.Text;
 
 namespace ReservasUPN.Util
 {
-    public class Cadena
+    public class RecursoTipoUtil
     {
-        public static string ListRecursoTipoToStringDes(List<BE.Modelos.RecursoTipo> lista)
+        public static string ListToStringDes(List<BE.Modelos.RecursoTipo> lista)
         {
             StringBuilder sb = new StringBuilder();
             foreach (BE.Modelos.RecursoTipo rt in lista)
@@ -21,7 +21,7 @@ namespace ReservasUPN.Util
             return sb.ToString();
         }
 
-        public static string ListRecursoTipoToStringId(List<BE.Modelos.RecursoTipo> lista)
+        public static string ListToStringId(List<BE.Modelos.RecursoTipo> lista)
         {
             StringBuilder sb = new StringBuilder();
             foreach (BE.Modelos.RecursoTipo rt in lista)

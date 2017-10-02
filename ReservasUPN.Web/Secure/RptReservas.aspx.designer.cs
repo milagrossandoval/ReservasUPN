@@ -10,7 +10,7 @@
 namespace ReservasUPN.Web.Secure {
     
     
-    public partial class HistorialUsuario {
+    public partial class RptReservas {
         
         /// <summary>
         /// Control CmbSedes.
@@ -22,85 +22,139 @@ namespace ReservasUPN.Web.Secure {
         protected global::Telerik.Web.UI.RadComboBox CmbSedes;
         
         /// <summary>
-        /// Control TxtUsuario.
+        /// Control CblTipos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox TxtUsuario;
+        protected global::System.Web.UI.WebControls.CheckBoxList CblTipos;
         
         /// <summary>
-        /// Control BtnBuscar.
+        /// Control OdsTipos.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadButton BtnBuscar;
+        protected global::System.Web.UI.WebControls.ObjectDataSource OdsTipos;
         
         /// <summary>
-        /// Control RfvUsuario.
+        /// Control TxtRecurso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvUsuario;
+        protected global::Telerik.Web.UI.RadTextBox TxtRecurso;
         
         /// <summary>
-        /// Control HfUsuario.
+        /// Control DpInicio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HfUsuario;
+        protected global::Telerik.Web.UI.RadDatePicker DpInicio;
         
         /// <summary>
-        /// Control HfTipoUsuario.
+        /// Control RfvDpInicio.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField HfTipoUsuario;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvDpInicio;
         
         /// <summary>
-        /// Control ImgFoto.
+        /// Control DpFin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image ImgFoto;
+        protected global::Telerik.Web.UI.RadDatePicker DpFin;
         
         /// <summary>
-        /// Control LblUsuario.
+        /// Control RfvDpFin.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblUsuario;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvDpFin;
         
         /// <summary>
-        /// Control RgReservas.
+        /// Control CmbAsistencia.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid RgReservas;
+        protected global::Telerik.Web.UI.RadComboBox CmbAsistencia;
         
         /// <summary>
-        /// Control RadAjaxManager1.
+        /// Control CmbEstado.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadAjaxManager RadAjaxManager1;
+        protected global::Telerik.Web.UI.RadComboBox CmbEstado;
+        
+        /// <summary>
+        /// Control TxtCodUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox TxtCodUsuario;
+        
+        /// <summary>
+        /// Control TxtNomUsuario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox TxtNomUsuario;
+        
+        /// <summary>
+        /// Control TxtCodUsuarioRes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox TxtCodUsuarioRes;
+        
+        /// <summary>
+        /// Control TxtNomUsuarioRes.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadTextBox TxtNomUsuarioRes;
+        
+        /// <summary>
+        /// Control BtnReporte.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton BtnReporte;
+        
+        /// <summary>
+        /// Control ReportViewer1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Microsoft.Reporting.WebForms.ReportViewer ReportViewer1;
         
         /// <summary>
         /// Control RadCodeBlock1.

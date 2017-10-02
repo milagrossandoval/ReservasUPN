@@ -31,6 +31,15 @@ namespace ReservasUPN.Web.Secure {
         protected global::Telerik.Web.UI.RadTextBox TxtUsuario;
         
         /// <summary>
+        /// Control BtnBuscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton BtnBuscar;
+        
+        /// <summary>
         /// Control RfvUsuario.
         /// </summary>
         /// <remarks>
@@ -38,15 +47,6 @@ namespace ReservasUPN.Web.Secure {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator RfvUsuario;
-        
-        /// <summary>
-        /// Control BtnBuscar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton BtnBuscar;
         
         /// <summary>
         /// Control HfUsuario.

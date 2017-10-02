@@ -2,7 +2,7 @@
     CodeBehind="UsuarioTipos.aspx.cs" Inherits="ReservasUPN.Web.Secure.UsuarioTipos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    
+    <title>Tipos de Usuario</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="page-wrapper">

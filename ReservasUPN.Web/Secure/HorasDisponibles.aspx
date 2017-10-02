@@ -1,23 +1,25 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Secure/Site.Master" AutoEventWireup="true" CodeBehind="HorasDisponibles.aspx.cs" Inherits="ReservasUPN.Web.Secure.HorasDisponibles" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>Horas Disponibles por Tipo Recurso</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="page-wrapper">
         <div class="row">
             <div class="col-lg-12">
                 <h3 class="page-header">
-                    Configuración de Horas por Tipo de Recurso</h3>
+                    Horas Disponibles por Tipo Recurso</h3>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-2">
-                <h5>Sede</h5>
+            <div class="col-lg-1">
+                Sede
             </div>
-            <%--<div class="col-lg-5">--%>
-            <div class="col-lg-12">
+            <div class="col-lg-4">
                 <telerik:RadComboBox ID="CmbSedes" runat="server" AutoPostBack="true" DataTextField="descripcion"
-                    Width="300" DataValueField="id" EmptyMessage=" " HighlightTemplatedItems="true"
-                        EnableLoadOnDemand="true"  />
+                Width="300" DataValueField="id" EmptyMessage=" " HighlightTemplatedItems="true"
+                    EnableLoadOnDemand="true"  />
+            </div>
+            <div class="col-lg-7">                
             </div>
             <%--<div class="col-lg-2">
                 <h5>Tipo de Recurso</h5>
@@ -35,12 +37,7 @@
                 </asp:ObjectDataSource>
             </div>--%>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <telerik:RadButton ID="BtnGuardar" runat="server" Text="Guardar" 
-                    onclick="BtnGuardar_Click" />
-            </div>
-        </div>
+        <h6></h6>
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
@@ -85,8 +82,8 @@
                                                 function CmbEstado_OnClientSelectedIndexChanged(sender, eventArgs) {
                                                     var valor = eventArgs._item.get_value();
                                                     var tableView = $find("<%# ((GridItem)Container).OwnerTableView.ClientID %>");
-                                                    console.log(valor);
-                                                    console.log(valor == "" ? "NoFilter" : "EqualTo");
+//                                                    console.log(valor);
+//                                                    console.log(valor == "" ? "NoFilter" : "EqualTo");
 
                                                     switch (valor) {
                                                         case "":
@@ -163,6 +160,12 @@
                         </MasterTableView>
                     </telerik:RadGrid>--%>
                 </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <telerik:RadButton ID="BtnGuardar" runat="server" Text="Guardar" 
+                    onclick="BtnGuardar_Click" />
             </div>
         </div>
     </div>

@@ -5,17 +5,17 @@ using System.Text;
 
 namespace ReservasUPN.Util
 {
-    public class Fecha
+    public class FechaUtil
     {
-        public static DateTime AgregarHoraInicial(DateTime fecha, string rangohora)
-        {
-            string strhorainicial = rangohora.Split('-')[0].Trim();
-            string[] partesHora = strhorainicial.Split('.');
-            int horas = int.Parse(partesHora[0]);
-            int minutos = int.Parse(partesHora[1]);
-            TimeSpan horainicial = new TimeSpan(horas, minutos, 0);
-            return fecha.Add(horainicial);
-        }
+        //public static DateTime AgregarHoraInicial(DateTime fecha, string rangohora)
+        //{
+        //    string strhorainicial = rangohora.Split('-')[0].Trim();
+        //    string[] partesHora = strhorainicial.Split('.');
+        //    int horas = int.Parse(partesHora[0]);
+        //    int minutos = int.Parse(partesHora[1]);
+        //    TimeSpan horainicial = new TimeSpan(horas, minutos, 0);
+        //    return fecha.Add(horainicial);
+        //}
 
         public static DateTime AgregarHora(DateTime fecha, TimeSpan hora)
         {

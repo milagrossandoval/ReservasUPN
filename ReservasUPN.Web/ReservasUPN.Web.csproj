@@ -34,6 +34,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -60,11 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\css\bootstrap.min.css" />
-    <Content Include="assets\css\Button.Button.css" />
     <Content Include="assets\css\metisMenu.min.css" />
     <Content Include="assets\css\morris.css" />
     <Content Include="assets\css\sb-admin-2.css" />
-    <Content Include="assets\css\styles.css" />
     <Content Include="assets\fonts\font-awesome.min.css" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\images\cancel.png" />
@@ -81,30 +82,13 @@
     <Content Include="assets\js\bootstrap.min.js" />
     <Content Include="assets\js\dataTables.bootstrap.min.js" />
     <Content Include="assets\js\dataTables.responsive.js" />
-    <Content Include="assets\js\jquery-ui\AUTHORS.txt" />
-    <Content Include="assets\js\jquery-ui\external\jquery\jquery.js" />
-    <Content Include="assets\js\jquery-ui\images\ui-icons_444444_256x240.png" />
-    <Content Include="assets\js\jquery-ui\images\ui-icons_555555_256x240.png" />
-    <Content Include="assets\js\jquery-ui\images\ui-icons_777620_256x240.png" />
-    <Content Include="assets\js\jquery-ui\images\ui-icons_777777_256x240.png" />
-    <Content Include="assets\js\jquery-ui\images\ui-icons_cc0000_256x240.png" />
-    <Content Include="assets\js\jquery-ui\images\ui-icons_ffffff_256x240.png" />
-    <Content Include="assets\js\jquery-ui\index.html" />
-    <Content Include="assets\js\jquery-ui\jquery-ui.css" />
-    <Content Include="assets\js\jquery-ui\jquery-ui.js" />
-    <Content Include="assets\js\jquery-ui\jquery-ui.min.css" />
-    <Content Include="assets\js\jquery-ui\jquery-ui.min.js" />
-    <Content Include="assets\js\jquery-ui\jquery-ui.structure.css" />
-    <Content Include="assets\js\jquery-ui\jquery-ui.structure.min.css" />
-    <Content Include="assets\js\jquery-ui\jquery-ui.theme.css" />
-    <Content Include="assets\js\jquery-ui\jquery-ui.theme.min.css" />
-    <Content Include="assets\js\jquery-ui\LICENSE.txt" />
     <Content Include="assets\js\jquery.dataTables.min.js" />
     <Content Include="assets\js\jquery.min.js" />
     <Content Include="assets\js\metisMenu.min.js" />
     <Content Include="assets\js\morris-data.js" />
     <Content Include="assets\js\morris.min.js" />
     <Content Include="assets\js\raphael.min.js" />
+    <Content Include="assets\js\reservasutil.js" />
     <Content Include="assets\js\sb-admin-2.js" />
     <Content Include="LogIn.aspx" />
     <Content Include="LogOut.aspx" />
@@ -116,7 +100,7 @@
     <Content Include="Secure\Recursos.aspx" />
     <Content Include="Secure\RecursoTipos.aspx" />
     <Content Include="Secure\HorasDisponibles.aspx" />
-    <Content Include="Secure\Reportes.aspx" />
+    <Content Include="Secure\RptReservas.aspx" />
     <Content Include="Secure\Reservar.aspx" />
     <Content Include="Secure\Sanciones.aspx" />
     <Content Include="Secure\Seguimiento.aspx" />
@@ -152,7 +136,6 @@
     <Compile Include="LogOut.aspx.designer.cs">
       <DependentUpon>LogOut.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Page.cs" />
     <Compile Include="Secure\ReservarUsuario.aspx.cs">
       <DependentUpon>ReservarUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -210,12 +193,12 @@
     <Compile Include="Secure\HorasDisponibles.aspx.designer.cs">
       <DependentUpon>HorasDisponibles.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Secure\Reportes.aspx.cs">
-      <DependentUpon>Reportes.aspx</DependentUpon>
+    <Compile Include="Secure\RptReservas.aspx.cs">
+      <DependentUpon>RptReservas.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Secure\Reportes.aspx.designer.cs">
-      <DependentUpon>Reportes.aspx</DependentUpon>
+    <Compile Include="Secure\RptReservas.aspx.designer.cs">
+      <DependentUpon>RptReservas.aspx</DependentUpon>
     </Compile>
     <Compile Include="Secure\Reservar.aspx.cs">
       <DependentUpon>Reservar.aspx</DependentUpon>
@@ -299,7 +282,6 @@
     <None Include="assets\fonts\glyphicons-halflings-regular.ttf" />
     <None Include="assets\fonts\glyphicons-halflings-regular.woff" />
     <None Include="assets\fonts\glyphicons-halflings-regular.woff2" />
-    <None Include="assets\js\jquery-ui\package.json" />
     <Content Include="Secure\Site.Master" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

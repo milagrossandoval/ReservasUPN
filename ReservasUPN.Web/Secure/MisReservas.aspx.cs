@@ -108,7 +108,7 @@ namespace ReservasUPN.Web.Secure
                                 RegisterWithScriptManager = true
                             };
                             btn.Icon.PrimaryIconUrl = "../assets/images/delete.png";
-                            item[Fecha.DiaSemana(i)].Controls.Add(btn);
+                            item[FechaUtil.DiaSemana(i)].Controls.Add(btn);
                         }
 
                     }
@@ -123,18 +123,10 @@ namespace ReservasUPN.Web.Secure
                 bool rpta = reservabl.Cancelar(idreserva);
                 if (rpta) {
                     RgHorario.Rebind();
-                    alerta("Se canceló la reserva indicada");
+                    Alerta("Se canceló la reserva indicada");
                 }
             }
         }
-
-        protected void RgHorario_ItemCreated(object sender, GridItemEventArgs e)
-        {
-            if (e.Item is GridDataItem) { 
-                
-            }
-        }
-
 
     }
 }

@@ -15,12 +15,12 @@ namespace ReservasUPN.BL
 
         public bool Grabar(BE.Modelos.Sancion obj)
         {
-            return sancionDAO.Grabar(obj, Cadena.ListRecursoTipoToStringId(obj.RecursoTipo.ToList()));
+            return sancionDAO.Grabar(obj, RecursoTipoUtil.ListToStringId(obj.RecursoTipo.ToList()));
         }
 
         public bool Actualizar(BE.Modelos.Sancion obj)
         {
-            return sancionDAO.Actualizar(obj, Cadena.ListRecursoTipoToStringId(obj.RecursoTipo.ToList()));  
+            return sancionDAO.Actualizar(obj, RecursoTipoUtil.ListToStringId(obj.RecursoTipo.ToList()));  
         }
 
         public List<BE.Adapters.Sancion> Listar(string sede, bool inactivos)
@@ -31,7 +31,7 @@ namespace ReservasUPN.BL
             else
                 rpta = sancionDAO.ListarActivos(sede);
 
-            rpta.ForEach(s => s.Detalle = Util.Cadena.ListRecursoTipoToStringDes(BuscarDetalle(s.id)));
+            rpta.ForEach(s => s.Detalle = Util.RecursoTipoUtil.ListToStringDes(BuscarDetalle(s.id)));
 
             return rpta;
         }

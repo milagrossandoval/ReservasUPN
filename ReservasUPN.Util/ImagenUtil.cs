@@ -8,7 +8,7 @@ using System.Net;
 
 namespace ReservasUPN.Util
 {
-    public class Imagen
+    public class ImagenUtil
     {
 
         private static readonly string FOTO_DEFECTO = "../assets/images/sinfoto.jpg";

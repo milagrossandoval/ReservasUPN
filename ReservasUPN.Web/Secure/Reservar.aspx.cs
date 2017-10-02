@@ -27,6 +27,7 @@ namespace ReservasUPN.Web.Secure
                 CmbSedes.DataBind();
                 DpFecha.SelectedDate = DateTime.Today;
             }
+            EstiloSubmit(BtnGuardar.ClientID);
         }
 
         protected void CmbSedes_SelectedIndexChanged(object sender, Telerik.Web.UI.RadComboBoxSelectedIndexChangedEventArgs e)
@@ -125,7 +126,7 @@ namespace ReservasUPN.Web.Secure
                     string mensaje = "No puede reservar este tipo de recurso " + CmbTiposRecurso.Text + 
                         " hasta el " + sancion.fechafin.ToString("dd/MM/yyyy") + ". "
                         + "Motivo: " + sancion.motivo + ".";
-                    alerta(mensaje);
+                    Alerta(mensaje);
                     return;
                 }
 
@@ -155,7 +156,7 @@ namespace ReservasUPN.Web.Secure
                     for (int i = 1; i <= 7; i++)
                     {
                         fechaDia = fechasSemana[i - 1];
-                        chk = (CheckBox)item.FindControl("Chk" + Fecha.DiaSemana(i));
+                        chk = (CheckBox)item.FindControl("Chk" + FechaUtil.DiaSemana(i));
 
                         if (fechaDia.Month != fechaSeleccionada.Month) { chk.Visible = false; }
                         else if (fechaDia < DateTime.Today) { chk.Visible = false; }
@@ -167,7 +168,7 @@ namespace ReservasUPN.Web.Secure
 
                         if (res.Count() == 1)
                         {
-                            lbl = (Label)item.FindControl("Lbl" + Fecha.DiaSemana(i));
+                            lbl = (Label)item.FindControl("Lbl" + FechaUtil.DiaSemana(i));
                             lbl.Text = res.First().nombreUsuario;
                             lbl.Visible = true;
                             chk.Visible = false;
@@ -186,7 +187,7 @@ namespace ReservasUPN.Web.Secure
         protected void DpFecha_SelectedDateChanged(object sender, Telerik.Web.UI.Calendar.SelectedDateChangedEventArgs e)
         {
             if (e.NewDate < DateTime.Today) {
-                alerta("No se puede registrar una fecha anterior a la fecha actual");
+                Alerta("No se puede registrar una fecha anterior a la fecha actual");
                 DpFecha.SelectedDate = e.OldDate;
                 return;
             }
@@ -195,7 +196,7 @@ namespace ReservasUPN.Web.Secure
 
         private Reserva VerificarReserva(GridDataItem item, int hora, string deshora, int diaSemana, DateTime fecha)
         {
-            CheckBox Chk = (CheckBox)item.FindControl("Chk" + Fecha.DiaSemana(diaSemana));
+            CheckBox Chk = (CheckBox)item.FindControl("Chk" + FechaUtil.DiaSemana(diaSemana));
             TimeSpan horainicial = (TimeSpan)item.GetDataKeyValue("HoraInicio");
             TimeSpan horafinal = (TimeSpan)item.GetDataKeyValue("HoraFinal");
             Reserva reserva = null;
@@ -253,7 +254,7 @@ namespace ReservasUPN.Web.Secure
 
             if (!reservar)
             {
-                alerta("No se ha seleccionado ningún horario.");
+                Alerta("No se ha seleccionado ningún horario.");
                 return;
             }
 
@@ -264,7 +265,7 @@ namespace ReservasUPN.Web.Secure
 
             if (horasUsadas + reservas.Count > horasMesActual)
             {
-                alerta("No tiene horas disponibles suficientes para realizar esa reserva.");
+                Alerta("No tiene horas disponibles suficientes para realizar esa reserva.");
                 return;
             }
 
@@ -275,12 +276,12 @@ namespace ReservasUPN.Web.Secure
                 {
                     CalcularHorasDisponibles();
                     RgHorario.Rebind();
-                    alerta("Se registró correctamente la reserva, se enviará un correo con su reserva.");
+                    Alerta("Se registró correctamente la reserva, se enviará un correo con su reserva.");
                 }
             }
             catch (Exception ex)
             {
-                alerta(ex.Message);
+                Alerta(ex.Message);
             }
 
         }

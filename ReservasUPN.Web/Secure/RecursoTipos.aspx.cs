@@ -45,7 +45,7 @@ namespace ReservasUPN.Web.Secure
             {
                 if (ex.InnerException.Message.Contains("unique index 'IX_RecursoTipo'"))
                 {
-                    alerta("La descripción ingresada ya existe.");
+                    Alerta("La descripción ingresada ya existe.");
                     return;
                 }
             }

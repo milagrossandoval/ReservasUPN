@@ -2,6 +2,7 @@
     CodeBehind="MisReservas.aspx.cs" Inherits="ReservasUPN.Web.Secure.MisReservas" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>Mis Reservas</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div id="page-wrapper">
@@ -11,44 +12,56 @@
                     Mis Reservas</h3>
             </div>
         </div>
-        <div class="row" id="rowSede">
-            <div class="col-lg-3">
-                Sede
-            </div>
-            <div class="col-lg-9">
-                <telerik:RadComboBox ID="CmbSedes" runat="server" AutoPostBack="true" DataTextField="descripcion"
-                    Width="300" DataValueField="id" />
-            </div>
-        </div>
         <div class="row">
-            <div class="col-lg-3">
-                Tipo de Recurso
-            </div>
-            <div class="col-lg-3">
-                <telerik:RadComboBox ID="CmbTiposRecurso" runat="server" AutoPostBack="True" Width="200px"
-                    DataValueField="id" DataTextField="descripcion" DataSourceID="OdsRecursoTipo"
-                    OnDataBound="CmbTiposRecurso_DataBound" OnSelectedIndexChanged="CmbTiposRecurso_SelectedIndexChanged" />
-                <asp:ObjectDataSource ID="OdsRecursoTipo" runat="server" SelectMethod="Listar" TypeName="ReservasUPN.BL.RecursoTipoBL">
-                    <SelectParameters>
-                        <asp:ControlParameter ControlID="CmbSedes" Name="idSede" PropertyName="SelectedValue"
-                            Type="Int32" />
-                    </SelectParameters>
-                </asp:ObjectDataSource>
-                <asp:HiddenField ID="HfTipoHora" runat="server" />
-            </div>
-            <div class="col-lg-3">
-                Fecha
-            </div>
-            <div class="col-lg-3">
-                <telerik:RadDatePicker ID="DpFecha" runat="server" OnSelectedDateChanged="DpFecha_SelectedDateChanged" />
+            <div class="col-lg-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        Filtros
+                    </div>
+                    <div class="panel-body">
+                        <div class="row" id="rowSede">
+                            <div class="col-lg-2">
+                                <h5>Sede</h5>
+                            </div>
+                            <div class="col-lg-4">
+                                <telerik:RadComboBox ID="CmbSedes" runat="server" AutoPostBack="true" DataTextField="descripcion"
+                                    Width="300" DataValueField="id" />
+                            </div>
+                            <div class="col-lg-6">
+                                &nbsp;</div>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <h5>Tipo de Recurso</h5>
+                            </div>
+                            <div class="col-lg-4">
+                                <telerik:RadComboBox ID="CmbTiposRecurso" runat="server" AutoPostBack="True" Width="300px"
+                                    DataValueField="id" DataTextField="descripcion" DataSourceID="OdsRecursoTipo"
+                                    OnDataBound="CmbTiposRecurso_DataBound" OnSelectedIndexChanged="CmbTiposRecurso_SelectedIndexChanged" />
+                                <asp:ObjectDataSource ID="OdsRecursoTipo" runat="server" SelectMethod="Listar" TypeName="ReservasUPN.BL.RecursoTipoBL">
+                                    <SelectParameters>
+                                        <asp:ControlParameter ControlID="CmbSedes" Name="idSede" PropertyName="SelectedValue"
+                                            Type="Int32" />
+                                    </SelectParameters>
+                                </asp:ObjectDataSource>
+                                <asp:HiddenField ID="HfTipoHora" runat="server" />
+                            </div>
+                            <div class="col-lg-2">
+                                <h5>Fecha</h5>
+                            </div>
+                            <div class="col-lg-4">
+                                <telerik:RadDatePicker ID="DpFecha" runat="server" OnSelectedDateChanged="DpFecha_SelectedDateChanged" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="row">
             <div class="col-lg-12">
                 <div class="panel panel-default">
                     <telerik:RadGrid ID="RgHorario" runat="server" GridLines="None" AutoGenerateColumns="False"
-                        DataSourceID="ObjectDataSource1" OnDataBound="RgHorario_DataBound" OnItemCommand="RgHorario_ItemCommand"
-                        OnItemCreated="RgHorario_ItemCreated">
+                        DataSourceID="ObjectDataSource1" OnDataBound="RgHorario_DataBound" OnItemCommand="RgHorario_ItemCommand">
                         <ClientSettings>
                             <Scrolling AllowScroll="True" UseStaticHeaders="True" />
                         </ClientSettings>

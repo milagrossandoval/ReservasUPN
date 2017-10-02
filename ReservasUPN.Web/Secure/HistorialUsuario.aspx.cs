@@ -24,7 +24,8 @@ namespace ReservasUPN.Web.Secure
 
         }
 
-        protected void BtnBuscar_Click(object sender, ImageClickEventArgs e)
+        //protected void BtnBuscar_Click(object sender, ImageClickEventArgs e)
+        protected void BtnBuscar_Click(object sender, EventArgs e)
         {
             var rpta = new UsuarioBL().Buscar(TxtUsuario.Text);
             if (rpta != null)
@@ -35,7 +36,7 @@ namespace ReservasUPN.Web.Secure
                     LblUsuario.Text = rpta.NombreCompleto;
                     ImgFoto.Visible = true;
                     BE.Modelos.Sede sede = new SedeBL().Buscar(int.Parse(CmbSedes.SelectedValue));
-                    ImgFoto.ImageUrl = Util.Imagen.RutaFoto(sede.nombre, rpta.codigo);
+                    ImgFoto.ImageUrl = Util.ImagenUtil.RutaFoto(sede.nombre, rpta.codigo);
                     RgReservas.Visible = true;
                     RgReservas.Rebind();
 
@@ -47,7 +48,7 @@ namespace ReservasUPN.Web.Secure
                 LblUsuario.Text = string.Empty;
                 ImgFoto.Visible = false;
                 RgReservas.Visible = false;
-                alerta("No se encontró el usuario");
+                Alerta("No se encontró el usuario");
 
             }
         }

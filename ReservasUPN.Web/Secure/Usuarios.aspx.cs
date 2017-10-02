@@ -52,7 +52,7 @@ namespace ReservasUPN.Web.Secure
             if (a_codigo == Usuario.codigo) 
             {
                 if (!a_estado) {
-                    alerta("No se puede deshabilitar su mismo usuario");
+                    Alerta("No se puede deshabilitar su mismo usuario");
                     return;
                 }
             }

@@ -98,7 +98,7 @@ namespace ReservasUPN.Web.Secure
                     bool activo = Convert.ToBoolean(item.GetDataKeyValue("Activo"));
                     if (!activo) {
                         e.Canceled = true;
-                        alerta("No se puede editar sanciones inactivas.");
+                        Alerta("No se puede editar sanciones inactivas.");
                         return;
                     }
 
